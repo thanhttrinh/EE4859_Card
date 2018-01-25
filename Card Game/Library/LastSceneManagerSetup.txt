@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Square Falling.unity
+  isLoaded: 1
+  isActive: 1

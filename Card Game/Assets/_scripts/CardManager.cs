@@ -18,7 +18,7 @@ public class CardManager : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D obj)
 	{
 		if (obj.gameObject.tag == "card") {
-			Debug.Log ("it's a card");
+			Debug.Log ("it's a card ");
 			Debug.Log (obj.gameObject.tag);
 		}
 	}

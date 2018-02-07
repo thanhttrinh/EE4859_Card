@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - card
+  - cardBuilder
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 3929080141
+    locked: 0
+  - name: board
+    uniqueID: 1701818057
+    locked: 0
+  - name: cards
+    uniqueID: 2122143193
     locked: 0

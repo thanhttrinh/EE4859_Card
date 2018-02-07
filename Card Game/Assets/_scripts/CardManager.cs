@@ -8,7 +8,6 @@ public class CardManager : MonoBehaviour {
 
 	void Start () 
 	{
-		
 	}
 
 	void Update () 
@@ -16,15 +15,11 @@ public class CardManager : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter2D(Collider2D obj)
+	void OnCollisionEnter2D(Collision2D obj)
 	{
 		if (obj.gameObject.tag == "card") {
 			Debug.Log ("it's a card");
+			Debug.Log (obj.gameObject.tag);
 		}
-	}
-
-	void OnTriggerExit2D(Collider2D obj)
-	{
-		Debug.Log ("bye card");
 	}
 }

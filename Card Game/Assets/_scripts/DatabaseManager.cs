@@ -26,6 +26,10 @@ public class DatabaseManager : MonoBehaviour {
 	private GameObject db;
 	private CardManager cm;
 
+	//
+	[HideInInspector]
+	public bool isSoldier, isCrop, isSpell;
+
 	void Start () 
 	{
 		db = GameObject.FindGameObjectWithTag ("card");
@@ -53,17 +57,39 @@ public class DatabaseManager : MonoBehaviour {
 		dbcmd = dbconn.CreateCommand ();
 
 		//give an SQL command
-		if (cm.card != null) {
-			dbcmd.CommandText = getSoldier (cm.card);
-		} 
-		else if (cm.card != null) {
-			dbcmd.CommandText = getCrop (cm.card);
-		} 
-		else if (cm.card != null) {
-			dbcmd.CommandText = getSpell (cm.card);
+		//for some reason, the bool for crops is flipped
+		if (cm.cardName != null) {
+			if (cm.isSr == true) 
+			{
+				dbcmd.CommandText = getSoldier (cm.cardName);
+				isSoldier = true;
+				Debug.Log ("soldier is "+ cm.isSr);
+			} 
+			else if (cm.isC == false)  //this part is flipped, true won't work but false will
+			{
+				dbcmd.CommandText = getCrop (cm.cardName);
+				isCrop = true;
+				Debug.Log ("Crop is " + cm.isC);
+			} 
+			//THIS DOES NOT WORK 
+			//program will not move on to this line but stay above
+			else
+			{
+				dbcmd.CommandText = getSpell (cm.cardName);
+				isSpell = true;
+				Debug.Log ("spell is "+ cm.isC);
+			}
 		}
+
 		reader = dbcmd.ExecuteReader ();
-		readSoldiers ();
+
+		if (isSoldier == true) {
+			readSoldiers ();
+		} else if (isCrop == true) {
+			readCrops ();
+		} else if (isSpell == true) {
+			readSpells ();
+		}
 
 		//close all connections to the database
 		reader.Close ();

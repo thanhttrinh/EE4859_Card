@@ -7,9 +7,8 @@ public class CardManager : MonoBehaviour {
 	public string cardName;
 
 	[HideInInspector]
-	public bool isSr, isC, isSp;
+	public bool cmSoldier, cmCrop, cmSpell;
 
-	//public Hashtable DeckSet = new Hashtable();
 	//create a new enum of the type desired for the drop down menu
 	public enum cardType{
 		Soldiers,
@@ -27,17 +26,17 @@ public class CardManager : MonoBehaviour {
 		{
 		case cardType.Soldiers:
 			{
-				isSr = true;
+				cmSoldier = true;
 			}
 				break;
 		case cardType.Crops:
 			{
-				isC = true;
+				cmCrop = true;
 			}
 				break;
 		case cardType.Spells:
 			{
-				isSp = true;
+				cmSpell = true;
 			}
 				break;
 		}
@@ -45,18 +44,7 @@ public class CardManager : MonoBehaviour {
 
 	void Start () 
 	{
-		
+		checkCard ();
 	}
 
-	void Update () 
-	{
-	}
-
-	void OnCollisionEnter2D(Collision2D obj)
-	{
-		if (obj.gameObject.tag == "card") {
-			Debug.Log ("it's a card ");
-			Debug.Log (obj.gameObject.tag);
-		}
-	}
 }

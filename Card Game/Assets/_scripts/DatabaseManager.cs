@@ -57,32 +57,29 @@ public class DatabaseManager : MonoBehaviour {
 		dbcmd = dbconn.CreateCommand ();
 
 		//give an SQL command
-		//for some reason, the bool for crops is flipped
+		//check Card Manager for a card's name
 		if (cm.cardName != null) {
-			if (cm.isSr == true) 
+			//if it's a soldier card
+			if (cm.cmSoldier == true) 
 			{
 				dbcmd.CommandText = getSoldier (cm.cardName);
 				isSoldier = true;
-				Debug.Log ("soldier is "+ cm.isSr);
 			} 
-			else if (cm.isC == false)  //this part is flipped, true won't work but false will
+			//if it's a crop card
+			else if (cm.cmCrop == true)
 			{
 				dbcmd.CommandText = getCrop (cm.cardName);
 				isCrop = true;
-				Debug.Log ("Crop is " + cm.isC);
 			} 
-			//THIS DOES NOT WORK 
-			//program will not move on to this line but stay above
-			else
+			//if it's a spell card
+			else if(cm.cmSpell == true)
 			{
 				dbcmd.CommandText = getSpell (cm.cardName);
 				isSpell = true;
-				Debug.Log ("spell is "+ cm.isC);
 			}
 		}
 
 		reader = dbcmd.ExecuteReader ();
-
 		if (isSoldier == true) {
 			readSoldiers ();
 		} else if (isCrop == true) {

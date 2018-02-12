@@ -6,6 +6,7 @@ TagManager:
   tags:
   - card
   - cardBuilder
+  - database
   layers:
   - Default
   - TransparentFX

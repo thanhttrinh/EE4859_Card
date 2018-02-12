@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour {
 	//give the name of the desired card
-	public string soldier;
-	public string crop;
-	public string spell;
+	public string card;
 
 	//public Hashtable DeckSet = new Hashtable();
+	public enum cardType{
+		Soldiers,
+		Crops,
+		Spells
+	}
+
+	public cardType type;
+
+	public void checkCard()
+	{
+		switch (type)
+		{
+			case cardType.Soldiers:
+				break;
+			case cardType.Crops:
+				break;
+			case cardType.Spells:
+				break;
+		}
+	}
 
 	void Start () 
 	{

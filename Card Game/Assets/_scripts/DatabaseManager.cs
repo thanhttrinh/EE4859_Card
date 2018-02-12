@@ -22,19 +22,27 @@ public class DatabaseManager : MonoBehaviour {
 	IDbConnection dbconn;
 	IDbCommand dbcmd;
 
-	private GameObject dbManager;
-	CardManager cm;
+	//components
+	private GameObject db;
+	private CardManager cm;
 
 	void Start () 
 	{
-		dbManager = GameObject.FindGameObjectWithTag ("database");
-		cm = dbManager.GetComponent<DatabaseManager> ();
+		db = GameObject.FindGameObjectWithTag ("card");
+
+		//check if card manager is there
+		if ((cm == null) && (db.GetComponent<CardManager> () != null)) {
+			cm = db.GetComponent<CardManager> ();
+		} else {
+			Debug.LogWarning ("Missing Card Manager script component. Please add on");
+		}
 
 		dbStart ();
 	}
 
 	//start up the database
-	public void dbStart(){
+	public void dbStart()
+	{
 		//path to database
 		//DO NOT CHANGE
 		conn = "URI=file:" + Application.dataPath + "/_plugins/cards.s3db"; 
@@ -45,8 +53,15 @@ public class DatabaseManager : MonoBehaviour {
 		dbcmd = dbconn.CreateCommand ();
 
 		//give an SQL command
-		dbcmd.CommandText = getSoldier("imp");
-
+		if (cm.card != null) {
+			dbcmd.CommandText = getSoldier (cm.card);
+		} 
+		else if (cm.card != null) {
+			dbcmd.CommandText = getCrop (cm.card);
+		} 
+		else if (cm.card != null) {
+			dbcmd.CommandText = getSpell (cm.card);
+		}
 		reader = dbcmd.ExecuteReader ();
 		readSoldiers ();
 
@@ -58,7 +73,6 @@ public class DatabaseManager : MonoBehaviour {
 		dbconn.Close ();
 		dbconn = null;
 	}
-
 
 	public String getSoldier(string name)
 	{

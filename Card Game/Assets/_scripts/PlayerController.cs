@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		newPositionCard = gameObject.transform.position;
 
-		Debug.Log ("old position  :   " + curPositionCard);
-		Debug.Log ("new position  :   " + newPositionCard);
+		//Debug.Log ("old position  :   " + curPositionCard);
+		//Debug.Log ("new position  :   " + newPositionCard);
 
 		//test position of the card if it's within the card builder
 		if (newPositionCard.x > 5.5f) {

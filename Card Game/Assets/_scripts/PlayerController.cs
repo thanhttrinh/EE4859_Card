@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	
+	//component
 	private GameObject cardBuilder;
 
+	//vectors to track the card's movement on screen
 	private Vector3 offset;
 	private Vector3 curPositionCard;
 	private Vector3 newPositionCard;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	void OnMouseDown()
 	{
 		curPositionCard = gameObject.transform.position;
+		Debug.Log (gameObject.GetComponent<CardManager>().cardName);
 		offset = curPositionCard - Camera.main.ScreenToWorldPoint (
 			new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10.0f));
 	}
@@ -35,9 +37,6 @@ public class PlayerController : MonoBehaviour {
 	void OnMouseUp()
 	{
 		newPositionCard = gameObject.transform.position;
-
-		//Debug.Log ("old position  :   " + curPositionCard);
-		//Debug.Log ("new position  :   " + newPositionCard);
 
 		//test position of the card if it's within the card builder
 		if (newPositionCard.x > 5.5f) {

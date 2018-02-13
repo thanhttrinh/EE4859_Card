@@ -40,7 +40,6 @@ public class DatabaseManager : MonoBehaviour {
 		} else {
 			Debug.LogWarning ("Missing Card Manager script component. Please add on");
 		}
-
 		dbStart ();
 	}
 

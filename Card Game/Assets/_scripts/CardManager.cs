@@ -6,6 +6,7 @@ public class CardManager : MonoBehaviour {
 	//give the name of the desired card
 	public string cardName;
 
+	//booleans to communicate with the database manager script
 	[HideInInspector]
 	public bool cmSoldier, cmCrop, cmSpell;
 

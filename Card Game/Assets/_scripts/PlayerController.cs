@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour {
-	//component
-	private GameObject cardBuilder;
+public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler  {
 
 	//vectors to track the card's movement on screen
 	private Vector3 offset;
@@ -13,16 +12,34 @@ public class PlayerController : MonoBehaviour {
 
 	void start()
 	{
-		//object of where cards will be drag to in order to create a deck
-		//currently unused
-		cardBuilder = GameObject.FindGameObjectWithTag ("cardBuilder");
 	}
 
+	public void OnBeginDrag(PointerEventData eventData){
+		Debug.Log ("OnBeginDrag");
+	}
+
+	public void OnDrag (PointerEventData eventData){
+		Debug.Log ("OnDrag");
+		this.transform.position = eventData.position;
+	}
+
+	public void OnEndDrag(PointerEventData eventData){
+		Debug.Log ("OnEndDrag");
+	}
+
+
+
+
+
+
 	//click and hold the left mouse button
+	/*
 	void OnMouseDown()
 	{
 		curPositionCard = gameObject.transform.position;
-		Debug.Log (gameObject.GetComponent<CardManager>().cardName);
+
+		Debug.Log (gameObject.GetComponent<CardManager> ().cardName);	//read name of card'
+
 		offset = curPositionCard - Camera.main.ScreenToWorldPoint (
 			new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10.0f));
 	}
@@ -40,15 +57,15 @@ public class PlayerController : MonoBehaviour {
 
 		//test position of the card if it's within the card builder
 		if (newPositionCard.x > 5.5f) {
-			Debug.Log ("card IS in deck");
+			//put card into into a container, then destroy the object (card)
+
 		} 
 		//if it is NOT within card builder, go back to original position
 		else {
-			Debug.Log ("card IS NOT in deck");
 			transform.position = curPositionCard;
 		}
 
-	}
+	}*/
 
 
 }

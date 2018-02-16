@@ -1147,7 +1147,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4143882347956436, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4143882347956436, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1172,6 +1172,10 @@ Prefab:
     - target: {fileID: 1956223416435370, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}
       propertyPath: m_Name
       value: FakeLancer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956223416435370, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}
+      propertyPath: m_TagString
+      value: card
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}
@@ -1935,6 +1939,15 @@ Prefab:
     - target: {fileID: 4143882347956436, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956223416435370, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}
+      propertyPath: m_TagString
+      value: card
+      objectReference: {fileID: 0}
+    - target: {fileID: 212838677567511154, guid: c15a177d74f4741cbb73e49fbb1c6b2a,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c15a177d74f4741cbb73e49fbb1c6b2a, type: 2}

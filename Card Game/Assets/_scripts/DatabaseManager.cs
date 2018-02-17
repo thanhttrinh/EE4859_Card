@@ -158,4 +158,17 @@ public class DatabaseManager : MonoBehaviour {
 
 		Debug.Log ("name = " + name + " mana = " + mana +" range = "+ range +" description = " + description);
 	}
+
+	public int getHP(string n) {
+		reader.Read ();
+
+		if (isSoldier) {
+			string sqlQry = "SELECT hp FROM soldiers WHERE name = '" + n +"'";
+			hp = reader.GetInt32 (0);
+			Debug.Log ("HP = "+hp);
+			return hp;
+		} else
+			return 0;
+	}
+
 }

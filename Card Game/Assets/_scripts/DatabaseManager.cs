@@ -29,6 +29,7 @@ public class DatabaseManager : MonoBehaviour {
 	//
 	[HideInInspector]
 	public bool isSoldier, isCrop, isSpell;
+	public int getHP;
 
 	void Start () 
 	{
@@ -38,7 +39,7 @@ public class DatabaseManager : MonoBehaviour {
 		if ((cm == null) && (db.GetComponent<CardManager> () != null)) {
 			cm = db.GetComponent<CardManager> ();
 		} else {
-			Debug.LogWarning ("Missing Card Manager script component. Please add on");
+			Debug.LogWarning ("Missing Card Manager script component. Please add one");
 		}
 		dbStart ();
 	}
@@ -129,6 +130,9 @@ public class DatabaseManager : MonoBehaviour {
 
 		Debug.Log ("name = " + name + " mana = " + mana + " damage = "+ atk_dmg +
 			" hp = " + hp + " movement = "+ movement + " range = "+ range +" description = " + description);
+
+		getHP = this.hp;
+		Debug.Log (getHP);
 	}
 
 	//print out info on the crop from getCrop()
@@ -159,6 +163,7 @@ public class DatabaseManager : MonoBehaviour {
 		Debug.Log ("name = " + name + " mana = " + mana +" range = "+ range +" description = " + description);
 	}
 
+	/*
 	public int getHP(string n) {
 		reader.Read ();
 
@@ -169,6 +174,8 @@ public class DatabaseManager : MonoBehaviour {
 			return hp;
 		} else
 			return 0;
-	}
+	}*/
+
+		
 
 }

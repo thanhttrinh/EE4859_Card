@@ -15,10 +15,23 @@ public class LancerScript : MonoBehaviour {
 	int range;
 	string description;
 
-	// Use this for initialization
+	//components
+	private GameObject dbObject;
+	private GameObject cmObject;
+	private CardManager cm;
+
 	void Start () {
-		db = GetComponent<DatabaseManager> ();
-		db.getHP();
+		dbObject = GameObject.FindGameObjectWithTag ("database");
+		cmObject = GameObject.FindGameObjectWithTag ("card");
+
+		cm = cmObject.GetComponent<CardManager> ();
+
+		db = dbObject.GetComponent<DatabaseManager> ();
+		//db.getHP(cm.cardName);
+
+		this.name = cm.cardName;
+		this.hp = db.getHP;
+		Debug.Log (hp);
 	}
 	
 	// Update is called once per frame

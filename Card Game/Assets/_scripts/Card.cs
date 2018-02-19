@@ -7,6 +7,12 @@ public class Card : MonoBehaviour {
 	public string name;
 	public int mana;
 
+	public enum cardType {
+		isSoldier,
+		isCrop,
+		isSpell
+	}
+
 	public Card() {
 		name = "";
 		mana = 0;

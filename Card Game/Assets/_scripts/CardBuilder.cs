@@ -23,5 +23,4 @@ public class CardBuilder : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 		}
 	}
 
-
 }

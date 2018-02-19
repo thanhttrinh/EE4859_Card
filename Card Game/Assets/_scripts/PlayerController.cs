@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 		this.transform.SetParent (this.transform.parent.parent);
 
 		GetComponent<CanvasGroup> ().blocksRaycasts = false;
+
 	}
 
 	public void OnDrag (PointerEventData eventData){
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 		this.transform.SetParent (parentToReturnTo);
 
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
+		Debug.Log (gameObject.GetComponent<CardManager>().cardName);
 	}
 
 }

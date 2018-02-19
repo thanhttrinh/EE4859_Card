@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler  {
+public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler  {
 
 	//vectors to track the card's movement on screen
 	private Vector3 offset;
 	private Vector3 curPositionCard;
 	private Vector3 newPositionCard;
 
+	Transform parentToReturnTo = null;
+
 	void start()
 	{
 	}
 
 	public void OnBeginDrag(PointerEventData eventData){
+		parentToReturnTo = this.transform.parent;
+		this.transform.SetParent (this.transform.parent.parent);
+
+		GetComponent<CanvasGroup> ().blocksRaycasts = false;
 	}
 
 	public void OnDrag (PointerEventData eventData){
@@ -22,10 +28,26 @@ public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 	}
 
 	public void OnEndDrag(PointerEventData eventData){
+		this.transform.SetParent (parentToReturnTo);
+
+		GetComponent<CanvasGroup> ().blocksRaycasts = true;
 	}
 
+	public void OnDrop(PointerEventData eventData){
 
+		PlayerController pcontrol = eventData.pointerDrag.GetComponent<PlayerController> ();
+		if (pcontrol != null) {
+			pcontrol.parentToReturnTo = this.transform;
+		}
+	}
 
+	public void OnPointerEnter(PointerEventData eventData){
+
+	}
+
+	public void OnPointerExit(PointerEventData eventData){
+
+	}
 
 
 

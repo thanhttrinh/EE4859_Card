@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler  {
+public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler  {
 
 	//vectors to track the card's movement on screen
 	private Vector3 offset;
 	private Vector3 curPositionCard;
 	private Vector3 newPositionCard;
 
-	Transform parentToReturnTo = null;
+	[HideInInspector]
+	public Transform parentToReturnTo = null;
 
 	void start()
 	{

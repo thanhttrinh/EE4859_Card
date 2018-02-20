@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 224724499385043048}
   - component: {fileID: 65616062852421284}
   - component: {fileID: 114551086631646920}
+  - component: {fileID: 114390492772661416}
   m_Layer: 5
   m_Name: SpellCard
   m_TagString: Untagged
@@ -460,7 +461,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Deal 4 damage to enemy soldier
+  m_Text: Deal 7 damage to enemy soldier
 --- !u!114 &114207313624890130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -564,6 +565,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114390492772661416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893051185341788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAsset: {fileID: 0}
+  PreviewManager: {fileID: 0}
+  NameText: {fileID: 114207313624890130}
+  ManaCostText: {fileID: 114862298027374092}
+  DescriptionText: {fileID: 114101688895430474}
+  HealthText: {fileID: 0}
+  AttackText: {fileID: 0}
+  CardTopRibbonImage: {fileID: 114061811302867456}
+  CardLowRibbonImage: {fileID: 114302823320101250}
+  CardGraphicImage: {fileID: 114230786135226730}
+  CardBodyImage: {fileID: 114465255757889382}
+  CardFaceFrameImage: {fileID: 114552540190384222}
+  CardFaceGlowImage: {fileID: 0}
+  CardBackGlowImage: {fileID: 0}
 --- !u!114 &114465255757889382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -854,7 +880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 5
 --- !u!222 &222260878439530318
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1299,7 +1325,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893051185341788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.005, y: 0.005, z: 1}
   m_Children:

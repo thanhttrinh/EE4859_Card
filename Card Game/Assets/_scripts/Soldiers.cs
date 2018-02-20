@@ -53,7 +53,7 @@ public class Soldiers : Card {
 	}
 
 	public int wasAttacked() {
-		hp = hp - ; //health subtracted by attack damage of enemy
+		return hp; //health subtracted by attack damage of enemy
 	}
 
 	public void isDead() {

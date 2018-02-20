@@ -35,7 +35,6 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     //CharacterAsset not needed for Tiny Civs
     //public CharacterAsset CharacterAsset;  // if this is null, it`s a neutral card
 
-
     [TextArea(2,3)]
     public string Description;  // Description for spell or character
     [TextArea(2,3)]
@@ -56,22 +55,30 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     public TypesOfCards TypeOfCard;
 
 
-    [Header("Creature Info")]
+    [Header("Soldier Info")]
     [Range(1, 30)]
     public int MaxHealth;   // if =0, is a spell card  
     [Range(1, 30)]
     public int Attack;
     [Range(1, 4)]
+    public int SoldierRange;
     public int AttacksForOneTurn = 1;
     public bool Charge;
     //public bool Taunt;
     public string CreatureScriptName;
     public int SpecialCreatureAmount;
 
+    [Header("Crop Info")]
+    public int CropHealth;
+    public int CropSize;
+    public int SpecialCropDamage;
+
     [Header("Spell Info")]
+    public int SpellRange;
     public string SpellScriptName;
     public int SpecialSpellAmount;
     public TargetingOptions Targets;
+
 
     public int CompareTo (CardAsset other) 
     {

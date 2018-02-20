@@ -13,6 +13,7 @@ public class OneCardManager : MonoBehaviour {
     public Text DescriptionText;
     public Text HealthText;
     public Text AttackText;
+    public Text RangeText;
     [Header("Image References")]
     public Image CardTopRibbonImage;
     public Image CardLowRibbonImage;
@@ -76,9 +77,23 @@ public class OneCardManager : MonoBehaviour {
 
         if (cardAsset.TypeOfCard == TypesOfCards.Soldier)
         {
-            // this is a creature
+            // this is a soldier
             AttackText.text = cardAsset.Attack.ToString();
             HealthText.text = cardAsset.MaxHealth.ToString();
+            RangeText.text = cardAsset.SoldierRange.ToString();
+        }
+
+        if (cardAsset.TypeOfCard == TypesOfCards.Crop)
+        {
+            // this is a crop
+            AttackText.text = cardAsset.SpecialCropDamage.ToString();
+            HealthText.text = cardAsset.CropHealth.ToString();
+        }
+
+        if (cardAsset.TypeOfCard == TypesOfCards.Spell)
+        {
+            // this is a spell
+            RangeText.text = cardAsset.SpellRange.ToString();
         }
 
         if (PreviewManager != null)

@@ -11,12 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: Defend
   m_EditorClassIdentifier: 
-  Description: 
+  Description: Give crops on your side of the board +3 hp. Give your base +5 health.
   Tags: 
   CardImage: {fileID: 0}
-  ManaCost: 0
+  ManaCost: 4
   OverrideLimitOfThisCardInDeck: -1
-  TypeOfCard: 0
+  TypeOfCard: 2
   MaxHealth: 0
   Attack: 0
   SoldierRange: 0

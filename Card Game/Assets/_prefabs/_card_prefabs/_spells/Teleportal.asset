@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: Teleportal
   m_EditorClassIdentifier: 
-  Description: 
+  Description: Allies may move adjacent to another unit this turn.
   Tags: 
   CardImage: {fileID: 0}
-  ManaCost: 0
+  ManaCost: 7
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   MaxHealth: 0

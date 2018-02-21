@@ -11,12 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: ManaBoost
   m_EditorClassIdentifier: 
-  Description: 
+  Description: Gain 1 additional mana per turn, for the next 3 turns.
   Tags: 
   CardImage: {fileID: 0}
-  ManaCost: 0
+  ManaCost: 2
   OverrideLimitOfThisCardInDeck: -1
-  TypeOfCard: 0
+  TypeOfCard: 2
   MaxHealth: 0
   Attack: 0
   SoldierRange: 0

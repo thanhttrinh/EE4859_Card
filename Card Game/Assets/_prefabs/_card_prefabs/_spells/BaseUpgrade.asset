@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: BaseUpgrade
   m_EditorClassIdentifier: 
-  Description: 
+  Description: Add 10 hp to your base. Draw a card.
   Tags: 
   CardImage: {fileID: 0}
-  ManaCost: 0
+  ManaCost: 3
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   MaxHealth: 0

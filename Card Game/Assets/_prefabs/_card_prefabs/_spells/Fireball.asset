@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  Description: Deal 7 damage to target
+  Description: Deal 7 damage to target.
   Tags: 
   CardImage: {fileID: 0}
   ManaCost: 5
@@ -20,6 +20,7 @@ MonoBehaviour:
   MaxHealth: 0
   Attack: 0
   SoldierRange: 0
+  Movement: 0
   AttacksForOneTurn: 1
   Charge: 0
   CreatureScriptName: 

@@ -31,7 +31,7 @@ public class LancerScript : MonoBehaviour {
 
 		this.name = cm.cardName;
 		this.hp = db.getHP;
-		Debug.Log (hp);
+		Debug.Log (db.getHP);
 	}
 	
 	// Update is called once per frame

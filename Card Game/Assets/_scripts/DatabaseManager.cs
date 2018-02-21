@@ -131,7 +131,7 @@ public class DatabaseManager : MonoBehaviour {
 		Debug.Log ("name = " + name + " mana = " + mana + " damage = "+ atk_dmg +
 			" hp = " + hp + " movement = "+ movement + " range = "+ range +" description = " + description);
 
-		getHP = this.hp;
+		getHP = hp;
 		Debug.Log (getHP);
 	}
 

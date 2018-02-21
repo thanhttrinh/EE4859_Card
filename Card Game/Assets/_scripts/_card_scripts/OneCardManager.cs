@@ -15,6 +15,7 @@ public class OneCardManager : MonoBehaviour {
     public Text AttackText;
     public Text RangeText;
     public Text MovementText;
+    public Text CropSize;
     [Header("Image References")]
     public Image CardTopRibbonImage;
     public Image CardLowRibbonImage;
@@ -90,6 +91,7 @@ public class OneCardManager : MonoBehaviour {
             // this is a crop
             AttackText.text = cardAsset.SpecialCropDamage.ToString();
             HealthText.text = cardAsset.CropHealth.ToString();
+            CropSize.text = cardAsset.CropSize.ToString();
         }
 
         if (cardAsset.TypeOfCard == TypesOfCards.Spell)

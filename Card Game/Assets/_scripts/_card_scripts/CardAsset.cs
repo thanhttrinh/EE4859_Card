@@ -62,6 +62,7 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     public int Attack;
     [Range(1, 4)]
     public int SoldierRange;
+    public int Movement;
     public int AttacksForOneTurn = 1;
     public bool Charge;
     //public bool Taunt;

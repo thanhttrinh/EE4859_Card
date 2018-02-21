@@ -14,6 +14,7 @@ public class OneCardManager : MonoBehaviour {
     public Text HealthText;
     public Text AttackText;
     public Text RangeText;
+    public Text MovementText;
     [Header("Image References")]
     public Image CardTopRibbonImage;
     public Image CardLowRibbonImage;
@@ -81,6 +82,7 @@ public class OneCardManager : MonoBehaviour {
             AttackText.text = cardAsset.Attack.ToString();
             HealthText.text = cardAsset.MaxHealth.ToString();
             RangeText.text = cardAsset.SoldierRange.ToString();
+            MovementText.text = cardAsset.Movement.ToString();
         }
 
         if (cardAsset.TypeOfCard == TypesOfCards.Crop)

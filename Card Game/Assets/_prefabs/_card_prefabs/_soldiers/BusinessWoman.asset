@@ -14,13 +14,13 @@ MonoBehaviour:
   Description: 
   Tags: 
   CardImage: {fileID: 0}
-  ManaCost: 0
+  ManaCost: 5
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
-  MaxHealth: 0
-  Attack: 0
-  SoldierRange: 0
-  Movement: 0
+  MaxHealth: 2
+  Attack: 6
+  SoldierRange: 3
+  Movement: 1
   AttacksForOneTurn: 1
   Charge: 0
   CreatureScriptName: 

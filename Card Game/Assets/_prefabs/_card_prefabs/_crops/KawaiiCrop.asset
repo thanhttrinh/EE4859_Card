@@ -14,7 +14,7 @@ MonoBehaviour:
   Description: 
   Tags: 
   CardImage: {fileID: 0}
-  ManaCost: 0
+  ManaCost: 3
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   MaxHealth: 0
@@ -25,8 +25,8 @@ MonoBehaviour:
   Charge: 0
   CreatureScriptName: 
   SpecialCreatureAmount: 0
-  CropHealth: 0
-  CropSize: 0
+  CropHealth: 3
+  CropSize: 1
   SpecialCropDamage: 0
   SpellRange: 0
   SpellScriptName: 

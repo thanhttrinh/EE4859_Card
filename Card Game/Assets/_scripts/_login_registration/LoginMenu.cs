@@ -1,27 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoginMenu : MonoBehaviour {
 
-
-
 	public GameObject loginObject;
 	public GameObject registerObject;
-	public GameObject titleObject;
-	public GameObject loadObject;
 
 	[HideInInspector]
 	//login input field
 	public UnityEngine.UI.InputField input_login_email;
 	public UnityEngine.UI.InputField input_login_password;
-
 	public UnityEngine.UI.InputField input_register_username;
 	public UnityEngine.UI.InputField input_register_email;
 	public UnityEngine.UI.InputField input_register_password;
 
 	//the part of the UI currently being shown
-	//0 = login, 1 = register, 2 = logged in, 3 = loading
+	//0 = login, 1 = register, 2 = login
 
 	int part = 0;
 
@@ -29,7 +25,6 @@ public class LoginMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -38,22 +33,12 @@ public class LoginMenu : MonoBehaviour {
 			if (part == 0) {
 				loginObject.gameObject.SetActive (true);
 				registerObject.gameObject.SetActive (false);
-				titleObject.gameObject.SetActive (false);
-				loadObject.gameObject.SetActive (false);
 			}
 			if (part == 1) {
 				loginObject.gameObject.SetActive (false);
 				registerObject.gameObject.SetActive (true);
-				titleObject.gameObject.SetActive (false);
 			}
 			if(part == 2){
-				//transition to another scene
-			}
-			if (part == 3) {
-				loginObject.gameObject.SetActive (false);
-				registerObject.gameObject.SetActive (false);
-				titleObject.gameObject.SetActive (false);
-				loadObject.gameObject.SetActive (true);
 			}
 		}
 	}

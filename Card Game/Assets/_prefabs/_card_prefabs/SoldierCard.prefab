@@ -1221,9 +1221,10 @@ MonoBehaviour:
   NameText: {fileID: 114797646204349626}
   ManaCostText: {fileID: 114292352007617874}
   DescriptionText: {fileID: 114154427953772790}
-  HealthText: {fileID: 0}
-  AttackText: {fileID: 0}
+  HealthText: {fileID: 114684797184336528}
+  AttackText: {fileID: 114717388837199036}
   RangeText: {fileID: 114859411138802956}
+  MovementText: {fileID: 114084154059113858}
   CardTopRibbonImage: {fileID: 114364480913707040}
   CardLowRibbonImage: {fileID: 114799141870303634}
   CardGraphicImage: {fileID: 114951436472125014}
@@ -1474,11 +1475,11 @@ RectTransform:
   m_Children:
   - {fileID: 224955112968707708}
   m_Father: {fileID: 224742811675858188}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09453452, y: 0.397}
   m_AnchorMax: {x: 0.34563422, y: 0.5634645}
-  m_AnchoredPosition: {x: 1.244164, y: -0.1532712}
+  m_AnchoredPosition: {x: 1.2441635, y: -0.15327072}
   m_SizeDelta: {x: -0.5701809, y: 0.5761566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224205776777865754
@@ -1516,7 +1517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09453452, y: 0.06862189}
   m_AnchorMax: {x: 0.34563422, y: 0.23848325}
-  m_AnchoredPosition: {x: 1.1952634, y: 0.76847506}
+  m_AnchoredPosition: {x: 1.1952667, y: 0.7684784}
   m_SizeDelta: {x: -0.4967718, y: -1.5403757}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224240905176415120
@@ -1812,9 +1813,9 @@ RectTransform:
   - {fileID: 224735030390358782}
   - {fileID: 224740798897396026}
   - {fileID: 224681454398974008}
-  - {fileID: 224809499530968988}
   - {fileID: 224110765363214582}
   - {fileID: 224750920610408784}
+  - {fileID: 224809499530968988}
   - {fileID: 224230399117562072}
   m_Father: {fileID: 224055596581579276}
   m_RootOrder: 0
@@ -1836,11 +1837,11 @@ RectTransform:
   m_Children:
   - {fileID: 224526311380349346}
   m_Father: {fileID: 224742811675858188}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6811247, y: 0.397}
   m_AnchorMax: {x: 0.92200005, y: 0.5634645}
-  m_AnchoredPosition: {x: -2.7305794, y: -0.35845852}
+  m_AnchoredPosition: {x: -2.7305756, y: -0.35845852}
   m_SizeDelta: {x: 3.7665462, y: 0.1658063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224772351759633238
@@ -1892,7 +1893,7 @@ RectTransform:
   m_Children:
   - {fileID: 224240905176415120}
   m_Father: {fileID: 224742811675858188}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66588867, y: 0.05}
   m_AnchorMax: {x: 0.95, y: 0.23848325}

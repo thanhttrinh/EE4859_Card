@@ -89,7 +89,6 @@ public class OneCardManager : MonoBehaviour {
         if (cardAsset.TypeOfCard == TypesOfCards.Crop)
         {
             // this is a crop
-            AttackText.text = cardAsset.SpecialCropDamage.ToString();
             HealthText.text = cardAsset.CropHealth.ToString();
             CropSize.text = cardAsset.CropSize.ToString();
         }

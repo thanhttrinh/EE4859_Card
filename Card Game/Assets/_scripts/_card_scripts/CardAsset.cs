@@ -72,7 +72,8 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     [Header("Crop Info")]
     public int CropHealth;
     public int CropSize;
-    public int SpecialCropDamage;
+    public string CropScriptName;
+    public int SpecialCropAmount;
 
     [Header("Spell Info")]
     public int SpellRange;

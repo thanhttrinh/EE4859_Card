@@ -73,7 +73,7 @@ public class OneCardManager : MonoBehaviour {
         // 3) add mana cost
         ManaCostText.text = cardAsset.ManaCost.ToString();
         // 4) add description
-        //DescriptionText.text = cardAsset.Description;
+        DescriptionText.text = cardAsset.Description;
         // 5) Change the card graphic sprite
         CardGraphicImage.sprite = cardAsset.CardImage;
 
@@ -91,14 +91,12 @@ public class OneCardManager : MonoBehaviour {
             // this is a crop
             HealthText.text = cardAsset.CropHealth.ToString();
             CropSize.text = cardAsset.CropSize.ToString();
-            DescriptionText.text = cardAsset.Description;
         }
 
         if (cardAsset.TypeOfCard == TypesOfCards.Spell)
         {
             // this is a spell
             RangeText.text = cardAsset.SpellRange.ToString();
-            DescriptionText.text = cardAsset.Description;
         }
 
         if (PreviewManager != null)

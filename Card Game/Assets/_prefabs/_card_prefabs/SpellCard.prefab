@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7188641, b: 0.53676474, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -484,11 +484,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 20
-    m_MaxSize: 100
+    m_MinSize: 0
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 0}
+  cardAsset: {fileID: 11400000, guid: 22007abe31e5b7343b7e69ab8b06ccf2, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114207313624890130}
   ManaCostText: {fileID: 114149725192718068}
@@ -651,6 +651,8 @@ MonoBehaviour:
   HealthText: {fileID: 0}
   AttackText: {fileID: 0}
   RangeText: {fileID: 114862298027374092}
+  MovementText: {fileID: 0}
+  CropSize: {fileID: 0}
   CardTopRibbonImage: {fileID: 114061811302867456}
   CardLowRibbonImage: {fileID: 114302823320101250}
   CardGraphicImage: {fileID: 114230786135226730}
@@ -697,14 +699,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.953144, b: 0.6911765, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 70f85247d84ff4091860c89df1f5189e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ccc6beb5c27b34f8b96344474fdfdac6, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1219,8 +1221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 285.5, y: 220}
+  m_AnchoredPosition: {x: 0.019986138, y: -0.0000076294}
+  m_SizeDelta: {x: 305.11, y: 153.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224256251556892476
 RectTransform:
@@ -1312,8 +1314,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.012094736, y: 0.0025086403}
-  m_SizeDelta: {x: -0.022041798, y: -0.055256844}
+  m_AnchoredPosition: {x: 69.51, y: -0.027626999}
+  m_SizeDelta: {x: -21.42, y: -0.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224466566127907038
 RectTransform:
@@ -1419,10 +1421,10 @@ RectTransform:
   m_Father: {fileID: 224713639168301314}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -2.905446, y: 5.6236687}
-  m_SizeDelta: {x: -46.925644, y: -33.44179}
+  m_AnchorMin: {x: 0.056512278, y: 0.04244796}
+  m_AnchorMax: {x: 0.919, y: 0.29763258}
+  m_AnchoredPosition: {x: 1.2857351, y: -0.61024475}
+  m_SizeDelta: {x: 0.9474716, y: 1.2206976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224713639168301314
 RectTransform:
@@ -1498,10 +1500,10 @@ RectTransform:
   m_Father: {fileID: 224044984445754892}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.66588867, y: 0.05}
-  m_AnchorMax: {x: 0.95, y: 0.23848325}
-  m_AnchoredPosition: {x: -5.322754, y: 6.0986023}
-  m_SizeDelta: {x: -13.606648, y: -13.06674}
+  m_AnchorMin: {x: 0.32486227, y: 0.3293076}
+  m_AnchorMax: {x: 0.6665757, y: 0.46888816}
+  m_AnchoredPosition: {x: -26.941095, y: -0.68604}
+  m_SizeDelta: {x: -52.825016, y: -0.45396614}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224969494407983492
 RectTransform:

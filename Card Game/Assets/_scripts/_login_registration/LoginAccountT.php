@@ -21,20 +21,20 @@ else{
     $checkEmail = "SELECT * FROM users WHERE email = '". $email ."'";
     $result = mysqli_query($con, $checkEmail) or die("Database Error");
     $emailExist = mysqli_num_rows($result);
-
-    
-    
+      
     if($emailExist == 0){
-       echo"Email does not Exist\n";
+        //send message to c# that email does not exist
+       echo"noExistEmail","\n";
     }
     else{
         while($row = mysqli_fetch_assoc($result)){
             if($pwd == $row['password']){
+                //send message to c#
                 echo"success";
             }
             else{
-                echo"Password does not match\n";
-                echo $row['username'], "\n", $row['email'], "\n", $row['password'], "\n", $pwd;
+                //send message to c# that Password does not match
+                echo"noMatchPassword", "\n";
             }
         }
     }

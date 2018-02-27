@@ -26,7 +26,7 @@ public class CreateAccount : MonoBehaviour {
 		
 	}
 
-	#region Custom funcitons
+	#region Custom functions
 	//GUI function
 	void OnGUI(){
 		if (currentMenu == "login") {
@@ -142,6 +142,7 @@ public class CreateAccount : MonoBehaviour {
 		yield return loginAccWWW;
 		if (loginAccWWW.error != null) 
 		{
+			Debug.Log (loginAccWWW.error);
 			Debug.Log ("Cannot connect to Login");
 		} 
 		else 
@@ -150,11 +151,15 @@ public class CreateAccount : MonoBehaviour {
 			Debug.Log (logText);
 			if (logText == "success") 
 			{
-				Debug.Log ("4");
 				Application.LoadLevel ("Title");
 			}
+			if (logText == "noExistEmail") {
+				Debug.Log ("Email does not exist");
+			}
+			if (logText == "noMatchPassword") {
+				Debug.Log ("Password does not match");
+			}
 		}
-		Debug.Log ("5");
 	}
 	#endregion
 }

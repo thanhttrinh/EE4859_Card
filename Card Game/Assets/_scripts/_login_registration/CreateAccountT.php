@@ -24,12 +24,20 @@ else{
     $emailExist = mysqli_num_rows($result);
 
     if($emailExist > 0){
+        //send message to c# that the email already exist
         echo "exist";
  
     }
     else{
         $insert = "INSERT INTO users (username, password, email) VALUES ('". $userName ."', '". $pwd ."', '". $email ."')";
         $sqlSet = mysqli_query($con, $insert);
+
+        //send a mail to the user to document their register information
+        $message = "Thank you for registering with us,". $userName ."!\n Please keep your infomation safe.\n \n \n
+                    Username: ". $userName . "\n Password: ". $pwd ."\n";
+        mail($email, "Welcome to Tiny Civs", $message);
+
+        //send message to c# that user successfully registered
         echo "success";
     }
 }

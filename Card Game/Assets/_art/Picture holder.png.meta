@@ -1,10 +1,18 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e907a5b2df46daf488b9be8ad97d7aeb
 timeCreated: 1519695363
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Picture holder_0
+=======
+guid: 37800c1a80f1a9043b726c4010c0f7bd
+timeCreated: 1519695492
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName: {}
+>>>>>>> fc452381fcbb1c5eb8d1bae65f668827d31048c8
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -41,7 +49,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> fc452381fcbb1c5eb8d1bae65f668827d31048c8
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,6 +79,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+<<<<<<< HEAD
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -94,6 +107,11 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+=======
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+>>>>>>> fc452381fcbb1c5eb8d1bae65f668827d31048c8
     outline: []
     physicsShape: []
   spritePackingTag: 

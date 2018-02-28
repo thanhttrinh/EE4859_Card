@@ -10,11 +10,10 @@ public class CardBuilder : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 
 	private CardAsset cardPrefab;
 
-
 	public List<CardAsset> cards = new List<CardAsset>();
 
 	void Awake(){
-		if (cards.Count >= 5) {
+		if (cards.Count == 20) {
 			cards.Shuffle ();
 		}
 	}
@@ -39,9 +38,16 @@ public class CardBuilder : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 			cardPrefab = eventData.pointerDrag.GetComponent<OneCardManager> ().cardAsset;
 
 			if (cards.Count <= 20) {
+				//if the list of cards is less than 20
+				//add the card into the decks
 				cards.Add (this.cardPrefab);
 			}
+			if (cards.Count == 20) {
+				//save the card into CardDeckSaved script
+
+			}
 		}
+
 	}
 
 }

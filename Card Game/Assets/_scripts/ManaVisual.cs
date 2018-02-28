@@ -9,7 +9,6 @@ public class ManaVisual : MonoBehaviour {
     public int TestFullCrystals;
     public int TestTotalCrystalsThisTurn;
 
-    //public Image[] Crystals;
     public Text ProgressText;
 
     private int totalCrystals;

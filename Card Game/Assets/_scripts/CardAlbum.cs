@@ -20,7 +20,6 @@ public class CardAlbum : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
 	public void OnDrop(PointerEventData eventData){
 		PlayerController pcontrol = eventData.pointerDrag.GetComponent<PlayerController> ();
 		if (pcontrol != null) {
-			//hold the cards
 			pcontrol.parentToReturnTo = this.transform;
 		}
 	}

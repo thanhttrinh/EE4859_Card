@@ -35,8 +35,11 @@ public class CardBuilder : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 
 			string cardName = eventData.pointerDrag.name;
 
+			//assign the cardprefab
+			cardPrefab = eventData.pointerDrag.GetComponent<OneCardManager> ().cardAsset;
+
 			if (cards.Count <= 20) {
-				Debug.Log (cardName);
+				cards.Add (this.cardPrefab);
 			}
 		}
 	}

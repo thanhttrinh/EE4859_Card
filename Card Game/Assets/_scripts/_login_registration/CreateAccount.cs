@@ -109,6 +109,8 @@ public class CreateAccount : MonoBehaviour {
 		yield return registerWWW;
 
 		if (registerWWW.error != null) {
+			//display the debugged message
+			Debug.Log(registerWWW.error);
 			Debug.LogError ("Cannot connect to Database");
 		} 
 		else {
@@ -142,6 +144,7 @@ public class CreateAccount : MonoBehaviour {
 		yield return loginAccWWW;
 		if (loginAccWWW.error != null) 
 		{
+			//display the debugged message
 			Debug.Log (loginAccWWW.error);
 			Debug.Log ("Cannot connect to Login");
 		} 

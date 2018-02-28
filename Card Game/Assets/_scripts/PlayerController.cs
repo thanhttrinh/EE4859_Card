@@ -12,13 +12,15 @@ public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
 	[HideInInspector]
 	public Transform parentToReturnTo = null;
+	public Transform prefab;
 
 	public void OnBeginDrag(PointerEventData eventData){
+		Instantiate (this.gameObject, this.transform.position, this.transform.rotation);
+
 		parentToReturnTo = this.transform.parent;
 		this.transform.SetParent (this.transform.parent.parent);
 
 		GetComponent<CanvasGroup> ().blocksRaycasts = false;
-
 	}
 
 	public void OnDrag (PointerEventData eventData){
@@ -29,7 +31,6 @@ public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 		this.transform.SetParent (parentToReturnTo);
 
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
-		Debug.Log (gameObject.GetComponent<CardManager>().cardName);
 	}
 
 }

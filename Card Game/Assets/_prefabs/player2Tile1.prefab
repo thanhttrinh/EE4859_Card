@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212488478731147902}
   m_Layer: 0
   m_Name: player2Tile1
-  m_TagString: Untagged
+  m_TagString: card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

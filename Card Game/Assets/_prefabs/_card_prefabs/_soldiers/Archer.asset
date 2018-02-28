@@ -27,7 +27,8 @@ MonoBehaviour:
   SpecialCreatureAmount: 0
   CropHealth: 0
   CropSize: 0
-  SpecialCropDamage: 0
+  CropScriptName: 
+  SpecialCropAmount: 0
   SpellRange: 0
   SpellScriptName: 
   SpecialSpellAmount: 0

@@ -13,6 +13,7 @@ public class ManaVisual : MonoBehaviour {
     public Text ProgressText;
 
     private int totalCrystals;
+	private int availableCrystals;
 
     public int TotalCrystals
     {
@@ -23,7 +24,7 @@ public class ManaVisual : MonoBehaviour {
             //Debug.Log("Changed total mana to: " + value);
 
             if (value > totalCrystals)
-                totalCrystals = totalCrystals;
+                totalCrystals = 10; //mana cap is 10
             else if (value < 0)
                 totalCrystals = 0;
             else
@@ -34,7 +35,7 @@ public class ManaVisual : MonoBehaviour {
         }
     }
 
-    private int availableCrystals;
+    
     public int AvailableCrystals
     {
         get { return availableCrystals; }

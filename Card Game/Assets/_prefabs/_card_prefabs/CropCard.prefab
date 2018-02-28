@@ -71,13 +71,15 @@ GameObject:
   - component: {fileID: 65835508878380182}
   - component: {fileID: 114872631949733780}
   - component: {fileID: 114309721275489624}
+  - component: {fileID: 114890309709853214}
+  - component: {fileID: 225970308638365292}
   m_Layer: 5
   m_Name: CropCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1224992599189002
 GameObject:
   m_ObjectHideFlags: 1
@@ -952,6 +954,19 @@ MonoBehaviour:
   CardBack: {fileID: 224972738894956918}
   targetFacePoint: {fileID: 224217281568732746}
   col: {fileID: 65835508878380182}
+--- !u!114 &114890309709853214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219495399739244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01830e1ece35940238f74c3b2f76160f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentToReturnTo: {fileID: 0}
+  prefab: {fileID: 0}
 --- !u!114 &114946803947026652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1530,10 +1545,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224793641607375688
 RectTransform:
@@ -1686,3 +1701,14 @@ RectTransform:
   m_AnchoredPosition: {x: 3.2881095, y: 0.34093308}
   m_SizeDelta: {x: -6.286804, y: 0.8537903}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225970308638365292
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219495399739244}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

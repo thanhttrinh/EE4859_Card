@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0/0
+  m_Text: 10/10
 --- !u!222 &12733172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ Prefab:
     - target: {fileID: 224106872652801006, guid: d231b72678711b44c973906398f36275,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224106872652801006, guid: d231b72678711b44c973906398f36275,
         type: 2}
@@ -488,7 +488,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3f0b117e13fb84f469028bf8ad9221fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aed0bc583bcaf423584f328570be6784, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1452,8 +1452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e769796a4e94d45aed084c4e5ddafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestFullCrystals: 4
-  TestTotalCrystalsThisTurn: 5
+  TestFullCrystals: 11
+  TestTotalCrystalsThisTurn: 10
   ProgressText: {fileID: 12733171}
 --- !u!4 &706116331 stripped
 Transform:
@@ -1936,7 +1936,7 @@ Prefab:
     - target: {fileID: 224724499385043048, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224724499385043048, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
         type: 2}
@@ -2638,7 +2638,7 @@ Prefab:
     - target: {fileID: 224772873685895264, guid: a9873215a1c25a943ac45bc38bb1be60,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224772873685895264, guid: a9873215a1c25a943ac45bc38bb1be60,
         type: 2}
@@ -2689,6 +2689,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219495399739244, guid: a9873215a1c25a943ac45bc38bb1be60, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9873215a1c25a943ac45bc38bb1be60, type: 2}

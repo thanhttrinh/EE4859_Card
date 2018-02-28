@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.UI;
+using UnityEngine.SceneManagement;
 
 public class CreateAccount : MonoBehaviour {
 
@@ -53,6 +54,7 @@ public class CreateAccount : MonoBehaviour {
 		if (GUI.Button (new Rect ((screenW / 2) , (screenH / 2), 110, 30), "LOGIN")) {
 			StartCoroutine (LoginAcc ());
 		}
+
 
 		GUI.Label (new Rect ((screenW / 3.5f), (screenH / 3) + 5, 110, 30), "Email");
 		email = GUI.TextField (new Rect ((screenW / 2) - 120, (screenH / 3), 230, 30), email, 30);
@@ -155,7 +157,7 @@ public class CreateAccount : MonoBehaviour {
 			Debug.Log (logText);
 			if (logText == "success") 
 			{
-				Application.LoadLevel ("Title");
+				SceneManager.LoadScene ("Title");
 			}
 			if (logText == "noExistEmail") {
 				Debug.Log ("Email does not exist");

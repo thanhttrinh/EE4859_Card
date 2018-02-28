@@ -1,9 +1,9 @@
 <?php
 //PHP only
-$hostName = "sql9.freesqldatabase.com";
-$dbName = "sql9222374";
-$user = "sql9222374";
-$pwdDB = "7BqezUyEub";
+$hostName = "localhost";
+$dbName = "id4819006_users";
+$user = "id4819006_tinycivs";
+$pwdDB = "Tinycivs2018";
 
 //open connection to database
 $con = mysqli_connect($hostName, $user, $pwdDB, $dbName) or die("Cannot connect to Database");

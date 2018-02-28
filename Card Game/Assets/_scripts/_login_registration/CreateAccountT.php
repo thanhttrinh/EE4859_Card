@@ -1,9 +1,9 @@
 <?php
 //PHP only
-$hostName = "sql9.freesqldatabase.com";
-$dbName = "sql9222374";
-$user = "sql9222374";
-$pwdDB = "7BqezUyEub";
+$hostName = "localhost";
+$dbName = "id4819006_users";
+$user = "id4819006_tinycivs";
+$pwdDB = "Tinycivs2018";
 
 //open connection to database
 $con = mysqli_connect($hostName, $user, $pwdDB, $dbName) or die("Cannot connect to Database");
@@ -33,8 +33,8 @@ else{
         $sqlSet = mysqli_query($con, $insert);
 
         //send a mail to the user to document their register information
-        $message = "Thank you for registering with us,". $userName ."!\n Please keep your infomation safe.\n \n \n
-                    Username: ". $userName . "\n Password: ". $pwd ."\n";
+        $message = "Thank you for registering with us, ". $userName ."!
+                    \n Please keep your infomation safe.\n \n Username: ". $userName . "\n Password: ". $pwd ."\n";
         mail($email, "Welcome to Tiny Civs", $message);
 
         //send message to c# that user successfully registered

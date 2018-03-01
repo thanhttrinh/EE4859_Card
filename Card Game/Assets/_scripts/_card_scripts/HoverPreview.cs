@@ -29,10 +29,11 @@ public class HoverPreview : MonoBehaviour {
 
 	void OnMouseEnter() 
 	{
-		//if () 
-		//{
-			PreviewText.text = string.Format("Name: {0}\nMana: {1}\nHealth: {2}\nAttack:{3}\nRange: {4}\nMovement: {5}", 
-				NameText.ToString(), ManaText.ToString(), HealthText.ToString(), AttackText.ToString(), RangeText.ToString(), MovementText.ToString());
+        //if () 
+        //{
+        PreviewText.text = string.Format("Name: {gameObject.GetComponent<OneCardManager>().NameText.text}");
+                /*Mana: {1}\nHealth: {2}\nAttack:{3}\nRange: {4}\nMovement: {5}", 
+				NameText.ToString(), ManaText.ToString(), HealthText.ToString(), AttackText.ToString(), RangeText.ToString(), MovementText.ToString());*/
 			
 		//}
 	}

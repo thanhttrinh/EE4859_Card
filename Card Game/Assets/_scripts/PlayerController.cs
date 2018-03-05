@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 		this.transform.SetParent (parentToReturnTo);
 
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
+
 	}
 
 }

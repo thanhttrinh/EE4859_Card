@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEditor;
 
 public class CardBuilder : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
 	Transform parentToReturnTo = null;
 
-	private CardAsset cardPrefab;
-
+	[SerializeField]
+	public CardAsset cardPrefab;
 	public List<CardAsset> cards = new List<CardAsset>();
 
 	void Awake(){
@@ -41,9 +42,12 @@ public class CardBuilder : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 				//if the list of cards is less than 20
 				//add the card into the decks
 				cards.Add (this.cardPrefab);
+
 			}
-			if (cards.Count == 20) {
+			if (cards.Count == 2) {
 				//save the card into CardDeckSaved script
+
+
 
 			}
 		}

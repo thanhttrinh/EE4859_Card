@@ -402,6 +402,51 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114101688895430474, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114101688895430474, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114101688895430474, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114862298027374092, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114862298027374092, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114862298027374092, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224724499385043048, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224724499385043048, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224724499385043048, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 762ed99ee4a03d14ea3a2c09fb1e5a25, type: 2}
   m_IsPrefabParent: 0
@@ -1247,6 +1292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa96b886de743a64da19ce4c9ba1cdc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataFileName: decks.json
+  filePath: 
+  cardPrefab: {fileID: 0}
   cards: []
 --- !u!114 &853505675
 MonoBehaviour:
@@ -1631,6 +1679,81 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 5927a8320d0a83249b4807e9d02353f1,
         type: 2}
+    - target: {fileID: 114684797184336528, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114684797184336528, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114684797184336528, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717388837199036, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717388837199036, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717388837199036, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084154059113858, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084154059113858, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084154059113858, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859411138802956, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859411138802956, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859411138802956, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224106872652801006, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224106872652801006, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 224106872652801006, guid: d231b72678711b44c973906398f36275,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d231b72678711b44c973906398f36275, type: 2}
   m_IsPrefabParent: 0
@@ -1912,12 +2035,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114309721275489624, guid: a9873215a1c25a943ac45bc38bb1be60,
+    - target: {fileID: 224772873685895264, guid: a9873215a1c25a943ac45bc38bb1be60,
         type: 2}
-      propertyPath: cardAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 48e1e5ffef708284aa68d9d3a33e3598,
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224772873685895264, guid: a9873215a1c25a943ac45bc38bb1be60,
         type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9873215a1c25a943ac45bc38bb1be60, type: 2}
   m_IsPrefabParent: 0
@@ -2645,7 +2772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f14469c70fe64ce2b712b1b985376e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newDeck: {fileID: 0}
 --- !u!114 &2111281221
 MonoBehaviour:
   m_ObjectHideFlags: 0

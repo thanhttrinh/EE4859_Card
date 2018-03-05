@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 0}
+  cardAsset: {fileID: 11400000, guid: 48e1e5ffef708284aa68d9d3a33e3598, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114163408837372704}
   ManaCostText: {fileID: 114959799813960878}
@@ -891,7 +891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

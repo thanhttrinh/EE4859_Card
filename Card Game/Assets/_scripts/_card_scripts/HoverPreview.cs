@@ -6,8 +6,18 @@ using UnityEngine.EventSystems;
 
 public class HoverPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-	public GameObject previewUnit;
+	public GameObject PreviewUnit;
 
+	public Text PreviewText;
+
+	public Text NameText;
+	public Text ManaText;
+	public Text AttackText;
+	public Text HealthText;
+	public Text RangeText;
+	public Text MovementText;
+	public Text DescriptionText;
+	public Text CropSizeText;
 
 	// Use this for initialization
 	void Start () {
@@ -20,11 +30,15 @@ public class HoverPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 	}
 
 	public void OnPointerEnter(PointerEventData eventData) {
-		previewUnit.SetActive(true);
+		//if (eventData.pointerEnter.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier) 
+		//{
+		PreviewText.text = string.Format ("Name = {0}", NameText.text);
+		//}
+		PreviewUnit.SetActive(true);
 	}
 
 	public void OnPointerExit(PointerEventData eventData) {
-		previewUnit.SetActive(false);
+		PreviewUnit.SetActive(false);
 	}
 
 }

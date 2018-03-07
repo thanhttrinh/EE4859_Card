@@ -2,19 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class HoverPreview : MonoBehaviour {
+public class HoverPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-	public Text PreviewText;
-
-	public Text NameText;
-	public Text ManaText;
-	public Text DescriptionText;
-	public Text HealthText;
-	public Text AttackText;
-	public Text RangeText;
-	public Text MovementText;
-	public Text CropSize;
+	public GameObject previewUnit;
 
 
 	// Use this for initialization
@@ -27,19 +19,12 @@ public class HoverPreview : MonoBehaviour {
 		
 	}
 
-	void OnMouseEnter() 
-	{
-        //if () 
-        //{
-        PreviewText.text = string.Format("Name: {gameObject.GetComponent<OneCardManager>().NameText.text}");
-                /*Mana: {1}\nHealth: {2}\nAttack:{3}\nRange: {4}\nMovement: {5}", 
-				NameText.ToString(), ManaText.ToString(), HealthText.ToString(), AttackText.ToString(), RangeText.ToString(), MovementText.ToString());*/
-			
-		//}
+	public void OnPointerEnter(PointerEventData eventData) {
+		previewUnit.SetActive(true);
 	}
 
-	void OnMouseExit()
-	{
-		
+	public void OnPointerExit(PointerEventData eventData) {
+		previewUnit.SetActive(false);
 	}
+
 }

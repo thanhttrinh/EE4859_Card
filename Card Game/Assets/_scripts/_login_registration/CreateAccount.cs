@@ -157,7 +157,7 @@ public class CreateAccount : MonoBehaviour {
 			Debug.Log (logText);
 			if (logText == "success") 
 			{
-				SceneManager.LoadScene ("Title");
+				SceneManager.LoadScene ("MenuScene");
 			}
 			if (logText == "noExistEmail") {
 				Debug.Log ("Email does not exist");

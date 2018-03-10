@@ -16,7 +16,7 @@ public class CCScreen : MonoBehaviour {
 
 	public static CCScreen Instance;
 
-	void awake()
+	void Awake()
 	{
 		Instance = this;
 		HideScreen ();
@@ -24,18 +24,17 @@ public class CCScreen : MonoBehaviour {
 
 	public void ShowScreenForDeckBuilding(){
 		screenContent.SetActive (true);
-		readyDecksList.SetActive (false);
-		cardsInDeckList.SetActive (true);
+		//readyDecksList.SetActive (false);
+		//cardsInDeckList.SetActive (true);
 
 		//collectionBrowserScript.AllCardsTabs.gameObject.SetActive (false);
-		//collectionBrowserScript.OneCardTabs.gameObject.SetActive (true);
 		Canvas.ForceUpdateCanvases ();
 	}
 
 	public void BuildADeckFor(CardAsset asset){
 		ShowScreenForDeckBuilding ();
 		collectionBrowserScript.ShowCollectionForBrowsing ();
-		//BuilderScript.BuildADeckFor (asset);
+//		BuilderScript.BuildADeckFor (asset);
 	}
 
 	public void HideScreen(){

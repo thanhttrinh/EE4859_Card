@@ -10,7 +10,6 @@ public class CollectionBrowser : MonoBehaviour {
 	public GameObject cropMenuPrefab;
 
 	public GameObject AllCardsTabs;
-	public GameObject OneCardTabs;
 
 	private CardAsset _cards;
 
@@ -68,15 +67,22 @@ public class CollectionBrowser : MonoBehaviour {
 
 	public void ShowCollectionForBrowsing()
 	{
-		//_cards = buldingForThisCard;
+		ShowCards (0, true, null, -1);
 
-		ShowCards (0, false, null, -1);
-
-		
 		//select all tabs by default
-		//CCScreen.Instance.TabsScript.CardTab.Select(instant: true);
-		//CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.CardTab, instant: true);
+		CCScreen.Instance.TabsScript.CardTab.Select(instant: true);
+		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.CardTab, instant: true);
 	
+	}
+
+	public void ShowCollectionForDeckBuilding(CardAsset asset)
+	{
+		ShowCards (0, true, asset, -1);
+
+		_cards = asset;
+
+		CCScreen.Instance.TabsScript.CardTab.Select (instant: true);
+		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.CardTab, instant: true);
 	}
 
 	public void ClearCreatedCards()
@@ -90,8 +96,8 @@ public class CollectionBrowser : MonoBehaviour {
 
 	public void UpdateQuantitiesOnPage(){
 		foreach (GameObject card in createdCards) {
-			//AddCardToDeck addCardComponent = card.GetComponent<AddCardToDeck> ();
-			//addCardComponent.UpdateQuantity ();
+			AddCardToDeck addCardComponent = card.GetComponent<AddCardToDeck> ();
+			addCardComponent.UpdateQuantity ();
 		}
 	}
 
@@ -137,9 +143,9 @@ public class CollectionBrowser : MonoBehaviour {
 			manager.cardAsset = CardsOnThisPage [i];
 			manager.ReadCardFromAsset ();
 
-			//AddCardToDeck addCardComponent = newMenuCard.GetComponent<AddCardToDeck> ();
-			//addCardComponent.SetCardAsset (CardsOnThisPage [i]);
-			//addCardComponent.UpdateQuantity ();
+			AddCardToDeck addCardComponent = newMenuCard.GetComponent<AddCardToDeck> ();
+			addCardComponent.SetCardAsset (CardsOnThisPage [i]);
+			addCardComponent.UpdateQuantity ();
 		}
 	}
 
@@ -164,7 +170,7 @@ public class CollectionBrowser : MonoBehaviour {
 		List<CardAsset> returnList = new List<CardAsset> ();
 
 		//obatain cards from collection that satisfy all the selected criteria
-		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (includeAllCards, manaCost);
+		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (includeAllCards);
 
 		//if there are enough cards so that we can show some cards on page with pageIndex
 		//otherwise an empty list will be returned

@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
+  cardTypeAsset: {fileID: 11400000, guid: 2c854b993532d224d8449fba722d23e4, type: 2}
   Description: 
   Tags: 
   CardImage: {fileID: 0}

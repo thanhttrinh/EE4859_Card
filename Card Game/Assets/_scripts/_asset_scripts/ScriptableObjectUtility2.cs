@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public static class ScriptableObjectUtility2 {
-	
+public class ScriptableObjectUtility2 : MonoBehaviour {
+
 	/// <summary>
 	/// Create new asset from <see cref="ScriptableObject"/> type with unique name at
 	/// selected folder in project window. Asset creation can be cancelled by pressing
@@ -13,5 +13,4 @@ public static class ScriptableObjectUtility2 {
 		var asset = ScriptableObject.CreateInstance<T>();
 		ProjectWindowUtil.CreateAsset(asset, "New " + typeof(T).Name + ".asset");
 	}
-	
 }

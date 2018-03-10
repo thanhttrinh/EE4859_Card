@@ -29,8 +29,8 @@ public class CardCollection : MonoBehaviour
 		}
 	}*/
 	#endregion
-	//how many basic cards the player has by default
-	public int DefaultNumberOfBasicCards = 20;
+	//how many cards the player has by default
+	public int DefaultNumberOfBasicCards = 43;
 
 	public static CardCollection Instance;
 	private Dictionary<string, CardAsset> AllCardsDictionary = new Dictionary<string, CardAsset>();
@@ -39,7 +39,7 @@ public class CardCollection : MonoBehaviour
 
 	private CardAsset[] allCardsArray;
 
-	void awake(){
+	void Awake(){
 		Instance = this;
 
 		//search everywhere for all the card assets
@@ -69,20 +69,30 @@ public class CardCollection : MonoBehaviour
 			PlayerPrefs.SetInt ("NumberOf" + ca.name, QuantityOfEachCard [ca]);
 	}
 
-	public List<CardAsset> GetCards(bool includeAllCards = true, int manaCost = -1)
+	void OnApplicationQuit(){
+		SaveQuantityOfCardsIntoPlayerPrefs ();
+	}
+
+	//get a list of cards filtered by type (soldiers, crops, spells)
+	public List<CardAsset> GetCardOfType(TypesOfCards asset){
+		return GetCards (false, asset);
+	}
+
+	//the general function that will filters the cards
+	public List<CardAsset> GetCards(bool includeAllCards = true, TypesOfCards asset = 0/*, CardAsset asset = null, int manaCost = -1*/)
 	{
 		//initially select all cards
 		var cards = from card in allCardsArray
 		            select card;
+		
+		if (!includeAllCards)
+			cards = cards.Where (card => card.TypeOfCard == asset);
 		/*
-		if (!includeAllCards) {
-			cards = cards.Where (card => card.cardAssets == asset);
-		}*/
 		if (manaCost == 10) 
 			cards = cards.Where (card => card.ManaCost >= 10);
 		else if (manaCost != -1) 
 			cards = cards.Where (card => card.ManaCost == manaCost);
-
+*/
 		var returnList = cards.ToList<CardAsset> ();
 		returnList.Sort ();
 

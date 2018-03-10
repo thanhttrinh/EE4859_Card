@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardSelectionTabs : MonoBehaviour {
 
 	public List<CardTypeFilter> tabs = new List<CardTypeFilter> ();
-	public CardTypeFilter neutralTab;
+	public CardTypeFilter CardTab;
 
 	private int currentIndex = 0;
 

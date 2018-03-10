@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class AddCardToDeck : MonoBehaviour {
 
@@ -10,7 +11,7 @@ public class AddCardToDeck : MonoBehaviour {
 	private float scaleFactor = 1.1f;
 	private CardAsset cardAsset;
 
-	void awake(){
+	void Awake(){
 		initialScale = transform.localScale.x;
 	}
 
@@ -23,27 +24,27 @@ public class AddCardToDeck : MonoBehaviour {
 
 		if (asset == null)
 			return;
-		/*
+		
 		//check if these cards are available in collection
-		if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
+//		if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
 			//CCScreen.Instance.BuilderScript.AddCard (asset);
-			UpdateQuantity ();
-		}
-		else{
+			//UpdateQuantity ();
+		//}
+		//else{
 			//do not have enough cards
-		}*/
+		//}
 	}
 
 	void OnMouseEnter(){
-	//	transform.DOScale (initialScale * scaleFactor, 0.5f);
+		transform.DOScale (initialScale * scaleFactor, 0.5f);
 	}
 
 	void OnMouseExit()
 	{
-		//transform.DOScale (initialScale, 0.5f);
+		transform.DOScale (initialScale, 0.5f);
 	}
 
-	void update()
+	void Update()
 	{
 		if (Input.GetMouseButtonDown (1))
 			OnRightClick ();

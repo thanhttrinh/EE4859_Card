@@ -41,4 +41,29 @@ public class HoverPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 		PreviewUnit.SetActive(false);
 	}
 
+	#region Preview Card Object
+	private static bool _PreviewsAllowed = true;
+	public static bool PreviewsAllowed{
+		get{ return _PreviewsAllowed; }
+		set{
+			_PreviewsAllowed = value;
+			if (!_PreviewsAllowed) {
+				StopAllPreviews ();
+			}
+		}
+	}
+
+	public GameObject TurnOffWhenPreviewing;
+	public GameObject previewGameObject;
+	private static HoverPreview currentlyViewing = null;
+	private static void StopAllPreviews(){
+		if (currentlyViewing != null) {
+			currentlyViewing.previewGameObject.SetActive (false);
+			currentlyViewing.previewGameObject.transform.localScale = Vector3.one;
+			currentlyViewing.previewGameObject.transform.localPosition = Vector3.zero;
+			if (currentlyViewing.TurnOffWhenPreviewing != null)
+				currentlyViewing.TurnOffWhenPreviewing.SetActive (true);
+		}
+	}
+	#endregion
 }

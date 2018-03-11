@@ -70,7 +70,7 @@ public class CollectionBrowser : MonoBehaviour {
 		ShowCards (0, true, null, -1);
 
 		//select all tabs by default
-		CCScreen.Instance.TabsScript.CardTab.Select(instant: true);
+		//CCScreen.Instance.TabsScript.CardTab.Select(instant: true);
 		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.CardTab, instant: true);
 	
 	}

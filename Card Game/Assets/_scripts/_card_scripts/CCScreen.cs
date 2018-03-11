@@ -7,6 +7,7 @@ public class CCScreen : MonoBehaviour {
 	public GameObject screenContent;
 	public GameObject readyDecksList;
 	public GameObject cardsInDeckList;
+	public GameObject title;
 	public DeckBuilder BuilderScript;
 
 	public ListOfDecksInCollection ListOfReadyMadeDecksScript;
@@ -22,15 +23,24 @@ public class CCScreen : MonoBehaviour {
 		HideScreen ();
 	}
 
-	public void ShowScreenForDeckBuilding(){
+	public void ShowScreenForCollectionBrowsing(){
 		screenContent.SetActive (true);
-		//readyDecksList.SetActive (false);
-		//cardsInDeckList.SetActive (true);
+		readyDecksList.SetActive (true);
+		cardsInDeckList.SetActive (false);
+		title.SetActive (false);
+		//	BuilderScript.InDeckBuildingMode = false;
+		//	ListOfReadyMadeDecksScript.UpdateList ();
 
-		//collectionBrowserScript.AllCardsTabs.gameObject.SetActive (false);
-		Canvas.ForceUpdateCanvases ();
+		//collectionBrowserScript.ShowCollectionForBrowsing ();
 	}
 
+	public void ShowScreenForDeckBuilding(){
+		screenContent.SetActive (true);
+		readyDecksList.SetActive (false);
+		cardsInDeckList.SetActive (true);
+		title.SetActive (false);
+	}
+		
 	public void BuildADeckFor(CardAsset asset){
 		ShowScreenForDeckBuilding ();
 		collectionBrowserScript.ShowCollectionForBrowsing ();

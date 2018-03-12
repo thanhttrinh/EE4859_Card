@@ -27,6 +27,17 @@ public class SoldierPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 		PreviewUnit.SetActive(false);
 	}
 
+	public void OnMouseEnter()
+	{ 
+		PreviewText.text = string.Format ("Name = {0}\nMana = {1}\nAttack = {2}\nHealth = {3}\nRange = {4}\nMovement = {5}", NameText.text, ManaText.text, AttackText.text, HealthText.text, RangeText.text, MovementText.text);
+		PreviewUnit.SetActive(true);
+	}
+
+	public void OnMouseExit()
+	{
+		PreviewUnit.SetActive(false);
+	}
+
 	#region Preview Card Object
 	private static bool _PreviewsAllowed = true;
 	public static bool PreviewsAllowed{

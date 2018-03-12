@@ -407,11 +407,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224401969948256004}
-  - component: {fileID: 65667781743154394}
   - component: {fileID: 114357867090709336}
   - component: {fileID: 225845720230978962}
   - component: {fileID: 114460371478848446}
   - component: {fileID: 114329527336042880}
+  - component: {fileID: 58332102594941502}
+  - component: {fileID: 114371029403225590}
   m_Layer: 5
   m_Name: Soldier
   m_TagString: Untagged
@@ -442,25 +443,28 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245879535118880}
-  m_LocalRotation: {x: -0.0018325554, y: 0, z: -0, w: 0.99999833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 125, y: 125, z: 0}
   m_Children: []
   m_Father: {fileID: 224401969948256004}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65667781743154394
-BoxCollider:
+--- !u!58 &58332102594941502
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848237352196946}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 355, y: 545, z: 0.01}
-  m_Center: {x: 3.428483, y: 2.6821375, z: 0}
+  m_Radius: 63
 --- !u!114 &114003278480292352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -678,6 +682,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114371029403225590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848237352196946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a60647b7156f4f9b95bf5d33906dc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewUnit: {fileID: 0}
+  PreviewText: {fileID: 0}
+  NameText: {fileID: 114652183073542042}
+  ManaText: {fileID: 114451604739859408}
+  AttackText: {fileID: 114458243911061828}
+  HealthText: {fileID: 114518868388466290}
+  RangeText: {fileID: 114953021773466592}
+  MovementText: {fileID: 114977623738991956}
+  TurnOffWhenPreviewing: {fileID: 0}
+  previewGameObject: {fileID: 0}
 --- !u!114 &114380731425708230
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1101258393964426
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +207,8 @@ GameObject:
   - component: {fileID: 225116592707273558}
   - component: {fileID: 114834066380395780}
   - component: {fileID: 114596777036501952}
+  - component: {fileID: 65108332438405106}
+  - component: {fileID: 222899268530636804}
   m_Layer: 5
   m_Name: Crop
   m_TagString: Untagged
@@ -380,6 +382,18 @@ Transform:
   m_Father: {fileID: 224388991528153434}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65108332438405106
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519026123925860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 125, y: 125, z: 1}
+  m_Center: {x: -0.00000372529, y: -0.5334168, z: 0}
 --- !u!114 &114000573100524084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -848,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 0}
+  cardAsset: {fileID: 11400000, guid: 48e1e5ffef708284aa68d9d3a33e3598, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114283215145549730}
   ManaCostText: {fileID: 114134286831196658}
@@ -1092,6 +1106,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118195716628014}
+--- !u!222 &222899268530636804
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519026123925860}
 --- !u!223 &223548973675570006
 Canvas:
   m_ObjectHideFlags: 1

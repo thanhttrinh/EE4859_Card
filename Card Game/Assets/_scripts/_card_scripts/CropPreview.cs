@@ -27,6 +27,17 @@ public class CropPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 		PreviewUnit.SetActive(false);
 	}
 
+	public void OnMouseEnter()
+	{
+		PreviewText.text = string.Format ("Name = {0}\nMana = {1}\nHealth = {2}\nCrop Size = {3}", NameText.text, ManaText.text, HealthText.text, CropSizeText.text);
+		PreviewUnit.SetActive(true);
+	}
+
+	public void OnMouseExit()
+	{
+		PreviewUnit.SetActive(false);
+	}
+
 	#region Preview Card Object
 	private static bool _PreviewsAllowed = true;
 	public static bool PreviewsAllowed{

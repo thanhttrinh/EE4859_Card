@@ -11,7 +11,7 @@ public class CardTypeFilter : MonoBehaviour {
 	private CardSelectionTabs TabsScript;
 	private float selectionTransitionTime = 0.5f;
 	private Vector3 initialScale = Vector3.one;
-	private float scaleMultiplier = 1.2f;
+	private float scaleMultiplier = 1f;
 
 	public void TabButtonHandler(){
 		CCScreen.Instance.TabsScript.SelectTab (this, false);

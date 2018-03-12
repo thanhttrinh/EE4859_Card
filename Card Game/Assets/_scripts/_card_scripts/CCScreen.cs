@@ -48,6 +48,7 @@ public class CCScreen : MonoBehaviour {
 	}
 
 	public void HideScreen(){
+		title.SetActive (true);
 		screenContent.SetActive (false);
 		collectionBrowserScript.ClearCreatedCards ();
 	}

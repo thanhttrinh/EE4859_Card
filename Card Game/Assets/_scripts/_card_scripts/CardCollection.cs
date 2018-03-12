@@ -73,6 +73,13 @@ public class CardCollection : MonoBehaviour
 		SaveQuantityOfCardsIntoPlayerPrefs ();
 	}
 
+	public CardAsset GetCardAssetByName(string name){
+		if (AllCardsDictionary.ContainsKey (name))
+			return AllCardsDictionary [name];
+		else
+			return null;
+	}
+		
 	//get a list of cards filtered by type (soldiers, crops, spells)
 	public List<CardAsset> GetCardOfType(TypesOfCards asset){
 		return GetCards (false, asset);

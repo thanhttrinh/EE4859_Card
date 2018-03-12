@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 225061436048990412}
   - component: {fileID: 114722545605740414}
   - component: {fileID: 114003405583874442}
+  - component: {fileID: 114609290203288272}
   m_Layer: 5
   m_Name: SoldierCard
   m_TagString: Untagged
@@ -927,6 +928,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114609290203288272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320244344549338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a60647b7156f4f9b95bf5d33906dc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewUnit: {fileID: 0}
+  PreviewText: {fileID: 0}
+  NameText: {fileID: 114797646204349626}
+  ManaText: {fileID: 114292352007617874}
+  AttackText: {fileID: 114717388837199036}
+  HealthText: {fileID: 114684797184336528}
+  RangeText: {fileID: 114859411138802956}
+  MovementText: {fileID: 114084154059113858}
+  TurnOffWhenPreviewing: {fileID: 0}
+  previewGameObject: {fileID: 0}
 --- !u!114 &114644768375824128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1487,7 +1509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -7.2198234, y: -1.5522621}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224110765363214582

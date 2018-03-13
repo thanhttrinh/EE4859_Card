@@ -11,7 +11,7 @@ public class CollectionBrowser : MonoBehaviour {
 
 	public GameObject AllCardsTabs;
 
-	private CardAsset _cards;
+	private CardTypeAsset _cards;
 
 	private List<GameObject> createdCards = new List<GameObject>();
 	private int _manaCost;
@@ -48,8 +48,8 @@ public class CollectionBrowser : MonoBehaviour {
 		}
 	}
 
-	private CardAsset _asset = null;
-	public CardAsset Asset
+	private CardTypeAsset _asset = null;
+	public CardTypeAsset Asset
 	{
 		get
 		{ 
@@ -75,7 +75,7 @@ public class CollectionBrowser : MonoBehaviour {
 	
 	}
 
-	public void ShowCollectionForDeckBuilding(CardAsset asset)
+	public void ShowCollectionForDeckBuilding(CardTypeAsset asset)
 	{
 		ShowCards (0, true, asset, -1);
 
@@ -106,7 +106,7 @@ public class CollectionBrowser : MonoBehaviour {
 		ShowCards (_pageIndex, _includeAllCards, _asset, _manaCost);
 	}
 
-	private void ShowCards(int pageIndex = 0, bool includeAllCards = true, CardAsset asset = null, int manaCost = -1)
+	private void ShowCards(int pageIndex = 0, bool includeAllCards = true, CardTypeAsset asset = null, int manaCost = -1)
 	{
 		//saving infomation about the cards that we are showing to the players on this page
 		_pageIndex = pageIndex;
@@ -165,12 +165,12 @@ public class CollectionBrowser : MonoBehaviour {
 		ShowCards (_pageIndex - 1, _includeAllCards, _asset, _manaCost);
 	}
 
-	private List<CardAsset> PageSelection(int pageIndex = 0, bool includeAllCards = true, CardAsset asset = null, int manaCost = -1)
+	private List<CardAsset> PageSelection(int pageIndex = 0, bool includeAllCards = true, CardTypeAsset asset = null, int manaCost = -1)
 	{
 		List<CardAsset> returnList = new List<CardAsset> ();
 
 		//obatain cards from collection that satisfy all the selected criteria
-		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (includeAllCards);
+		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (includeAllCards, asset);
 
 		//if there are enough cards so that we can show some cards on page with pageIndex
 		//otherwise an empty list will be returned

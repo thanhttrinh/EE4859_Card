@@ -93,7 +93,7 @@ public class DeckBuilder : MonoBehaviour {
 
 		//update quantities of all cards taht we currently show in the collection
 		//this is after deckList.RemoveCard(asset)
-		CCScreen.Instance.collectionBrowserScript.UpdateQuantitiesOnPage();
+		CCScreen.Instance.CollectionBrowserScript.UpdateQuantitiesOnPage();
 	}
 
 	public void DoneButtonHandler(){

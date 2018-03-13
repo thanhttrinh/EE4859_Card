@@ -11,7 +11,7 @@ public class CCScreen : MonoBehaviour {
 	public DeckBuilder BuilderScript;
 
 	public ListOfDecksInCollection ListOfReadyMadeDecksScript;
-	public CollectionBrowser collectionBrowserScript;
+	public CollectionBrowser CollectionBrowserScript;
 	public CardSelectionTabs TabsScript;
 	public bool ShowReducedQuantitiesInDeckBuilding = true;
 
@@ -28,10 +28,10 @@ public class CCScreen : MonoBehaviour {
 		readyDecksList.SetActive (true);
 		cardsInDeckList.SetActive (false);
 		title.SetActive (false);
-		//	BuilderScript.InDeckBuildingMode = false;
-		//	ListOfReadyMadeDecksScript.UpdateList ();
+		BuilderScript.InDeckBuildingMode = false;
+		ListOfReadyMadeDecksScript.UpdateList ();
 
-		//collectionBrowserScript.ShowCollectionForBrowsing ();
+		CollectionBrowserScript.ShowCollectionForBrowsing ();
 	}
 
 	public void ShowScreenForDeckBuilding(){
@@ -43,13 +43,13 @@ public class CCScreen : MonoBehaviour {
 		
 	public void BuildADeckFor(CardAsset asset){
 		ShowScreenForDeckBuilding ();
-		collectionBrowserScript.ShowCollectionForBrowsing ();
-//		BuilderScript.BuildADeckFor (asset);
+		CollectionBrowserScript.ShowCollectionForBrowsing ();
+		//BuilderScript.BuildADeckFor(asset);
 	}
 
 	public void HideScreen(){
-		title.SetActive (true);
 		screenContent.SetActive (false);
-		collectionBrowserScript.ClearCreatedCards ();
+		title.SetActive (true);
+		CollectionBrowserScript.ClearCreatedCards ();
 	}
 }

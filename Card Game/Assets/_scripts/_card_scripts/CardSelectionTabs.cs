@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardSelectionTabs : MonoBehaviour {
 
@@ -25,8 +26,13 @@ public class CardSelectionTabs : MonoBehaviour {
 		}
 
 		tab.Select (instant);
-		//CCScreen.Instance.CollectionBrowserScript.Asset = tab.Asset;
-		//CCScreen.Instance.CollectionBrowserScript.IncludeAllCharacters = tab.showAllCharacters;
+		CCScreen.Instance.CollectionBrowserScript.Asset = tab.asset;
+		CCScreen.Instance.CollectionBrowserScript.IncludeAllCards = tab.showAllCards;
 	}
+	/*
+	public void SetClassOnClassTab(CardTypeAsset asset){
+		CardTab.asset = asset;
+		CardTab.GetComponentInChildren<Text> ().text = asset.name;
+	}*/
 
 }

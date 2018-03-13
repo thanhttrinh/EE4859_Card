@@ -79,21 +79,21 @@ public class CardCollection : MonoBehaviour
 		else
 			return null;
 	}
-		
+
 	//get a list of cards filtered by type (soldiers, crops, spells)
-	public List<CardAsset> GetCardOfType(TypesOfCards asset){
+	public List<CardAsset> GetCardOfType(CardTypeAsset asset){
 		return GetCards (false, asset);
 	}
 
 	//the general function that will filters the cards
-	public List<CardAsset> GetCards(bool includeAllCards = true, TypesOfCards asset = 0/*, CardAsset asset = null, int manaCost = -1*/)
+	public List<CardAsset> GetCards(bool includeAllCards = true, CardTypeAsset asset = null/*, CardAsset asset = null, int manaCost = -1*/)
 	{
 		//initially select all cards
 		var cards = from card in allCardsArray
 		            select card;
 		
 		if (!includeAllCards)
-			cards = cards.Where (card => card.TypeOfCard == asset);
+			cards = cards.Where (card => card.cardTypeAsset == asset);
 		/*
 		if (manaCost == 10) 
 			cards = cards.Where (card => card.ManaCost >= 10);

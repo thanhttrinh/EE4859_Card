@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class CardTypeFilter : MonoBehaviour {
 
-	public bool showAllCharacters = false;
+	public bool showAllCards = false;
 	public CardTypeAsset asset;
 
 	private CardSelectionTabs TabsScript;

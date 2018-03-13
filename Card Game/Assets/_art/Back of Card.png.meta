@@ -1,11 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Card Game/Assets/_art/Spell Icon #2.png.meta
-guid: b2f1949995e5d412fbb3eb0a2f2bf84e
-timeCreated: 1520884232
-=======
-guid: 55a26828323eb42d6b5c36a4ed8d3d9d
-timeCreated: 1520885552
->>>>>>> e79b653478ec8717696087904c43a54f48c5001b:Card Game/Assets/_art/Spell Icon #2.png.meta
+guid: e60f5a47c1e424e9f9ea82f3a4e7cd9f
+timeCreated: 1520888677
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}

@@ -8,30 +8,7 @@ using UnityEngine.EventSystems;
 using System.Linq;
 
 public class CardCollection : MonoBehaviour
-//, IDropHandler, IPointerEnterHandler, IPointerExitHandler 
 {
-	#region Old Code
-	/*
-	Transform parentToReturnTo = null;
-
-	public void OnPointerEnter(PointerEventData eventData){
-
-	}
-
-	public void OnPointerExit(PointerEventData eventData){
-		
-	}
-
-	public void OnDrop(PointerEventData eventData){
-		PlayerController pcontrol = eventData.pointerDrag.GetComponent<PlayerController> ();
-		if (pcontrol != null) {
-			pcontrol.parentToReturnTo = this.transform;
-		}
-	}*/
-	#endregion
-	//how many cards the player has by default
-	public int DefaultNumberOfBasicCards = 43;
-
 	public static CardCollection Instance;
 	private Dictionary<string, CardAsset> AllCardsDictionary = new Dictionary<string, CardAsset>();
 
@@ -44,11 +21,13 @@ public class CardCollection : MonoBehaviour
 
 		//search everywhere for all the card assets
 		allCardsArray = Resources.LoadAll<CardAsset> ("");
-		Debug.Log (allCardsArray.Length);
+		Debug.Log ("Length of card array: " + allCardsArray.Length);
 
 		foreach (CardAsset ca in allCardsArray) {
+			Debug.Log ("foreach ...");
 			if (!AllCardsDictionary.ContainsKey (ca.name)) 
 				AllCardsDictionary.Add (ca.name, ca);
+			Debug.Log ("all card dictionary: " + AllCardsDictionary);
 		}
 	
 		LoadQuantityOfCardsFromPlayerPrefs ();
@@ -62,6 +41,7 @@ public class CardCollection : MonoBehaviour
 			} else
 				QuantityOfEachCard.Add (ca, 0);
 		}
+		Debug.Log ("Length of card array: " + allCardsArray.Length);
 	}
 
 	private void SaveQuantityOfCardsIntoPlayerPrefs(){
@@ -86,7 +66,7 @@ public class CardCollection : MonoBehaviour
 	}
 
 	//the general function that will filters the cards
-	public List<CardAsset> GetCards(bool includeAllCards = true, CardTypeAsset asset = null/*, CardAsset asset = null, int manaCost = -1*/)
+	public List<CardAsset> GetCards(bool includeAllCards = true, CardTypeAsset asset = null)
 	{
 		//initially select all cards
 		var cards = from card in allCardsArray

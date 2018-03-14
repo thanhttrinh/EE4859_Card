@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: Blessing
   m_EditorClassIdentifier: 
+  cardTypeAsset: {fileID: 11400000, guid: 5957fe8c42e345643bd4d5e8ca767b76, type: 2}
   Description: Give a soldier +3 attack and health. Restore it to full hp.
   Tags: 
   CardImage: {fileID: 0}
@@ -27,7 +28,8 @@ MonoBehaviour:
   SpecialCreatureAmount: 0
   CropHealth: 0
   CropSize: 0
-  SpecialCropDamage: 0
+  CropScriptName: 
+  SpecialCropAmount: 0
   SpellRange: 3
   SpellScriptName: 
   SpecialSpellAmount: 0

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CardTypeFilter : MonoBehaviour {
-
-	public bool showAllCards = false;
+public class CardTypeFilter : MonoBehaviour 
+{
+	//if null, this tab shows all cards
 	public CardTypeAsset asset;
+	public bool showAllCards = true;
 
 	private CardSelectionTabs TabsScript;
 	private float selectionTransitionTime = 0.5f;

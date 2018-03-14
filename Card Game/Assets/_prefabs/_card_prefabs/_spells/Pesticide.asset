@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
   m_Name: Pesticide
   m_EditorClassIdentifier: 
+  cardTypeAsset: {fileID: 11400000, guid: 5957fe8c42e345643bd4d5e8ca767b76, type: 2}
   Description: Destroy all crops on opponent's side of the board
   Tags: 
   CardImage: {fileID: 0}
@@ -20,13 +21,15 @@ MonoBehaviour:
   MaxHealth: 0
   Attack: 0
   SoldierRange: 0
+  Movement: 0
   AttacksForOneTurn: 1
   Charge: 0
   CreatureScriptName: 
   SpecialCreatureAmount: 0
   CropHealth: 0
   CropSize: 0
-  SpecialCropDamage: 0
+  CropScriptName: 
+  SpecialCropAmount: 0
   SpellRange: 2
   SpellScriptName: 
   SpecialSpellAmount: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectionBrowser : MonoBehaviour {
 
-	public Transform[] slots;
+	public Transform[] Slots;
 	public GameObject soldierMenuPrefab;
 	public GameObject spellMenuPrefab;
 	public GameObject cropMenuPrefab;
@@ -14,7 +14,6 @@ public class CollectionBrowser : MonoBehaviour {
 	private CardTypeAsset _cards;
 
 	private List<GameObject> createdCards = new List<GameObject>();
-	private int _manaCost;
 
 	//properties for every variable that matters for filtering and selecting cards
 	#region properties
@@ -67,17 +66,19 @@ public class CollectionBrowser : MonoBehaviour {
 
 	public void ShowCollectionForBrowsing()
 	{
-		ShowCards (0, true, null, -1);
+		Debug.Log ("collection browser: show cards for browsing");
+		ShowCards (0, true, null);
 
 		//select all tabs by default
-		//CCScreen.Instance.TabsScript.CardTab.Select(instant: true);
+		CCScreen.Instance.TabsScript.CardTab.Select(instant: true);
 		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.CardTab, instant: true);
 	
 	}
 
 	public void ShowCollectionForDeckBuilding(CardTypeAsset asset)
 	{
-		ShowCards (0, true, asset, -1);
+		Debug.Log ("collection browser: show cards for deck building");
+		ShowCards (0, true, asset);
 
 		_cards = asset;
 
@@ -103,18 +104,17 @@ public class CollectionBrowser : MonoBehaviour {
 
 	//a function to display cards based on all the selected parameters
 	public void UpdatePage(){
-		ShowCards (_pageIndex, _includeAllCards, _asset, _manaCost);
+		ShowCards (_pageIndex, _includeAllCards, _asset);
 	}
 
-	private void ShowCards(int pageIndex = 0, bool includeAllCards = true, CardTypeAsset asset = null, int manaCost = -1)
+	private void ShowCards(int pageIndex = 0, bool includeAllCards = true, CardTypeAsset asset = null)
 	{
 		//saving infomation about the cards that we are showing to the players on this page
 		_pageIndex = pageIndex;
 		_includeAllCards = includeAllCards;
 		_asset = asset;
-		_manaCost = manaCost;
 
-		List<CardAsset> CardsOnThisPage = PageSelection (pageIndex, includeAllCards, asset, manaCost);
+		List<CardAsset> CardsOnThisPage = PageSelection (pageIndex, includeAllCards, asset);
 
 		//clear created cards list
 		ClearCreatedCards();
@@ -122,18 +122,20 @@ public class CollectionBrowser : MonoBehaviour {
 		if (CardsOnThisPage.Count == 0)
 			return;
 
+		Debug.Log ("Cards on this page: " + CardsOnThisPage.Count);
+
 		for (int i = 0; i < CardsOnThisPage.Count; i++) {
 			GameObject newMenuCard;
 			if (CardsOnThisPage [i].TypeOfCard == TypesOfCards.Soldier) {
 				//it is a soldier
-				newMenuCard = Instantiate (soldierMenuPrefab, slots [i].position, Quaternion.identity) as GameObject;
+				newMenuCard = Instantiate (soldierMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;
 			}
 			else if (CardsOnThisPage [i].TypeOfCard == TypesOfCards.Spell) {
 				//it is a soldier
-				newMenuCard = Instantiate (spellMenuPrefab, slots [i].position, Quaternion.identity) as GameObject;
+				newMenuCard = Instantiate (spellMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;
 			}
 			else
-				newMenuCard = Instantiate (cropMenuPrefab, slots [i].position, Quaternion.identity) as GameObject;		
+				newMenuCard = Instantiate (cropMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;		
 		
 			newMenuCard.transform.SetParent (this.transform);
 
@@ -147,14 +149,15 @@ public class CollectionBrowser : MonoBehaviour {
 			addCardComponent.SetCardAsset (CardsOnThisPage [i]);
 			addCardComponent.UpdateQuantity ();
 		}
+
 	}
 
 	public void Next()
 	{
-		if (PageSelection (_pageIndex + 1, _includeAllCards, _asset, _manaCost).Count == 0)
+		if (PageSelection (_pageIndex + 1, _includeAllCards, _asset).Count == 0)
 			return;
 
-		ShowCards (_pageIndex + 1, _includeAllCards, _asset, _manaCost);
+		ShowCards (_pageIndex + 1, _includeAllCards, _asset);
 	}
 
 	public void Previous()
@@ -162,21 +165,25 @@ public class CollectionBrowser : MonoBehaviour {
 		if (_pageIndex == 0)
 			return;
 
-		ShowCards (_pageIndex - 1, _includeAllCards, _asset, _manaCost);
+		ShowCards (_pageIndex - 1, _includeAllCards, _asset);
 	}
 
-	private List<CardAsset> PageSelection(int pageIndex = 0, bool includeAllCards = true, CardTypeAsset asset = null, int manaCost = -1)
+	//return a list with assets of cards that we have to show on page with pageIndex
+	// selects cards that satisfy all parameters
+	private List<CardAsset> PageSelection(int pageIndex = 0, bool includeAllCards = true, CardTypeAsset asset = null)
 	{
 		List<CardAsset> returnList = new List<CardAsset> ();
 
 		//obatain cards from collection that satisfy all the selected criteria
 		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (includeAllCards, asset);
-
 		//if there are enough cards so that we can show some cards on page with pageIndex
 		//otherwise an empty list will be returned
-		if (cardsToChooseFrom.Count > pageIndex * slots.Length) {
-			for (int i = 0; (i < cardsToChooseFrom.Count - pageIndex * slots.Length && i < slots.Length); i++) {
-				returnList.Add (cardsToChooseFrom [pageIndex * slots.Length + i]);
+		if (cardsToChooseFrom.Count > pageIndex * Slots.Length) {
+			//check for 2 conditions
+			//i < cardsToChooseFrom.Count - pageIndex * Slots.Length checks that we did not run out of cards on the last page
+			//i < Slots.Length checks that we have reached the limit of cards to display on one page 
+			for (int i = 0; (i < cardsToChooseFrom.Count - pageIndex * Slots.Length && i < Slots.Length); i++) {
+				returnList.Add (cardsToChooseFrom [pageIndex * Slots.Length + i]);
 			}
 		}
 

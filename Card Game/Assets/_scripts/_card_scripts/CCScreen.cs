@@ -24,6 +24,7 @@ public class CCScreen : MonoBehaviour {
 	}
 
 	public void ShowScreenForCollectionBrowsing(){
+		Debug.Log ("ccscreen: show screen for collection browsing");
 		screenContent.SetActive (true);
 		readyDecksList.SetActive (true);
 		cardsInDeckList.SetActive (false);
@@ -31,14 +32,20 @@ public class CCScreen : MonoBehaviour {
 		BuilderScript.InDeckBuildingMode = false;
 		ListOfReadyMadeDecksScript.UpdateList ();
 
+		CollectionBrowserScript.AllCardsTabs.gameObject.SetActive (true);
+		Canvas.ForceUpdateCanvases ();
+
 		CollectionBrowserScript.ShowCollectionForBrowsing ();
 	}
 
 	public void ShowScreenForDeckBuilding(){
+		Debug.Log ("ccscreen: show screen for deck building");
 		screenContent.SetActive (true);
 		readyDecksList.SetActive (false);
 		cardsInDeckList.SetActive (true);
 		title.SetActive (false);
+
+		CollectionBrowserScript.AllCardsTabs.gameObject.SetActive (true);
 	}
 		
 	public void BuildADeckFor(CardAsset asset){

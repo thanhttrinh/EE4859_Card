@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class AddCardToDeck : MonoBehaviour {
 
-	public Text quantityText;
+	//public Text quantityText;
 	private float initialScale;
 	private float scaleFactor = 1.1f;
 	private CardAsset cardAsset;
@@ -16,19 +16,22 @@ public class AddCardToDeck : MonoBehaviour {
 	}
 
 	public void SetCardAsset(CardAsset asset){
+		Debug.Log ("add card to deck: set card asset");
 		cardAsset = asset;
 	}
 
 	void OnMouseDown(){
+		Debug.Log ("add card to deck: mouse down ");
 		CardAsset asset = GetComponent<OneCardManager> ().cardAsset;
 
 		if (asset == null)
 			return;
 		
 		//check if these cards are available in collection
-//		if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
-			//CCScreen.Instance.BuilderScript.AddCard (asset);
-			//UpdateQuantity ();
+		//if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
+			CCScreen.Instance.BuilderScript.AddCard (asset);
+			Debug.Log ("add card to deck: added card asset to builder script");
+			UpdateQuantity ();
 		//}
 		//else{
 			//do not have enough cards
@@ -36,11 +39,13 @@ public class AddCardToDeck : MonoBehaviour {
 	}
 
 	void OnMouseEnter(){
+		Debug.Log ("add card to deck: mouse enter");
 		transform.DOScale (initialScale * scaleFactor, 0.5f);
 	}
 
 	void OnMouseExit()
 	{
+		Debug.Log ("add card to deck: mouse exit");
 		transform.DOScale (initialScale, 0.5f);
 	}
 
@@ -51,6 +56,7 @@ public class AddCardToDeck : MonoBehaviour {
 	}
 
 	void OnRightClick(){
+		Debug.Log ("add card to deck: right clicked");
 		//cast a ray from the mouse
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
@@ -65,10 +71,10 @@ public class AddCardToDeck : MonoBehaviour {
 
 	public void UpdateQuantity()
 	{
+		Debug.Log ("add card to deck: update quantity();");
 		int quantity = CardCollection.Instance.QuantityOfEachCard [cardAsset];
-		//if (CCScreen.Instance.BuilderScript.InDeckBuildingMode && CCScreen.Instance.ShowReducedQuantitiesInDeckBuilding)
-		//	quantity -= CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset);
+		if (CCScreen.Instance.BuilderScript.InDeckBuildingMode && CCScreen.Instance.ShowReducedQuantitiesInDeckBuilding)
+			quantity -= CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset);
 
-		quantityText.text = "X" + quantity.ToString ();
 	}
 }

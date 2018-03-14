@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class CropPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 	public GameObject PreviewUnit;
@@ -17,25 +18,34 @@ public class CropPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
 
 
-	public void OnPointerEnter(PointerEventData eventData) {
-
-		PreviewText.text = string.Format ("Name = {0}\nMana = {1}\nHealth = {2}\nCrop Size = {3}", NameText.text, ManaText.text, HealthText.text, CropSizeText.text);
-		PreviewUnit.SetActive(true);
+	public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            PreviewText.text = string.Format("Name = {0}\nMana = {1}\nHealth = {2}\nCrop Size = {3}", NameText.text, ManaText.text, HealthText.text, CropSizeText.text);
+            PreviewUnit.SetActive(true);
+        }
 	}
 
-	public void OnPointerExit(PointerEventData eventData) {
-		PreviewUnit.SetActive(false);
+	public void OnPointerExit(PointerEventData eventData)
+    {
+        if (SceneManager.GetActiveScene().name == "InGame")
+            PreviewUnit.SetActive(false);
 	}
 
 	public void OnMouseEnter()
 	{
-		PreviewText.text = string.Format ("Name = {0}\nMana = {1}\nHealth = {2}\nCrop Size = {3}", NameText.text, ManaText.text, HealthText.text, CropSizeText.text);
-		PreviewUnit.SetActive(true);
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            PreviewText.text = string.Format("Name = {0}\nMana = {1}\nHealth = {2}\nCrop Size = {3}", NameText.text, ManaText.text, HealthText.text, CropSizeText.text);
+            PreviewUnit.SetActive(true);
+        }
 	}
 
 	public void OnMouseExit()
 	{
-		PreviewUnit.SetActive(false);
+        if (SceneManager.GetActiveScene().name == "InGame")
+            PreviewUnit.SetActive(false);
 	}
 
 	#region Preview Card Object

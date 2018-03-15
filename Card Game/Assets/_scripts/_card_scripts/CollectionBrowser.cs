@@ -66,7 +66,6 @@ public class CollectionBrowser : MonoBehaviour {
 
 	public void ShowCollectionForBrowsing()
 	{
-		Debug.Log ("collection browser: show cards for browsing");
 		ShowCards (0, true, null);
 
 		//select all tabs by default
@@ -77,7 +76,6 @@ public class CollectionBrowser : MonoBehaviour {
 
 	public void ShowCollectionForDeckBuilding(CardTypeAsset asset)
 	{
-		Debug.Log ("collection browser: show cards for deck building");
 		ShowCards (0, true, asset);
 
 		_cards = asset;
@@ -122,21 +120,17 @@ public class CollectionBrowser : MonoBehaviour {
 		if (CardsOnThisPage.Count == 0)
 			return;
 
-		Debug.Log ("Cards on this page: " + CardsOnThisPage.Count);
-
 		for (int i = 0; i < CardsOnThisPage.Count; i++) {
 			GameObject newMenuCard;
 			if (CardsOnThisPage [i].TypeOfCard == TypesOfCards.Soldier) {
 				//it is a soldier
 				newMenuCard = Instantiate (soldierMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;
-			}
-			else if (CardsOnThisPage [i].TypeOfCard == TypesOfCards.Spell) {
-				//it is a soldier
+			} else if (CardsOnThisPage [i].TypeOfCard == TypesOfCards.Spell) {
+				//it is a spell
 				newMenuCard = Instantiate (spellMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;
-			}
-			else
+			} else {
 				newMenuCard = Instantiate (cropMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;		
-		
+			}
 			newMenuCard.transform.SetParent (this.transform);
 
 			createdCards.Add (newMenuCard);
@@ -149,7 +143,6 @@ public class CollectionBrowser : MonoBehaviour {
 			addCardComponent.SetCardAsset (CardsOnThisPage [i]);
 			addCardComponent.UpdateQuantity ();
 		}
-
 	}
 
 	public void Next()
@@ -175,7 +168,7 @@ public class CollectionBrowser : MonoBehaviour {
 		List<CardAsset> returnList = new List<CardAsset> ();
 
 		//obatain cards from collection that satisfy all the selected criteria
-		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (includeAllCards, asset);
+		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (/*includeAllCards, asset*/);
 		//if there are enough cards so that we can show some cards on page with pageIndex
 		//otherwise an empty list will be returned
 		if (cardsToChooseFrom.Count > pageIndex * Slots.Length) {

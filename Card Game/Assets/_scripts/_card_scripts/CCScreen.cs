@@ -24,7 +24,6 @@ public class CCScreen : MonoBehaviour {
 	}
 
 	public void ShowScreenForCollectionBrowsing(){
-		Debug.Log ("ccscreen: show screen for collection browsing");
 		screenContent.SetActive (true);
 		readyDecksList.SetActive (true);
 		cardsInDeckList.SetActive (false);
@@ -39,7 +38,6 @@ public class CCScreen : MonoBehaviour {
 	}
 
 	public void ShowScreenForDeckBuilding(){
-		Debug.Log ("ccscreen: show screen for deck building");
 		screenContent.SetActive (true);
 		readyDecksList.SetActive (false);
 		cardsInDeckList.SetActive (true);

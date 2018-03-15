@@ -18,16 +18,13 @@ public class CardCollection : MonoBehaviour
 
 	void Awake(){
 		Instance = this;
-
 		//search everywhere for all the card assets
 		allCardsArray = Resources.LoadAll<CardAsset> ("");
 		Debug.Log ("Length of card array: " + allCardsArray.Length);
 
 		foreach (CardAsset ca in allCardsArray) {
-			Debug.Log ("foreach ...");
 			if (!AllCardsDictionary.ContainsKey (ca.name)) 
 				AllCardsDictionary.Add (ca.name, ca);
-			Debug.Log ("all card dictionary: " + AllCardsDictionary);
 		}
 	
 		LoadQuantityOfCardsFromPlayerPrefs ();
@@ -41,7 +38,6 @@ public class CardCollection : MonoBehaviour
 			} else
 				QuantityOfEachCard.Add (ca, 0);
 		}
-		Debug.Log ("Length of card array: " + allCardsArray.Length);
 	}
 
 	private void SaveQuantityOfCardsIntoPlayerPrefs(){
@@ -62,24 +58,24 @@ public class CardCollection : MonoBehaviour
 
 	//get a list of cards filtered by type (soldiers, crops, spells)
 	public List<CardAsset> GetCardOfType(CardTypeAsset asset){
-		return GetCards (false, asset);
+		//return GetCards (false, asset);
+		var cards = from card in allCardsArray where card.cardTypeAsset == asset select card;
+		var returnList = cards.ToList<CardAsset> ();
+		returnList.Sort ();
+
+		return returnList;
 	}
 
 	//the general function that will filters the cards
-	public List<CardAsset> GetCards(bool includeAllCards = true, CardTypeAsset asset = null)
+	public List<CardAsset> GetCards(/*bool includeAllCards = true, CardTypeAsset asset = null*/)
 	{
 		//initially select all cards
 		var cards = from card in allCardsArray
 		            select card;
 		
-		if (!includeAllCards)
-			cards = cards.Where (card => card.cardTypeAsset == asset);
-		/*
-		if (manaCost == 10) 
-			cards = cards.Where (card => card.ManaCost >= 10);
-		else if (manaCost != -1) 
-			cards = cards.Where (card => card.ManaCost == manaCost);
-*/
+		//if (!includeAllCards)
+		//	cards = cards.Where (card => card.cardTypeAsset == asset);
+		
 		var returnList = cards.ToList<CardAsset> ();
 		returnList.Sort ();
 

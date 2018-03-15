@@ -16,12 +16,10 @@ public class AddCardToDeck : MonoBehaviour {
 	}
 
 	public void SetCardAsset(CardAsset asset){
-		Debug.Log ("add card to deck: set card asset");
 		cardAsset = asset;
 	}
 
 	void OnMouseDown(){
-		Debug.Log ("add card to deck: mouse down ");
 		CardAsset asset = GetComponent<OneCardManager> ().cardAsset;
 
 		if (asset == null)
@@ -30,7 +28,6 @@ public class AddCardToDeck : MonoBehaviour {
 		//check if these cards are available in collection
 		//if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
 			CCScreen.Instance.BuilderScript.AddCard (asset);
-			Debug.Log ("add card to deck: added card asset to builder script");
 			UpdateQuantity ();
 		//}
 		//else{
@@ -39,13 +36,11 @@ public class AddCardToDeck : MonoBehaviour {
 	}
 
 	void OnMouseEnter(){
-		Debug.Log ("add card to deck: mouse enter");
 		transform.DOScale (initialScale * scaleFactor, 0.5f);
 	}
 
 	void OnMouseExit()
 	{
-		Debug.Log ("add card to deck: mouse exit");
 		transform.DOScale (initialScale, 0.5f);
 	}
 
@@ -56,7 +51,6 @@ public class AddCardToDeck : MonoBehaviour {
 	}
 
 	void OnRightClick(){
-		Debug.Log ("add card to deck: right clicked");
 		//cast a ray from the mouse
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
@@ -64,14 +58,12 @@ public class AddCardToDeck : MonoBehaviour {
 		//check if the ray collided with an object
 		if (Physics.Raycast (clickPoint, out hitPoint)) {
 			if (hitPoint.collider == this.GetComponent<Collider> ()) {
-				Debug.Log ("Right Clicked on " + this.name);
 			}
 		}
 	}
 
 	public void UpdateQuantity()
 	{
-		Debug.Log ("add card to deck: update quantity();");
 		int quantity = CardCollection.Instance.QuantityOfEachCard [cardAsset];
 		if (CCScreen.Instance.BuilderScript.InDeckBuildingMode && CCScreen.Instance.ShowReducedQuantitiesInDeckBuilding)
 			quantity -= CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset);

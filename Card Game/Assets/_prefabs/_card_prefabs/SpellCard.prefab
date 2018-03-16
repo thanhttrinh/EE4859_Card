@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 225495499113673618}
   - component: {fileID: 114509641821790762}
   - component: {fileID: 114543855567989124}
+  - component: {fileID: 114329293440840418}
   m_Layer: 5
   m_Name: SpellCard
   m_TagString: Untagged
@@ -602,6 +603,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114329293440840418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893051185341788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49b8ce864bb2404c94ace544b0ebced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewUnit: {fileID: 0}
+  PreviewText: {fileID: 0}
+  NameText: {fileID: 114617653951412746}
+  ManaText: {fileID: 114149725192718068}
+  RangeText: {fileID: 114862298027374092}
+  DescriptionText: {fileID: 114101688895430474}
 --- !u!114 &114390492772661416
 MonoBehaviour:
   m_ObjectHideFlags: 1

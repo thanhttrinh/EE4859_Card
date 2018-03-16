@@ -3005,16 +3005,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114371029403225590, guid: c46f85ea1d0d3ee46960e347a64e5d64,
-        type: 2}
-      propertyPath: PreviewUnit
-      value: 
-      objectReference: {fileID: 1998267457}
-    - target: {fileID: 114371029403225590, guid: c46f85ea1d0d3ee46960e347a64e5d64,
-        type: 2}
-      propertyPath: PreviewText
-      value: 
-      objectReference: {fileID: 1327381359}
     - target: {fileID: 114329527336042880, guid: c46f85ea1d0d3ee46960e347a64e5d64,
         type: 2}
       propertyPath: PreviewUnit

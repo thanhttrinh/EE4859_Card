@@ -203,12 +203,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224388991528153434}
-  - component: {fileID: 114863991744386294}
   - component: {fileID: 225116592707273558}
   - component: {fileID: 114834066380395780}
   - component: {fileID: 114596777036501952}
   - component: {fileID: 65108332438405106}
   - component: {fileID: 222899268530636804}
+  - component: {fileID: 114076968102811550}
   m_Layer: 5
   m_Name: Crop
   m_TagString: Untagged
@@ -448,6 +448,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114076968102811550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519026123925860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82eec29164d99b4b87686dd14a744f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAsset: {fileID: 0}
+  PreviewManager: {fileID: 0}
+  HealthText: {fileID: 114860226952189450}
+  CropSizeText: {fileID: 114219668879716510}
+  CreatureGraphicImage: {fileID: 114000573100524084}
 --- !u!114 &114134286831196658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -851,34 +867,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 2
---- !u!114 &114863991744386294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1519026123925860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: 48e1e5ffef708284aa68d9d3a33e3598, type: 2}
-  PreviewManager: {fileID: 0}
-  NameText: {fileID: 114283215145549730}
-  ManaCostText: {fileID: 114134286831196658}
-  DescriptionText: {fileID: 114886505683524592}
-  HealthText: {fileID: 114860226952189450}
-  AttackText: {fileID: 0}
-  RangeText: {fileID: 0}
-  MovementText: {fileID: 0}
-  CropSize: {fileID: 114219668879716510}
-  CardTopRibbonImage: {fileID: 114318044999070406}
-  CardLowRibbonImage: {fileID: 114564278963110956}
-  CardGraphicImage: {fileID: 114000573100524084}
-  CardBodyImage: {fileID: 114793308306943354}
-  CardFaceFrameImage: {fileID: 114991972990155910}
-  CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 0}
 --- !u!114 &114880519384542952
 MonoBehaviour:
   m_ObjectHideFlags: 1

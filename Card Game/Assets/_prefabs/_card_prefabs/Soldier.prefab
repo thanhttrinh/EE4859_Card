@@ -407,11 +407,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224401969948256004}
-  - component: {fileID: 114357867090709336}
   - component: {fileID: 225845720230978962}
   - component: {fileID: 114460371478848446}
   - component: {fileID: 114329527336042880}
   - component: {fileID: 58332102594941502}
+  - component: {fileID: 114150097792842440}
   m_Layer: 5
   m_Name: Soldier
   m_TagString: Untagged
@@ -518,6 +518,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114150097792842440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848237352196946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23dbd2133c80840489c1dd7aaa126bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAsset: {fileID: 0}
+  PreviewManager: {fileID: 0}
+  HealthText: {fileID: 114518868388466290}
+  AttackText: {fileID: 114458243911061828}
+  RangeText: {fileID: 114953021773466592}
+  MovementText: {fileID: 114977623738991956}
+  CreatureGraphicImage: {fileID: 114464507799855060}
 --- !u!114 &114262481700089228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -599,34 +617,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Soldier
---- !u!114 &114357867090709336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848237352196946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: 5927a8320d0a83249b4807e9d02353f1, type: 2}
-  PreviewManager: {fileID: 0}
-  NameText: {fileID: 114652183073542042}
-  ManaCostText: {fileID: 114451604739859408}
-  DescriptionText: {fileID: 114702113942461694}
-  HealthText: {fileID: 114518868388466290}
-  AttackText: {fileID: 114458243911061828}
-  RangeText: {fileID: 114953021773466592}
-  MovementText: {fileID: 114977623738991956}
-  CropSize: {fileID: 0}
-  CardTopRibbonImage: {fileID: 114591533823927424}
-  CardLowRibbonImage: {fileID: 114003278480292352}
-  CardGraphicImage: {fileID: 114464507799855060}
-  CardBodyImage: {fileID: 114143746789734372}
-  CardFaceFrameImage: {fileID: 114524551038759696}
-  CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 0}
 --- !u!114 &114366687647756174
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,7 +20,6 @@ public class CardCollection : MonoBehaviour
 		Instance = this;
 		//search everywhere for all the card assets
 		allCardsArray = Resources.LoadAll<CardAsset> ("");
-		Debug.Log ("Length of card array: " + allCardsArray.Length);
 
 		foreach (CardAsset ca in allCardsArray) {
 			if (!AllCardsDictionary.ContainsKey (ca.name)) 
@@ -67,14 +66,14 @@ public class CardCollection : MonoBehaviour
 	}
 
 	//the general function that will filters the cards
-	public List<CardAsset> GetCards(/*bool includeAllCards = true, CardTypeAsset asset = null*/)
+	public List<CardAsset> GetCards(bool includeAllCards = true, CardTypeAsset asset = null)
 	{
 		//initially select all cards
 		var cards = from card in allCardsArray
 		            select card;
 		
-		//if (!includeAllCards)
-		//	cards = cards.Where (card => card.cardTypeAsset == asset);
+		if (!includeAllCards)
+			cards = cards.Where (card => card.cardTypeAsset == asset);
 		
 		var returnList = cards.ToList<CardAsset> ();
 		returnList.Sort ();

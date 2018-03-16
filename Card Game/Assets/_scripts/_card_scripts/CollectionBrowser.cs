@@ -168,7 +168,7 @@ public class CollectionBrowser : MonoBehaviour {
 		List<CardAsset> returnList = new List<CardAsset> ();
 
 		//obatain cards from collection that satisfy all the selected criteria
-		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (/*includeAllCards, asset*/);
+		List<CardAsset> cardsToChooseFrom = CardCollection.Instance.GetCards (includeAllCards, asset);
 		//if there are enough cards so that we can show some cards on page with pageIndex
 		//otherwise an empty list will be returned
 		if (cardsToChooseFrom.Count > pageIndex * Slots.Length) {

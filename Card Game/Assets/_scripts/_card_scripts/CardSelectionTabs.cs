@@ -7,7 +7,6 @@ public class CardSelectionTabs : MonoBehaviour {
 
 	public List<CardTypeFilter> Tabs = new List<CardTypeFilter> ();
 	public CardTypeFilter CardTab;
-	public CardTypeFilter NeutralTabWhenCollectionBrowsing;
 	private int currentIndex = 0;
 
 	public void SelectTab(CardTypeFilter tab, bool instant)
@@ -28,10 +27,4 @@ public class CardSelectionTabs : MonoBehaviour {
 		CCScreen.Instance.CollectionBrowserScript.Asset = tab.asset;
 		CCScreen.Instance.CollectionBrowserScript.IncludeAllCards = tab.showAllCards;
 	}
-
-	public void SetClassOnClassTab(CardTypeAsset asset){
-		CardTab.asset = asset;
-		CardTab.GetComponentInChildren<Text> ().text = asset.name;
-	}
-
 }

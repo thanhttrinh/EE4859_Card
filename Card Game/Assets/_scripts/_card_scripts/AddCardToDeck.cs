@@ -8,11 +8,11 @@ public class AddCardToDeck : MonoBehaviour {
 
 	//public Text quantityText;
 	private float initialScale;
-	private float scaleFactor = 1.5f;
+	private float scaleFactor = 1.1f;
 	private CardAsset cardAsset;
 
 	void Awake(){
-		initialScale = transform.localScale.x;
+		//initialScale = transform.localScale.x;
 	}
 
 	public void SetCardAsset(CardAsset asset){
@@ -32,16 +32,16 @@ public class AddCardToDeck : MonoBehaviour {
 		//}
 		//else{
 			//do not have enough cards
-		//}
+		//
 	}
 
 	void OnMouseEnter(){
-		transform.DOScale (initialScale * scaleFactor, 0.5f);
+		//transform.DOScale (initialScale * scaleFactor, 0.5f);
 	}
 
 	void OnMouseExit()
 	{
-		//transform.DOScale (initialScale, 0.5f);
+		//transform.DOScale (initialScale * scaleFactor, 0.5f);
 	}
 
 	void Update()

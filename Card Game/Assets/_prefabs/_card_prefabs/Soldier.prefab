@@ -412,7 +412,6 @@ GameObject:
   - component: {fileID: 114460371478848446}
   - component: {fileID: 114329527336042880}
   - component: {fileID: 58332102594941502}
-  - component: {fileID: 114371029403225590}
   m_Layer: 5
   m_Name: Soldier
   m_TagString: Untagged
@@ -682,27 +681,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114371029403225590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848237352196946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a60647b7156f4f9b95bf5d33906dc5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PreviewUnit: {fileID: 0}
-  PreviewText: {fileID: 0}
-  NameText: {fileID: 114652183073542042}
-  ManaText: {fileID: 114451604739859408}
-  AttackText: {fileID: 114458243911061828}
-  HealthText: {fileID: 114518868388466290}
-  RangeText: {fileID: 114953021773466592}
-  MovementText: {fileID: 114977623738991956}
-  TurnOffWhenPreviewing: {fileID: 0}
-  previewGameObject: {fileID: 0}
 --- !u!114 &114380731425708230
 MonoBehaviour:
   m_ObjectHideFlags: 1

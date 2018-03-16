@@ -1176,7 +1176,7 @@ MonoBehaviour:
   - {fileID: 1978346397}
   - {fileID: 1255837321}
   CardTab: {fileID: 1255837321}
-  NeutralTabWhenCollectionBrowsing: {fileID: 1255837321}
+  Default: {fileID: 1255837321}
 --- !u!1 &810235400
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class CardSelectionTabs : MonoBehaviour {
 
 	public List<CardTypeFilter> Tabs = new List<CardTypeFilter> ();
 	public CardTypeFilter CardTab;
+	public CardTypeFilter Default;
 	private int currentIndex = 0;
 
 	public void SelectTab(CardTypeFilter tab, bool instant)

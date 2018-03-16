@@ -69,9 +69,8 @@ public class CollectionBrowser : MonoBehaviour {
 		ShowCards (0, true, null);
 
 		//select all tabs by default
-		CCScreen.Instance.TabsScript.CardTab.Select(instant: true);
-		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.CardTab, instant: true);
-	
+		CCScreen.Instance.TabsScript.Default.Select(instant:true);
+		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.Default, instant: true);
 	}
 
 	public void ShowCollectionForDeckBuilding(CardTypeAsset asset)
@@ -80,8 +79,8 @@ public class CollectionBrowser : MonoBehaviour {
 
 		_cards = asset;
 
-		CCScreen.Instance.TabsScript.CardTab.Select (instant: true);
-		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.CardTab, instant: true);
+		CCScreen.Instance.TabsScript.Default.Select(instant:true);
+		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.Default, instant: true);
 	}
 
 	public void ClearCreatedCards()
@@ -129,6 +128,7 @@ public class CollectionBrowser : MonoBehaviour {
 				//it is a spell
 				newMenuCard = Instantiate (spellMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;
 			} else {
+				//it is a crop
 				newMenuCard = Instantiate (cropMenuPrefab, Slots [i].position, Quaternion.identity) as GameObject;		
 			}
 			newMenuCard.transform.SetParent (this.transform);

@@ -682,7 +682,7 @@ MonoBehaviour:
   cardAsset: {fileID: 11400000, guid: 48e1e5ffef708284aa68d9d3a33e3598, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114163408837372704}
-  ManaCostText: {fileID: 0}
+  ManaCostText: {fileID: 114947220123924460}
   DescriptionText: {fileID: 114995893441045210}
   HealthText: {fileID: 114632061582832774}
   AttackText: {fileID: 0}

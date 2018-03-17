@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a4b8a56954db1496a9bccc18208ddd63
-timeCreated: 1519602407
+guid: 19b8c64b1434240e18d2ea35a727f839
+timeCreated: 1521297013
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Soldier_0
+    21300000: Mana2_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,13 +81,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Soldier_0
+      name: Mana2_0
       rect:
         serializedVersion: 2
-        x: 584
-        y: 628
-        width: 880
-        height: 1012
+        x: 316
+        y: 395
+        width: 1439
+        height: 1250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

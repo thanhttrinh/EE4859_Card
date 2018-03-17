@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: a4b8a56954db1496a9bccc18208ddd63
-timeCreated: 1519602407
+guid: 0756a7f31c4044655aceba071bbdb330
+timeCreated: 1521297012
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Soldier_0
+    21300000: portrait_outline_0
+    21300002: portrait_outline_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,13 +82,27 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Soldier_0
+      name: portrait_outline_0
       rect:
         serializedVersion: 2
-        x: 584
-        y: 628
-        width: 880
-        height: 1012
+        x: 212
+        y: 1176
+        width: 1389
+        height: 1037
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: portrait_outline_1
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1783
+        width: 5
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

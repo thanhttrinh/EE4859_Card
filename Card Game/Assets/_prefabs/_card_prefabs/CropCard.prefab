@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 222503586766192084}
   - component: {fileID: 114900062596365920}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
   PreviewUnit: {fileID: 0}
   PreviewText: {fileID: 0}
   NameText: {fileID: 114163408837372704}
-  ManaText: {fileID: 0}
+  ManaText: {fileID: 114947220123924460}
   HealthText: {fileID: 114632061582832774}
   CropSizeText: {fileID: 114081821213513024}
   DescriptionText: {fileID: 0}
@@ -724,7 +724,7 @@ MonoBehaviour:
   CropSize: {fileID: 114081821213513024}
   CardTopRibbonImage: {fileID: 114587664488235170}
   CardLowRibbonImage: {fileID: 114616867158502948}
-  CardGraphicImage: {fileID: 0}
+  CardGraphicImage: {fileID: 114900062596365920}
   CardBodyImage: {fileID: 114512969657729598}
   CardFaceFrameImage: {fileID: 114018134688581792}
   CardFaceGlowImage: {fileID: 0}

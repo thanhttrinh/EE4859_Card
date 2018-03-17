@@ -643,7 +643,7 @@ MonoBehaviour:
   CropSize: {fileID: 0}
   CardTopRibbonImage: {fileID: 114079438723664332}
   CardLowRibbonImage: {fileID: 114302823320101250}
-  CardGraphicImage: {fileID: 114669725477373228}
+  CardGraphicImage: {fileID: 114796167894003386}
   CardBodyImage: {fileID: 114465255757889382}
   CardFaceFrameImage: {fileID: 114552540190384222}
   CardFaceGlowImage: {fileID: 0}

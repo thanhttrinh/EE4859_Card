@@ -412,6 +412,8 @@ GameObject:
   - component: {fileID: 114329527336042880}
   - component: {fileID: 58332102594941502}
   - component: {fileID: 114150097792842440}
+  - component: {fileID: 114916738771829342}
+  - component: {fileID: 114349412108272932}
   m_Layer: 5
   m_Name: Soldier
   m_TagString: soldier
@@ -529,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dbd2133c80840489c1dd7aaa126bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 0}
+  cardAsset: {fileID: 11400000, guid: b1de29e857bffe546bcc119fe1d309cf, type: 2}
   PreviewManager: {fileID: 0}
   HealthText: {fileID: 114518868388466290}
   AttackText: {fileID: 114458243911061828}
@@ -617,6 +619,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Soldier
+--- !u!114 &114349412108272932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848237352196946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb6cd5abd22c4717aa4eaf573f12683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114366687647756174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1075,6 +1088,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114916738771829342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848237352196946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c464de51049035942a4749ef9df82a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UserPointerDisplacement: 1
 --- !u!114 &114953021773466592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1493,7 +1518,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848237352196946}
-  m_LocalRotation: {x: 0.0018325554, y: -0, z: -0, w: 0.99999833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.008, y: 0.008, z: 1}
   m_Children:
@@ -1501,10 +1526,10 @@ RectTransform:
   - {fileID: 4064621817378220}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.21, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1, y: -1}
+  m_AnchoredPosition: {x: -1, y: 1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224480419769376198

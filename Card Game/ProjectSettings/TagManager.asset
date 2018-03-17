@@ -8,6 +8,9 @@ TagManager:
   - cardBuilder
   - database
   - table
+  - soldier
+  - spell
+  - crop
   layers:
   - Default
   - TransparentFX

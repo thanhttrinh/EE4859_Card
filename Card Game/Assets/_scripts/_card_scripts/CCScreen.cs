@@ -45,12 +45,13 @@ public class CCScreen : MonoBehaviour {
 		title.SetActive (false);
 
 		CollectionBrowserScript.AllCardsTabs.gameObject.SetActive (true);
+		Canvas.ForceUpdateCanvases ();
 	}
 		
-	public void BuildADeckFor(CardAsset asset){
+	public void BuildADeck(){
 		ShowScreenForDeckBuilding ();
-		CollectionBrowserScript.ShowCollectionForBrowsing ();
-		//BuilderScript.BuildADeckFor(asset);
+		CollectionBrowserScript.ShowCollectionForDeckBuilding ();
+		BuilderScript.BuildADeck();
 	}
 
 	public void HideScreen(){

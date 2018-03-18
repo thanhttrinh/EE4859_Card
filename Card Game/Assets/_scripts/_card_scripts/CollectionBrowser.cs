@@ -11,8 +11,6 @@ public class CollectionBrowser : MonoBehaviour {
 
 	public GameObject AllCardsTabs;
 
-	private CardTypeAsset _cards;
-
 	private List<GameObject> createdCards = new List<GameObject>();
 
 	//properties for every variable that matters for filtering and selecting cards
@@ -73,11 +71,9 @@ public class CollectionBrowser : MonoBehaviour {
 		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.Default, instant: true);
 	}
 
-	public void ShowCollectionForDeckBuilding(CardTypeAsset asset)
+	public void ShowCollectionForDeckBuilding()
 	{
-		ShowCards (0, true, asset);
-
-		_cards = asset;
+		ShowCards (0, true, null);
 
 		CCScreen.Instance.TabsScript.Default.Select(instant:true);
 		CCScreen.Instance.TabsScript.SelectTab (CCScreen.Instance.TabsScript.Default, instant: true);

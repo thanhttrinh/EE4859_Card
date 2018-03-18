@@ -96,6 +96,19 @@ public class DeckBuilder : MonoBehaviour {
 		CCScreen.Instance.CollectionBrowserScript.UpdateQuantitiesOnPage();
 	}
 
+	public void BuildADeck(){
+		InDeckBuildingMode = true;
+		while (deckList.Count > 0) {
+			RemoveCard (deckList [0]);
+		}
+
+		CCScreen.Instance.CollectionBrowserScript.ShowCollectionForDeckBuilding ();
+		CheckDeckCompleteFrame ();
+
+		//reset the InputField text to be empty
+		DeckName.text = "";
+	}
+
 	public void DoneButtonHandler(){
 		//save current deck list into DeckStorage
 		DeckInfo deckToSave = new DeckInfo(deckList, DeckName.text);

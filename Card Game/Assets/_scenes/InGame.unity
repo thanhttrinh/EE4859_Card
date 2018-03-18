@@ -594,7 +594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5/5
+  m_Text: 5/10
 --- !u!222 &319242668
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2991,6 +2991,11 @@ Prefab:
       propertyPath: PreviewText
       value: 
       objectReference: {fileID: 1327381359}
+    - target: {fileID: 225845720230978962, guid: c46f85ea1d0d3ee46960e347a64e5d64,
+        type: 2}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
   m_IsPrefabParent: 0

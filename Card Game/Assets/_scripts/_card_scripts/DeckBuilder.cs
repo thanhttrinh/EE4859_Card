@@ -11,7 +11,6 @@ public class DeckBuilder : MonoBehaviour {
 	public int SameCardLimit = 3;
 	public int AmountOfCardsInDeck = 20;
 
-	public GameObject DeckCompleteFrame;
 
 	private List<CardAsset> deckList = new List<CardAsset>();
 	private Dictionary<CardAsset, CardNameRibbon> ribbons = new Dictionary<CardAsset, CardNameRibbon>();
@@ -19,7 +18,6 @@ public class DeckBuilder : MonoBehaviour {
 	public bool InDeckBuildingMode{ get; set; }
 
 	void Awake(){
-		DeckCompleteFrame.GetComponent<Image> ().raycastTarget = false;
 	}
 
 	public void AddCard(CardAsset asset){
@@ -41,7 +39,6 @@ public class DeckBuilder : MonoBehaviour {
 
 		if (count < limitOfThisCardInDeck) {
 			deckList.Add (asset);
-			CheckDeckCompleteFrame ();
 
 			//added one to count if we are adding this card
 			count++;
@@ -61,11 +58,7 @@ public class DeckBuilder : MonoBehaviour {
 			}
 		}
 	}
-
-	void CheckDeckCompleteFrame()
-	{
-		DeckCompleteFrame.SetActive (deckList.Count == AmountOfCardsInDeck);
-	}
+		
 
 	public int NumberOfThisCardInDeck(CardAsset asset)
 	{
@@ -86,10 +79,7 @@ public class DeckBuilder : MonoBehaviour {
 			ribbons.Remove (asset);
 			Destroy (ribbonToRemove.gameObject);
 		}
-
 		deckList.Remove (asset);
-
-		CheckDeckCompleteFrame ();
 
 		//update quantities of all cards taht we currently show in the collection
 		//this is after deckList.RemoveCard(asset)
@@ -103,7 +93,6 @@ public class DeckBuilder : MonoBehaviour {
 		}
 
 		CCScreen.Instance.CollectionBrowserScript.ShowCollectionForDeckBuilding ();
-		CheckDeckCompleteFrame ();
 
 		//reset the InputField text to be empty
 		DeckName.text = "";

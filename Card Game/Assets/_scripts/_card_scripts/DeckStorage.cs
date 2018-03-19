@@ -6,7 +6,6 @@ using UnityEngine;
 public class DeckInfo
 {
 	public string DeckName;
-	public CardTypeAsset CardType;
 	public List<CardAsset> Cards;
 
 	public DeckInfo(List<CardAsset> cards, string deckName)

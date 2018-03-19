@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class DraggingInBattle : DraggingActions 
+public class DraggingInBattle : MonoBehaviour 
 {
 	// script used to drag soldier to move/attack
 
@@ -13,29 +13,21 @@ public class DraggingInBattle : DraggingActions
 	private bool canMove;
 	private RaycastHit hit;
 
-	void Start() {
-		canAttack = true;
-		canMove = true;
-	}
+    private void OnMouseUp()
+    {
 
-	public override void OnStartDrag(){
-		savedPos = transform.position;
+    }
 
-	}
+    private void OnMouseDown()
+    {
+        
+    }
 
-	public override void OnEndDrag(){
-		attackingPos = transform.position + new Vector3 (0, 0, 0.5f);
-		Ray attacking = new Ray (attackingPos, Vector3.back);
-		if(Physics.Raycast(attacking, out hit, 2))
-			Debug.Log ("Something is in front of me.");
-		transform.DOMove (savedPos, 0.1f);
-	}
+    private void SoldierMove()
+    {
+        //once soldier gameobject is detected
+        //soldier should move based on his movement parameter
+        //soldier shouldnt move again until next turn so `canMove == false`
+    }
 
-	public override void OnDraggingInUpdate(){
-
-	}
-
-	protected override bool DragSuccessful(){
-		return true;
-	}
 }

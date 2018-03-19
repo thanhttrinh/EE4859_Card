@@ -7,7 +7,7 @@ public class CardNameRibbon : MonoBehaviour {
 
 	public Text NameText;
 	public Text QuantityText;
-	public Image RibbonImage;
+	public Text ManaCost;
 
 	public CardAsset Asset{get; set;}
 	public int Quantity{get; set;}
@@ -15,6 +15,7 @@ public class CardNameRibbon : MonoBehaviour {
 	public void ApplyAsset(CardAsset ca, int quantity){
 		Asset = ca;
 		NameText.text = ca.name;
+		ManaCost.text = ca.ManaCost.ToString();
 		SetQuantity (quantity);
 	}
 

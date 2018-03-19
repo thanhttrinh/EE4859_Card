@@ -24,7 +24,7 @@ public class ListOfDecksInCollection : MonoBehaviour {
 			DeckInScrollList deckInScrollListComponent = g.GetComponent<DeckInScrollList> ();
 		}
 
-		if(DeckStorage.Instance.AllDecks.Count < 9){
+		if(DeckStorage.Instance.AllDecks.Count < 5){
 			GameObject g = Instantiate (NewDeckButtonPrefab, Content);
 			g.transform.localScale = Vector3.one;
 		}

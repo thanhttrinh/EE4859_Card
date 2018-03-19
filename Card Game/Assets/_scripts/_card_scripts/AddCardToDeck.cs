@@ -8,7 +8,7 @@ public class AddCardToDeck : MonoBehaviour {
 
 	//public Text quantityText;
 	private float initialScale;
-	private float scaleFactor = 1.1f;
+	//private float scaleFactor = 1.1f;
 	private CardAsset cardAsset;
 
 	void Awake(){

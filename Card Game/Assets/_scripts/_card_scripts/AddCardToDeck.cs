@@ -51,6 +51,7 @@ public class AddCardToDeck : MonoBehaviour {
 	}
 
 	void OnRightClick(){
+		CardAsset asset = GetComponent<OneCardManager> ().cardAsset;
 		//cast a ray from the mouse
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
@@ -58,6 +59,7 @@ public class AddCardToDeck : MonoBehaviour {
 		//check if the ray collided with an object
 		if (Physics.Raycast (clickPoint, out hitPoint)) {
 			if (hitPoint.collider == this.GetComponent<Collider> ()) {
+				Debug.Log ("right clicked on " + this.name);
 			}
 		}
 	}

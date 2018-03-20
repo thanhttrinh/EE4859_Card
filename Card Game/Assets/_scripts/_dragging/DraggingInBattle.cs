@@ -32,9 +32,13 @@ public class DraggingInBattle : DraggingActions
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
+        {
             Debug.Log("something there");
+        }
         else
+        {
             Debug.Log("nothing there");
+        }
         transform.DOMove(savedPos, 0.1f);
     }
 
@@ -46,12 +50,6 @@ public class DraggingInBattle : DraggingActions
     protected override bool DragSuccessful()
     {
         return true;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "soldier")
-            Debug.Log("It's another soldier");
     }
 
 }

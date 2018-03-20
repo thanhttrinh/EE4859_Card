@@ -13,7 +13,8 @@ public class DraggingInBattle : DraggingActions
 	private bool canMove;
 	private int move;
     private RaycastHit hit;
-    
+    private RaycastHit hit2;
+
 
     private void Start()
     {
@@ -30,16 +31,28 @@ public class DraggingInBattle : DraggingActions
 
     public override void OnEndDrag()
     {
+        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+        //transform.DOMove(savedPos, 0.1f);
+    }
+
+    public void OnMouseDown()
+    {
+        //Ray ray = new Ray(draggingPos, Vector3.back);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("something there");
+            Debug.Log(hit.collider.gameObject.name);
         }
         else
         {
             Debug.Log("nothing there");
         }
-        transform.DOMove(savedPos, 0.1f);
+    }
+
+    public void OnMouseUp()
+    {
+
     }
 
     public override void OnDraggingInUpdate()

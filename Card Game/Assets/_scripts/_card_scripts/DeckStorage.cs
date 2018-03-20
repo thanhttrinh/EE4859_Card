@@ -48,6 +48,7 @@ public class DeckStorage : MonoBehaviour
 
 	void Start()
 	{
+		//load in decks that is already made, if there is any
 		if (!alreadyLoadedDecks) 
 		{
 			LoadDecksFromPlayerPrefs ();
@@ -101,7 +102,7 @@ public class DeckStorage : MonoBehaviour
 			string[] cardNamesArray = cardNamesList.ToArray ();
 
 			PlayerPrefsX.SetStringArray (deckListKey, cardNamesArray);
-			PlayerPrefs.SetString (deckNameKey, AllDecks [i].DeckName);
+			PlayerPrefs.SetString (deckNameKey, AllDecks[i].DeckName);
 		}
 
 	}

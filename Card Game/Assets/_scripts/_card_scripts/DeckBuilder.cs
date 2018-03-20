@@ -99,9 +99,12 @@ public class DeckBuilder : MonoBehaviour {
 	}
 
 	public void DoneButtonHandler(){
+		Debug.Log ("saving deck ...");
 		//save current deck list into DeckStorage
 		DeckInfo deckToSave = new DeckInfo(deckList, DeckName.text);
+		Debug.Log ("deck to save ... " + deckToSave.DeckName);
 		DeckStorage.Instance.AllDecks.Add (deckToSave);
+		Debug.Log ("added deck into storage");
 		DeckStorage.Instance.SaveDecksIntoPlayerPrefs ();
 		//the screen with the collection and pre-made decks is loaded by calling
 		//other functions on this button

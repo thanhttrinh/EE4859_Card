@@ -3,44 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class DraggingInBattle : MonoBehaviour 
+public class DraggingInBattle : DraggingActions 
 {
-	// script used to drag soldier to move/attack
+    // script used to drag soldier to move/attack
 
-	private int clickCounter = 4;
+    private Vector3 savedPos;
+    private Vector3 draggingPos;
 	private bool canAttack;
 	private bool canMove;
 	private int move;
+    private RaycastHit hit;
+    
 
-    private void OnMouseUp()
+    private void Start()
+    {
+        canMove = true;
+        canAttack = true;
+    }
+
+    public override void OnStartDrag()
+    {
+        savedPos = transform.position;
+        draggingPos = savedPos + new Vector3(0, 0, 1);
+        int.TryParse(this.gameObject.GetComponent<OneSoldierManager>().MovementText.text, out move);
+    }
+
+    public override void OnEndDrag()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+            Debug.Log("something there");
+        else
+            Debug.Log("nothing there");
+        transform.DOMove(savedPos, 0.1f);
+    }
+
+    public override void OnDraggingInUpdate()
     {
 
     }
 
-    private void OnMouseDown()
-	{
-		canMove = true;
-		canAttack = true;
-		clickCounter--;
-		SoldierMove ();
+    protected override bool DragSuccessful()
+    {
+        return true;
     }
 
-    private void SoldierMove()
+    private void OnCollisionEnter(Collision collision)
     {
-        //once soldier gameobject is detected
-        //soldier should move based on his movement parameter
-        //soldier shouldnt move again until next turn so `canMove == false`
-
-		if (clickCounter != 0 && canMove == true) 
-		{
-			int.TryParse (this.gameObject.GetComponent<OneSoldierManager> ().MovementText.text, out move);
-			Vector3 positiveX = new Vector3 (this.gameObject.transform.position.x + move, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
-			Vector3 negativeX = new Vector3 (this.gameObject.transform.position.x - move, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
-			if (Input.mousePosition.x <= this.gameObject.transform.position.x + move || Input.mousePosition.x >= this.gameObject.transform.position.x - move) 
-			{
-				this.gameObject.transform.position = new Vector3((int)Input.mousePosition.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
-			}
-		}
+        if (collision.gameObject.tag == "soldier")
+            Debug.Log("It's another soldier");
     }
 
 }

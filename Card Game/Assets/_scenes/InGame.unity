@@ -2991,11 +2991,6 @@ Prefab:
       propertyPath: PreviewText
       value: 
       objectReference: {fileID: 1327381359}
-    - target: {fileID: 225845720230978962, guid: c46f85ea1d0d3ee46960e347a64e5d64,
-        type: 2}
-      propertyPath: m_BlocksRaycasts
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
   m_IsPrefabParent: 0
@@ -3509,7 +3504,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967291
 --- !u!114 &1771575715
 MonoBehaviour:
   m_ObjectHideFlags: 0

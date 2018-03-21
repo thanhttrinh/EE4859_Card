@@ -98,9 +98,6 @@ public class DeckBuilder : MonoBehaviour {
 		//save current deck list into DeckStorage
 		DeckInfo deckToSave = new DeckInfo(deckList, DeckName.text);
 		Debug.Log ("deck to save: " + deckToSave.DeckName);
-		for (int i = 0; i < deckToSave.Cards.Count; i++) {
-			Debug.Log (" +++ " + deckToSave.Cards [i].ToString());
-		}
 		DeckStorage.Instance.AllDecks.Add (deckToSave);
 		Debug.Log ("added " + deckToSave.DeckName +" deck into storage");
 		DeckStorage.Instance.SaveDecksIntoPlayerPrefs ();

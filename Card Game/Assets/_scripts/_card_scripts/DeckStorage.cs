@@ -41,12 +41,15 @@ public class DeckStorage : MonoBehaviour
 
 	void Awake()
 	{
-		AllDecks = new List<DeckInfo> ();
+		//AllDecks = new List<DeckInfo> ();
+		//Debug.Log ("all deck instantiated");
 		Instance = this;
 	}
 
 	void Start()
 	{
+		AllDecks = new List<DeckInfo> ();
+		Debug.Log ("all deck instantiated");
 		//load in decks that is already made, if there is any
 		if (!alreadyLoadedDecks) 
 		{
@@ -114,12 +117,3 @@ public class DeckStorage : MonoBehaviour
 	}
 
 }
-
-
-
-
-
-
-
-
-

@@ -54,6 +54,8 @@ public class AddCardToDeck : MonoBehaviour {
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
 
+		Debug.Log ("clicked on " + this.name);
+
 		//check if the ray collided with an object
 		if (Physics.Raycast (clickPoint, out hitPoint)) {
 			if (hitPoint.collider == this.GetComponent<Collider> ()) {

@@ -11,7 +11,10 @@ public class DraggingInBattle : MonoBehaviour
 	private bool canMove;
 	private int move;
     private Vector3 newPos;
+	private Vector3 boardOffset = new Vector3(-2,-1,0);
     private Vector2 mouseOver;
+	private OneSoldierManager selectedSoldier;
+	private OneSoldierManager[,] soldiers = new OneSoldierManager[6,6]
 
 
     void Start()
@@ -23,85 +26,41 @@ public class DraggingInBattle : MonoBehaviour
 
     void Update()
     {
-        /*if (Input.GetMouseButtonDown(0))
+		UpdateMouseOver();
+
+		int x = (int)mouseOver.x;
+		int y = (int)mouseOver.y;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-            {
-                newPos = hit.collider.transform.position;
-                transform.position = newPos;
-            }
-        }*/
-        UpdateMouseOver();
+			SelectSoldier (x, y);
+        }
+        
         Debug.Log(mouseOver);
     }
 
     private void UpdateMouseOver()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10.0f, LayerMask.GetMask("board")))
+		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
-            mouseOver.x = (int)(hit.point.x);
-            mouseOver.y = (int)(hit.point.y);
+			mouseOver.x = (int)(hit.collider.transform.position.x - boardOffset.x);
+			mouseOver.y = (int)(hit.collider.transform.position.y - boardOffset.y);
         }
     }
 
-    public void OnMouseDown()
-    {
-        RaycastHit hit, hit2;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out hit))
-        {
-            if(hit.collider.gameObject == this.gameObject)
-            {
-                canMove = true;
-            }
-            else
-            {
-                canMove = false;
-            }
+	private void SelectSoldier(int x, int y)
+	{
+		//out of bounds
+		if (x < 0 || x > 6 || y < 0 || y > 6)
+			return;
 
-            if (canMove == true)
-            {
-                if (hit.collider.gameObject.tag == "tile")
-                {
-                    newPos = hit.collider.transform.position;
-                    this.gameObject.transform.position = newPos;
-                }
-            }
-        }
-
-        
-
-        /*
-        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag != "tile" && hit.collider.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
-        {
-            int.TryParse(this.gameObject.GetComponent<OneSoldierManager>().MovementText.text, out move);
-            Debug.Log("its a soldier with " + move + " movement");
-        }
-
-        if (Physics.Raycast(ray, out hit2) && hit2.collider.gameObject.tag == "tile")
-        {
-            Debug.Log(hit2.collider.transform.position);
-                
-        }
-        
-        if(canMove == true && hit.collider.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
-        {
-            if(hit2.collider.transform.position.x >= hit.collider.transform.position.x + move && hit2.collider.transform.position.x <= hit.collider.transform.position.x - move)
-            {
-                hit.collider.transform.position = new Vector3(4,0,0);
-            }
-        }
-        */
-
-    }
-
-    public void OnMouseUp()
-    {
-        
-    }
+		OneSoldierManager soldier = soldiers[x,y];
+		if(soldiers != null) 
+		{
+			selectedSoldier = soldiers;
+		}
+	}
 
 
 }

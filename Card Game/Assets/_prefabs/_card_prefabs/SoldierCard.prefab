@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224145700831730590}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 224230399117562072}
   - component: {fileID: 222402179535309684}
   - component: {fileID: 114049136164206102}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224055596581579276}
   - component: {fileID: 222483381764603730}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 222923431297183156}
   - component: {fileID: 114792757687131700}
   - component: {fileID: 114299068672122390}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 224740798897396026}
   - component: {fileID: 222129542022550218}
   - component: {fileID: 114364480913707040}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224405289727721228}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: FacePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 224955112968707708}
   - component: {fileID: 222788024909038748}
   - component: {fileID: 114684797184336528}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 224775689969469478}
   - component: {fileID: 222771169225630464}
   - component: {fileID: 114913869660847268}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 224784091495257202}
   - component: {fileID: 222812515562796354}
   - component: {fileID: 114797646204349626}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 114722545605740414}
   - component: {fileID: 114003405583874442}
   - component: {fileID: 114609290203288272}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: SoldierCard
   m_TagString: soldier
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 224457849163926646}
   - component: {fileID: 222303072179224780}
   - component: {fileID: 114867474620392382}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 224750920610408784}
   - component: {fileID: 222787784116342628}
   - component: {fileID: 114505855786833878}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 224958836170921538}
   - component: {fileID: 222074370863615500}
   - component: {fileID: 114247100284023156}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 224809499530968988}
   - component: {fileID: 222055952721839240}
   - component: {fileID: 114516652542815540}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 224643946621629406}
   - component: {fileID: 222367164825493828}
   - component: {fileID: 114073767212940732}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 224461904404876486}
   - component: {fileID: 222475760359695792}
   - component: {fileID: 114248550375524040}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224742811675858188}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 224735737318227244}
   - component: {fileID: 222624374631029972}
   - component: {fileID: 114747145257142338}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 223039924635694938}
   - component: {fileID: 114646702725867676}
   - component: {fileID: 114644768375824128}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 224526311380349346}
   - component: {fileID: 222290900939884074}
   - component: {fileID: 114717388837199036}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 224110765363214582}
   - component: {fileID: 222734714590370512}
   - component: {fileID: 114532650675898926}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 224892788908909570}
   - component: {fileID: 222481390694380372}
   - component: {fileID: 114084154059113858}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: MovementText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224772351759633238}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 224240905176415120}
   - component: {fileID: 222991992825230958}
   - component: {fileID: 114859411138802956}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: RangeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 224613668566497728}
   - component: {fileID: 222221234122637472}
   - component: {fileID: 114805972656518282}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBackGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 224735030390358782}
   - component: {fileID: 222254225823203902}
   - component: {fileID: 114799141870303634}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 224773929589473302}
   - component: {fileID: 222579118128938174}
   - component: {fileID: 114885616773200654}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 224281948994428362}
   - component: {fileID: 222486270643878556}
   - component: {fileID: 114154751784971398}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 224906735237616024}
   - component: {fileID: 222905949064196754}
   - component: {fileID: 114292352007617874}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 224510727791230700}
   - component: {fileID: 222798990409064938}
   - component: {fileID: 114089725247623220}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 224681454398974008}
   - component: {fileID: 222742855811083066}
   - component: {fileID: 114055721278253578}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Mana
   m_TagString: Untagged
   m_Icon: {fileID: 0}

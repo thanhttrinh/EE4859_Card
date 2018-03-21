@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224370351711923078}
   - component: {fileID: 222122011871411258}
   - component: {fileID: 114702113942461694}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224480419769376198}
   - component: {fileID: 222139463152233436}
   - component: {fileID: 114341986489495274}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 224339990172894848}
   - component: {fileID: 222604399178013346}
   - component: {fileID: 114977623738991956}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: MovementText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 224594019803398266}
   - component: {fileID: 222679856957109834}
   - component: {fileID: 114591533823927424}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 224997754930149008}
   - component: {fileID: 222755765995653042}
   - component: {fileID: 114518868388466290}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 224859144178803080}
   - component: {fileID: 222243167772258248}
   - component: {fileID: 114464507799855060}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4064621817378220}
   - component: {fileID: 212879681951195280}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 224940381357964776}
   - component: {fileID: 222161976866927306}
   - component: {fileID: 114143746789734372}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 224591381345359482}
   - component: {fileID: 222724404919838440}
   - component: {fileID: 114366687647756174}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 224597938400709212}
   - component: {fileID: 222404701056145010}
   - component: {fileID: 114451604739859408}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: ManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 224552879016949494}
   - component: {fileID: 222762123681244572}
   - component: {fileID: 114458243911061828}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 224220510108729610}
   - component: {fileID: 222437713319805752}
   - component: {fileID: 114470411877709622}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 224995198485314564}
   - component: {fileID: 222409184300047250}
   - component: {fileID: 114369866099074300}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 224945514645820776}
   - component: {fileID: 222520622339702460}
   - component: {fileID: 114003278480292352}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 224933689980107810}
   - component: {fileID: 222192638815786040}
   - component: {fileID: 114524551038759696}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224584127975404178}
   - component: {fileID: 222321045285724460}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 224216735389504496}
   - component: {fileID: 222007579153895854}
   - component: {fileID: 114380731425708230}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 223330210808506056}
   - component: {fileID: 114895966624904866}
   - component: {fileID: 114770807507497022}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 224660839020410628}
   - component: {fileID: 222429016867628212}
   - component: {fileID: 114953021773466592}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: RangeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 224253867415397376}
   - component: {fileID: 222859653374305704}
   - component: {fileID: 114849420430873258}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Mana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224001143799697338}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 224000428370843852}
   - component: {fileID: 222955843282690200}
   - component: {fileID: 114652183073542042}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 224784978843639378}
   - component: {fileID: 222902502140495428}
   - component: {fileID: 114763728180320136}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CardDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,9 +411,8 @@ GameObject:
   - component: {fileID: 114460371478848446}
   - component: {fileID: 114329527336042880}
   - component: {fileID: 114150097792842440}
-  - component: {fileID: 114349412108272932}
   - component: {fileID: 135823409160681300}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Soldier
   m_TagString: soldier
   m_Icon: {fileID: 0}
@@ -430,7 +429,7 @@ GameObject:
   - component: {fileID: 224804714903036948}
   - component: {fileID: 222683017640595388}
   - component: {fileID: 114262481700089228}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,17 +602,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Soldier
---- !u!114 &114349412108272932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848237352196946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb6cd5abd22c4717aa4eaf573f12683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114366687647756174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1502,7 +1490,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848237352196946}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.008, y: 0.008, z: 1}
   m_Children:
@@ -1513,7 +1501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1, y: -1}
+  m_AnchoredPosition: {x: 2, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224480419769376198

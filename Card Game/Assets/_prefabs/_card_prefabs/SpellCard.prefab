@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222171156161470668}
   - component: {fileID: 114796167894003386}
   - component: {fileID: 114863296852483924}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 224029854423763330}
   - component: {fileID: 222248426937757190}
   - component: {fileID: 114669725477373228}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224044984445754892}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 223039242625180972}
   - component: {fileID: 114769334141527512}
   - component: {fileID: 114252721693502646}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 224609288413378170}
   - component: {fileID: 222440203489470812}
   - component: {fileID: 114787796629359294}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 224838365012465478}
   - component: {fileID: 222073052966014450}
   - component: {fileID: 114597503930020798}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224335656074660966}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: FacePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 224624301945984924}
   - component: {fileID: 222121599387904120}
   - component: {fileID: 114198264698413770}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Mana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 224987458632759608}
   - component: {fileID: 222827795834387414}
   - component: {fileID: 114552540190384222}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 224570746372594280}
   - component: {fileID: 222312536536288474}
   - component: {fileID: 114844085549099658}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBackGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224315273229865766}
   - component: {fileID: 222903520927065096}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224766122540329142}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 224651707898131870}
   - component: {fileID: 222683300112577770}
   - component: {fileID: 114001390598899120}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224000763508445548}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 224713639168301314}
   - component: {fileID: 222932547091885266}
   - component: {fileID: 114465255757889382}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 224126737410264700}
   - component: {fileID: 222351087557576924}
   - component: {fileID: 114079438723664332}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 224089409087771952}
   - component: {fileID: 222713657219049890}
   - component: {fileID: 114520074190887038}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 224839214173972770}
   - component: {fileID: 222999705074550566}
   - component: {fileID: 114617653951412746}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 224435719206415324}
   - component: {fileID: 222492527089231492}
   - component: {fileID: 114862298027374092}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: RangeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 224202836103329714}
   - component: {fileID: 222659043946480080}
   - component: {fileID: 114101688895430474}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 224821579226759266}
   - component: {fileID: 222313906531633280}
   - component: {fileID: 114468666757884374}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 224627416932207202}
   - component: {fileID: 222736802719212536}
   - component: {fileID: 114475191797812484}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 114509641821790762}
   - component: {fileID: 114543855567989124}
   - component: {fileID: 114329293440840418}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: SpellCard
   m_TagString: spell
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 224142463983170182}
   - component: {fileID: 222999180152572098}
   - component: {fileID: 114996752472843968}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 224010464359903290}
   - component: {fileID: 222403938519554812}
   - component: {fileID: 114302823320101250}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: CardType
   m_TagString: Untagged
   m_Icon: {fileID: 0}

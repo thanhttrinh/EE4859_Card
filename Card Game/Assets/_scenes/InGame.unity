@@ -2142,7 +2142,7 @@ Prefab:
     - target: {fileID: 224388991528153434, guid: 8a5390fc5df7a5b4f8b70819b09035d3,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224388991528153434, guid: 8a5390fc5df7a5b4f8b70819b09035d3,
         type: 2}
@@ -2719,6 +2719,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1429678297}
+  - component: {fileID: 1429678298}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: table
@@ -2741,6 +2742,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429678298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1429678296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb6cd5abd22c4717aa4eaf573f12683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldierPrefab: {fileID: 1556169371}
 --- !u!4 &1438449485 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4524989933283906, guid: 36146d257a91b4062b7a3bfc282179b4,
@@ -2894,6 +2907,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1542045580}
+--- !u!1 &1556169371 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64,
+    type: 2}
+  m_PrefabInternal: {fileID: 1619416082}
 --- !u!1001 &1563296317
 Prefab:
   m_ObjectHideFlags: 0
@@ -3134,7 +3152,7 @@ Prefab:
     - target: {fileID: 224401969948256004, guid: c46f85ea1d0d3ee46960e347a64e5d64,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224401969948256004, guid: c46f85ea1d0d3ee46960e347a64e5d64,
         type: 2}

@@ -7,21 +7,24 @@ public class DraggingInBattle : MonoBehaviour
 {
     // script used to drag soldier to move/attack
 
+    public GameObject soldierPrefab;
+
 	private bool canAttack;
 	private bool canMove;
 	private int move;
     private Vector3 newPos;
 	private Vector3 boardOffset = new Vector3(-2,-1,0);
     private Vector2 mouseOver;
+    private Vector2 startDrag;
 	private OneSoldierManager selectedSoldier;
-	private OneSoldierManager[,] soldiers = new OneSoldierManager[6,6]
+    private OneSoldierManager[,] soldiers = new OneSoldierManager[6, 6];
 
 
     void Start()
     {
         //canMove = true;
         //canAttack = true;
-        newPos = transform.position;
+        //newPos = transform.position;
     }
 
     void Update()
@@ -55,12 +58,23 @@ public class DraggingInBattle : MonoBehaviour
 		if (x < 0 || x > 6 || y < 0 || y > 6)
 			return;
 
-		OneSoldierManager soldier = soldiers[x,y];
-		if(soldiers != null) 
-		{
-			selectedSoldier = soldiers;
-		}
+        OneSoldierManager soldier = gameObject.GetComponent<OneSoldierManager>();
+        soldiers[x, y] = soldier;
+        if (soldier != null)
+        {
+            selectedSoldier = soldier;
+            startDrag = mouseOver;
+            Debug.Log(selectedSoldier.gameObject.name);
+        }
+        else
+            Debug.Log("nothing there");
 	}
 
+    /*
+    private void MoveSoldier(OneSoldierManager s, int x, int y)
+    {
+
+    }
+    */
 
 }

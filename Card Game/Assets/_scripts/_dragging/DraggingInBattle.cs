@@ -10,20 +10,20 @@ public class DraggingInBattle : MonoBehaviour
 	private bool canAttack;
 	private bool canMove;
 	private int move;
-    //private RaycastHit hit;
     private Vector3 newPos;
+    private Vector2 mouseOver;
 
 
     void Start()
     {
-        canMove = true;
-        canAttack = true;
+        //canMove = true;
+        //canAttack = true;
         newPos = transform.position;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -32,16 +32,47 @@ public class DraggingInBattle : MonoBehaviour
                 newPos = hit.collider.transform.position;
                 transform.position = newPos;
             }
-        }
+        }*/
+        UpdateMouseOver();
+        Debug.Log(mouseOver);
+    }
 
+    private void UpdateMouseOver()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10.0f, LayerMask.GetMask("board")))
+        {
+            mouseOver.x = (int)(hit.point.x);
+            mouseOver.y = (int)(hit.point.y);
+        }
     }
 
     public void OnMouseDown()
     {
-      
+        RaycastHit hit, hit2;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(ray, out hit))
+        {
+            if(hit.collider.gameObject == this.gameObject)
+            {
+                canMove = true;
+            }
+            else
+            {
+                canMove = false;
+            }
 
+            if (canMove == true)
+            {
+                if (hit.collider.gameObject.tag == "tile")
+                {
+                    newPos = hit.collider.transform.position;
+                    this.gameObject.transform.position = newPos;
+                }
+            }
+        }
 
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
 
         /*
         if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag != "tile" && hit.collider.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)

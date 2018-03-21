@@ -412,7 +412,6 @@ GameObject:
   - component: {fileID: 114329527336042880}
   - component: {fileID: 114150097792842440}
   - component: {fileID: 114349412108272932}
-  - component: {fileID: 114679220919755670}
   - component: {fileID: 135823409160681300}
   m_Layer: 5
   m_Name: Soldier
@@ -949,18 +948,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Lancer
---- !u!114 &114679220919755670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848237352196946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c464de51049035942a4749ef9df82a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UserPointerDisplacement: 1
 --- !u!114 &114702113942461694
 MonoBehaviour:
   m_ObjectHideFlags: 1

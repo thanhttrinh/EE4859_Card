@@ -3,66 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class DraggingInBattle : DraggingActions 
+public class DraggingInBattle : MonoBehaviour 
 {
     // script used to drag soldier to move/attack
 
-    private Vector3 savedPos;
-    private Vector3 draggingPos;
 	private bool canAttack;
 	private bool canMove;
 	private int move;
-    private RaycastHit hit;
-    private RaycastHit hit2;
+    //private RaycastHit hit;
+    private Vector3 newPos;
 
 
-    private void Start()
+    void Start()
     {
         canMove = true;
         canAttack = true;
+        newPos = transform.position;
     }
 
-    public override void OnStartDrag()
+    void Update()
     {
-        savedPos = transform.position;
-        draggingPos = savedPos + new Vector3(0, 0, 1);
-        int.TryParse(this.gameObject.GetComponent<OneSoldierManager>().MovementText.text, out move);
-    }
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                newPos = hit.collider.transform.position;
+                transform.position = newPos;
+            }
+        }
 
-    public override void OnEndDrag()
-    {
-        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-        //transform.DOMove(savedPos, 0.1f);
     }
 
     public void OnMouseDown()
     {
-        //Ray ray = new Ray(draggingPos, Vector3.back);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+      
+
+
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        /*
+        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag != "tile" && hit.collider.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
         {
-            Debug.Log(hit.collider.gameObject.name);
+            int.TryParse(this.gameObject.GetComponent<OneSoldierManager>().MovementText.text, out move);
+            Debug.Log("its a soldier with " + move + " movement");
         }
-        else
+
+        if (Physics.Raycast(ray, out hit2) && hit2.collider.gameObject.tag == "tile")
         {
-            Debug.Log("nothing there");
+            Debug.Log(hit2.collider.transform.position);
+                
         }
+        
+        if(canMove == true && hit.collider.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+        {
+            if(hit2.collider.transform.position.x >= hit.collider.transform.position.x + move && hit2.collider.transform.position.x <= hit.collider.transform.position.x - move)
+            {
+                hit.collider.transform.position = new Vector3(4,0,0);
+            }
+        }
+        */
+
     }
 
     public void OnMouseUp()
     {
-
+        
     }
 
-    public override void OnDraggingInUpdate()
-    {
-
-    }
-
-    protected override bool DragSuccessful()
-    {
-        return true;
-    }
 
 }

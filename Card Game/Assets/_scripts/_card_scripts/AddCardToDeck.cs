@@ -27,12 +27,10 @@ public class AddCardToDeck : MonoBehaviour {
 		
 		//check if these cards are available in collection
 		//if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
-			CCScreen.Instance.BuilderScript.AddCard (asset);
-			UpdateQuantity ();
+		CCScreen.Instance.BuilderScript.AddCard (asset);
+		Debug.Log ("Added " + asset.name);
+		UpdateQuantity ();
 		//}
-		//else{
-			//do not have enough cards
-		//
 	}
 
 	void OnMouseEnter(){
@@ -52,7 +50,7 @@ public class AddCardToDeck : MonoBehaviour {
 
 	void OnRightClick(){
 		CardAsset asset = GetComponent<OneCardManager> ().cardAsset;
-		//cast a ray from the mouse
+		//cast a ray from the mouse, the cursor's position
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
 
@@ -60,6 +58,7 @@ public class AddCardToDeck : MonoBehaviour {
 		if (Physics.Raycast (clickPoint, out hitPoint)) {
 			if (hitPoint.collider == this.GetComponent<Collider> ()) {
 				Debug.Log ("right clicked on " + this.name);
+
 			}
 		}
 	}

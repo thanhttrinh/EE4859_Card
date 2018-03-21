@@ -28,7 +28,7 @@ public class CardNameRibbon : MonoBehaviour {
 	}
 
 	public void ReduceQuantity(){
-		Debug.Log ("In reduce Quantity");
+		Debug.Log ("Removing " + Asset.name);
 		CCScreen.Instance.BuilderScript.RemoveCard (Asset);
 	}
 }

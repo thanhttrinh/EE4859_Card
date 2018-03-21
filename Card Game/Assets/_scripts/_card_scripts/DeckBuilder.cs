@@ -17,9 +17,6 @@ public class DeckBuilder : MonoBehaviour {
 
 	public bool InDeckBuildingMode{ get; set; }
 
-	void Awake(){
-	}
-
 	public void AddCard(CardAsset asset){
 		//if we are browsing the collection
 		if (!InDeckBuildingMode)
@@ -91,7 +88,6 @@ public class DeckBuilder : MonoBehaviour {
 		while (deckList.Count > 0) {
 			RemoveCard (deckList [0]);
 		}
-
 		CCScreen.Instance.CollectionBrowserScript.ShowCollectionForDeckBuilding ();
 
 		//reset the InputField text to be empty
@@ -99,12 +95,11 @@ public class DeckBuilder : MonoBehaviour {
 	}
 
 	public void DoneButtonHandler(){
-		Debug.Log ("saving deck ...");
 		//save current deck list into DeckStorage
 		DeckInfo deckToSave = new DeckInfo(deckList, DeckName.text);
-		Debug.Log ("deck to save ... " + deckToSave.DeckName);
+		Debug.Log ("deck to save: " + deckToSave.DeckName);
 		DeckStorage.Instance.AllDecks.Add (deckToSave);
-		Debug.Log ("added deck into storage");
+		Debug.Log ("added " + deckToSave.DeckName +" deck into storage");
 		DeckStorage.Instance.SaveDecksIntoPlayerPrefs ();
 		//the screen with the collection and pre-made decks is loaded by calling
 		//other functions on this button

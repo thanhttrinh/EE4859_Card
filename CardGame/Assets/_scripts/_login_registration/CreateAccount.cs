@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class CreateAccount : MonoBehaviour {
 
-	[HideInInspector]
 	public static string email = "";
 	public static string pwd = "";
 	public static string username = "";
 	public static string clear = "";
-
 	public string currentMenu = "login";
 
 	private string registerURL = "http://tinycivs.000webhostapp.com/CreateAccountT.php";
 	private string loginURL = "http://tinycivs.000webhostapp.com/LoginAccountT.php";
+
 	private string confirmPwd = "";
 	private string createPwd = "";
 	private string createEmail = "";
@@ -23,7 +22,7 @@ public class CreateAccount : MonoBehaviour {
 
 	private float screenW = Screen.width;
 	private float screenH = Screen.height;
-
+	/*
 	void Start () {
 		
 	}
@@ -61,6 +60,7 @@ public class CreateAccount : MonoBehaviour {
 
 		GUI.Label (new Rect ((screenW / 3.5f), (screenH / 2.5f) + 5, 110, 30), "Password");
 		pwd = GUI.PasswordField (new Rect ((screenW / 2) - 120, (screenH / 2.5f), 230, 30), pwd, "*"[0], 15);
+
 	}
 
 	void regGUI(){
@@ -95,7 +95,7 @@ public class CreateAccount : MonoBehaviour {
 		confirmPwd = GUI.PasswordField (new Rect ((screenW / 2) - 120, (screenH / 2.5f), 230, 30), confirmPwd, "*"[0], 15);
 	}
 	#endregion
-
+*/
 	#region Coroutine
 	//actually create the account
 	IEnumerator registerAcc()

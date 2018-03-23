@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 4966705419833008}
   - component: {fileID: 65016037889670472}
   - component: {fileID: 114212280140503870}
-  - component: {fileID: 114362083264483152}
+  - component: {fileID: 114775560705157522}
   m_Layer: 5
   m_Name: SpellCardMenu
   m_TagString: spell
@@ -627,17 +627,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 4
---- !u!114 &114362083264483152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1953292129861770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b6342dc31a05f468fa56a8f97b0f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114369097383093198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -977,6 +966,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114775560705157522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953292129861770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590df255425690747ac27a156a9836ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114783990922151464
 MonoBehaviour:
   m_ObjectHideFlags: 1

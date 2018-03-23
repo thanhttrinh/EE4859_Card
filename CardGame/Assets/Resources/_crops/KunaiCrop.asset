@@ -8,11 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1360b0d39a517d74ab7f2b87fa9a605c, type: 3}
   m_Name: KunaiCrop
   m_EditorClassIdentifier: 
-  cardTypeAsset: {fileID: 11400000, guid: d1c81834e41e06b45a0583eb6d036cc9, type: 2}
-  Description: Upon destroying this crop, take 1 damage
+  cardTypeAsset: {fileID: 11400000, guid: b2132cd00b75db248ba366c86aef6001, type: 2}
+  ScriptName: Kunai Crop
+  Description: Upon destroying this card, take 1 damage.
   Tags: 
   CardImage: {fileID: 0}
   ManaCost: 3
@@ -24,13 +25,10 @@ MonoBehaviour:
   Movement: 0
   AttacksForOneTurn: 1
   Charge: 0
-  CreatureScriptName: 
   SpecialCreatureAmount: 0
   CropHealth: 3
   CropSize: 2
-  CropScriptName: 
   SpecialCropAmount: 0
   SpellRange: 0
-  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

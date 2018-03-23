@@ -33,6 +33,7 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     [Header("General Info")]
 	public CardTypeAsset cardTypeAsset; //decide what type of card this is
 
+	public string ScriptName;
     [TextArea(2,3)]
     public string Description;  // Description for spell or character
     [TextArea(2,3)]
@@ -64,18 +65,18 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     public int AttacksForOneTurn = 1;
     public bool Charge;
     //public bool Taunt;
-    public string CreatureScriptName;
+    //public string CreatureScriptName;
     public int SpecialCreatureAmount;
 
     [Header("Crop Info")]
     public int CropHealth;
     public int CropSize;
-    public string CropScriptName;
+    //public string CropScriptName;
     public int SpecialCropAmount;
 
     [Header("Spell Info")]
     public int SpellRange;
-    public string SpellScriptName;
+    //public string SpellScriptName;
     public int SpecialSpellAmount;
     public TargetingOptions Targets;
 

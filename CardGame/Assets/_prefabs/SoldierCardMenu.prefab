@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 4945745766491428}
   - component: {fileID: 65947481600186488}
   - component: {fileID: 114308374590577846}
-  - component: {fileID: 114143775558366388}
+  - component: {fileID: 114729064838170132}
   m_Layer: 5
   m_Name: SoldierCardMenu
   m_TagString: soldier
@@ -679,17 +679,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114143775558366388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1453251050108020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b6342dc31a05f468fa56a8f97b0f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114225055956989734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1114,6 +1103,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114729064838170132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1453251050108020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590df255425690747ac27a156a9836ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114731597004960378
 MonoBehaviour:
   m_ObjectHideFlags: 1

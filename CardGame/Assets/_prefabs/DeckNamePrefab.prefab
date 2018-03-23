@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222726187986755908}
   - component: {fileID: 114045835624600590}
   - component: {fileID: 114727149558414958}
-  - component: {fileID: 114430083245171656}
+  - component: {fileID: 114212670084397060}
   m_Layer: 0
   m_Name: DeckNamePrefab
   m_TagString: Untagged
@@ -92,6 +92,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114212670084397060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461840868012644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe303ca35a8363545baf7aa6f8ee7417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameText: {fileID: 114295954575660208}
+  DeleteDeckButton: {fileID: 1866981922893790}
+  SavedDeckInfo:
+    DeckName: 
+    Cards: []
 --- !u!114 &114295954575660208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,22 +168,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114430083245171656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461840868012644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd16b837dcf44780bb825c44c6635, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NameText: {fileID: 114295954575660208}
-  DeleteDeckButton: {fileID: 1866981922893790}
-  SavedDeckInfo:
-    DeckName: 
-    Cards: []
 --- !u!114 &114653604447556878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114430083245171656}
+      - m_Target: {fileID: 0}
         m_MethodName: DeleteThisDeck
         m_Mode: 1
         m_Arguments:
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114430083245171656}
+      - m_Target: {fileID: 114212670084397060}
         m_MethodName: EditThisDeck
         m_Mode: 1
         m_Arguments:

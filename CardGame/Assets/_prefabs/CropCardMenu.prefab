@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4422991120666154}
   - component: {fileID: 65727356353047086}
   - component: {fileID: 114521972013734588}
-  - component: {fileID: 114958805157701042}
+  - component: {fileID: 114475591828279966}
   m_Layer: 5
   m_Name: CropCardMenu
   m_TagString: crop
@@ -876,6 +876,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114475591828279966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200707377178536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590df255425690747ac27a156a9836ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114521972013734588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -887,7 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: 48e1e5ffef708284aa68d9d3a33e3598, type: 2}
+  cardAsset: {fileID: 11400000, guid: e88428831e5be2f408ef7d3a2f6dd763, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114615113262742254}
   ManaCostText: {fileID: 114418570284253592}
@@ -1111,17 +1122,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 2
---- !u!114 &114958805157701042
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200707377178536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b6342dc31a05f468fa56a8f97b0f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114970828231192020
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,10 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1360b0d39a517d74ab7f2b87fa9a605c, type: 3}
   m_Name: Teleportal
   m_EditorClassIdentifier: 
-  cardTypeAsset: {fileID: 11400000, guid: 5957fe8c42e345643bd4d5e8ca767b76, type: 2}
+  cardTypeAsset: {fileID: 11400000, guid: 518020abd5019a14c8898c9cfa1ccf30, type: 2}
+  ScriptName: Teleportal
   Description: Allies may move adjacent to another unit this turn.
   Tags: 
   CardImage: {fileID: 0}
@@ -24,13 +25,10 @@ MonoBehaviour:
   Movement: 0
   AttacksForOneTurn: 1
   Charge: 0
-  CreatureScriptName: 
   SpecialCreatureAmount: 0
   CropHealth: 0
   CropSize: 0
-  CropScriptName: 
   SpecialCropAmount: 0
   SpellRange: 0
-  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

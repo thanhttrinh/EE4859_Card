@@ -6,7 +6,9 @@ using System;
 public enum TargetingOptions
 {
     NoTarget,
-    AllUnits, 
+    AllUnits,
+	AllCrops,
+	AllSoldiers,
     EnemyUnits,
     EnemySoldiers,
     EnemyCrops,
@@ -33,7 +35,7 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     [Header("General Info")]
 	public CardTypeAsset cardTypeAsset; //decide what type of card this is
 
-	public string ScriptName;
+	public string ScriptName; //the displayed name on the card itself
     [TextArea(2,3)]
     public string Description;  // Description for spell or character
     [TextArea(2,3)]

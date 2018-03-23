@@ -858,7 +858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: 5927a8320d0a83249b4807e9d02353f1, type: 2}
+  cardAsset: {fileID: 11400000, guid: da6fe3f5d3a118543ade41af643f24bb, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114773454977281418}
   ManaCostText: {fileID: 114027475474364534}

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1360b0d39a517d74ab7f2b87fa9a605c, type: 3}
   m_Name: Ninja
   m_EditorClassIdentifier: 
-  cardTypeAsset: {fileID: 0}
+  cardTypeAsset: {fileID: 11400000, guid: 64aa6f18c98caa44caa0a5a1d4faf485, type: 2}
   ScriptName: ninja
   Description: 
   Tags: 

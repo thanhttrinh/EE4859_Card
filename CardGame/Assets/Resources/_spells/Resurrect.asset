@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardTypeAsset: {fileID: 11400000, guid: 518020abd5019a14c8898c9cfa1ccf30, type: 2}
   ScriptName: Resurrect
-  Description: 
+  Description: Bring a crop back from the dead.
   Tags: 
   CardImage: {fileID: 0}
   ManaCost: 8

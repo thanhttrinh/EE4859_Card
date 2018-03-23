@@ -18,7 +18,6 @@ public class ListOfDecksInCollection : MonoBehaviour {
 			}
 		}
 
-		Debug.Log ("before obtaining info from deck info");
 		//load info about decks from DeckStorage
 		foreach (DeckInfo info in DeckStorage.Instance.AllDecks) {
 			//create a new deckInListPrefab

@@ -33,7 +33,6 @@ public class DeckInScrollList : MonoBehaviour, IPointerEnterHandler, IPointerExi
 	}
 
 	public void DeleteThisDeck(){
-		Debug.Log ("Deleting deck: " + SavedDeckInfo.DeckName);
 		DeckStorage.Instance.AllDecks.Remove (SavedDeckInfo);
 		Destroy (gameObject);
 	}

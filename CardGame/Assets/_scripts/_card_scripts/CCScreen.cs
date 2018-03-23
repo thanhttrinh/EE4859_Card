@@ -24,7 +24,6 @@ public class CCScreen : MonoBehaviour {
 	}
 
 	public void ShowScreenForCollectionBrowsing(){
-		Debug.Log ("CCScreen: collection browsing");
 		screenContent.SetActive (true);
 		readyDecksList.SetActive (true);
 		cardsInDeckList.SetActive (false);

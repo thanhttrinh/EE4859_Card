@@ -28,7 +28,6 @@ public class AddCardToDeck : MonoBehaviour {
 		//check if these cards are available in collection
 		//if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
 		CCScreen.Instance.BuilderScript.AddCard (asset);
-		Debug.Log ("Added " + asset.name);
 		UpdateQuantity ();
 		//}
 	}
@@ -54,13 +53,10 @@ public class AddCardToDeck : MonoBehaviour {
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
 
-		Debug.Log ("clicked on " + this.name);
-
 		//check if the ray collided with an object
 		if (Physics.Raycast (clickPoint, out hitPoint)) {
 			if (hitPoint.collider == this.GetComponent<Collider> ()) {
-				Debug.Log ("right clicked on " + this.name);
-
+				CCScreen.Instance.BuilderScript.RemoveCard (asset);
 			}
 		}
 	}
@@ -70,6 +66,7 @@ public class AddCardToDeck : MonoBehaviour {
 		int quantity = CardCollection.Instance.QuantityOfEachCard [cardAsset];
 		if (CCScreen.Instance.BuilderScript.InDeckBuildingMode && CCScreen.Instance.ShowReducedQuantitiesInDeckBuilding)
 			quantity -= CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset);
+
 
 	}
 }

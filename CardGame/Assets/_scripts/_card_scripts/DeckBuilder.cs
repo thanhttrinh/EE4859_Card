@@ -68,7 +68,6 @@ public class DeckBuilder : MonoBehaviour {
 	}
 
 	public void RemoveCard(CardAsset asset){
-		Debug.Log ("RemoveCard");
 		CardNameRibbon ribbonToRemove = ribbons [asset];
 		ribbonToRemove.SetQuantity (ribbonToRemove.Quantity - 1);
 
@@ -97,9 +96,7 @@ public class DeckBuilder : MonoBehaviour {
 	public void DoneButtonHandler(){
 		//save current deck list into DeckStorage
 		DeckInfo deckToSave = new DeckInfo(deckList, DeckName.text);
-		Debug.Log ("deck to save: " + deckToSave.DeckName);
 		DeckStorage.Instance.AllDecks.Add (deckToSave);
-		Debug.Log ("added " + deckToSave.DeckName +" deck into storage");
 		DeckStorage.Instance.SaveDecksIntoPlayerPrefs ();
 		//the screen with the collection and pre-made decks is loaded by calling
 		//other functions on this button

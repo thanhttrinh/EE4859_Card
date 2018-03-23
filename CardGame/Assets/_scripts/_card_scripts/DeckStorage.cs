@@ -49,7 +49,6 @@ public class DeckStorage : MonoBehaviour
 	void Start()
 	{
 		AllDecks = new List<DeckInfo> ();
-		Debug.Log ("all deck instantiated");
 		//load in decks that is already made, if there is any
 		if (!alreadyLoadedDecks) 
 		{
@@ -60,7 +59,6 @@ public class DeckStorage : MonoBehaviour
 
 	void LoadDecksFromPlayerPrefs()
 	{
-		Debug.Log ("Loading decks from player prefs");
 		List<DeckInfo> DecksFound = new List<DeckInfo> ();
 		//load the information about decks from PlayerPrefsX
 		for (int i = 0; i < 9; i++) {
@@ -87,7 +85,6 @@ public class DeckStorage : MonoBehaviour
 
 	public void SaveDecksIntoPlayerPrefs()
 	{
-		Debug.Log ("saving decks into player prefs");
 		for (int i = 0; i < 9; i++) {
 			string deckNameKey = "DeckName" + i.ToString ();
 

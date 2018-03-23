@@ -8,29 +8,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9d0eedb49e23b498e17f644d903ba7, type: 3}
-  m_Name: HappyHorseman
+  m_Script: {fileID: 11500000, guid: 1360b0d39a517d74ab7f2b87fa9a605c, type: 3}
+  m_Name: RandomFrolickingLlama
   m_EditorClassIdentifier: 
-  cardTypeAsset: {fileID: 11400000, guid: 2c854b993532d224d8449fba722d23e4, type: 2}
+  cardTypeAsset: {fileID: 0}
+  ScriptName: Frolicking Llama
   Description: 
   Tags: 
   CardImage: {fileID: 0}
-  ManaCost: 3
+  ManaCost: 10
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
-  MaxHealth: 1
-  Attack: 5
-  SoldierRange: 1
+  MaxHealth: 8
+  Attack: 8
+  SoldierRange: 3
   Movement: 2
   AttacksForOneTurn: 1
   Charge: 0
-  CreatureScriptName: 
   SpecialCreatureAmount: 0
   CropHealth: 0
   CropSize: 0
-  CropScriptName: 
   SpecialCropAmount: 0
   SpellRange: 0
-  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

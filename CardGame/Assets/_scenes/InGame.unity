@@ -2426,6 +2426,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1327381357}
+--- !u!1 &1338626101 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1519026123925860, guid: 8a5390fc5df7a5b4f8b70819b09035d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1139383058}
 --- !u!1001 &1345357525
 Prefab:
   m_ObjectHideFlags: 0
@@ -2773,6 +2778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Soldier: {fileID: 563700209}
+  Crop: {fileID: 1338626101}
 --- !u!54 &1429678300
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -514,8 +514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dbd2133c80840489c1dd7aaa126bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: b1de29e857bffe546bcc119fe1d309cf, type: 2}
+  cardAsset: {fileID: 11400000, guid: da6fe3f5d3a118543ade41af643f24bb, type: 2}
   PreviewManager: {fileID: 0}
+  NameText: {fileID: 114652183073542042}
   HealthText: {fileID: 114518868388466290}
   AttackText: {fileID: 114458243911061828}
   RangeText: {fileID: 114953021773466592}
@@ -1501,7 +1502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224480419769376198

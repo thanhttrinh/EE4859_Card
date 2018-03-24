@@ -459,8 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82eec29164d99b4b87686dd14a744f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 0}
+  cardAsset: {fileID: 11400000, guid: e88428831e5be2f408ef7d3a2f6dd763, type: 2}
   PreviewManager: {fileID: 0}
+  NameText: {fileID: 114283215145549730}
   HealthText: {fileID: 114860226952189450}
   CropSizeText: {fileID: 114219668879716510}
   CreatureGraphicImage: {fileID: 114000573100524084}

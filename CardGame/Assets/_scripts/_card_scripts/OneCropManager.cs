@@ -8,6 +8,7 @@ public class OneCropManager : MonoBehaviour
     public CardAsset cardAsset;
     public OneCardManager PreviewManager;
     [Header("Text Component References")]
+	public Text NameText;
     public Text HealthText;
     public Text CropSizeText;
     [Header("Image References")]
@@ -26,6 +27,7 @@ public class OneCropManager : MonoBehaviour
         // Change the card graphic sprite
         CreatureGraphicImage.sprite = cardAsset.CardImage;
 
+		NameText.text = cardAsset.name.ToString ();
         HealthText.text = cardAsset.CropHealth.ToString();
         CropSizeText.text = cardAsset.CropSize.ToString();
 

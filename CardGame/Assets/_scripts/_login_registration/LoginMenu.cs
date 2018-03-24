@@ -41,17 +41,26 @@ public class LoginMenu : MonoBehaviour {
 		RegisterContent.SetActive (false);
 		LoginContent.SetActive (true);
 
+		//clear register input fields
+		confirmPwd.text = "";
+		createPwd.text = "";
+		createEmail.text = "";
+		createUser.text = "";
+
 	}
 
 	public void RegGUI(){
 		LoginContent.SetActive (false);
 		RegisterContent.SetActive (true);
 
+		//clear login input fields
+		email.text = "";
+		pwd.text = "";
+
 	}
 
 	public void BackButtonHandler(){
-		RegisterContent.SetActive (false);
-		LoginContent.SetActive (true);
+		LoginGUI ();
 	}
 
 	public void RegisterButtonHandler(){

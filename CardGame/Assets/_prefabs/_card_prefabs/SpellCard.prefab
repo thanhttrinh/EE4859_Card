@@ -631,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: 22007abe31e5b7343b7e69ab8b06ccf2, type: 2}
+  cardAsset: {fileID: 11400000, guid: 80db8b3cbdd3ea84790b144445fd6661, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114617653951412746}
   ManaCostText: {fileID: 114597503930020798}
@@ -779,6 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01112bfd7d6b4b54b9dfcc2cfa465e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragging: 0
 --- !u!114 &114551086631646920
 MonoBehaviour:
   m_ObjectHideFlags: 1

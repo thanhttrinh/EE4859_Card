@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnQuitButton : MonoBehaviour {
 
-	void OnApplicationQuit(){
+	void OnQuit(){
 		Application.Quit ();
 	}
 }

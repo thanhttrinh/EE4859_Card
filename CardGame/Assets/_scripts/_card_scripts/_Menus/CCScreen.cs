@@ -30,7 +30,7 @@ public class CCScreen : MonoBehaviour {
 		title.SetActive (false);
 		BuilderScript.InDeckBuildingMode = false;
 		//if there is already decks made, show them
-		//ListOfReadyMadeDecksScript.UpdateList ();
+		ListOfReadyMadeDecksScript.UpdateList ();
 
 		CollectionBrowserScript.AllCardsTabs.gameObject.SetActive (true);
 		Canvas.ForceUpdateCanvases ();

@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114212670084397060}
         m_MethodName: DeleteThisDeck
         m_Mode: 1
         m_Arguments:

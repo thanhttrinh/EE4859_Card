@@ -31,12 +31,4 @@ public class CardNameRibbon : MonoBehaviour {
 		Debug.Log ("Removing " + Asset.name);
 		CCScreen.Instance.BuilderScript.RemoveCard (Asset);
 	}
-
-	/*
-	void Update(){
-		//remove cards from custom deck if unwanted
-		if (Input.GetMouseButtonDown (1)) {
-			CCScreen.Instance.BuilderScript.RemoveCard (this.Asset);
-		}
-	}*/
 }

@@ -279,7 +279,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45427992}
---- !u!1001 &67725438
+--- !u!1001 &100653773
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -982,8 +982,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 319004205}
   m_HandleRect: {fileID: 1736199383}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3405,7 +3405,7 @@ Transform:
 RectTransform:
   m_PrefabParentObject: {fileID: 224674279099618214, guid: cfd95327c538ea14f82c22e78c152a9e,
     type: 2}
-  m_PrefabInternal: {fileID: 67725438}
+  m_PrefabInternal: {fileID: 100653773}
 --- !u!1 &1118745919
 GameObject:
   m_ObjectHideFlags: 0

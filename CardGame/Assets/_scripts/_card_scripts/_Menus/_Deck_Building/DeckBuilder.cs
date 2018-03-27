@@ -40,6 +40,10 @@ public class DeckBuilder : MonoBehaviour {
 			//added one to count if we are adding this card
 			count++;
 
+			//add to card count
+			CardCount.Instance.count++;
+			CardCount.Instance.SetCountText ();
+
 			//do all the graphical stuff
 			if (ribbons.ContainsKey (asset)) {
 				//update quantity
@@ -54,9 +58,7 @@ public class DeckBuilder : MonoBehaviour {
 				ribbons.Add (asset, ribbon);
 			}
 		}
-		//add to card count
-		CardCount.Instance.count++;
-		CardCount.Instance.SetCountText ();
+
 	}
 		
 
@@ -76,13 +78,16 @@ public class DeckBuilder : MonoBehaviour {
 
 		if (NumberOfThisCardInDeck (asset) == 1) {
 			ribbons.Remove (asset);
+
+			//subtract from card count
+			CardCount.Instance.count--;
+			CardCount.Instance.SetCountText ();
+
 			Destroy (ribbonToRemove.gameObject);
 		}
 		deckList.Remove (asset);
 
-		//subtract from card count
-		CardCount.Instance.count--;
-		CardCount.Instance.SetCountText ();
+
 
 		//update quantities of all cards taht we currently show in the collection
 		CCScreen.Instance.CollectionBrowserScript.UpdateQuantitiesOnPage();

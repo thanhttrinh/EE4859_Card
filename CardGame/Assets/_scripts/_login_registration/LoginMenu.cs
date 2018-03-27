@@ -9,6 +9,7 @@ public class LoginMenu : MonoBehaviour {
 	[Header("Login Menu Inputs")]
 	public InputField email;
 	public InputField pwd;
+	public string confirmLogin;
 
 	[Header("Register Menu Inputs")]
 	public InputField confirmPwd;
@@ -19,9 +20,6 @@ public class LoginMenu : MonoBehaviour {
 	[Header("Menu Contents")]
 	public GameObject LoginContent;
 	public GameObject RegisterContent;
-
-	[HideInInspector]
-	public string username;
 
 	private string registerURL = "http://tinycivs.000webhostapp.com/CreateAccountT.php";
 	private string loginURL = "http://tinycivs.000webhostapp.com/LoginAccountT.php";
@@ -120,7 +118,7 @@ public class LoginMenu : MonoBehaviour {
 		form.AddField ("password", pwd.text);
 		//connect to url and put it the form
 		WWW loginAccWWW = new WWW (loginURL, form);
-		//make the info is returning before continuing 
+		//make sure the info is returning before continuing 
 		yield return loginAccWWW;
 		if (loginAccWWW.error != null) 
 		{
@@ -134,6 +132,7 @@ public class LoginMenu : MonoBehaviour {
 			Debug.Log (logText);
 			if (logText == "success") 
 			{
+				confirmLogin = email.text;
 				SceneManager.LoadScene ("MenuScene");
 			}
 			if (logText == "noExistEmail") {

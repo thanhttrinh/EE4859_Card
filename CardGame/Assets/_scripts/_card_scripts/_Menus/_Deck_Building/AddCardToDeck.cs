@@ -55,6 +55,8 @@ public class AddCardToDeck : MonoBehaviour {
 		if (Physics.Raycast (clickPoint, out hitPoint)) {
 			if (hitPoint.collider == this.GetComponent<Collider> ()) {
 				CCScreen.Instance.BuilderScript.RemoveCard (asset);
+				//remove a card from the card count class
+				CardCount.Instance.SetCountText ();
 			}
 		}
 	}

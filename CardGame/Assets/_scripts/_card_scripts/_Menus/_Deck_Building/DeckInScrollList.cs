@@ -18,7 +18,7 @@ public class DeckInScrollList : MonoBehaviour, IPointerEnterHandler, IPointerExi
 		Debug.Log ("Editing Deck: " + SavedDeckInfo.DeckName);
 		//switch collection to edit mode
 		//display deck list
-		//CCScreen.Instance.HideScreen();
+		CCScreen.Instance.HideScreen();
 		//make sure it's the same deck
 		CCScreen.Instance.BuilderScript.BuildADeck();
 		CCScreen.Instance.BuilderScript.DeckName.text = SavedDeckInfo.DeckName;
@@ -30,6 +30,8 @@ public class DeckInScrollList : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 		CCScreen.Instance.CollectionBrowserScript.ShowCollectionForDeckBuilding ();
 		CCScreen.Instance.ShowScreenForDeckBuilding ();
+
+		CardCount.Instance.SetCountText ();
 	}
 
 	public void DeleteThisDeck(){

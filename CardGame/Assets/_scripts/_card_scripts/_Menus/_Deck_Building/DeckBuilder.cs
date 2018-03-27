@@ -11,9 +11,13 @@ public class DeckBuilder : MonoBehaviour {
 	public int SameCardLimit = 3;
 	public int AmountOfCardsInDeck = 20;
 
-
 	private List<CardAsset> deckList = new List<CardAsset>();
 	private Dictionary<CardAsset, CardNameRibbon> ribbons = new Dictionary<CardAsset, CardNameRibbon>();
+
+	public void Start(){
+		//DeckName.shouldHideMobileInput = true;
+		DeckName.ActivateInputField ();
+	}
 
 	public bool InDeckBuildingMode{ get; set; }
 
@@ -41,9 +45,10 @@ public class DeckBuilder : MonoBehaviour {
 			count++;
 
 			//add to card count
-			CardCount.Instance.count++;
-			CardCount.Instance.SetCountText ();
-
+			if (CardCount.Instance.count < 20) {
+				CardCount.Instance.count++;
+				//CardCount.Instance.SetCountText ();
+			}
 			//do all the graphical stuff
 			if (ribbons.ContainsKey (asset)) {
 				//update quantity
@@ -57,6 +62,8 @@ public class DeckBuilder : MonoBehaviour {
 				ribbon.ApplyAsset (asset, count);
 				ribbons.Add (asset, ribbon);
 			}
+			if(CardCount.Instance.count <= 20)
+				CardCount.Instance.SetCountText ();
 		}
 
 	}
@@ -78,16 +85,15 @@ public class DeckBuilder : MonoBehaviour {
 
 		if (NumberOfThisCardInDeck (asset) == 1) {
 			ribbons.Remove (asset);
-
-			//subtract from card count
-			CardCount.Instance.count--;
-			CardCount.Instance.SetCountText ();
-
 			Destroy (ribbonToRemove.gameObject);
 		}
+
+		//subtract from card count
+		if (CardCount.Instance.count > 0) {
+			CardCount.Instance.count--;
+			CardCount.Instance.SetCountText ();
+		}
 		deckList.Remove (asset);
-
-
 
 		//update quantities of all cards taht we currently show in the collection
 		CCScreen.Instance.CollectionBrowserScript.UpdateQuantitiesOnPage();
@@ -102,6 +108,8 @@ public class DeckBuilder : MonoBehaviour {
 
 		//reset the InputField text to be empty
 		DeckName.text = "";
+		CardCount.Instance.count = 0;
+		CardCount.Instance.SetCountText ();
 	}
 
 	public void DoneButtonHandler(){
@@ -115,9 +123,14 @@ public class DeckBuilder : MonoBehaviour {
 
 		//reset card counter
 		CardCount.Instance.count = 0;
+		CardCount.Instance.SetCountText ();
 	}
 
 	public void CancelButtonHandler(){
+		//reset card counter
+		CardCount.Instance.count = 0;
+		CardCount.Instance.SetCountText ();
+
 		CCScreen.Instance.ShowScreenForCollectionBrowsing ();
 	}
 

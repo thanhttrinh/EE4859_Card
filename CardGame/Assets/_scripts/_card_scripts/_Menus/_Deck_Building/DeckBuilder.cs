@@ -103,6 +103,10 @@ public class DeckBuilder : MonoBehaviour {
 		CCScreen.Instance.ShowScreenForCollectionBrowsing();
 	}
 
+	public void CancelButtonHandler(){
+		CCScreen.Instance.ShowScreenForCollectionBrowsing ();
+	}
+
 	void OnApplicationQuit(){
 		//if the player exit the app while editing a deck, we want to save it
 		DoneButtonHandler ();

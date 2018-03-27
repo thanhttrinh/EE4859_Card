@@ -24,12 +24,10 @@ public class AddCardToDeck : MonoBehaviour {
 
 		if (asset == null)
 			return;
-		
-		//check if these cards are available in collection
-		//if (CardCollection.Instance.QuantityOfEachCard [cardAsset] - CCScreen.Instance.BuilderScript.NumberOfThisCardInDeck (cardAsset) > 0) {
+
 		CCScreen.Instance.BuilderScript.AddCard (asset);
+		CardCount.Instance.count++;
 		UpdateQuantity ();
-		//}
 	}
 
 	void OnMouseEnter(){

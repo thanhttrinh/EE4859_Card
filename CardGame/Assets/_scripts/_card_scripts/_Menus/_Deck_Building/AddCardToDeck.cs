@@ -26,7 +26,7 @@ public class AddCardToDeck : MonoBehaviour {
 			return;
 
 		CCScreen.Instance.BuilderScript.AddCard (asset);
-		CardCount.Instance.count++;
+
 		UpdateQuantity ();
 	}
 

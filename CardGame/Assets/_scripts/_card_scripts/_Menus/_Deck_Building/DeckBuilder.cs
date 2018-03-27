@@ -54,6 +54,9 @@ public class DeckBuilder : MonoBehaviour {
 				ribbons.Add (asset, ribbon);
 			}
 		}
+		//add to card count
+		CardCount.Instance.count++;
+		CardCount.Instance.SetCountText ();
 	}
 		
 
@@ -77,8 +80,11 @@ public class DeckBuilder : MonoBehaviour {
 		}
 		deckList.Remove (asset);
 
+		//subtract from card count
+		CardCount.Instance.count--;
+		CardCount.Instance.SetCountText ();
+
 		//update quantities of all cards taht we currently show in the collection
-		//this is after deckList.RemoveCard(asset)
 		CCScreen.Instance.CollectionBrowserScript.UpdateQuantitiesOnPage();
 	}
 
@@ -101,6 +107,9 @@ public class DeckBuilder : MonoBehaviour {
 		//the screen with the collection and pre-made decks is loaded by calling
 		//other functions on this button
 		CCScreen.Instance.ShowScreenForCollectionBrowsing();
+
+		//reset card counter
+		CardCount.Instance.count = 0;
 	}
 
 	public void CancelButtonHandler(){

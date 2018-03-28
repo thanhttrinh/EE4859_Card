@@ -66,7 +66,7 @@ public class LadderPoint : MonoBehaviour {
 
 				lp = int.Parse (UsernameAndLP [2]);
 				if (lp >= 0 && lp <= 150) {
-					LadderPoints.text = "Rank: E " + UsernameAndLP[2].ToString() +"LP";
+					LadderPoints.text = "Rank E: " + UsernameAndLP[2].ToString() +" LP";
 				}
 			}
 			if (successResult == "noExistEmail") {
@@ -76,5 +76,7 @@ public class LadderPoint : MonoBehaviour {
 		}
 
 	}
+
+	//TODO: Update ladder points
 	#endregion
 }

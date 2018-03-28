@@ -27,6 +27,7 @@ public class CCScreen : MonoBehaviour {
 		screenContent.SetActive (true);
 		readyDecksList.SetActive (true);
 		cardsInDeckList.SetActive (false);
+		DeckSelectionScreen.Instance.screenContent.SetActive (false);
 		title.SetActive (false);
 		BuilderScript.InDeckBuildingMode = false;
 		//if there is already decks made, show them
@@ -57,6 +58,7 @@ public class CCScreen : MonoBehaviour {
 	public void HideScreen(){
 		screenContent.SetActive (false);
 		title.SetActive (true);
+		DeckSelectionScreen.Instance.screenContent.SetActive (false);
 		CollectionBrowserScript.ClearCreatedCards ();
 	}
 }

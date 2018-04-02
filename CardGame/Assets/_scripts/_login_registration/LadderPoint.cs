@@ -9,6 +9,7 @@ public class LadderPoint : MonoBehaviour {
 	public Text Username;
 	public Text LadderPoints;
 	private int lp;
+	private int currentLP;
 
 	private string ladderURL = "http://tinycivs.000webhostapp.com/LadderPointManager.php";
 
@@ -19,9 +20,13 @@ public class LadderPoint : MonoBehaviour {
 	}
 
 	void Start(){
-		Debug.Log ("LadderPoints.cs");
 		StartCoroutine (GetLadderPoints ());
-		Debug.Log ("LP.cs ends");
+		currentLP = lp;
+	}
+
+	void Update(){
+		//TODO: update LP after a win or loss
+		//StartCoroutine(UpdateLadderPoints());
 	}
 
 	#region Coroutine
@@ -31,7 +36,6 @@ public class LadderPoint : MonoBehaviour {
 		//add values into the php script
 		WWWForm form = new WWWForm ();
 		form.AddField ("email", LoginMenu.Instance.confirmLogin);
-		Debug.Log (LoginMenu.Instance.confirmLogin);
 		form.AddField ("Username", Username.text);
 		form.AddField ("LadderPoints", LadderPoints.text);
 
@@ -46,9 +50,6 @@ public class LadderPoint : MonoBehaviour {
 		//success, [Username], [LadderPoints]
 		string[] UsernameAndLP = LadderPointsWWW.text.Split ("," [0]);
 		string successResult = UsernameAndLP [0].ToString();
-		Debug.Log (LadderPointsWWW.text);
-		Debug.Log (successResult);
-
 
 		if (LadderPointsWWW.error != null) {
 			//display the debugged message
@@ -88,9 +89,33 @@ public class LadderPoint : MonoBehaviour {
 			}
 			Debug.Log ("LP end of else statement");
 		}
-
 	}
 
 	//TODO: Update ladder points
+	IEnumerator UpdateLadderPoints(){
+		Debug.Log ("Attemping to update LP");
+
+		//add values into the php script
+		WWWForm form = new WWWForm ();
+		form.AddField ("email", LoginMenu.Instance.confirmLogin);
+		Debug.Log (LoginMenu.Instance.confirmLogin);
+		form.AddField ("Username", Username.text);
+		form.AddField ("LadderPoints", LadderPoints.text);
+
+		//connect to url and put it in the form
+		WWW LadderPointsWWW = new WWW (ladderURL, form);
+		//make the info sure the info is returning before continuing
+		yield return LadderPointsWWW;
+
+		if (LadderPointsWWW.error != null) {
+			//display the debugged message
+			Debug.Log (LadderPointsWWW.error);
+			Debug.Log ("Cannot connect to LP database");
+		} 
+		else{
+			//update LP
+
+		}
+	}
 	#endregion
 }

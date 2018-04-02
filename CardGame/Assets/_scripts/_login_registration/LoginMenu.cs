@@ -34,7 +34,6 @@ public class LoginMenu : MonoBehaviour {
 	}
 
 	#region UI Menus
-
 	public void LoginGUI(){
 		RegisterContent.SetActive (false);
 		LoginContent.SetActive (true);

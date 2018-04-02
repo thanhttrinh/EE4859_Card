@@ -66,7 +66,21 @@ public class LadderPoint : MonoBehaviour {
 
 				lp = int.Parse (UsernameAndLP [2]);
 				if (lp >= 0 && lp <= 150) {
-					LadderPoints.text = "Rank E: " + UsernameAndLP[2].ToString() +" LP";
+					LadderPoints.text = "Rank E: " + UsernameAndLP [2].ToString () + " LP";
+				} else if (lp > 150 && lp <= 300) {
+					LadderPoints.text = "Rank D: " + UsernameAndLP [2].ToString () + " LP";
+				}
+				else if (lp > 300 && lp <= 450) {
+					LadderPoints.text = "Rank C: " + UsernameAndLP [2].ToString () + " LP";
+				}
+				else if (lp > 450 && lp <= 600) {
+					LadderPoints.text = "Rank B: " + UsernameAndLP [2].ToString () + " LP";
+				}
+				else if (lp > 600 && lp <= 750) {
+					LadderPoints.text = "Rank A: " + UsernameAndLP [2].ToString () + " LP";
+				}
+				else if (lp > 750 && lp <= 900) {
+					LadderPoints.text = "Rank S: " + UsernameAndLP [2].ToString () + " LP";
 				}
 			}
 			if (successResult == "noExistEmail") {

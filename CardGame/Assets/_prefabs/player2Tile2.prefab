@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4524989933283906}
   - component: {fileID: 212197537596167966}
   - component: {fileID: 65580035407074800}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: player2Tile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1208776195110706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +51,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 1, z: 0.001}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212197537596167966
 SpriteRenderer:

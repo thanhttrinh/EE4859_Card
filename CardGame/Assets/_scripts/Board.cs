@@ -12,12 +12,11 @@ public class Board : MonoBehaviour
 	public GameObject BlueTile2;
 	public GameObject RedTile;
 	public GameObject RedTile2;
-	public Vector2 BoardOffset = new Vector3(0.5f, 0.5f);
+	public Vector2 BoardOffset = new Vector2(0.5f, 0.5f);
 
 	public GameObject Soldier;
 	public GameObject Crop;
 	private bool isCreated;
-	private bool isSelected;
 
 	private Vector2 mouseOver;
 	private Vector2 startDrag;
@@ -42,13 +41,13 @@ public class Board : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log (x + ", " + y);
+			//Debug.Log (x + ", " + y);
 			SelectSoldier (x, y);
 		}
-		/*if (Input.GetMouseButtonUp (0)) 
+		if (Input.GetMouseButtonUp (0)) 
 		{
 			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
-		}*/
+		}
 	}
 
 	void UpdateMouseOver() 
@@ -148,29 +147,25 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldier = s;
 			startDrag = mouseOver;
-			Debug.Log(selectedSoldier.gameObject.name);
+			Debug.Log(selectedSoldier.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
 		
 	}
 
-	/*private void TryMove(int x1, int y1, int x2, int y2)
+	private void TryMove(int x1, int y1, int x2, int y2)
 	{
 		startDrag = new Vector2 (x1, y1);
 		endDrag = new Vector2 (x2, y2);
-		RaycastHit hit;
-		if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit) && isSelected) 
-		{
-			selectedSoldier = hit.collider.gameObject.GetComponent<OneSoldierManager>();
-		}
+		selectedSoldier = soldiers [x1, y1];
 
 		MoveSoldier (selectedSoldier, x2, y2);
 	}
 
 	private void MoveSoldier(OneSoldierManager soldier, int x, int y)
 	{
-		soldier.transform.position = (Vector3.right * x) + (Vector3.up * y) + boardOffset;
-	}*/
+		soldier.transform.position = (Vector2.right * x) + (Vector2.up * y);
+	}
 
 }

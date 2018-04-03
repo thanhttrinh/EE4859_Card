@@ -60,18 +60,20 @@ public class OneSoldierManager : MonoBehaviour
         if (board[x2, y2] != null)
             return false;
 
-        int deltaMoveX = x1 - x2;
-        int deltaMoveY = y1 - y2;
+        int deltaMoveX = Mathf.Abs(x1 - x2);
+        int deltaMoveY = Mathf.Abs(y1 - y2);
         if(board[x1,y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
         {
             //if deltaMoveX and deltaMoveY is less than or equal to the soldiers movement
-            if(deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement || deltaMoveY <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement)
+            //deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement
+            if ((deltaMoveX == 0 && deltaMoveY <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement) || (deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement && deltaMoveY == 0))
             {
-                Debug.Log("true 1 & soldier has "+ board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement +"movement");
+                Debug.Log("true 1 & soldier has "+ board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement +"movement and deltaMoveX =" + deltaMoveX + "and deltaMoveY = "+ deltaMoveY);
                 return true;
                 
             }
             //if player reaches to an enemy soldier at its max movement and wanted to attack
+            /*
             else if(deltaMoveX == board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + 1)
             {
                 deltaMoveX = board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement;
@@ -84,6 +86,7 @@ public class OneSoldierManager : MonoBehaviour
                 Debug.Log("true 3");
                 return true;
             }
+            */
         }
         Debug.Log("false");
         return false;

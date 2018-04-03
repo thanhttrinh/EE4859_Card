@@ -37,11 +37,12 @@ public class Board : MonoBehaviour
 		int x = (int) (mouseOver.x);
 		int y = (int) (mouseOver.y);
 
+        /*
         if(selectedSoldier != null)
         {
             UpdateSoldierDrag(selectedSoldier);
         }
-
+        */
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log (x + ", " + y);
@@ -69,6 +70,7 @@ public class Board : MonoBehaviour
 		}
 	}
 
+    /*
     private void UpdateSoldierDrag(OneSoldierManager s)
     {
         if (!Camera.main)
@@ -83,7 +85,7 @@ public class Board : MonoBehaviour
             s.transform.position = hit.point + Vector3.forward;
         }
     }
-
+    */
 
 	void OnTriggerEnter(Collider collider)
 	{

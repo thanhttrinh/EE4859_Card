@@ -41,7 +41,7 @@ public class Board : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			//Debug.Log (x + ", " + y);
+			Debug.Log (x + ", " + y);
 			SelectSoldier (x, y);
 		}
 		if (Input.GetMouseButtonUp (0)) 

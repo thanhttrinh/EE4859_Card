@@ -97,24 +97,25 @@ public class LadderPoint : MonoBehaviour {
 
 		//add values into the php script
 		WWWForm form = new WWWForm ();
-		form.AddField ("email", LoginMenu.Instance.confirmLogin);
-		Debug.Log (LoginMenu.Instance.confirmLogin);
+		form.AddField ("currentLP", currentLP);
 		form.AddField ("Username", Username.text);
-		form.AddField ("LadderPoints", LadderPoints.text);
-
 		//connect to url and put it in the form
-		WWW LadderPointsWWW = new WWW (ladderURL, form);
+		WWW updateLPWWW = new WWW (ladderURL, form);
 		//make the info sure the info is returning before continuing
-		yield return LadderPointsWWW;
+		yield return updateLPWWW;
 
-		if (LadderPointsWWW.error != null) {
+		if (updateLPWWW.error != null) {
 			//display the debugged message
-			Debug.Log (LadderPointsWWW.error);
+			Debug.Log (updateLPWWW.error);
 			Debug.Log ("Cannot connect to LP database");
 		} 
 		else{
 			//update LP
-
+			string logTextUpdate = updateLPWWW.text;
+			Debug.Log (logTextUpdate);
+			if (logTextUpdate == "updateSuccess") {
+				Debug.Log ("Updating LP successful");
+			}
 		}
 	}
 	#endregion

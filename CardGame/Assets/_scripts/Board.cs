@@ -128,19 +128,6 @@ public class Board : MonoBehaviour
 		//out of bounds
 		if (x < 0 || x > 6 || y < 0 || y > 6)
 			return;
-		
-		/*RaycastHit hit;
-		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit) && !isSelected)
-		{
-			Debug.Log (hit.collider.name);
-			if (hit.collider.tag == "soldier") 
-			{
-				selectedSoldier = hit.collider.gameObject.GetComponent<OneSoldierManager>();
-				startDrag = mouseOver;
-				Debug.Log (selectedSoldier.gameObject.name);
-				isSelected = true;
-			}
-		}*/
 
 		OneSoldierManager s = soldiers[x,y];
 		if (s != null)

@@ -53,4 +53,39 @@ public class OneSoldierManager : MonoBehaviour
             HealthText.text = hpAfter.ToString();
         }
     }
+
+    public bool ValidMove(OneSoldierManager[,] board, int x1, int y1, int x2, int y2)
+    {
+        //if moving on top of another soldier/crop
+        if (board[x2, y2] != null)
+            return false;
+
+        int deltaMoveX = x1 - x2;
+        int deltaMoveY = y1 - y2;
+        if(board[x1,y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+        {
+            //if deltaMoveX and deltaMoveY is less than or equal to the soldiers movement
+            if(deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement || deltaMoveY <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement)
+            {
+                Debug.Log("true 1 & soldier has "+ board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement +"movement");
+                return true;
+                
+            }
+            //if player reaches to an enemy soldier at its max movement and wanted to attack
+            else if(deltaMoveX == board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + 1)
+            {
+                deltaMoveX = board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement;
+                Debug.Log("true 2");
+                return true;
+            }
+            else if (deltaMoveY == board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + 1)
+            {
+                deltaMoveY = board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement;
+                Debug.Log("true 3");
+                return true;
+            }
+        }
+        Debug.Log("false");
+        return false;
+    }
 }

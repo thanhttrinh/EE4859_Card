@@ -22,8 +22,6 @@ public class Board : MonoBehaviour
 	private Vector2 startDrag;
 	private Vector2 endDrag;
 
-	private Vector3 boardOffset = new Vector3(-2,-1,0);
-
 	private OneSoldierManager selectedSoldier;
 
 	// Use this for initialization
@@ -38,6 +36,11 @@ public class Board : MonoBehaviour
 
 		int x = (int) (mouseOver.x);
 		int y = (int) (mouseOver.y);
+
+        if(selectedSoldier != null)
+        {
+            UpdateSoldierDrag(selectedSoldier);
+        }
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -65,6 +68,21 @@ public class Board : MonoBehaviour
 			mouseOver.y = (int)(hit.collider.transform.position.y);
 		}
 	}
+
+    private void UpdateSoldierDrag(OneSoldierManager s)
+    {
+        if (!Camera.main)
+        {
+            Debug.Log("cannot find main camera");
+            return;
+        }
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+        {
+            s.transform.position = hit.point + Vector3.forward;
+        }
+    }
 
 
 	void OnTriggerEnter(Collider collider)
@@ -149,7 +167,7 @@ public class Board : MonoBehaviour
 
 		//MoveSoldier (selectedSoldier, x2, y2);
 
-		if (x2 < 0 || x2 > soldiers.Length || y2 < 0 || y2 > soldiers.Length) 
+		if (x2 < 0 || x2 >= soldiers.Length || y2 < 0 || y2 >= soldiers.Length) 
 		{
 			if (selectedSoldier != null) 
 			{
@@ -159,6 +177,28 @@ public class Board : MonoBehaviour
 			selectedSoldier = null;
 			return;
 		}
+
+        if(selectedSoldier != null)
+        {
+            //soldier not moved
+            if(endDrag == startDrag)
+            {
+                MoveSoldier(selectedSoldier, x1, y1);
+                startDrag = Vector2.zero;
+                selectedSoldier = null;
+                return;
+            }
+
+            //check if valid move
+            if(selectedSoldier.ValidMove(soldiers, x1, y1, x2, y2))
+            {
+                soldiers[x2, y2] = selectedSoldier;
+                soldiers[x1, y1] = null;
+                MoveSoldier(selectedSoldier, x2, y2);
+            }
+        }
+
+
 	}
 
 	private void MoveSoldier(OneSoldierManager soldier, int x, int y)

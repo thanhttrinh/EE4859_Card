@@ -147,7 +147,18 @@ public class Board : MonoBehaviour
 		endDrag = new Vector2 (x2, y2);
 		selectedSoldier = soldiers [x1, y1];
 
-		MoveSoldier (selectedSoldier, x2, y2);
+		//MoveSoldier (selectedSoldier, x2, y2);
+
+		if (x2 < 0 || x2 > soldiers.Length || y2 < 0 || y2 > soldiers.Length) 
+		{
+			if (selectedSoldier != null) 
+			{
+				MoveSoldier (selectedSoldier, x1, y1);
+			}
+			startDrag = Vector2.zero;
+			selectedSoldier = null;
+			return;
+		}
 	}
 
 	private void MoveSoldier(OneSoldierManager soldier, int x, int y)

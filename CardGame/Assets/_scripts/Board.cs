@@ -7,6 +7,8 @@ public class Board : MonoBehaviour
 	public OneSoldierManager[,] soldiers = new OneSoldierManager[6,6];
 	public OneCropManager[,] crops = new OneCropManager[6,6];
 
+    public OneCardManager[,] cards = new OneCardManager[6, 6];
+
 	private Vector2 Tiles;
 	public GameObject BlueTile;
 	public GameObject BlueTile2;
@@ -23,7 +25,7 @@ public class Board : MonoBehaviour
 	private Vector2 startDrag;
 	private Vector2 endDrag;
 
-	private OneSoldierManager selectedSoldier;
+	private OneCardManager selectedSoldierCard;
 
     private bool isBlueTurn;
     private bool isBlue;
@@ -126,12 +128,13 @@ public class Board : MonoBehaviour
 			GameObject newGO = Instantiate (Soldier) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
-			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
+            newGO.gameObject.GetComponent<OneCardManager>().cardAsset = collider.gameObject.GetComponent<OneCardManager>().cardAsset;
+            newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
 			//newGO.transform.SetParent (this.gameObject.transform, false);
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
-			OneSoldierManager s = newGO.GetComponent<OneSoldierManager>();
-			soldiers[x, y] = s;
+			OneCardManager s = newGO.GetComponent<OneCardManager>();
+			cards[x, y] = s;
 			isCreated = true;
 			Destroy (collider.gameObject);
 		}
@@ -145,15 +148,16 @@ public class Board : MonoBehaviour
 			GameObject newGO = Instantiate (Crop) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
-			newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = collider.gameObject.GetComponent<CropPreview> ().PreviewUnit;
+            newGO.gameObject.GetComponent<OneCardManager>().cardAsset = collider.gameObject.GetComponent<OneCardManager>().cardAsset;
+            newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = collider.gameObject.GetComponent<CropPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = collider.gameObject.GetComponent<CropPreview> ().PreviewText;
 			//newGO.transform.SetParent (this.gameObject.transform, false);
-			Destroy (collider.gameObject);
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
-			OneCropManager c = newGO.GetComponent<OneCropManager>();
-			crops[x, y] = c;
+			OneCardManager c = newGO.GetComponent<OneCardManager>();
+			cards[x, y] = c;
 			isCreated = true;
-		}
+            Destroy(collider.gameObject);
+        }
 	}
 
 	private void SelectSoldier(int x, int y)
@@ -162,12 +166,12 @@ public class Board : MonoBehaviour
 		if (x < 0 || x > 6 || y < 0 || y > 6)
 			return;
 
-		OneSoldierManager s = soldiers[x,y];
-		if (s != null)
+		OneCardManager s = cards[x,y];
+		if (s != null && s.gameObject.GetComponent<OneCardManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
 		{
-			selectedSoldier = s;
+			selectedSoldierCard = s;
 			startDrag = mouseOver;
-			Debug.Log(selectedSoldier.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
@@ -178,52 +182,53 @@ public class Board : MonoBehaviour
 	{
 		startDrag = new Vector2 (x1, y1);
 		endDrag = new Vector2 (x2, y2);
-		selectedSoldier = soldiers [x1, y1];
+		selectedSoldierCard = cards [x1, y1];
 
 		//MoveSoldier (selectedSoldier, x2, y2);
 
 		if (x2 < 0 || x2 >= soldiers.Length || y2 < 0 || y2 >= soldiers.Length) 
 		{
-			if (selectedSoldier != null) 
+			if (selectedSoldierCard != null) 
 			{
-				MoveSoldier (selectedSoldier, x1, y1);
+				MoveSoldier (selectedSoldierCard, x1, y1);
 			}
 			startDrag = Vector2.zero;
-			selectedSoldier = null;
+			selectedSoldierCard = null;
 			return;
 		}
 
-        if(selectedSoldier != null)
+        if(selectedSoldierCard != null)
         {
             //soldier not moved
             if(endDrag == startDrag)
             {
-                MoveSoldier(selectedSoldier, x1, y1);
+                MoveSoldier(selectedSoldierCard, x1, y1);
                 startDrag = Vector2.zero;
-                selectedSoldier = null;
+                selectedSoldierCard = null;
                 return;
             }
 
             //check if valid move
-            if(selectedSoldier.ValidMove(soldiers, crops, x1, y1, x2, y2))
+            if(selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2))
             {
-                soldiers[x2, y2] = selectedSoldier;
-                soldiers[x1, y1] = null;
-                MoveSoldier(selectedSoldier, x2, y2);
+                cards[x2, y2] = selectedSoldierCard;
+                cards[x1, y1] = null;
+                MoveSoldier(selectedSoldierCard, x2, y2);
             }
         }
 
 
 	}
 
-	private void MoveSoldier(OneSoldierManager soldier, int x, int y)
+	private void MoveSoldier(OneCardManager soldierCard, int x, int y)
 	{
-		soldier.transform.position = (Vector2.right * x) + (Vector2.up * y);
+        if(soldierCard.gameObject.GetComponent<OneCardManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+		    soldierCard.transform.position = (Vector2.right * x) + (Vector2.up * y);
 	}
 
     private void EndTurn()
     {
-        selectedSoldier = null;
+        selectedSoldierCard = null;
         startDrag = Vector2.zero;
 
         isBlueTurn = !isBlueTurn;

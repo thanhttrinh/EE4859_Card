@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 114329527336042880}
   - component: {fileID: 114150097792842440}
   - component: {fileID: 135823409160681300}
+  - component: {fileID: 114296840638665788}
   m_Layer: 9
   m_Name: Soldier
   m_TagString: soldier
@@ -549,6 +550,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114296840638665788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848237352196946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAsset: {fileID: 0}
+  PreviewManager: {fileID: 0}
+  NameText: {fileID: 114652183073542042}
+  ManaCostText: {fileID: 114451604739859408}
+  DescriptionText: {fileID: 0}
+  HealthText: {fileID: 114518868388466290}
+  AttackText: {fileID: 114458243911061828}
+  RangeText: {fileID: 114953021773466592}
+  MovementText: {fileID: 114977623738991956}
+  CropSize: {fileID: 0}
+  CardTopRibbonImage: {fileID: 0}
+  CardLowRibbonImage: {fileID: 0}
+  CardGraphicImage: {fileID: 0}
+  CardBodyImage: {fileID: 0}
+  CardFaceFrameImage: {fileID: 0}
+  CardFaceGlowImage: {fileID: 0}
+  CardBackGlowImage: {fileID: 0}
 --- !u!114 &114329527336042880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1502,7 +1531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224480419769376198

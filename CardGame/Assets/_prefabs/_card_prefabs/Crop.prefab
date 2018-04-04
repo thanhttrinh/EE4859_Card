@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 65108332438405106}
   - component: {fileID: 222899268530636804}
   - component: {fileID: 114076968102811550}
+  - component: {fileID: 114017097268440276}
   m_Layer: 10
   m_Name: Crop
   m_TagString: crop
@@ -421,6 +422,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114017097268440276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519026123925860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAsset: {fileID: 0}
+  PreviewManager: {fileID: 0}
+  NameText: {fileID: 114283215145549730}
+  ManaCostText: {fileID: 114134286831196658}
+  DescriptionText: {fileID: 114886505683524592}
+  HealthText: {fileID: 114860226952189450}
+  AttackText: {fileID: 0}
+  RangeText: {fileID: 0}
+  MovementText: {fileID: 0}
+  CropSize: {fileID: 114219668879716510}
+  CardTopRibbonImage: {fileID: 0}
+  CardLowRibbonImage: {fileID: 0}
+  CardGraphicImage: {fileID: 0}
+  CardBodyImage: {fileID: 0}
+  CardFaceFrameImage: {fileID: 0}
+  CardFaceGlowImage: {fileID: 0}
+  CardBackGlowImage: {fileID: 0}
 --- !u!114 &114076829170896866
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -63,6 +63,7 @@ public class OneSoldierManager : MonoBehaviour
         }
     }
 
+    /*
     public bool ValidMove(OneSoldierManager[,] sBoard, OneCropManager[,] cBoard, int x1, int y1, int x2, int y2)
     {
         int deltaMoveX = Mathf.Abs(x1 - x2);
@@ -105,9 +106,10 @@ public class OneSoldierManager : MonoBehaviour
                 Debug.Log("true in y movement");
                 return true;
             }
-            */
+            
         //}
         Debug.Log("false");
         return false;
     }
+    */
 }

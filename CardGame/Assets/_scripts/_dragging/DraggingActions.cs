@@ -10,9 +10,22 @@ public abstract class DraggingActions : MonoBehaviour {
 
 	public abstract void OnDraggingInUpdate();
 
+	public abstract void OnCancelDrag();
+
 	public virtual bool CanDrag{
 		get{
 			return true;
+		}
+	}
+
+	protected virtual Player playerOwner{
+		get{
+			if (tag.Contains ("Blue"))
+				return GlobalSettings.Instance.playerBlue;
+			else if (tag.Contains ("Red"))
+				return GlobalSettings.Instance.playerRed;
+			else
+				return null;
 		}
 	}
 

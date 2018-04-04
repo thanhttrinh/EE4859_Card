@@ -99,6 +99,7 @@ public class LadderPoint : MonoBehaviour {
 		WWWForm form = new WWWForm ();
 		form.AddField ("currentLP", currentLP);
 		form.AddField ("Username", Username.text);
+
 		//connect to url and put it in the form
 		WWW updateLPWWW = new WWW (ladderURL, form);
 		//make the info sure the info is returning before continuing

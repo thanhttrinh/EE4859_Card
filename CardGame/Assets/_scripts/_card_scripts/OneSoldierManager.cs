@@ -24,6 +24,15 @@ public class OneSoldierManager : MonoBehaviour
             ReadCreatureFromAsset();
     }
 
+	private bool canAttackNow = false;
+	public bool CanAttackNow{
+		get{ return canAttackNow; }
+		set{
+			canAttackNow = value;
+
+		}
+	}
+
     public void ReadCreatureFromAsset()
     {
         // Change the card graphic sprite

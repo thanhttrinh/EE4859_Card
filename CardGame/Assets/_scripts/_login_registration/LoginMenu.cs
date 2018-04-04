@@ -10,6 +10,7 @@ public class LoginMenu : MonoBehaviour {
 	public InputField email;
 	public InputField pwd;
 	public string confirmLogin;
+	public string confirmLoginPwd;
 
 	[Header("Register Menu Inputs")]
 	public InputField confirmPwd;
@@ -132,6 +133,7 @@ public class LoginMenu : MonoBehaviour {
 			if (logText == "success") 
 			{
 				confirmLogin = email.text;
+				confirmLoginPwd = pwd.text;
 				SceneManager.LoadScene ("MenuScene");
 			}
 			if (logText == "noExistEmail") {

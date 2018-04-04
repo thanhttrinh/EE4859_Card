@@ -24,14 +24,9 @@ if($emailExist == 0){
     echo"noExistEmail","\n";
 }
 else{
-    //get username and ladderpoints
-    /*
-    $getUser = "SELECT username FROM users WHERE email = '". $email ."'";
-    $getLP = "SELECT ladder FROM users WHERE email = '". $email ."'";
-    $userResult = mysqli_query($con, $getUser);
-    $lpResult = mysqli_query($con, $getLP);
-    */
     while($row = mysqli_fetch_assoc($result))
         echo "success,".$row["username"].",".$row["ladder"];
 }
+//close database
+mysqli_close($con);
 ?>

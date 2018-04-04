@@ -27,4 +27,8 @@ public class DraggingActionsReturn : DraggingActions {
 	protected override bool DragSuccessful(){
 		return true;
 	}
+
+	public override void OnCancelDrag(){
+
+	}
 }

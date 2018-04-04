@@ -22,10 +22,10 @@ public class Draggable : MonoBehaviour {
 	private DraggingActions da;
 
 	//return the instance of draggable that is currently being dragged
-	/*private static Draggable _draggingThis;
+	private static Draggable _draggingThis;
 	public static Draggable DraggingThis{
 		get{ return _draggingThis; }
-	}*/
+	}
 
 	void Awake(){
 		da = GetComponent<DraggingActions> ();
@@ -36,7 +36,7 @@ public class Draggable : MonoBehaviour {
 		dragging = true;
 		//when we drag, all preview should be off
 		//HoverPreview.PreviewsAllowed = false;
-		//_draggingThis = this;
+		_draggingThis = this;
 		da.OnStartDrag ();
 		zDisplacement = -Camera.main.transform.position.z + transform.position.z;
 		if (UserPointerDisplacement)
@@ -59,8 +59,16 @@ public class Draggable : MonoBehaviour {
 			dragging = false;
 			//turn all previews back on
 			//HoverPreview.PreviewsAllowed = true;
-			//_draggingThis = null;
+			_draggingThis = null;
 			da.OnEndDrag ();
+		}
+	}
+
+	public void CancelDrag(){
+		if (dragging) {
+			dragging = false;
+			_draggingThis = null;
+			da.OnCancelDrag ();
 		}
 	}
 

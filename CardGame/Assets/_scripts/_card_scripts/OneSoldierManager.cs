@@ -21,7 +21,7 @@ public class OneSoldierManager : MonoBehaviour
     void Awake()
     {
         if (cardAsset != null)
-            ReadCreatureFromAsset();
+            ReadSoldierFromAsset();
     }
 
 	private bool canAttackNow = false;
@@ -33,7 +33,7 @@ public class OneSoldierManager : MonoBehaviour
 		}
 	}
 
-    public void ReadCreatureFromAsset()
+    public void ReadSoldierFromAsset()
     {
         // Change the card graphic sprite
         CreatureGraphicImage.sprite = cardAsset.CardImage;

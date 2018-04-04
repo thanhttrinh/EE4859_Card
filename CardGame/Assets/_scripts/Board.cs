@@ -14,6 +14,7 @@ public class Board : MonoBehaviour
 	public GameObject RedTile2;
 	public Vector2 BoardOffset = new Vector2(0.5f, 0.5f);
 
+    public GameObject Base;
 	public GameObject Soldier;
 	public GameObject Crop;
 	private bool isCreated;
@@ -31,7 +32,8 @@ public class Board : MonoBehaviour
 	void Start ()
     {
         isBlueTurn = true;
-	}
+        GenerateBase(Random.Range(0, 5), 0);
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -91,6 +93,12 @@ public class Board : MonoBehaviour
         }
     }
     */
+
+    private void GenerateBase(int x, int y)
+    {
+        GameObject newGO = Instantiate(Base) as GameObject;
+        newGO.transform.position = new Vector3(x, y, 0);
+    }
 
 	void OnTriggerEnter(Collider collider)
 	{

@@ -3000,6 +3000,7 @@ MonoBehaviour:
   RedTile: {fileID: 1739849983740568, guid: 484e6f6cdd7fa42f68567723b29fce82, type: 2}
   RedTile2: {fileID: 1208776195110706, guid: 36146d257a91b4062b7a3bfc282179b4, type: 2}
   BoardOffset: {x: 0.5, y: 0.5}
+  Base: {fileID: 1265725670660246, guid: 49c60cd28d6cc2949856e7f110a33a74, type: 2}
   Soldier: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
   Crop: {fileID: 1519026123925860, guid: 8a5390fc5df7a5b4f8b70819b09035d3, type: 2}
 --- !u!54 &1429678300
@@ -3132,6 +3133,10 @@ Prefab:
     - target: {fileID: 135823409160681300, guid: c46f85ea1d0d3ee46960e347a64e5d64,
         type: 2}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

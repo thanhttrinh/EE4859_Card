@@ -12,6 +12,7 @@ TagManager:
   - spell
   - crop
   - tile
+  - base
   layers:
   - Default
   - TransparentFX

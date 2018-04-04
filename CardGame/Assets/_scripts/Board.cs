@@ -107,15 +107,15 @@ public class Board : MonoBehaviour
 	void OnTriggerEnter(Collider collider)
 	{
 		//Debug.Log ("collision detected");
-		if()
-		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn>().dragging == false) 
+		if (Base.gameObject.GetComponent<OneCardManager> () != null) 
 		{
-			GenerateSoldier (collider, 0, 1);
-		}
+			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+				GenerateSoldier (collider, (int)Base.gameObject.transform.position.x, (int)Base.gameObject.transform.position.y);
+			}
 
-		if(collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager>().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn>().dragging == false)
-		{
-			GenerateCrop (collider, 1, 1);
+			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+				GenerateCrop (collider, 1, 1);
+			}
 		}
 	}
 

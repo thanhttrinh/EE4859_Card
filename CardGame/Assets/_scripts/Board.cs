@@ -24,8 +24,13 @@ public class Board : MonoBehaviour
 
 	private OneSoldierManager selectedSoldier;
 
+    private bool isBlueTurn;
+    private bool isBlue;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        isBlueTurn = true;
 	}
 	
 	// Update is called once per frame
@@ -92,12 +97,12 @@ public class Board : MonoBehaviour
 		//Debug.Log ("collision detected");
 		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn>().dragging == false) 
 		{
-			GenerateSoldier (collider, 0, 0);
+			GenerateSoldier (collider, 0, 1);
 		}
 
 		if(collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager>().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn>().dragging == false)
 		{
-			GenerateCrop (collider, 0, 2);
+			GenerateCrop (collider, 1, 1);
 		}
 	}
 
@@ -192,7 +197,7 @@ public class Board : MonoBehaviour
             }
 
             //check if valid move
-            if(selectedSoldier.ValidMove(soldiers, x1, y1, x2, y2))
+            if(selectedSoldier.ValidMove(soldiers, crops, x1, y1, x2, y2))
             {
                 soldiers[x2, y2] = selectedSoldier;
                 soldiers[x1, y1] = null;
@@ -207,5 +212,13 @@ public class Board : MonoBehaviour
 	{
 		soldier.transform.position = (Vector2.right * x) + (Vector2.up * y);
 	}
+
+    private void EndTurn()
+    {
+        selectedSoldier = null;
+        startDrag = Vector2.zero;
+
+        isBlueTurn = !isBlueTurn;
+    }
 
 }

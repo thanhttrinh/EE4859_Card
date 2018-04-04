@@ -100,11 +100,14 @@ public class Board : MonoBehaviour
     {
         GameObject newGO = Instantiate(Base) as GameObject;
         newGO.transform.position = new Vector3(x, y, 0);
+		OneCardManager b = newGO.gameObject.GetComponent<OneCardManager> ();
+		cards [x, y] = b;
     }
 
 	void OnTriggerEnter(Collider collider)
 	{
 		//Debug.Log ("collision detected");
+		if()
 		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn>().dragging == false) 
 		{
 			GenerateSoldier (collider, 0, 1);

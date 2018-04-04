@@ -18,6 +18,15 @@ if(!$Username){
 }
 else{
     //update database by username
-    $updateLP = "UPDATE users SET "
+    $updateLP = "UPDATE users SET ladder='".$currentLP."' WHERE username='".$Username."'";
+
+    if(mysqli_query($con, $updateLP)){
+        echo "updateSuccess";
+    }
+    else{
+        echo "updateUnsucessful";
+    }
 }
+//close database
+mysqli_close($con);
 ?>

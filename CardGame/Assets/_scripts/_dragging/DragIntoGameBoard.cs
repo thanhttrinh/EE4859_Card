@@ -32,5 +32,9 @@ public class DragIntoGameBoard : DraggingActions
         return true;
     }
 
+	public override void OnCancelDrag(){
+
+	}
+
 
 }

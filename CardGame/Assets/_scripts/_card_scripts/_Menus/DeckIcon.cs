@@ -11,14 +11,14 @@ public class DeckIcon : MonoBehaviour {
 
 	public Image DeckBG;
 
-	private float initialScale;
-	private float targetScale = 1.2f;
+	//private float initialScale;
+	//private float targetScale = 1.2f;
 	private bool selected = false;
 
 	public DeckInfo DeckInfomation{ get; set;}
 
 	void Awake(){
-		initialScale = transform.localScale.x;
+		//initialScale = transform.localScale.x;
 	}
 
 	public void ApplyLockToIcon(DeckInfo info){

@@ -15,8 +15,7 @@ MonoBehaviour:
   ScriptName: ninja
   Description: 
   Tags: 
-  CardImage: {fileID: 21300000, guid: 1f151b5aad2cb45caa70ddb790025a82, type: 3}
-  PlayCardImage: {fileID: 21300000, guid: a71b5ea641edd444aa8dbf90ba090800, type: 3}
+  CardImage: {fileID: 0}
   ManaCost: 2
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0

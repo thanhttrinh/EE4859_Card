@@ -7,7 +7,7 @@ public class GridVisual : MonoBehaviour
 {
 	public AreaPosition owner;
 
-	public SameDistanceChildren slots;
+	//public SameDistanceChildren slots;
 
 	private List<GameObject> SoldiersOnGrid = new List<GameObject>();
 
@@ -52,7 +52,7 @@ public class GridVisual : MonoBehaviour
 		}
 		cursorOverThisTable = passedThroughTableCollider;
 	}
-
+	/*
 	public void AddSoldierAtIndex(CardAsset ca, int UniqueID ,int index)
 	{
 		GameObject Soldier = GameObject.Instantiate(GlobalSettings.Instance.SoldierPrefab, slots.Children[index].transform.position, Quaternion.identity) as GameObject;
@@ -141,5 +141,5 @@ public class GridVisual : MonoBehaviour
 			g.transform.DOLocalMoveX(slots.Children[SoldiersOnGrid.IndexOf(g)].transform.localPosition.x, 0.3f);
 		}
 	}
-
+*/
 }

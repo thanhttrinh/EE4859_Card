@@ -14,7 +14,7 @@ public abstract class DraggingActions : MonoBehaviour {
 
 	public virtual bool CanDrag{
 		get{
-			return GlobalSettings.Instance.CanControlThisPlayer (playerOwner);
+			return true;
 		}
 	}
 

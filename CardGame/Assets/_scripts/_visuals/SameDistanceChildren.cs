@@ -16,7 +16,7 @@ public class SameDistanceChildren : MonoBehaviour {
 
 		Vector3 Dist = new Vector3 (xDis, yDis, zDis);
 
-		for (int i = 0; i < Children.Length; i++) {
+		for (int i = 1; i < Children.Length; i++) {
 			Children [i].transform.position = Children [i - 1].transform.position + Dist;
 		}
 	}

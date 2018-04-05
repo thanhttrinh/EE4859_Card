@@ -36,7 +36,7 @@ public class OneSoldierManager : MonoBehaviour
     public void ReadSoldierFromAsset()
     {
         // Change the card graphic sprite
-		CreatureGraphicImage.sprite = cardAsset.PlayCardImage;
+        CreatureGraphicImage.sprite = cardAsset.CardImage;
 
 		NameText.text = cardAsset.name.ToString ();
         AttackText.text = cardAsset.Attack.ToString();

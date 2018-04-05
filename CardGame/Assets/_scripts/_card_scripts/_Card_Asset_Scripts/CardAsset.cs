@@ -46,7 +46,6 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
 
 	//[PreviewSprite]
     public Sprite CardImage;
-	public Sprite PlayCardImage;
     public int ManaCost;
     
     //TokenCard not needed for Tiny Civs

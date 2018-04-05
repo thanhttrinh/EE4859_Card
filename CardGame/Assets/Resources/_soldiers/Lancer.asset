@@ -16,7 +16,6 @@ MonoBehaviour:
   Description: 
   Tags: 
   CardImage: {fileID: 0}
-  PlayCardImage: {fileID: 21300000, guid: 6def629b4bc8c4d298256a7d59d2ec97, type: 3}
   ManaCost: 4
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0

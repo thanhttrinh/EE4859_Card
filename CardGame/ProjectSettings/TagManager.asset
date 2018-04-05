@@ -59,6 +59,3 @@ TagManager:
   - name: cards
     uniqueID: 2122143193
     locked: 0
-  - name: AboveEverything
-    uniqueID: 2116510509
-    locked: 0

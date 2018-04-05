@@ -6,13 +6,12 @@ public class PlayerDeckVisual : MonoBehaviour {
 
 	public AreaPosition owner;
 	public float HeightOfOneCard = 0.012f;
+	private int cardsInDeck = 0;
 
 	void Start(){
-		cardsInDeck = GlobalSettings.Instance.Players[owner].deck.cards.Count;
-		Debug.Log (cardsInDeck.ToString ());
+		cardsInDeck = GlobalSettings.Instance.Players [owner].deck.cards.Count;
 	}
-
-	private int cardsInDeck = 0;
+		
 	public int CardsInDeck{
 		get{return cardsInDeck;}
 		set{

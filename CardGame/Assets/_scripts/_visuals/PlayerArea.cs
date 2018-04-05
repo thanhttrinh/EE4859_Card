@@ -9,7 +9,7 @@ public class PlayerArea : MonoBehaviour {
 	public AreaPosition owner;
 	public bool ControlON = true;
 	public PlayerDeckVisual PDeck;
-	public ManaPoolVisual ManaBar;
+	public ManaVisual ManaBar;
 	public HandVisual handVisual;
 	public GridVisual gridVisual;
 

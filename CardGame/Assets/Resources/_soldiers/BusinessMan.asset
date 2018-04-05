@@ -15,7 +15,8 @@ MonoBehaviour:
   ScriptName: Businessman
   Description: 
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 2905fa4edc4c241419e0cbdb1784ddea, type: 3}
+  PlayCardImage: {fileID: 21300000, guid: f7eb2185e03b5484a99eb98d96ae4f54, type: 3}
   ManaCost: 2
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0

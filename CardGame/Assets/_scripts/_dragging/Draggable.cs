@@ -9,6 +9,19 @@ public class Draggable : MonoBehaviour {
 	 * It uses DraggingActions.cs to determine whether we can drag this game object now or not
 	 */
 
+	public enum StartDragBehavior
+	{
+		OnMouseDown, InAwake
+	}
+
+	public enum EndDragBehavior
+	{
+		OnMouseUp, OnMouseDown
+	}
+
+	public StartDragBehavior HowToStart = StartDragBehavior.OnMouseDown;
+	public EndDragBehavior HowToEnd = EndDragBehavior.OnMouseUp;
+
 	public bool UserPointerDisplacement = true;
 	private bool dragging = false;
 
@@ -32,21 +45,29 @@ public class Draggable : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		//if (da != null && da.canDrag) {
-		dragging = true;
-		//when we drag, all preview should be off
-		//HoverPreview.PreviewsAllowed = false;
-		_draggingThis = this;
-		da.OnStartDrag ();
-		zDisplacement = -Camera.main.transform.position.z + transform.position.z;
-		if (UserPointerDisplacement)
-			pointerDisplacement = -transform.position + MouseInWorldCoords ();
-		else
-			pointerDisplacement = Vector3.zero;
-		//}
+		if (da != null && da.CanDrag && HowToStart == StartDragBehavior.OnMouseDown)
+			StartDragging();
+		
+		if (dragging && HowToEnd == EndDragBehavior.OnMouseDown) {
+			dragging = false;
+			_draggingThis = this;
+			da.OnEndDrag ();
+		} else {
+			dragging = true;
+			//when we drag, all preview should be off
+			//HoverPreview.PreviewsAllowed = false;
+			_draggingThis = this;
+			da.OnStartDrag ();
+			zDisplacement = -Camera.main.transform.position.z + transform.position.z;
+			if (UserPointerDisplacement)
+				pointerDisplacement = -transform.position + MouseInWorldCoords ();
+			else
+				pointerDisplacement = Vector3.zero;
+			//}
+		}
 	}
 
-	void Update(){
+	void Update		(){
 		if (dragging) {
 			Vector3 mousePos = MouseInWorldCoords ();
 			transform.position = new Vector3 (mousePos.x - pointerDisplacement.x, mousePos.y - pointerDisplacement.y, transform.position.z);
@@ -65,6 +86,22 @@ public class Draggable : MonoBehaviour {
 	}
 
 	public void CancelDrag(){
+		if (dragging) {
+			dragging = false;
+			_draggingThis = null;
+			da.OnCancelDrag ();
+		}
+	}
+
+	public void StartDragging(){
+		dragging = true;
+		_draggingThis = this;
+		da.OnStartDrag ();
+		zDisplacement = -Camera.main.transform.position.z + transform.position.z;
+		pointerDisplacement = -transform.position + MouseInWorldCoords ();
+	}
+
+	public void EndDragging(){
 		if (dragging) {
 			dragging = false;
 			_draggingThis = null;

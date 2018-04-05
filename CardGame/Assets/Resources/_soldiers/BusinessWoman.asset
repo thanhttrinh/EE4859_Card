@@ -15,7 +15,8 @@ MonoBehaviour:
   ScriptName: Businesswoman
   Description: 
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 2905fa4edc4c241419e0cbdb1784ddea, type: 3}
+  PlayCardImage: {fileID: 0}
   ManaCost: 5
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0

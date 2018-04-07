@@ -2,29 +2,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
 public class ManaVisual : MonoBehaviour {
-
-    public int TestFullCrystals;
-    public int TestTotalCrystalsThisTurn;
-
     public Text ProgressText;
 
-	private int totalCrystals;
+    private int totalCrystals;
     public int TotalCrystals
     {
         get { return totalCrystals; }
-
         set
         {
-            if (value > totalCrystals)
-                totalCrystals = 10; //mana cap is 10
+            if (value > 10)
+                totalCrystals = 10;
             else if (value < 0)
                 totalCrystals = 0;
             else
-                totalCrystals = value;
+                totalCrystals = 10;
 
-            // update the text
+            //update the text
             ProgressText.text = string.Format("{0}/{1}", availableCrystals.ToString(), totalCrystals.ToString());
         }
     }
@@ -34,7 +28,7 @@ public class ManaVisual : MonoBehaviour {
 		get { return availableCrystals; }
 		set{
 			if (value > totalCrystals)
-				availableCrystals = totalCrystals;
+				availableCrystals = totalCrystals; 
 			else if (value < 0)
 				availableCrystals = 0;
 			else
@@ -43,14 +37,5 @@ public class ManaVisual : MonoBehaviour {
 			ProgressText.text = string.Format ("{0}/{1}", availableCrystals.ToString (), totalCrystals.ToString ());
 		}
 	}
-
-    void Update()
-    {
-        if (Application.isEditor && !Application.isPlaying)
-        {
-            TotalCrystals = TestTotalCrystalsThisTurn;
-            AvailableCrystals = TestFullCrystals;
-        }
-    }
 
 }

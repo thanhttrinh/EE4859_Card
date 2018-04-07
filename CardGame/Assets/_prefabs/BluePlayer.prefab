@@ -1577,7 +1577,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2/10
+  m_Text: 0/10
 --- !u!114 &114232766371278508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1758,9 +1758,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e769796a4e94d45aed084c4e5ddafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestFullCrystals: 2
+  TestFullCrystals: 0
   TestTotalCrystalsThisTurn: 10
   ProgressText: {fileID: 114213042333829822}
+  totalCrystals: 10
 --- !u!114 &114996048936696918
 MonoBehaviour:
   m_ObjectHideFlags: 1

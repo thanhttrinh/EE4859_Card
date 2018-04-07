@@ -59,9 +59,7 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 
 		if (ca.SpellScriptName != null && ca.SpellScriptName != "")
 		{
-			Debug.Log ("CL line 62");
 			effect = System.Activator.CreateInstance(System.Type.GetType(ca.SpellScriptName)) as SpellEffect;
-			Debug.Log ("CL line 63");
 			effect.owner = owner;
 		}
 		// add this card to a dictionary with its ID as a key

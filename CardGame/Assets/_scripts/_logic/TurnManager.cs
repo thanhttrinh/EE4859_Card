@@ -35,7 +35,6 @@ public class TurnManager : MonoBehaviour {
 
 	void Start(){
 		OnGameStart ();
-		Debug.Log ("Game already started");
 	}
 
 	public void OnGameStart(){

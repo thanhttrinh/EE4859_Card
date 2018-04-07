@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
-  ControlON: 1
+  ControlON: 0
   PDeck: {fileID: 114634696548667960}
   ManaBar: {fileID: 114504256533075090}
   handVisual: {fileID: 114467120868521474}

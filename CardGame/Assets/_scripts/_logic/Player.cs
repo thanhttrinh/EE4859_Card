@@ -21,6 +21,8 @@ public class Player : MonoBehaviour, ICharacter {
 	//always have 2 
 	public static Player[] Players;
 
+	public Player Instance;
+
 	private int bonusManaThisTurn = 0;
 
 	//property of the player
@@ -71,7 +73,6 @@ public class Player : MonoBehaviour, ICharacter {
 
 			PArea.ManaBar.AvailableCrystals = manaLeft;
 			new UpdateManaCommand(this, ManaThisTurn, manaLeft).AddToQueue();
-			Debug.Log(ManaLeft);
 			if (TurnManager.Instance.whoseTurn == this)
 				HighlightPlayableCards();
 		}
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour, ICharacter {
 	public event VoidWithNoArguments EndTurnEvent;
 
 	void Awake(){
+		Instance = this;
 		Players = GameObject.FindObjectsOfType<Player> ();
 		PlayerID = IDFactory.GetUniqueID ();
 	}
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour, ICharacter {
 	public virtual void OnTurnStart(){
 		//add one mana to the pool
 		manaThisTurn++;
-		Debug.Log (ManaThisTurn.ToString ());
+        this.PArea.ManaBar.AvailableCrystals = ManaThisTurn;
 		manaLeft = manaThisTurn;
 		foreach (SoldierLogic sl in grid.SoldiersOnGrid)
 			sl.OnTurnStart ();
@@ -135,7 +137,10 @@ public class Player : MonoBehaviour, ICharacter {
 	//draw a card
 	public void DrawACard(bool fast = false){
 		if (deck.cards.Count > 0) {
-			Debug.Log (deck.cards.Count.ToString());
+            if(PlayerColor == "red")
+			    Debug.Log ("Cards currently in red deck: " + (deck.cards.Count - 1).ToString());
+            if (PlayerColor == "blue")
+                Debug.Log("Cards currently in blue deck: " + (deck.cards.Count - 1).ToString());
 			if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
 				Debug.Log ("adding card to hand");
 				// add card to hand
@@ -144,8 +149,7 @@ public class Player : MonoBehaviour, ICharacter {
 				//remove the card from the deck
 				deck.cards.RemoveAt (0);
 				//create a command
-				//ArgumentNullException here
-				//new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
+			   // new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
 				Debug.Log ("DrawACard Success");
 			}
 		} else {

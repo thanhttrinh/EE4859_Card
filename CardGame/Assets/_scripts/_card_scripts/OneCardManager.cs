@@ -22,8 +22,7 @@ public class OneCardManager : MonoBehaviour {
     public Image CardGraphicImage;
     public Image CardBodyImage;
     public Image CardFaceFrameImage;
-    public Image CardFaceGlowImage;
-    public Image CardBackGlowImage;
+	public Image CardSpriteImage;
     //public Image RarityStoneImage;
 
     void Awake()
@@ -44,7 +43,6 @@ public class OneCardManager : MonoBehaviour {
         {
             canBePlayedNow = value;
 
-            CardFaceGlowImage.enabled = value;
         }
     }
 
@@ -77,6 +75,7 @@ public class OneCardManager : MonoBehaviour {
         // 5) Change the card graphic sprite
         CardGraphicImage.sprite = cardAsset.CardImage;
 
+
         if (cardAsset.TypeOfCard == TypesOfCards.Soldier)
         {
             // this is a soldier
@@ -84,6 +83,9 @@ public class OneCardManager : MonoBehaviour {
             HealthText.text = cardAsset.MaxHealth.ToString();
             RangeText.text = cardAsset.SoldierRange.ToString();
             MovementText.text = cardAsset.Movement.ToString();
+			CardSpriteImage.sprite = cardAsset.CardSprite;
+
+
         }
 
         if (cardAsset.TypeOfCard == TypesOfCards.Crop)

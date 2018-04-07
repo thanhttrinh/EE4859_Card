@@ -53,11 +53,11 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 		this.ca = ca;
 		// get unique int ID
 		UniqueCardID = IDFactory.GetUniqueID();
-		ResetManaCost();
+		//ResetManaCost();
 		// create an instance of SpellEffect with a name from our CardAsset
 		// and attach it to 
 
-		if (ca.ScriptName!= null && ca.ScriptName!= "")
+		if (ca.Targets.ToString() != null && ca.Targets.ToString() != "")
 		{
 			Debug.Log ("CL line 62");
 			effect = System.Activator.CreateInstance(System.Type.GetType(ca.Targets.ToString())) as SpellEffect;

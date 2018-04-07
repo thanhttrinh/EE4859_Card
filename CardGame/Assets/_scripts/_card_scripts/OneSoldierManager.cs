@@ -38,11 +38,11 @@ public class OneSoldierManager : MonoBehaviour
     public void ReadSoldierFromAsset()
     {
         // Change the card graphic sprite
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		SoldierInPlayImage.sprite = cardAsset.CardInPlayImage;
-=======
-		CreatureGraphicImage.sprite = cardAsset.CardSprite;
->>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
+//=======
+		SoldierInPlayImage.sprite = cardAsset.CardSprite;
+//>>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
 
 		NameText.text = cardAsset.name.ToString ();
 		ManaText.text = cardAsset.ManaCost.ToString ();
@@ -52,7 +52,7 @@ public class OneSoldierManager : MonoBehaviour
         RangeText.text = cardAsset.SoldierRange.ToString();
         MovementText.text = cardAsset.Movement.ToString();
 
-		CreatureGraphicImage.sprite = cardAsset.CardSprite;
+		SoldierInPlayImage.sprite = cardAsset.CardSprite;
 
         if (PreviewManager != null)
         {

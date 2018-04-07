@@ -46,11 +46,11 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
 
 	//[PreviewSprite]
     public Sprite CardImage;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	public Sprite CardInPlayImage;
-=======
+//=======
 	public Sprite CardSprite;
->>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
+//>>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
     public int ManaCost;
     
     //TokenCard not needed for Tiny Civs

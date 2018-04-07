@@ -122,6 +122,8 @@ public class Board : MonoBehaviour
 			GameObject newGO = Instantiate (Soldier) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
+
             newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
             //newGO.transform.SetParent (this.gameObject.transform, false);

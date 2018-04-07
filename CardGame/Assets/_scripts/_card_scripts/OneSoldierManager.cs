@@ -9,6 +9,7 @@ public class OneSoldierManager : MonoBehaviour
     public OneCardManager PreviewManager;
     [Header("Text Component References")]
 	public Text NameText;
+	public Text ManaText;
     public Text HealthText;
     public Text AttackText;
     public Text RangeText;
@@ -37,13 +38,21 @@ public class OneSoldierManager : MonoBehaviour
     public void ReadSoldierFromAsset()
     {
         // Change the card graphic sprite
+<<<<<<< HEAD
 		SoldierInPlayImage.sprite = cardAsset.CardInPlayImage;
+=======
+		CreatureGraphicImage.sprite = cardAsset.CardSprite;
+>>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
 
 		NameText.text = cardAsset.name.ToString ();
+		ManaText.text = cardAsset.ManaCost.ToString ();
+
         AttackText.text = cardAsset.Attack.ToString();
         HealthText.text = cardAsset.MaxHealth.ToString();
         RangeText.text = cardAsset.SoldierRange.ToString();
         MovementText.text = cardAsset.Movement.ToString();
+
+		CreatureGraphicImage.sprite = cardAsset.CardSprite;
 
         if (PreviewManager != null)
         {

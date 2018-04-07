@@ -12,21 +12,17 @@ MonoBehaviour:
   m_Name: Ninja
   m_EditorClassIdentifier: 
   cardTypeAsset: {fileID: 11400000, guid: 64aa6f18c98caa44caa0a5a1d4faf485, type: 2}
-  ScriptName: ninja
+  ScriptName: Ninja
   Description: 
   Tags: 
   CardImage: {fileID: 21300000, guid: 1f151b5aad2cb45caa70ddb790025a82, type: 3}
-<<<<<<< HEAD
-  CardInPlayImage: {fileID: 21300000, guid: a71b5ea641edd444aa8dbf90ba090800, type: 3}
-=======
   CardSprite: {fileID: 21300000, guid: a71b5ea641edd444aa8dbf90ba090800, type: 3}
->>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
   ManaCost: 2
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
   MaxHealth: 2
   Attack: 4
-  SoldierRange: 1
+  SoldierRange: 2
   Movement: 1
   AttacksForOneTurn: 1
   Charge: 0
@@ -35,5 +31,6 @@ MonoBehaviour:
   CropSize: 0
   SpecialCropAmount: 0
   SpellRange: 0
+  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

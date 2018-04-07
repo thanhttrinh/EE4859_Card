@@ -39,7 +39,7 @@ public class OneSoldierManager : MonoBehaviour
     {
         // Change the card graphic sprite
 //<<<<<<< HEAD
-		SoldierInPlayImage.sprite = cardAsset.CardInPlayImage;
+		SoldierInPlayImage.sprite = cardAsset.CardSprite;
 //=======
 		SoldierInPlayImage.sprite = cardAsset.CardSprite;
 //>>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1

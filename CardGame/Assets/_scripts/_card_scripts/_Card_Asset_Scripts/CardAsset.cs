@@ -34,20 +34,16 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     // this object will hold the info about the most general card
     [Header("General Info")]
 	public CardTypeAsset cardTypeAsset; //decide what type of card this is
-
 	public string ScriptName; //the displayed name on the card itself
     [TextArea(2,3)]
     public string Description;  // Description for spell or character
     [TextArea(2,3)]
     public string Tags;  // tags that can be searched as keywords
-    
-    //RarityOptions not needed for Tiny Civs
-    //public RarityOptions Rarity;
 
 	//[PreviewSprite]
     public Sprite CardImage;
 //<<<<<<< HEAD
-	public Sprite CardInPlayImage;
+//	public Sprite CardInPlayImage;
 //=======
 	public Sprite CardSprite;
 //>>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
@@ -57,9 +53,7 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
     //public bool TokenCard = false; // token cards can not be seen in collection
 
     public int OverrideLimitOfThisCardInDeck = -1;
-
     public TypesOfCards TypeOfCard;
-
 
     [Header("Soldier Info")]
     [Range(1, 30)]
@@ -83,7 +77,7 @@ public class CardAsset : ScriptableObject , IComparable<CardAsset>
 
     [Header("Spell Info")]
     public int SpellRange;
-    //public string SpellScriptName;
+    public string SpellScriptName;
     public int SpecialSpellAmount;
     public TargetingOptions Targets;
 

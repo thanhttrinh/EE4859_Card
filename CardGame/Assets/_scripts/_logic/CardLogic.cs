@@ -48,12 +48,12 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 	// CONSTRUCTOR
 	public CardLogic(CardAsset ca, Player owner)
 	{
-		this.owner = owner;
+		//this.owner = owner;
 		// set the CardAsset reference
 		this.ca = ca;
 		// get unique int ID
 		UniqueCardID = IDFactory.GetUniqueID();
-		//ResetManaCost();
+	//	ResetManaCost();
 		// create an instance of SpellEffect with a name from our CardAsset
 		// and attach it to 
 

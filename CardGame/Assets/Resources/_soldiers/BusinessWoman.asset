@@ -12,15 +12,11 @@ MonoBehaviour:
   m_Name: BusinessWoman
   m_EditorClassIdentifier: 
   cardTypeAsset: {fileID: 11400000, guid: 64aa6f18c98caa44caa0a5a1d4faf485, type: 2}
-  ScriptName: Businesswoman
+  ScriptName: Business Woman
   Description: 
   Tags: 
   CardImage: {fileID: 21300000, guid: 2905fa4edc4c241419e0cbdb1784ddea, type: 3}
-<<<<<<< HEAD
-  CardInPlayImage: {fileID: 21300000, guid: f7eb2185e03b5484a99eb98d96ae4f54, type: 3}
-=======
   CardSprite: {fileID: 21300000, guid: f7eb2185e03b5484a99eb98d96ae4f54, type: 3}
->>>>>>> 884c3b97e3bff512b10eaa0bccb250a666e564a1
   ManaCost: 5
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
@@ -35,5 +31,6 @@ MonoBehaviour:
   CropSize: 0
   SpecialCropAmount: 0
   SpellRange: 0
+  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

@@ -141,21 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1199642194702156
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224664537599848770}
-  m_Layer: 5
-  m_Name: GridVisual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1202873601748254
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +152,7 @@ GameObject:
   - component: {fileID: 114649592925377682}
   m_Layer: 5
   m_Name: BluePlayer
-  m_TagString: Untagged
+  m_TagString: blueCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -589,6 +574,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4390491680973922}
+  - component: {fileID: 114741162471945888}
   m_Layer: 0
   m_Name: BlueSideSlots
   m_TagString: Untagged
@@ -605,6 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4252841678544648}
   - component: {fileID: 114531735951780514}
+  - component: {fileID: 65612749325394206}
   m_Layer: 0
   m_Name: BlueGridTest
   m_TagString: Untagged
@@ -875,7 +862,7 @@ Transform:
   m_Children:
   - {fileID: 4390491680973922}
   m_Father: {fileID: 4452669697155402}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4285609211086468
 Transform:
@@ -1027,7 +1014,6 @@ Transform:
   - {fileID: 4628939059735234}
   - {fileID: 224062832587605970}
   - {fileID: 224569924004346218}
-  - {fileID: 224664537599848770}
   - {fileID: 4252841678544648}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1358,6 +1344,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65612749325394206
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1808111040098600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65627498287742406
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1664,7 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  slots: {fileID: 0}
+  slots: {fileID: 114741162471945888}
 --- !u!114 &114649592925377682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1682,6 +1680,24 @@ MonoBehaviour:
   ManaBar: {fileID: 114829056647071302}
   handVisual: {fileID: 114268632879194312}
   gridVisual: {fileID: 114531735951780514}
+--- !u!114 &114741162471945888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806850677198878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8854a48a13df1f4478277dfc90a53d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Children:
+  - {fileID: 4827535202126502}
+  - {fileID: 4695626109872878}
+  - {fileID: 4470567772522926}
+  - {fileID: 4244304364614788}
+  - {fileID: 4477805330069068}
+  - {fileID: 4497933416750294}
 --- !u!114 &114748387407705124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2782,24 +2798,6 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -16, y: -16}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224664537599848770
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199642194702156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4452669697155402}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224867347311590772
 RectTransform:

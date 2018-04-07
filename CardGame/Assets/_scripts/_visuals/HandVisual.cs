@@ -44,7 +44,8 @@ public class HandVisual : MonoBehaviour {
 			xPos = (slots.Children [0].transform.localPosition.x - slots.Children [CardsInHand.Count - 1].transform.localPosition.x) / 2f;
 		else
 			xPos = 0f;
-
+		Debug.Log (slots.Children [0].transform.position.ToString ());
+		Debug.Log (slots.Children [CardsInHand.Count - 1].transform.position.ToString ());
 		slots.gameObject.transform.DOLocalMoveX (xPos, 0.3f);
 	}
 

@@ -13,6 +13,10 @@ TagManager:
   - crop
   - tile
   - base
+  - redCard
+  - blueCard
+  - redPlayer
+  - bluePlayer
   layers:
   - Default
   - TransparentFX

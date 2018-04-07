@@ -36,7 +36,7 @@ public class TimerVisual : MonoBehaviour, IEventSystemHandler {
 		{
 			timeTillZero -= Time.deltaTime;
 			if (TimerText!=null)
-				TimerText.text = timeTillZero.ToString();
+				TimerText.text = ToString();
 
 			// check for TimeExpired
 			if(timeTillZero<=0)

@@ -34,16 +34,13 @@ public class TurnManager : MonoBehaviour {
 	}
 
 	void Start(){
-		Debug.Log ("Game is starting");
 		OnGameStart ();
 		Debug.Log ("Game already started");
 	}
 
 	public void OnGameStart(){
-		Debug.Log ("OnGameStart");
 		CardLogic.CardsCreatedThisGame.Clear ();
 		SoldierLogic.SoldiersCreatedThisGame.Clear ();
-		Debug.Log ("card logic and soldier logic cleared");
 		foreach (Player p in Players) {
 			p.ManaThisTurn = 0;
 			p.ManaLeft = 0;
@@ -60,7 +57,9 @@ public class TurnManager : MonoBehaviour {
 		int initDraw = 3;
 		for(int i = 0; i < initDraw; i++){
 			whoGoesSecond.DrawACard(true);
+			Debug.Log (whoGoesSecond.name.ToString () + " drew a card");
 			whoGoesFirst.DrawACard(true);
+			Debug.Log (whoGoesFirst.name.ToString () + " drew a card");
 		}
 
 		whoGoesSecond.DrawACard(true);

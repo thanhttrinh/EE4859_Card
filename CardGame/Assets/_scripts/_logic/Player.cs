@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, ICharacter {
 	public PlayerAsset pAsset;
 	// references to all the visual game objects for this player
 	public PlayerArea PArea;
+	public string PlayerColor;
 
 	//references to logical properties belonging to this player
 	public Deck deck;
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour, ICharacter {
 		get{
 			if (Players [0] == this)
 				return Players [1];
-			else
+			else 
 				return Players [0];
 		}
 	}
@@ -124,28 +125,27 @@ public class Player : MonoBehaviour, ICharacter {
 	}
 
 	void Update(){
-		if(Input.GetKeyDown(KeyCode.Alpha3))
-			DrawACard();
+		if (Input.GetKeyDown (KeyCode.Alpha3)) {
+			DrawACard ();
+			Debug.Log ("drawing a card with Num3");
+		}
 
 	}
 
-
 	//draw a card
 	public void DrawACard(bool fast = false){
-		Debug.Log ("DrawACard");
 		if (deck.cards.Count > 0) {
 			Debug.Log (deck.cards.Count.ToString());
 			if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
 				Debug.Log ("adding card to hand");
 				// add card to hand
 				CardLogic newCard = new CardLogic (deck.cards [0], this);
-				Debug.Log ("new card logic created");
 				hand.CardsInHand.Insert (0, newCard);
 				//remove the card from the deck
 				deck.cards.RemoveAt (0);
 				//create a command
 				//ArgumentNullException here
-				new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
+				//new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
 				Debug.Log ("DrawACard Success");
 			}
 		} else {

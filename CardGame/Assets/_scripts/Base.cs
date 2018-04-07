@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Base : MonoBehaviour {
 
     public int BaseHP;
+	public bool baseCreated;
 
 	// Use this for initialization
 	void Start ()

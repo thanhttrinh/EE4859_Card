@@ -12,6 +12,7 @@ public class Board : MonoBehaviour
 	public GameObject Soldier;
 	public GameObject Crop;
 	private bool isCreated;
+	private bool baseCreated;
 
 	private Vector2 mouseOver;
 	private Vector2 startDrag;
@@ -47,7 +48,11 @@ public class Board : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log (x + ", " + y);
-			SelectSoldier (x, y);
+			/*if (!Base.gameObject.gameObject.GetComponent<Base>().baseCreated) {
+				GenerateBase (x, y);
+			} else {*/
+				SelectSoldier (x, y);
+			//}
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
@@ -91,6 +96,7 @@ public class Board : MonoBehaviour
     private void GenerateBase(int x, int y)
     {
         GameObject newGO = Instantiate(Base) as GameObject;
+
         newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
 		cards [x, y] = b;

@@ -16,7 +16,9 @@ public class PlayASoldierCommand : Command {
 		this.soldierID = soldierID;
 	}
 
+
 	public override void StartCommandExecution(){
+		/*
 		//remove and destroy the card in hand
 		HandVisual PlayerHand = p.PArea.handVisual;
 		GameObject card = IDHolder.GetGameObjectWithID (card.UniqueCardID); //this is unity gameobject not from IDholder
@@ -25,5 +27,7 @@ public class PlayASoldierCommand : Command {
 		//HoverPreview.PrevewsAllowed = true;
 		//p.PArea.gridVisual.AddSoldierAtIndex(card.GetComponent<OneCardManager>().cardAsset, soldierID, gridPos);
 		//TODO: create a soldier
+		*/
 	}
+
 }

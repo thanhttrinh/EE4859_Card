@@ -15,7 +15,8 @@ MonoBehaviour:
   ScriptName: School Girl
   Description: 
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: a3e17f479a0e4480f8f6f508acdc24fc, type: 3}
+  CardSprite: {fileID: 0}
   ManaCost: 6
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0

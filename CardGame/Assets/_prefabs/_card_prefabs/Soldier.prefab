@@ -536,6 +536,7 @@ MonoBehaviour:
   cardAsset: {fileID: 11400000, guid: edae9a0b56855d846a8f392f961022ff, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114652183073542042}
+  ManaText: {fileID: 114451604739859408}
   HealthText: {fileID: 114518868388466290}
   AttackText: {fileID: 114458243911061828}
   RangeText: {fileID: 114953021773466592}
@@ -1547,7 +1548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.18331432, y: 0.10575046}
   m_AnchorMax: {x: 0.8203205, y: 1}
-  m_AnchoredPosition: {x: 0.52044696, y: 0.25494346}
+  m_AnchoredPosition: {x: 0.520447, y: 0.25494385}
   m_SizeDelta: {x: 1.0408939, y: -67.22099}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224339990172894848

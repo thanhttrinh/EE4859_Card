@@ -20,13 +20,13 @@ public class TimerVisual : MonoBehaviour, IEventSystemHandler {
 	{
 		timeTillZero = TimeForOneTurn;
 		counting = true;
-
+		Debug.Log ("counting started");
 	} 
 
 	public void StopTimer()
 	{
 		counting = false;
-
+		Debug.Log ("counting stopped");
 	}
 
 	// Update is called once per frame
@@ -36,7 +36,7 @@ public class TimerVisual : MonoBehaviour, IEventSystemHandler {
 		{
 			timeTillZero -= Time.deltaTime;
 			if (TimerText!=null)
-				TimerText.text = ToString();
+				TimerText.text = timeTillZero.ToString();
 
 			// check for TimeExpired
 			if(timeTillZero<=0)

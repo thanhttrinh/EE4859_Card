@@ -16,7 +16,6 @@ MonoBehaviour:
   Description: Draw 2 cards.
   Tags: 
   CardImage: {fileID: 0}
-  CardInPlayImage: {fileID: 0}
   CardSprite: {fileID: 0}
   ManaCost: 2
   OverrideLimitOfThisCardInDeck: -1
@@ -32,5 +31,6 @@ MonoBehaviour:
   CropSize: 0
   SpecialCropAmount: 0
   SpellRange: 0
+  SpellScriptName: DrawACard
   SpecialSpellAmount: 0
   Targets: 4

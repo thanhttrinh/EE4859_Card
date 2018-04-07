@@ -13,11 +13,13 @@ public class SoldierLogic : ICharacter
 		get { return UniqueSoldierID; }
 	}
 
+	//the basic health that we have in CardAsset
 	private int baseHealth;
 	public int MaxHealth{
 		get{ return baseHealth; }
 	}
 
+	//current health of this soldier
 	private int health;
 	public int Health
 	{
@@ -96,5 +98,6 @@ public class SoldierLogic : ICharacter
 		AttackSoldier (target);
 	}
 
+	//static for managing IDs
 	public static Dictionary<int, SoldierLogic> SoldiersCreatedThisGame = new Dictionary<int, SoldierLogic>();
 }

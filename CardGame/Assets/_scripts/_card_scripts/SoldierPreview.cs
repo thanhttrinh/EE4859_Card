@@ -44,8 +44,8 @@ public class SoldierPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
 	public void OnMouseExit()
 	{
-        if (SceneManager.GetActiveScene().name == "InGame")
-            PreviewUnit.SetActive(false);
+       // if (SceneManager.GetActiveScene().name == "InGame")
+            //PreviewUnit.SetActive(false);
 	}
 
 	#region Preview Card Object

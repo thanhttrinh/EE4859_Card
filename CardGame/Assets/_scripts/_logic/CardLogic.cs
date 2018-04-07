@@ -57,7 +57,7 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 		// create an instance of SpellEffect with a name from our CardAsset
 		// and attach it to 
 
-		if (ca.Targets.ToString() != null && ca.Targets.ToString() != "")
+		if (ca.SpellScriptName != null && ca.SpellScriptName != "")
 		{
 			Debug.Log ("CL line 62");
 			effect = System.Activator.CreateInstance(System.Type.GetType(ca.Targets.ToString())) as SpellEffect;

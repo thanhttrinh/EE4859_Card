@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 114904630195618666}
   - component: {fileID: 114072704210190238}
   - component: {fileID: 65872508124792512}
+  - component: {fileID: 114879512621134076}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -905,9 +906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dbd2133c80840489c1dd7aaa126bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: ac1ff9257da96494482650412e014896, type: 2}
+  cardAsset: {fileID: 0}
   PreviewManager: {fileID: 114755701894141852}
   NameText: {fileID: 114508345330627108}
+  ManaText: {fileID: 0}
   HealthText: {fileID: 114883548556628194}
   AttackText: {fileID: 114946292140500502}
   RangeText: {fileID: 114581992273406512}
@@ -1580,7 +1582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: edae9a0b56855d846a8f392f961022ff, type: 2}
+  cardAsset: {fileID: 0}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114508345330627108}
   ManaCostText: {fileID: 114342325866246200}
@@ -1595,8 +1597,7 @@ MonoBehaviour:
   CardGraphicImage: {fileID: 114545117689246830}
   CardBodyImage: {fileID: 114932656695002366}
   CardFaceFrameImage: {fileID: 114607563354302412}
-  CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 0}
+  CardSpriteImage: {fileID: 0}
 --- !u!114 &114764299148971492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1804,6 +1805,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114879512621134076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235834637592982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c464de51049035942a4749ef9df82a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UserPointerDisplacement: 1
 --- !u!114 &114883548556628194
 MonoBehaviour:
   m_ObjectHideFlags: 1

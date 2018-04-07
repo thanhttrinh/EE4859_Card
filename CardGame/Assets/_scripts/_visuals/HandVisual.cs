@@ -12,7 +12,7 @@ public class HandVisual : MonoBehaviour {
 	public Transform DrawPreviewSpot;
 	public Transform DeckTransform;
 	public Transform OtherCardDrawSourceTransform;
-	public Transform PlayerPreviewSpot;
+	public Transform PlayPreviewSpot;
 	private List<GameObject> CardsInHand = new List<GameObject>();
 
 	public void AddCard(GameObject card){
@@ -138,7 +138,7 @@ public class HandVisual : MonoBehaviour {
 
 	void ChangeLastCardStatusToInHand(GameObject card, WhereIsTheCardOrSoldier w)
 	{
-		//Debug.Log("Changing state to Hand for card: " + card.gameObject.name);
+		Debug.Log("Changing state to Hand for card: " + card.gameObject.name);
 		if (owner == AreaPosition.blue)
 			w.VisualState = VisualStates.BlueHand;
 		else
@@ -165,12 +165,12 @@ public class HandVisual : MonoBehaviour {
 		CardVisual.transform.SetParent(null);
 
 		Sequence s = DOTween.Sequence();
-		//s.Append(CardVisual.transform.DOMove(PlayPreviewSpot.position, 1f));
+		s.Append(CardVisual.transform.DOMove(PlayPreviewSpot.position, 1f));
 		s.Insert(0f, CardVisual.transform.DORotate(Vector3.zero, 1f));
 		s.AppendInterval(2f);
 		s.OnComplete(()=>
 			{
-				//Command.CommandExecutionComplete();
+				Command.CommandExecutionComplete();
 				Destroy(CardVisual);
 			});
 	}

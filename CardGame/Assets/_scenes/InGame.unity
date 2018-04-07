@@ -947,9 +947,11 @@ MonoBehaviour:
   PlayerID: 0
   pAsset: {fileID: 11400000, guid: 0fbd2888bd78b564d8cca6b9d8f3d361, type: 2}
   PArea: {fileID: 57796732}
+  PlayerColor: blue
   deck: {fileID: 885117900}
   hand: {fileID: 1702864637}
   grid: {fileID: 1103537740}
+  Instance: {fileID: 0}
 --- !u!1001 &413249306
 Prefab:
   m_ObjectHideFlags: 0
@@ -1386,7 +1388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86791148ef0d3fe47acb50227d5f5b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeForOneTurn: 10
+  TimeForOneTurn: 5
   TimerText: {fileID: 218852566}
   TimerExpired:
     m_PersistentCalls:
@@ -1866,9 +1868,11 @@ MonoBehaviour:
   PlayerID: 0
   pAsset: {fileID: 11400000, guid: 4d654bf9a2582ed42ad2b15381f92e7f, type: 2}
   PArea: {fileID: 1077323458}
+  PlayerColor: red
   deck: {fileID: 684435241}
   hand: {fileID: 541996087}
   grid: {fileID: 1204064116}
+  Instance: {fileID: 0}
 --- !u!1001 &584540106
 Prefab:
   m_ObjectHideFlags: 0
@@ -1923,11 +1927,6 @@ Prefab:
       propertyPath: PlayPreviewSpot
       value: 
       objectReference: {fileID: 145966801}
-    - target: {fileID: 114269978999971504, guid: 61759aa0722691547a4476fda5867179,
-        type: 2}
-      propertyPath: ControlON
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61759aa0722691547a4476fda5867179, type: 2}
   m_IsPrefabParent: 0
@@ -3884,6 +3883,11 @@ Prefab:
       propertyPath: PlayPreviewSpot
       value: 
       objectReference: {fileID: 145966801}
+    - target: {fileID: 114829056647071302, guid: 554a7f712ee9a2e4c9e2de80eb29bbab,
+        type: 2}
+      propertyPath: TestFullCrystals
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 554a7f712ee9a2e4c9e2de80eb29bbab, type: 2}
   m_IsPrefabParent: 0

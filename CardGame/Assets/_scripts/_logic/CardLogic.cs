@@ -60,7 +60,7 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 		if (ca.SpellScriptName != null && ca.SpellScriptName != "")
 		{
 			Debug.Log ("CL line 62");
-			effect = System.Activator.CreateInstance(System.Type.GetType(ca.Targets.ToString())) as SpellEffect;
+			effect = System.Activator.CreateInstance(System.Type.GetType(ca.SpellScriptName)) as SpellEffect;
 			Debug.Log ("CL line 63");
 			effect.owner = owner;
 		}

@@ -16,6 +16,7 @@ MonoBehaviour:
   Description: Give a soldier +3 attack and health. Restore it to full hp.
   Tags: 
   CardImage: {fileID: 0}
+  CardInPlayImage: {fileID: 0}
   ManaCost: 3
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 2
@@ -31,4 +32,4 @@ MonoBehaviour:
   SpecialCropAmount: 0
   SpellRange: 3
   SpecialSpellAmount: 0
-  Targets: 6
+  Targets: 1

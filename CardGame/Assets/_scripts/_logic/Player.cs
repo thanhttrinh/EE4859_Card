@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, ICharacter {
 	
 	//int id from iD factory
 	public int PlayerID;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
 			//	manaThisTurn = PArea.ManaBar.Crystals.Length;
 			else
 				manaThisTurn = value;
-			//new UpdateManaCommand(this, manaThisTurn, manaLeft).AddToQueue();
+			new UpdateManaCommand(this, manaThisTurn, manaLeft).AddToQueue();
 		}
 	}
 
@@ -68,9 +68,9 @@ public class Player : MonoBehaviour {
 			else
 				manaLeft = value;
 
-			//PArea.ManaBar.AvailableCrystals = manaLeft;
-			//new UpdateManaCommand(this, ManaThisTurn, manaLeft).AddToQueue();
-			//Debug.Log(ManaLeft);
+			PArea.ManaBar.AvailableCrystals = manaLeft;
+			new UpdateManaCommand(this, ManaThisTurn, manaLeft).AddToQueue();
+			Debug.Log(ManaLeft);
 			if (TurnManager.Instance.whoseTurn == this)
 				HighlightPlayableCards();
 		}
@@ -103,6 +103,7 @@ public class Player : MonoBehaviour {
 	public virtual void OnTurnStart(){
 		//add one mana to the pool
 		manaThisTurn++;
+		Debug.Log (ManaThisTurn.ToString ());
 		manaLeft = manaThisTurn;
 		foreach (SoldierLogic sl in grid.SoldiersOnGrid)
 			sl.OnTurnStart ();
@@ -122,17 +123,30 @@ public class Player : MonoBehaviour {
 		manaLeft += amount;
 	}
 
+	void Update(){
+		if(Input.GetKeyDown(KeyCode.Alpha3))
+			DrawACard();
+
+	}
+
+
 	//draw a card
 	public void DrawACard(bool fast = false){
+		Debug.Log ("DrawACard");
 		if (deck.cards.Count > 0) {
-			if (hand.CardsInHand.Count < 5/*PArea.handVisual.slots.Children.Length*/) {
+			Debug.Log (deck.cards.Count.ToString());
+			if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
+				Debug.Log ("adding card to hand");
 				// add card to hand
 				CardLogic newCard = new CardLogic (deck.cards [0], this);
+				Debug.Log ("new card logic created");
 				hand.CardsInHand.Insert (0, newCard);
 				//remove the card from the deck
 				deck.cards.RemoveAt (0);
 				//create a command
+				//ArgumentNullException here
 				new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
+				Debug.Log ("DrawACard Success");
 			}
 		} else {
 			//TODO: what to do when run out of cards
@@ -140,13 +154,13 @@ public class Player : MonoBehaviour {
 	}
 
 	public void GetACardNotFromDeck(CardAsset cardAsset){
-		if (hand.CardsInHand.Count < 5/*PArea.handVisual.slots.Children.Length*/) {
+		if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
 			//add card to hand
 			CardLogic newCard = new CardLogic(cardAsset, this);
 			newCard.owner = this;
 			hand.CardsInHand.Insert (0, newCard);
 			//send message to the visual deck
-			//new DrawACardCommand(hand.CardsInHand[0], this, fast: true, GetACardNotFromDeck: false).AddToQueue();
+			new DrawACardCommand(hand.CardsInHand[0], this, fast: true, fromDeck: false).AddToQueue();
 		}
 	}
 
@@ -155,8 +169,8 @@ public class Player : MonoBehaviour {
 			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], null);
 		else if (TargetUniqueID == ID)
 			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], null);
-//		else if (TargetUniqueID == otherPlayer.ID)
-//			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], this.otherPlayer);
+		else if (TargetUniqueID == otherPlayer.ID)
+			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], this.otherPlayer);
 		else
 			//target is a soldier
 			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], SoldierLogic.SoldiersCreatedThisGame[TargetUniqueID]);
@@ -168,7 +182,7 @@ public class Player : MonoBehaviour {
 			playedCard.effect.ActivateEffect(playedCard.ca.SpecialSpellAmount, target);
 		else
 			Debug.Log("No effect found on card " + playedCard.ca.name);
-	//	new PlayASpellCardCommand (this, playedCard).AddToQueue ();
+		new PlayASpellCommand (this, playedCard).AddToQueue ();
 		hand.CardsInHand.Remove (playedCard);
 	}
 
@@ -181,7 +195,7 @@ public class Player : MonoBehaviour {
 		SoldierLogic newSoldier = new SoldierLogic (this, playedCard.ca);
 		grid.SoldiersOnGrid.Insert (GridPos, newSoldier);
 
-		//new PlayASoldierCommand (playedCard, this, GridPos, newSoldier.UniqueSoldierID).AddToQueue ();
+		new PlayASoldierCommand (playedCard, this, GridPos, newSoldier.UniqueSoldierID).AddToQueue ();
 		hand.CardsInHand.Remove(playedCard);
 		HighlightPlayableCards ();
 	}
@@ -191,7 +205,7 @@ public class Player : MonoBehaviour {
 		PArea.ControlON = false;
 		otherPlayer.PArea.ControlON = false;
 		TurnManager.Instance.StopTheTimer ();
-		//new GameOverCommand (this).AddToQueue ();
+		new GameOverCommand (this).AddToQueue ();
 	}
 
 	public void HighlightPlayableCards(bool removeAllHighlights = false){
@@ -217,4 +231,6 @@ public class Player : MonoBehaviour {
 	public void TransmitInfoAboutPlayer(){
 		PArea.AllowedToControlThisPlayer = true;
 	}
+
+
 }

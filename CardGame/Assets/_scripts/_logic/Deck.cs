@@ -10,4 +10,8 @@ public class Deck : MonoBehaviour {
 	{
 		cards.Shuffle ();
 	}
+
+	void Start(){
+		cards.Shuffle ();
+	}
 }

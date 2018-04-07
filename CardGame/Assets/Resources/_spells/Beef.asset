@@ -16,6 +16,7 @@ MonoBehaviour:
   Description: Give a soldier +5 attack, +5 hp, and +1 move.
   Tags: 
   CardImage: {fileID: 0}
+  CardInPlayImage: {fileID: 0}
   ManaCost: 7
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 2
@@ -31,4 +32,4 @@ MonoBehaviour:
   SpecialCropAmount: 0
   SpellRange: 4
   SpecialSpellAmount: 0
-  Targets: 8
+  Targets: 1

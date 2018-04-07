@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,17 +10,13 @@ public class ManaVisual : MonoBehaviour {
 
     public Text ProgressText;
 
-    private int totalCrystals;
-	private int availableCrystals;
-
+	private int totalCrystals;
     public int TotalCrystals
     {
         get { return totalCrystals; }
 
         set
         {
-            //Debug.Log("Changed total mana to: " + value);
-
             if (value > totalCrystals)
                 totalCrystals = 10; //mana cap is 10
             else if (value < 0)
@@ -34,27 +29,20 @@ public class ManaVisual : MonoBehaviour {
         }
     }
 
-    
-    public int AvailableCrystals
-    {
-        get { return availableCrystals; }
+	private int availableCrystals;
+	public int AvailableCrystals{
+		get { return availableCrystals; }
+		set{
+			if (value > totalCrystals)
+				availableCrystals = totalCrystals;
+			else if (value < 0)
+				availableCrystals = 0;
+			else
+				availableCrystals = value;
 
-        set
-        {
-            //Debug.Log("Changed mana this turn to: " + value);
-
-            if (value > totalCrystals)
-                availableCrystals = totalCrystals;
-            else if (value < 0)
-                availableCrystals = 0;
-            else
-                availableCrystals = value;
-
-            // update the text
-            ProgressText.text = string.Format("{0}/{1}", availableCrystals.ToString(), totalCrystals.ToString());
-
-        }
-    }
+			ProgressText.text = string.Format ("{0}/{1}", availableCrystals.ToString (), totalCrystals.ToString ());
+		}
+	}
 
     void Update()
     {

@@ -56,9 +56,12 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 		ResetManaCost();
 		// create an instance of SpellEffect with a name from our CardAsset
 		// and attach it to 
+
 		if (ca.ScriptName!= null && ca.ScriptName!= "")
 		{
-			effect = System.Activator.CreateInstance(System.Type.GetType(ca.ScriptName)) as SpellEffect;
+			Debug.Log ("CL line 62");
+			effect = System.Activator.CreateInstance(System.Type.GetType(ca.Targets.ToString())) as SpellEffect;
+			Debug.Log ("CL line 63");
 			effect.owner = owner;
 		}
 		// add this card to a dictionary with its ID as a key

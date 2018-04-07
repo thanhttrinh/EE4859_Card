@@ -2,7 +2,6 @@
 using UnityEditor;
 
 public class ScriptableObjectUtility2 : MonoBehaviour {
-
 	/// <summary>
 	/// Create new asset from <see cref="ScriptableObject"/> type with unique name at
 	/// selected folder in project window. Asset creation can be cancelled by pressing

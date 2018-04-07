@@ -16,7 +16,7 @@ public class PlayerDeckVisual : MonoBehaviour {
 		get{return cardsInDeck;}
 		set{
 			cardsInDeck = value;
-			transform.localPosition = new Vector3(0, 0, -HeightOfOneCard * value);
+			//transform.localPosition = new Vector3(0, 0, -HeightOfOneCard * value);
 		}
 	}
 }

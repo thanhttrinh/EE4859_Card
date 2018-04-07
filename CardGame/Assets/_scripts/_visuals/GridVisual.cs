@@ -7,7 +7,7 @@ public class GridVisual : MonoBehaviour
 {
 	public AreaPosition owner;
 
-	//public SameDistanceChildren slots;
+	public SameDistanceChildren slots;
 
 	private List<GameObject> SoldiersOnGrid = new List<GameObject>();
 
@@ -52,7 +52,7 @@ public class GridVisual : MonoBehaviour
 		}
 		cursorOverThisTable = passedThroughTableCollider;
 	}
-	/*
+
 	public void AddSoldierAtIndex(CardAsset ca, int UniqueID ,int index)
 	{
 		GameObject Soldier = GameObject.Instantiate(GlobalSettings.Instance.SoldierPrefab, slots.Children[index].transform.position, Quaternion.identity) as GameObject;
@@ -84,7 +84,6 @@ public class GridVisual : MonoBehaviour
 		id.UniqueID = UniqueID;
 
 		// after a new soldier is added update placing of all the other soldier
-		ShiftSlotsGameObjectAccordingToNumberOfSoldiers();
 		PlaceSoldiersOnNewSlots();
 
 		// end command execution
@@ -118,22 +117,10 @@ public class GridVisual : MonoBehaviour
 		SoldiersOnGrid.Remove(SoldierToRemove);
 		Destroy(SoldierToRemove);
 
-		ShiftSlotsGameObjectAccordingToNumberOfSoldiers();
 		PlaceSoldiersOnNewSlots();
 		Command.CommandExecutionComplete();
 	}
-		
-	void ShiftSlotsGameObjectAccordingToNumberOfSoldiers()
-	{
-		float posX;
-		if (SoldiersOnGrid.Count > 0)
-			posX = (slots.Children[0].transform.localPosition.x - slots.Children[SoldiersOnGrid.Count - 1].transform.localPosition.x) / 2f;
-		else
-			posX = 0f;
 
-		slots.gameObject.transform.DOLocalMoveX(posX, 0.3f);  
-	}
-		
 	void PlaceSoldiersOnNewSlots()
 	{
 		foreach (GameObject g in SoldiersOnGrid)
@@ -141,5 +128,5 @@ public class GridVisual : MonoBehaviour
 			g.transform.DOLocalMoveX(slots.Children[SoldiersOnGrid.IndexOf(g)].transform.localPosition.x, 0.3f);
 		}
 	}
-*/
+
 }

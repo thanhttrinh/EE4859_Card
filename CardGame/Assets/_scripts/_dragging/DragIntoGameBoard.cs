@@ -18,8 +18,8 @@ public class DragIntoGameBoard : DraggingActions
     public override void OnEndDrag()
     {
         transform.DOMove(savedPos, 0.1f);
-        //transform.DOMove (savedPos, 1f).SetEase (Ease.OutBounce, 0.5f, 0.1f);
-        //transform.DOMove (savedPos, 1f).SetEase (Ease.OutQuint, 0.5f, 0.1f);
+       	transform.DOMove (savedPos, 1f).SetEase (Ease.OutBounce, 0.5f, 0.1f);
+        transform.DOMove (savedPos, 1f).SetEase (Ease.OutQuint, 0.5f, 0.1f);
     }
 
     public override void OnDraggingInUpdate()

@@ -14,7 +14,8 @@ public class OneSoldierManager : MonoBehaviour
     public Text RangeText;
     public Text MovementText;
     [Header("Image References")]
-    public Image CreatureGraphicImage;
+    //public Image SoldierGraphicImage;
+	public Image SoldierInPlayImage;
 
     private int hp;
 
@@ -36,7 +37,7 @@ public class OneSoldierManager : MonoBehaviour
     public void ReadSoldierFromAsset()
     {
         // Change the card graphic sprite
-        CreatureGraphicImage.sprite = cardAsset.CardImage;
+		SoldierInPlayImage.sprite = cardAsset.CardInPlayImage;
 
 		NameText.text = cardAsset.name.ToString ();
         AttackText.text = cardAsset.Attack.ToString();
@@ -48,7 +49,7 @@ public class OneSoldierManager : MonoBehaviour
         {
             PreviewManager.cardAsset = cardAsset;
             PreviewManager.ReadCardFromAsset();
-        }
+        } 
 
     }
 

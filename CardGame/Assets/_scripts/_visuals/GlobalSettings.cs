@@ -18,7 +18,7 @@ public class GlobalSettings : MonoBehaviour {
 	public GameObject TargetedSpellCardPrefab;
 	public GameObject SoldierCardPrefab;
 	public GameObject SoldierPrefab;
-	public GameObject DamageEffectPrefab;
+	//public GameObject DamageEffectPrefab;
 	[Header("Other")]
 	public Button EndTurnButton;
 	public GameObject GameOverPanel;

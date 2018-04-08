@@ -727,8 +727,7 @@ MonoBehaviour:
   CardGraphicImage: {fileID: 114552240710085250}
   CardBodyImage: {fileID: 114512969657729598}
   CardFaceFrameImage: {fileID: 114018134688581792}
-  CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 0}
+  CardSpriteImage: {fileID: 0}
 --- !u!114 &114323399079650914
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dbd2133c80840489c1dd7aaa126bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: edae9a0b56855d846a8f392f961022ff, type: 2}
+  cardAsset: {fileID: 0}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114652183073542042}
   ManaText: {fileID: 114451604739859408}
@@ -541,7 +541,7 @@ MonoBehaviour:
   AttackText: {fileID: 114458243911061828}
   RangeText: {fileID: 114953021773466592}
   MovementText: {fileID: 114977623738991956}
-  CreatureGraphicImage: {fileID: 114386384794799860}
+  SoldierInPlayImage: {fileID: 114386384794799860}
 --- !u!114 &114185654571252012
 MonoBehaviour:
   m_ObjectHideFlags: 1

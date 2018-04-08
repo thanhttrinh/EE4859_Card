@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 11400000, guid: c5416f40a1e686a4e868982451fe268d, type: 2}
+  cardAsset: {fileID: 0}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114797646204349626}
   ManaCostText: {fileID: 114292352007617874}

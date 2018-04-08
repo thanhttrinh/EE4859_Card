@@ -46,6 +46,9 @@ public class Board : MonoBehaviour
         */
 		if (Input.GetMouseButtonDown(0))
 		{
+			if (Base.gameObject.GetComponent<Base> ().baseCreated == false) {
+				GenerateBase (x, y);
+			}
 			Debug.Log (x + ", " + y);
 			SelectSoldier (x, y);
 		}
@@ -94,6 +97,7 @@ public class Board : MonoBehaviour
         newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
 		cards [x, y] = b;
+		Base.gameObject.GetComponent<Base> ().baseCreated = true;
     }
 
 	void OnTriggerEnter(Collider collider)

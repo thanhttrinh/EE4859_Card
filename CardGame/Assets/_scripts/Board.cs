@@ -92,21 +92,13 @@ public class Board : MonoBehaviour
     }
     */
 
-    private void GenerateBase(int x, int y)
-    {
-        GameObject newGO = Instantiate(Base) as GameObject;
-        newGO.transform.position = new Vector3(x, y, 0);
-		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
-		cards [x, y] = b;
-		baseCreated = true;
-    }
 
 	void OnTriggerEnter(Collider collider)
 	{
 		//Debug.Log ("collision detected");
-		
+
 			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
-				GenerateSoldier (collider, 0, 0);
+			GenerateSoldier (collider, (int)Base.gameObject.GetComponent<Base>().transform.position.x, (int)Base.gameObject.GetComponent<Base>().transform.position.y);
 			}
 
 			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
@@ -119,7 +111,17 @@ public class Board : MonoBehaviour
 	{
 		isCreated = false;
 	}
-		
+
+	private void GenerateBase(int x, int y)
+	{
+		if (x < 0 || x > 6 || y < 0 || y > 6)
+			return;
+		GameObject newGO = Instantiate(Base) as GameObject;
+		newGO.transform.position = new Vector3(x, y, 0);
+		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
+		cards [x, y] = b;
+		baseCreated = true;
+	}
 
 	private void GenerateSoldier(Collider collider, int x, int y)
 	{

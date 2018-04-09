@@ -30,17 +30,16 @@ public class Board : MonoBehaviour
 	void Start ()
     {
         isBlueTurn = true;
-        //GenerateBase(Random.Range(0, 5), 0);
     }
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		UpdateMouseOver ();
-		//Debug.Log (mouseOver);
 
 		int x = (int) (mouseOver.x);
 		int y = (int) (mouseOver.y);
+		Debug.Log (mouseOver);
 
         /*
         if(selectedSoldier != null)
@@ -50,11 +49,13 @@ public class Board : MonoBehaviour
         */
 		if (Input.GetMouseButtonDown(0))
 		{
+			Debug.Log (x + ", " + y);
+
 			if (!baseCreated) {
 				GenerateBase (x, y);
+			} else {
+				SelectSoldier (x, y);
 			}
-			Debug.Log (x + ", " + y);
-			SelectSoldier (x, y);
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
@@ -75,6 +76,7 @@ public class Board : MonoBehaviour
 		{
 			mouseOver.x = (int)(hit.collider.transform.position.x);
 			mouseOver.y = (int)(hit.collider.transform.position.y);
+
 		}
 	}
 
@@ -114,6 +116,7 @@ public class Board : MonoBehaviour
 	{
 		isCreated = false;
 	}
+
 
 	private void GenerateBase(int x, int y)
 	{

@@ -1219,7 +1219,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
@@ -1414,7 +1414,7 @@ Prefab:
       objectReference: {fileID: 474750104}
     - target: {fileID: 1738134123811574, guid: e005e55c446725f4597c7cba28f56df0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114348357893968434, guid: e005e55c446725f4597c7cba28f56df0,
         type: 2}
@@ -1430,6 +1430,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114812244026076478, guid: e005e55c446725f4597c7cba28f56df0,
+        type: 2}
+      propertyPath: m_Text
+      value: '[Message]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e005e55c446725f4597c7cba28f56df0, type: 2}

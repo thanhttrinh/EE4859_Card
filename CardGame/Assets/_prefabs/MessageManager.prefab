@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f299fee12c414cee90a246456f0ac7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MessageText: {fileID: 0}
-  MessagePanel: {fileID: 0}
+  MessageText: {fileID: 114812244026076478}
+  MessagePanel: {fileID: 1901287085319250}
 --- !u!114 &114641249381927900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,7 +181,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: YOUR TURN
+  m_Text: '[Message]'
 --- !u!222 &222003107221241998
 CanvasRenderer:
   m_ObjectHideFlags: 1

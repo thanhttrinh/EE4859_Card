@@ -20,8 +20,8 @@ public class ShowMessageCommand : Command{
 		Sequence s = DOTween.Sequence ().AppendInterval(duration).onComplete(() => 
 			{
 				Command.CommandExecutionComplete ();
-			});
-			*/
+			});*/
+
 		Command.CommandExecutionComplete ();
 	}
 }

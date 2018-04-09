@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class attack : MonoBehaviour
 {
@@ -9,8 +8,12 @@ public class attack : MonoBehaviour
 
     public bool ViableAttack(GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
     {
-        if(board[atkx, atky] != null && board[vicx, vicy] != null)
+        if(!board[atkx, atky].ValidMove(board, atkx, atky, vicx, vicy))
         {
+            if (board[atkx, atky].GetComponent<OneCardManager>().AttackText.text != "0")
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -18,19 +21,24 @@ public class attack : MonoBehaviour
     public void doAttack(GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
     {
         int atkDam = 0, vicDam = 0, atkHP = 0, vicHP = 0;
+        Int32.TryParse(board[atkx, atky].GetComponent<OneCardManager>().AttackText.text, out atkDam);
+        Int32.TryParse(board[vicx, vicy].GetComponent<OneCardManager>().AttackText.text, out vicDam);
+        Int32.TryParse(board[atkx, atky].GetComponent<OneCardManager>().HealthText.text, out atkHP);
+        Int32.TryParse(board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text, out vicHP);
+
         if (atkDam >= vicHP)
         {
             board[vicx, vicy] = null;
         }
         else if (atkDam < vicHP && vicDam >= atkHP)
         {
-            vicHP -= atkDam;
+            board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = (vicHP - atkDam) + "";
             board[atkx, atky] = null;
         }
         else if (atkDam < vicHP && vicDam < atkHP)
         {
-            vicHP -= atkDam;
-            atkHP -= vicDam;
+            board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = "" + (vicHP - atkDam);
+            board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = "" + (atkHP - vicDam);
         }
     }
 

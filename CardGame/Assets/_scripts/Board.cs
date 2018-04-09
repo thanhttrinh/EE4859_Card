@@ -8,6 +8,7 @@ public class Board : MonoBehaviour
 
 	public Vector2 BoardOffset = new Vector2(0.5f, 0.5f);
 
+
     public GameObject Base;
 	public GameObject Soldier;
 	public GameObject Crop;
@@ -17,7 +18,7 @@ public class Board : MonoBehaviour
 	private int baseX;
 	private int baseY;
 
-	private Vector2 mouseOver;
+	public Vector2 mouseOver;
 	private Vector2 startDrag;
 	private Vector2 endDrag;
 
@@ -35,11 +36,7 @@ public class Board : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		UpdateMouseOver ();
-
-		int x = (int) (mouseOver.x);
-		int y = (int) (mouseOver.y);
-		Debug.Log (mouseOver);
+		//PlayerInput ();
 
         /*
         if(selectedSoldier != null)
@@ -47,6 +44,30 @@ public class Board : MonoBehaviour
             UpdateSoldierDrag(selectedSoldier);
         }
         */
+
+
+	}
+
+	public void PlayerInput()
+	{
+		if (!Camera.main)
+		{
+			Debug.Log ("cannot find main camera");
+			return;
+		}
+
+		RaycastHit hit;
+		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+		{
+			mouseOver.x = (int)(hit.collider.transform.position.x);
+			mouseOver.y = (int)(hit.collider.transform.position.y);
+
+		}
+
+		int x = (int) (mouseOver.x);
+		int y = (int) (mouseOver.y);
+		//Debug.Log (mouseOver);
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log (x + ", " + y);
@@ -63,22 +84,7 @@ public class Board : MonoBehaviour
 		}
 	}
 
-	void UpdateMouseOver() 
-	{
-		if (!Camera.main)
-		{
-			Debug.Log ("cannot find main camera");
-			return;
-		}
 
-		RaycastHit hit;
-		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-		{
-			mouseOver.x = (int)(hit.collider.transform.position.x);
-			mouseOver.y = (int)(hit.collider.transform.position.y);
-
-		}
-	}
 
     /*
     private void UpdateSoldierDrag(OneSoldierManager s)

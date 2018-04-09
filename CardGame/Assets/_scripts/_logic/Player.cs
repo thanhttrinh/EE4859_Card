@@ -149,7 +149,7 @@ public class Player : MonoBehaviour, ICharacter {
 				//remove the card from the deck
 				deck.cards.RemoveAt (0);
 				//create a command
-			    new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
+			   // new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
 				Debug.Log ("DrawACard Success");
 			}
 		} else {

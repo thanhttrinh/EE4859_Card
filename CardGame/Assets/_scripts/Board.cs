@@ -14,6 +14,9 @@ public class Board : MonoBehaviour
 	private bool isCreated;
 	private bool baseCreated;
 
+	private int baseX;
+	private int baseY;
+
 	private Vector2 mouseOver;
 	private Vector2 startDrag;
 	private Vector2 endDrag;
@@ -98,7 +101,7 @@ public class Board : MonoBehaviour
 		//Debug.Log ("collision detected");
 
 			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
-			GenerateSoldier (collider, (int)Base.gameObject.GetComponent<Base>().transform.position.x, (int)Base.gameObject.GetComponent<Base>().transform.position.y);
+			GenerateSoldier (collider, baseX, baseY);
 			}
 
 			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
@@ -115,10 +118,12 @@ public class Board : MonoBehaviour
 	private void GenerateBase(int x, int y)
 	{
 		if (x < 0 || x > 6 || y < 0 || y > 6)
-			return;
+			return; 
 		GameObject newGO = Instantiate(Base) as GameObject;
 		newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
+		baseX = x;
+		baseY = y;
 		cards [x, y] = b;
 		baseCreated = true;
 	}

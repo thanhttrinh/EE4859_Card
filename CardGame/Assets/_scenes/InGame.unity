@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 14981219}
   - component: {fileID: 14981221}
-  - component: {fileID: 14981220}
   m_Layer: 5
   m_Name: GameBoard
   m_TagString: Untagged
@@ -150,18 +149,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!65 &14981220
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 14981218}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1200.2468, y: 719.0375, z: 1}
-  m_Center: {x: -149.36058, y: 100.011185, z: 0}
 --- !u!114 &14981221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,7 +1401,7 @@ Prefab:
       objectReference: {fileID: 474750104}
     - target: {fileID: 1738134123811574, guid: e005e55c446725f4597c7cba28f56df0, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114348357893968434, guid: e005e55c446725f4597c7cba28f56df0,
         type: 2}

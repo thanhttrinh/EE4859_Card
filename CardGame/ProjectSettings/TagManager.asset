@@ -65,6 +65,15 @@ TagManager:
   - name: cards
     uniqueID: 2122143193
     locked: 0
+  - name: crops
+    uniqueID: 1167877511
+    locked: 0
+  - name: tent
+    uniqueID: 3615197919
+    locked: 0
+  - name: soldiers
+    uniqueID: 319935603
+    locked: 0
   - name: AboveAll
     uniqueID: 1621855477
     locked: 0

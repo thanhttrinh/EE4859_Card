@@ -84,15 +84,15 @@ public class Board : MonoBehaviour
 			if (TurnManager.Instance.whoseTurn == playerRed) {
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
-				//SelectSoldier (x, y);
+				SelectSoldier (x, y);
 			}
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
 		}
-		/*if (Input.GetMouseButtonUp (0)) 
+		if (Input.GetMouseButtonUp (0)) 
 		{
 			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
-		}*/
+		}
 	}
 
     /*

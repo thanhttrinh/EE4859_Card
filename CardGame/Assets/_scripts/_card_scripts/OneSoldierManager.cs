@@ -19,6 +19,8 @@ public class OneSoldierManager : MonoBehaviour
 	public Image SoldierInPlayImage;
 
     private int hp;
+	public bool isRed;
+	public bool isBlue;
 
     void Awake()
     {

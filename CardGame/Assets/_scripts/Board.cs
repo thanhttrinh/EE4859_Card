@@ -6,6 +6,11 @@ public class Board : MonoBehaviour
 {
     public GameUnits[,] cards = new GameUnits[6, 6];
 
+	private GameUnits selectedSoldierCard;
+
+	private Vector2 mouseOver;
+	private Vector2 startDrag;
+	private Vector2 endDrag;
 	public Vector2 BoardOffset = new Vector2(0.5f, 0.5f);
 
 	public Player playerBlue;
@@ -23,12 +28,6 @@ public class Board : MonoBehaviour
 	private int baseBlueY;
 	private int baseRedX;
 	private int baseRedY;
-
-	private Vector2 mouseOver;
-	private Vector2 startDrag;
-	private Vector2 endDrag;
-
-	private GameUnits selectedSoldierCard;
 	
 	// Update is called once per frame
 	void Update () 
@@ -119,9 +118,9 @@ public class Board : MonoBehaviour
 
 		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
 			if(TurnManager.Instance.whoseTurn == playerBlue)
-				GenerateSoldier (collider, baseBlueX, baseBlueY);
+				GenerateSoldierBlue (collider, baseBlueX, baseBlueY);
 			if(TurnManager.Instance.whoseTurn == playerRed)
-				GenerateSoldier (collider, baseRedX, baseRedY);
+				GenerateSoldierRed (collider, baseRedX, baseRedY);
 		}
 
 		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
@@ -161,17 +160,14 @@ public class Board : MonoBehaviour
 		baseRedCreated = true;
 	}
 
-	private void GenerateSoldier(Collider collider, int x, int y)
+	private void GenerateSoldierBlue(Collider collider, int x, int y)
 	{
 		if (!isCreated) {
 			GameObject newGO = Instantiate (Soldier) as GameObject;
-			/*if(TurnManager.Instance.whoseTurn == playerBlue)
-				newGO.tag = "soldierBlue";
-			if(TurnManager.Instance.whoseTurn == playerRed)
-				newGO.tag = "soldierRed";*/
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
+			newGO.gameObject.GetComponent<OneSoldierManager> ().isBlue = true;
 
             newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
@@ -184,6 +180,28 @@ public class Board : MonoBehaviour
 		}
 		//if(soldiers[x,y] != null)
 			//Debug.Log (soldiers[x,y].cardAsset.name);
+	}
+
+	private void GenerateSoldierRed(Collider collider, int x, int y)
+	{
+		if (!isCreated) {
+			GameObject newGO = Instantiate (Soldier) as GameObject;
+			newGO.transform.position = new Vector3 (x, y, 0);
+			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
+			newGO.gameObject.GetComponent<OneSoldierManager> ().isRed = true;
+
+			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
+			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
+			//newGO.transform.SetParent (this.gameObject.transform, false);
+			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
+			GameUnits s = newGO.GetComponent<GameUnits>();
+			cards[x, y] = s;
+			isCreated = true;
+			Destroy (collider.gameObject);
+		}
+		//if(soldiers[x,y] != null)
+		//Debug.Log (soldiers[x,y].cardAsset.name);
 	}
 
 	private void GenerateCrop(Collider collider, int x, int y)

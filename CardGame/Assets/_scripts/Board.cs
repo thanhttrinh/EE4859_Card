@@ -57,10 +57,10 @@ public class Board : MonoBehaviour
 
 		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
 			PlayerInputBase ();
-			Debug.Log ("player Blue");
+			//Debug.Log ("player Blue");
 		} 
 		else if (playerRed != null && TurnManager.Instance.whoseTurn == playerRed) {
-			Debug.Log ("player Red");
+			//Debug.Log ("player Red");
 			PlayerInputBase ();
 		}
 
@@ -79,10 +79,7 @@ public class Board : MonoBehaviour
 		int x = (int) (mouseOver.x);
 		int y = (int) (mouseOver.y);
 
-		//blue base range is [0-5, 0-2]
-		//red base range is [0-5, 3-6]
-		
-//		Debug.Log (mouseOver);
+		//Debug.Log (mouseOver);
 
 		if (Input.GetMouseButtonDown(0))
 		{

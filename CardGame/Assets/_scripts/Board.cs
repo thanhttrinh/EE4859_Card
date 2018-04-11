@@ -14,10 +14,10 @@ public class Board : MonoBehaviour
     public GameObject Base;
 	public GameObject Soldier;
 	public GameObject Crop;
+
 	private bool isCreated;
 	private bool baseBlueCreated;
 	private bool baseRedCreated;
-	private int NumOfBase = 0;
 
 	private int baseBlueX;
 	private int baseBlueY;
@@ -29,15 +29,6 @@ public class Board : MonoBehaviour
 	private Vector2 endDrag;
 
 	private GameUnits selectedSoldierCard;
-
-    private bool isBlueTurn;
-    private bool isBlue;
-
-	// Use this for initialization
-	void Start ()
-    {
-        isBlueTurn = true;
-    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -174,10 +165,10 @@ public class Board : MonoBehaviour
 	{
 		if (!isCreated) {
 			GameObject newGO = Instantiate (Soldier) as GameObject;
-			if(TurnManager.Instance.whoseTurn == playerBlue)
+			/*if(TurnManager.Instance.whoseTurn == playerBlue)
 				newGO.tag = "soldierBlue";
 			if(TurnManager.Instance.whoseTurn == playerRed)
-				newGO.tag = "soldierRed";
+				newGO.tag = "soldierRed";*/
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
@@ -277,13 +268,5 @@ public class Board : MonoBehaviour
         if(soldierUnit.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
             soldierUnit.transform.position = (Vector2.right * x) + (Vector2.up * y);
 	}
-
-    private void EndTurn()
-    {
-        selectedSoldierCard = null;
-        startDrag = Vector2.zero;
-
-        isBlueTurn = !isBlueTurn;
-    }
 
 }

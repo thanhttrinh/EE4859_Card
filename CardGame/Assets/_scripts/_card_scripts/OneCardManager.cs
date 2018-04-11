@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // holds the refs to all the Text, Images on the card
 public class OneCardManager : MonoBehaviour {
@@ -84,7 +85,8 @@ public class OneCardManager : MonoBehaviour {
             RangeText.text = cardAsset.SoldierRange.ToString();
             MovementText.text = cardAsset.Movement.ToString();
 			// card image is stopping all cards from being loading in the collection screen
-			//CardSpriteImage.sprite = cardAsset.CardSprite;
+			if(SceneManager.GetActiveScene().name == "InGame")
+				CardSpriteImage.sprite = cardAsset.CardSprite;
         }
 
         if (cardAsset.TypeOfCard == TypesOfCards.Crop)

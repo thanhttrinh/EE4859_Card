@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardOffset: {x: 0.5, y: 0.5}
-  player: {fileID: 0}
+  playerBlue: {fileID: 0}
+  playerRed: {fileID: 0}
   Base: {fileID: 0}
   Soldier: {fileID: 1235834637592982, guid: 08ad2285f8c02f84fbc560c2272ebde3, type: 2}
   Crop: {fileID: 0}
@@ -4123,7 +4124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardOffset: {x: 0.5, y: 0.5}
-  player: {fileID: 0}
+  playerBlue: {fileID: 394531079}
+  playerRed: {fileID: 572133991}
   Base: {fileID: 1265725670660246, guid: 49c60cd28d6cc2949856e7f110a33a74, type: 2}
   Soldier: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
   Crop: {fileID: 1519026123925860, guid: 8a5390fc5df7a5b4f8b70819b09035d3, type: 2}

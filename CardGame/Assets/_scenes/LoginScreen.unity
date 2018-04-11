@@ -547,8 +547,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 99.70332, y: -22.606995}
-  m_SizeDelta: {x: 199.40665, y: 45.21399}
+  m_AnchoredPosition: {x: 82.328125, y: -18.658997}
+  m_SizeDelta: {x: 164.65625, y: 37.317993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575705829
 MonoBehaviour:
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 5dc7a7ba3718f5e4db6d636bba26096e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 5dc7a7ba3718f5e4db6d636bba26096e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -873,8 +873,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 199.40665, y: -61.02053}
-  m_SizeDelta: {x: 398.8133, y: 37.34702}
+  m_AnchoredPosition: {x: 164.65625, y: -50.582443}
+  m_SizeDelta: {x: 329.3125, y: 30.388294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675729644
 MonoBehaviour:
@@ -1200,8 +1200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 299.11, y: -22.606995}
-  m_SizeDelta: {x: 199.40665, y: 45.21399}
+  m_AnchoredPosition: {x: 246.98438, y: -18.658997}
+  m_SizeDelta: {x: 164.65625, y: 37.317993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952739196
 MonoBehaviour:
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 5dc7a7ba3718f5e4db6d636bba26096e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 5dc7a7ba3718f5e4db6d636bba26096e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1579,8 +1579,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 199.40665, y: -18.67351}
-  m_SizeDelta: {x: 398.8133, y: 37.34702}
+  m_AnchoredPosition: {x: 164.65625, y: -15.194147}
+  m_SizeDelta: {x: 329.3125, y: 30.388294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092810943
 MonoBehaviour:
@@ -2808,7 +2808,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5ab1c025ed7ff40aaab3498496519ea1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c03f149bc9b0452caaaf61ad27a7169, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

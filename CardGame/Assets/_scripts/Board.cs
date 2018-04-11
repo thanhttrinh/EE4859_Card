@@ -8,16 +8,23 @@ public class Board : MonoBehaviour
 
 	public Vector2 BoardOffset = new Vector2(0.5f, 0.5f);
 
+	public Player playerBlue;
+	public Player playerRed;
+
     public GameObject Base;
 	public GameObject Soldier;
 	public GameObject Crop;
 	private bool isCreated;
-	private bool baseCreated;
+	private bool baseBlueCreated;
+	private bool baseRedCreated;
+	private int NumOfBase = 0;
 
-	private int baseX;
-	private int baseY;
+	private int baseBlueX;
+	private int baseBlueY;
+	private int baseRedX;
+	private int baseRedY;
 
-	private Vector2 mouseOver;
+	public Vector2 mouseOver;
 	private Vector2 startDrag;
 	private Vector2 endDrag;
 
@@ -30,17 +37,12 @@ public class Board : MonoBehaviour
 	void Start ()
     {
         isBlueTurn = true;
-        //GenerateBase(Random.Range(0, 5), 0);
     }
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		UpdateMouseOver ();
-		//Debug.Log (mouseOver);
-
-		int x = (int) (mouseOver.x);
-		int y = (int) (mouseOver.y);
+		//PlayerInput ();
 
         /*
         if(selectedSoldier != null)
@@ -48,35 +50,63 @@ public class Board : MonoBehaviour
             UpdateSoldierDrag(selectedSoldier);
         }
         */
-		if (Input.GetMouseButtonDown(0))
-		{
-			if (!baseCreated) {
-				GenerateBase (x, y);
-			}
-			Debug.Log (x + ", " + y);
-			SelectSoldier (x, y);
-		}
-		if (Input.GetMouseButtonUp (0)) 
-		{
-			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
-		}
-	}
 
-	void UpdateMouseOver() 
-	{
 		if (!Camera.main)
 		{
 			Debug.Log ("cannot find main camera");
 			return;
 		}
 
+		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
+			PlayerInputBase ();
+			//Debug.Log ("player Blue");
+		} 
+		else if (playerRed != null && TurnManager.Instance.whoseTurn == playerRed) {
+			//Debug.Log ("player Red");
+			PlayerInputBase ();
+		}
+
+	}
+
+	public void PlayerInputBase()
+	{
 		RaycastHit hit;
 		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
 		{
 			mouseOver.x = (int)(hit.collider.transform.position.x);
 			mouseOver.y = (int)(hit.collider.transform.position.y);
+
 		}
+
+		int x = (int) (mouseOver.x);
+		int y = (int) (mouseOver.y);
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			Debug.Log (x + ", " + y);
+
+			if (TurnManager.Instance.whoseTurn == playerBlue) {
+				if(!baseBlueCreated)
+					GenerateBaseBlue (x, y);
+				SelectSoldier (x, y);
+			}
+			if (TurnManager.Instance.whoseTurn == playerRed) {
+				if(!baseRedCreated)
+					GenerateBaseRed (x, y);
+				SelectSoldier (x, y);
+			}
+			Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
+			/*else {
+				SelectSoldier (x, y);
+			}*/
+		}
+		/*if (Input.GetMouseButtonUp (0)) 
+		{
+			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
+		}*/
 	}
+
+
 
     /*
     private void UpdateSoldierDrag(OneSoldierManager s)
@@ -100,13 +130,16 @@ public class Board : MonoBehaviour
 	{
 		//Debug.Log ("collision detected");
 
-			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
-			GenerateSoldier (collider, baseX, baseY);
-			}
+		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+			if(TurnManager.Instance.whoseTurn == playerBlue)
+				GenerateSoldier (collider, baseBlueX, baseBlueY);
+			if(TurnManager.Instance.whoseTurn == playerRed)
+				GenerateSoldier (collider, baseRedX, baseRedY);
+		}
 
-			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
 				GenerateCrop (collider, 1, 1);
-			}
+		}
 		
 	}
 
@@ -115,17 +148,31 @@ public class Board : MonoBehaviour
 		isCreated = false;
 	}
 
-	private void GenerateBase(int x, int y)
+
+	private void GenerateBaseBlue(int x, int y)
 	{
-		if (x < 0 || x > 6 || y < 0 || y > 6)
+		if (x < 0 || x > 6 || y < 0 || y > 2)
 			return; 
 		GameObject newGO = Instantiate(Base) as GameObject;
 		newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
-		baseX = x;
-		baseY = y;
+		baseBlueX = x;
+		baseBlueY = y;
 		cards [x, y] = b;
-		baseCreated = true;
+		baseBlueCreated = true;
+	}
+
+	private void GenerateBaseRed(int x, int y)
+	{
+		if (x < 0 || x > 6 || y < 3 || y > 6)
+			return; 
+		GameObject newGO = Instantiate(Base) as GameObject;
+		newGO.transform.position = new Vector3(x, y, 0);
+		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
+		baseRedX = x;
+		baseRedY = y;
+		cards [x, y] = b;
+		baseRedCreated = true;
 	}
 
 	private void GenerateSoldier(Collider collider, int x, int y)

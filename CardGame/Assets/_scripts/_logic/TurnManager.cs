@@ -48,7 +48,7 @@ public class TurnManager : MonoBehaviour {
 			p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
 		}
 			
-		int rng = Random.Range(0, 1);
+		int rng = Random.Range(0, 2);
 		Player whoGoesFirst = Players[rng];
 		Player whoGoesSecond = whoGoesFirst.otherPlayer;
 

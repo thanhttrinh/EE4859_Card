@@ -17,8 +17,6 @@ TagManager:
   - blueCard
   - redPlayer
   - bluePlayer
-  - soldierBlue
-  - soldierRed
   layers:
   - Default
   - TransparentFX

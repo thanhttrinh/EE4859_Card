@@ -18,7 +18,7 @@ public class CardInfoPanel : MonoBehaviour {
 	}
 
 	public void SelectDeck(DeckIcon deck){
-		if (deck == null || selectedDeck == deck || !deck.DeckInfomation.IsComplete ()) {
+		if (deck == null || selectedDeck == deck | !deck.DeckInfomation.IsComplete ()) {
 			selectedDeck = null;
 			if (PlayButton != null)
 				PlayButton.interactable = false;

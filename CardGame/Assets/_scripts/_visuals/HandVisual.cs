@@ -51,8 +51,7 @@ public class HandVisual : MonoBehaviour {
 
 	public void PlaceCardsOnNewSlots(){
 		foreach (GameObject g in CardsInHand) {
-			Debug.Log (g.name.ToString ());
-			g.transform.position = slots.Children [CardsInHand.IndexOf (g)].transform.position;
+			g.transform.DOLocalMoveX (slots.Children [CardsInHand.IndexOf (g)].transform.localPosition.x, 0.3f);
 			WhereIsTheCardOrSoldier w = g.GetComponent<WhereIsTheCardOrSoldier> ();
 			w.Slot = CardsInHand.IndexOf (g);
 			w.SetHandSortingOrder ();
@@ -75,7 +74,7 @@ public class HandVisual : MonoBehaviour {
 			else
 			{
 				card = GameObject.Instantiate(GlobalSettings.Instance.TargetedSpellCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
-			// pass targeting options to DraggingActions
+				// pass targeting options to DraggingActions
 			//	DragSpellOnTarget dragSpell = card.GetComponentInChildren<DragSpellOnTarget>();
 			//	dragSpell.Targets = c.Targets;
 			}

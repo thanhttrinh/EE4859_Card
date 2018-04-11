@@ -39,16 +39,16 @@ public class Board : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//PlayerInput ();
+        //PlayerInput ();
 
-        /*
-        if(selectedSoldier != null)
+
+        if (selectedSoldierCard != null)
         {
-            UpdateSoldierDrag(selectedSoldier);
+            UpdateSoldierDrag(selectedSoldierCard.GetComponent<OneSoldierManager>());
         }
-        */
 
-		if (!Camera.main)
+
+        if (!Camera.main)
 		{
 			Debug.Log ("cannot find main camera");
 			return;
@@ -56,10 +56,10 @@ public class Board : MonoBehaviour
 
 		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
 			PlayerInputBase ();
-			Debug.Log ("player Blue");
+			//Debug.Log ("player Blue");
 		} 
 		else if (playerRed != null && TurnManager.Instance.whoseTurn == playerRed) {
-			Debug.Log ("player Red");
+			//Debug.Log ("player Red");
 			PlayerInputBase ();
 		}
 
@@ -105,7 +105,7 @@ public class Board : MonoBehaviour
 
 
 
-    /*
+
     private void UpdateSoldierDrag(OneSoldierManager s)
     {
         if (!Camera.main)
@@ -120,10 +120,10 @@ public class Board : MonoBehaviour
             s.transform.position = hit.point + Vector3.forward;
         }
     }
-    */
 
 
-	void OnTriggerEnter(Collider collider)
+
+    void OnTriggerEnter(Collider collider)
 	{
 		//Debug.Log ("collision detected");
 

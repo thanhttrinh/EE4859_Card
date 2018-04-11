@@ -19,8 +19,10 @@ public class Board : MonoBehaviour
 	private bool baseRedCreated;
 	private int NumOfBase = 0;
 
-	private int baseX;
-	private int baseY;
+	private int baseBlueX;
+	private int baseBlueY;
+	private int baseRedX;
+	private int baseRedY;
 
 	public Vector2 mouseOver;
 	private Vector2 startDrag;
@@ -79,16 +81,29 @@ public class Board : MonoBehaviour
 		int x = (int) (mouseOver.x);
 		int y = (int) (mouseOver.y);
 
+<<<<<<< Updated upstream
 		//Debug.Log (mouseOver);
+=======
+		//blue base range is [0-5, 0-2]
+		//red base range is [0-5, 3-6]
+		
+		Debug.Log (mouseOver);
+>>>>>>> Stashed changes
 
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log (x + ", " + y);
 
-			if(!baseBlueCreated && TurnManager.Instance.whoseTurn == playerBlue)
-				GenerateBaseBlue (x, y);
-			if (!baseRedCreated && TurnManager.Instance.whoseTurn == playerRed)
-				GenerateBaseRed (x, y);
+			if (TurnManager.Instance.whoseTurn == playerBlue) {
+				if(!baseBlueCreated)
+					GenerateBaseBlue (x, y);
+				SelectSoldier (x, y);
+			}
+			if (TurnManager.Instance.whoseTurn == playerRed) {
+				if(!baseRedCreated)
+					GenerateBaseRed (x, y);
+				SelectSoldier (x, y);
+			}
 			Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 			/*else {
 				SelectSoldier (x, y);
@@ -124,13 +139,16 @@ public class Board : MonoBehaviour
 	{
 		//Debug.Log ("collision detected");
 
-			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
-			GenerateSoldier (collider, baseX, baseY);
-			}
+		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+			if(TurnManager.Instance.whoseTurn == playerBlue)
+				GenerateSoldier (collider, baseBlueX, baseBlueY);
+			if(TurnManager.Instance.whoseTurn == playerRed)
+				GenerateSoldier (collider, baseRedX, baseRedY);
+		}
 
-			if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
 				GenerateCrop (collider, 1, 1);
-			}
+		}
 		
 	}
 
@@ -147,8 +165,8 @@ public class Board : MonoBehaviour
 		GameObject newGO = Instantiate(Base) as GameObject;
 		newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
-		baseX = x;
-		baseY = y;
+		baseBlueX = x;
+		baseBlueY = y;
 		cards [x, y] = b;
 		baseBlueCreated = true;
 	}
@@ -160,8 +178,8 @@ public class Board : MonoBehaviour
 		GameObject newGO = Instantiate(Base) as GameObject;
 		newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
-		baseX = x;
-		baseY = y;
+		baseRedX = x;
+		baseRedY = y;
 		cards [x, y] = b;
 		baseRedCreated = true;
 	}

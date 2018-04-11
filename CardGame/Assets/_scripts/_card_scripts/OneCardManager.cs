@@ -83,9 +83,8 @@ public class OneCardManager : MonoBehaviour {
             HealthText.text = cardAsset.MaxHealth.ToString();
             RangeText.text = cardAsset.SoldierRange.ToString();
             MovementText.text = cardAsset.Movement.ToString();
-			CardSpriteImage.sprite = cardAsset.CardSprite;
-
-
+			// card image is stopping all cards from being loading in the collection screen
+			//CardSpriteImage.sprite = cardAsset.CardSprite;
         }
 
         if (cardAsset.TypeOfCard == TypesOfCards.Crop)

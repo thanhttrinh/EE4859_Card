@@ -84,7 +84,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-CardGame/.vs/CardGame/v15/Server/sqlite3/db.lock
-CardGame/.vs/CardGame/v15/Server/sqlite3/storage.ide
-CardGame/.vs/CardGame/v15/Server/sqlite3/storage.ide-shm
-CardGame/.vs/CardGame/v15/Server/sqlite3/storage.ide-wal

@@ -12,9 +12,9 @@ public class SameDistanceChildren : MonoBehaviour {
 
 		float xDis = (lastElementPos.x - firstElementPos.x) / (float)(Children.Length - 1);
 		float yDis = (lastElementPos.y - firstElementPos.y) / (float)(Children.Length - 1);
-		//float zDis = (lastElementPos.z - firstElementPos.z) / (float)(Children.Length - 1);
+		float zDis = (lastElementPos.z - firstElementPos.z) / (float)(Children.Length - 1);
 
-		Vector3 Dist = new Vector3 (xDis, yDis/*, zDis*/);
+		Vector3 Dist = new Vector3 (xDis, yDis, zDis);
 
 		for (int i = 1; i < Children.Length; i++) {
 			Children [i].transform.position = Children [i - 1].transform.position + Dist;

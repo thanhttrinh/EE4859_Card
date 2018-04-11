@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, ICharacter {
 	//always have 2 
 	public static Player[] Players;
 
-	public static Player Instance;
+	public Player Instance;
 
 	private int bonusManaThisTurn = 0;
 
@@ -138,11 +138,11 @@ public class Player : MonoBehaviour, ICharacter {
 	public void DrawACard(bool fast = false){
 		if (deck.cards.Count > 0) {
             if(PlayerColor == "red")
-			   // Debug.Log ("Cards currently in red deck: " + (deck.cards.Count - 1).ToString());
+			    Debug.Log ("Cards currently in red deck: " + (deck.cards.Count - 1).ToString());
             if (PlayerColor == "blue")
-              //  Debug.Log("Cards currently in blue deck: " + (deck.cards.Count - 1).ToString());
+                Debug.Log("Cards currently in blue deck: " + (deck.cards.Count - 1).ToString());
 			if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
-				//Debug.Log ("adding card to hand");
+				Debug.Log ("adding card to hand");
 				// add card to hand
 				CardLogic newCard = new CardLogic (deck.cards [0], this);
 				hand.CardsInHand.Insert (0, newCard);
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour, ICharacter {
 				deck.cards.RemoveAt (0);
 				//create a command
 			   // new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
-				//Debug.Log ("DrawACard Success");
+				Debug.Log ("DrawACard Success");
 			}
 		} else {
 			//TODO: what to do when run out of cards

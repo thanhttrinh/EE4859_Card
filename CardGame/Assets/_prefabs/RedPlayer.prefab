@@ -263,7 +263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1383298888168338
 GameObject:
   m_ObjectHideFlags: 1
@@ -1665,6 +1665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e769796a4e94d45aed084c4e5ddafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TestFullCrystals: 0
+  TestTotalCrystalsThisTurn: 10
   ProgressText: {fileID: 114351550591648788}
 --- !u!114 &114590768578518126
 MonoBehaviour:

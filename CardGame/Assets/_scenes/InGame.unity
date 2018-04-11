@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardOffset: {x: 0.5, y: 0.5}
+  player: {fileID: 0}
   Base: {fileID: 0}
   Soldier: {fileID: 1235834637592982, guid: 08ad2285f8c02f84fbc560c2272ebde3, type: 2}
   Crop: {fileID: 0}
@@ -1005,7 +1006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1897598fa0fdcf4caee7045004e0d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 1429678299}
 --- !u!114 &394531079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,6 @@ MonoBehaviour:
   deck: {fileID: 885117900}
   hand: {fileID: 1702864637}
   grid: {fileID: 1103537740}
-  Instance: {fileID: 0}
 --- !u!1001 &413249306
 Prefab:
   m_ObjectHideFlags: 0
@@ -1942,6 +1941,7 @@ GameObject:
   - component: {fileID: 572133989}
   - component: {fileID: 572133991}
   - component: {fileID: 572133990}
+  - component: {fileID: 572133992}
   m_Layer: 5
   m_Name: PlayerRed
   m_TagString: redPlayer
@@ -1976,7 +1976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1897598fa0fdcf4caee7045004e0d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 1429678299}
 --- !u!114 &572133991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,7 +1994,17 @@ MonoBehaviour:
   deck: {fileID: 684435241}
   hand: {fileID: 541996087}
   grid: {fileID: 1204064116}
-  Instance: {fileID: 0}
+--- !u!114 &572133992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 572133988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2557e51f9ed27fe40941be0eaff90068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &584540106
 Prefab:
   m_ObjectHideFlags: 0
@@ -4114,6 +4123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardOffset: {x: 0.5, y: 0.5}
+  player: {fileID: 0}
   Base: {fileID: 1265725670660246, guid: 49c60cd28d6cc2949856e7f110a33a74, type: 2}
   Soldier: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
   Crop: {fileID: 1519026123925860, guid: 8a5390fc5df7a5b4f8b70819b09035d3, type: 2}

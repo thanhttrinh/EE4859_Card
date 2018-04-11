@@ -8,12 +8,15 @@ public class Board : MonoBehaviour
 
 	public Vector2 BoardOffset = new Vector2(0.5f, 0.5f);
 
+	public Player playerBlue;
+	public Player playerRed;
 
     public GameObject Base;
 	public GameObject Soldier;
 	public GameObject Crop;
 	private bool isCreated;
 	private bool baseCreated;
+	private int NumOfBase = 0;
 
 	private int baseX;
 	private int baseY;
@@ -45,17 +48,25 @@ public class Board : MonoBehaviour
         }
         */
 
-
-	}
-
-	public void PlayerInput()
-	{
 		if (!Camera.main)
 		{
 			Debug.Log ("cannot find main camera");
 			return;
 		}
 
+		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
+			PlayerInputBase ();
+			Debug.Log ("player Blue");
+		} 
+		else if (playerRed != null && TurnManager.Instance.whoseTurn == playerRed) {
+			Debug.Log ("player Red");
+			PlayerInputBase ();
+		}
+
+	}
+
+	public void PlayerInputBase()
+	{
 		RaycastHit hit;
 		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
 		{
@@ -66,22 +77,30 @@ public class Board : MonoBehaviour
 
 		int x = (int) (mouseOver.x);
 		int y = (int) (mouseOver.y);
-		//Debug.Log (mouseOver);
+
+		//blue base range is [0-5, 0-2]
+		//red base range is [0-5, 3-6]
+		
+//		Debug.Log (mouseOver);
 
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log (x + ", " + y);
 
-			if (!baseCreated) {
+			if (!baseCreated && NumOfBase < 2) {
 				GenerateBase (x, y);
-			} else {
+				NumOfBase += 1;
+				baseCreated = false;
+				Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
+			} 
+			/*else {
 				SelectSoldier (x, y);
-			}
+			}*/
 		}
-		if (Input.GetMouseButtonUp (0)) 
+		/*if (Input.GetMouseButtonUp (0)) 
 		{
 			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
-		}
+		}*/
 	}
 
 

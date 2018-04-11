@@ -13,5 +13,5 @@ public class TurnMaker : MonoBehaviour {
 		//add one mana to the pool
 		player.OnTurnStart();
 	}
-
+		
 }

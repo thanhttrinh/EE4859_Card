@@ -15,13 +15,6 @@ public class ShowMessageCommand : Command{
 
 	public override void StartCommandExecution(){
 		MessageManager.Instance.ShowMessage (message, duration);
-		//a loop
-		/*
-		Sequence s = DOTween.Sequence ().AppendInterval(duration).onComplete(() => 
-			{
-				Command.CommandExecutionComplete ();
-			});*/
-
 		Command.CommandExecutionComplete ();
 	}
 }

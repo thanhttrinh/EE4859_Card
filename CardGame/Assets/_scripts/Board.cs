@@ -81,15 +81,6 @@ public class Board : MonoBehaviour
 		int x = (int) (mouseOver.x);
 		int y = (int) (mouseOver.y);
 
-<<<<<<< Updated upstream
-		//Debug.Log (mouseOver);
-=======
-		//blue base range is [0-5, 0-2]
-		//red base range is [0-5, 3-6]
-		
-		Debug.Log (mouseOver);
->>>>>>> Stashed changes
-
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log (x + ", " + y);

@@ -15,7 +15,8 @@ public class Board : MonoBehaviour
 	public GameObject Soldier;
 	public GameObject Crop;
 	private bool isCreated;
-	private bool baseCreated;
+	private bool baseBlueCreated;
+	private bool baseRedCreated;
 	private int NumOfBase = 0;
 
 	private int baseX;
@@ -87,12 +88,11 @@ public class Board : MonoBehaviour
 		{
 			Debug.Log (x + ", " + y);
 
-			if (!baseCreated && NumOfBase < 2) {
-				GenerateBase (x, y);
-				NumOfBase += 1;
-				baseCreated = false;
-				Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
-			} 
+			if(!baseBlueCreated && TurnManager.Instance.whoseTurn == playerBlue)
+				GenerateBaseBlue (x, y);
+			if (!baseRedCreated && TurnManager.Instance.whoseTurn == playerRed)
+				GenerateBaseRed (x, y);
+			Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 			/*else {
 				SelectSoldier (x, y);
 			}*/
@@ -143,9 +143,9 @@ public class Board : MonoBehaviour
 	}
 
 
-	private void GenerateBase(int x, int y)
+	private void GenerateBaseBlue(int x, int y)
 	{
-		if (x < 0 || x > 6 || y < 0 || y > 6)
+		if (x < 0 || x > 6 || y < 0 || y > 2)
 			return; 
 		GameObject newGO = Instantiate(Base) as GameObject;
 		newGO.transform.position = new Vector3(x, y, 0);
@@ -153,7 +153,20 @@ public class Board : MonoBehaviour
 		baseX = x;
 		baseY = y;
 		cards [x, y] = b;
-		baseCreated = true;
+		baseBlueCreated = true;
+	}
+
+	private void GenerateBaseRed(int x, int y)
+	{
+		if (x < 0 || x > 6 || y < 3 || y > 6)
+			return; 
+		GameObject newGO = Instantiate(Base) as GameObject;
+		newGO.transform.position = new Vector3(x, y, 0);
+		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
+		baseX = x;
+		baseY = y;
+		cards [x, y] = b;
+		baseRedCreated = true;
 	}
 
 	private void GenerateSoldier(Collider collider, int x, int y)

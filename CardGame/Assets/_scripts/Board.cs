@@ -249,6 +249,12 @@ public class Board : MonoBehaviour
                 cards[x1, y1] = null;
                 MoveSoldier(selectedSoldierCard, x2, y2);
             }
+            else
+            {
+                Debug.Log("ZA WARUDO");
+                if (selectedSoldierCard.GetComponent<OneSoldierManager>().atk.ViableAttack(cards, x1, y1, x2, y2))
+                    selectedSoldierCard.GetComponent<OneSoldierManager>().atk.doAttack(cards, x1, y1, x2, y2);
+            }
         }
 
 

@@ -17,6 +17,7 @@ public class OneSoldierManager : MonoBehaviour
     [Header("Image References")]
     //public Image SoldierGraphicImage;
 	public Image SoldierInPlayImage;
+    public attack atk;
 
     private int hp;
 

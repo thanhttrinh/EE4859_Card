@@ -3,8 +3,6 @@ using System;
 
 public class attack : MonoBehaviour
 {
-    public Board board = new Board();
-    public GameUnits[,] manager;
 
     public bool ViableAttack(GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
     {
@@ -40,11 +38,5 @@ public class attack : MonoBehaviour
             board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = "" + (vicHP - atkDam);
             board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = "" + (atkHP - vicDam);
         }
-    }
-
-    public attack(Board bd)
-    {
-        board = bd;
-        manager = board.cards;
     }
 }

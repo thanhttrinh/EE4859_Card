@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86791148ef0d3fe47acb50227d5f5b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeForOneTurn: 5
+  TimeForOneTurn: 10
   TimerText: {fileID: 218852566}
   TimerExpired:
     m_PersistentCalls:

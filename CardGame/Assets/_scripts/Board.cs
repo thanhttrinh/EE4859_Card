@@ -42,7 +42,7 @@ public class Board : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		PlayerInput ();
+		//PlayerInput ();
 
         /*
         if(selectedSoldier != null)
@@ -50,6 +50,14 @@ public class Board : MonoBehaviour
             UpdateSoldierDrag(selectedSoldier);
         }
         */
+		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
+			PlayerInput ();
+			Debug.Log ("player Blue");
+		} 
+		if (playerRed != null && TurnManager.Instance.whoseTurn == playerRed) {
+			Debug.Log ("player Red");
+			PlayerInput ();
+		}
 
 	}
 
@@ -85,15 +93,15 @@ public class Board : MonoBehaviour
 			if (TurnManager.Instance.whoseTurn == playerRed) {
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
-				SelectSoldier (x, y);
+				//SelectSoldier (x, y);
 			}
-			Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
+			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
 		}
-		if (Input.GetMouseButtonUp (0)) 
+		/*if (Input.GetMouseButtonUp (0)) 
 		{
 			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
-		}
+		}*/
 	}
 
     /*
@@ -138,7 +146,7 @@ public class Board : MonoBehaviour
 
 	private void GenerateBaseBlue(int x, int y)
 	{
-		if (x < 0 || x > 6 || y < 0 || y > 6)
+		if (x < 0 || x > 6 || y < 0 || y > 2)
 			return; 
 		GameObject newGO = Instantiate(Base) as GameObject;
 		newGO.transform.position = new Vector3(x, y, 0);
@@ -151,7 +159,7 @@ public class Board : MonoBehaviour
 
 	private void GenerateBaseRed(int x, int y)
 	{
-		if (x < 0 || x > 6 || y < 0 || y > 6)
+		if (x < 0 || x > 6 || y < 3 || y > 6)
 			return; 
 		GameObject newGO = Instantiate(Base) as GameObject;
 		newGO.transform.position = new Vector3(x, y, 0);

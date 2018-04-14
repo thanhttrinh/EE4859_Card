@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 114722545605740414}
   - component: {fileID: 114003405583874442}
   - component: {fileID: 114609290203288272}
+  - component: {fileID: 114036905194830192}
   m_Layer: 11
   m_Name: SoldierCard
   m_TagString: card
@@ -577,6 +578,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragging: 0
+--- !u!114 &114036905194830192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320244344549338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6809488cf539b48e9ae726ee5c3290fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114049136164206102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1402,7 +1414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670f208847af3e544910a51783d2b168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAsset: {fileID: 0}
+  cardAsset: {fileID: 11400000, guid: eab2ff55181ba8045b91529a9bbbdf7f, type: 2}
   PreviewManager: {fileID: 0}
   NameText: {fileID: 114797646204349626}
   ManaCostText: {fileID: 114292352007617874}
@@ -1591,7 +1603,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 2122143193
+  m_SortingLayerID: 1621855477
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &224055596581579276
@@ -1632,7 +1644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.02, y: -2.63}
+  m_AnchoredPosition: {x: -19.519999, y: -2.63}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224110765363214582

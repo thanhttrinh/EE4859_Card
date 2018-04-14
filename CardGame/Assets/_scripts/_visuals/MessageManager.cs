@@ -6,6 +6,7 @@ using UnityEngine;
 public class MessageManager : MonoBehaviour {
 
 	public Text MessageText;
+	public Text MessageText2;
 	public GameObject MessagePanel;
 
 	public static MessageManager Instance;
@@ -22,14 +23,9 @@ public class MessageManager : MonoBehaviour {
 	IEnumerator ShowMessageCoroutine(string message, float duration){
 		MessageText.text = message;
 		MessagePanel.SetActive (true);
+		if(Board.Instance.basesCreated == true)
+			MessageText2.text = "";
 		yield return new WaitForSeconds (duration);
 		MessagePanel.SetActive (false);
-	}
-
-	void Update(){
-		if (Input.GetKeyDown (KeyCode.Alpha1))
-			ShowMessage ("Your Turn", 3f);
-		if (Input.GetKeyDown (KeyCode.Alpha2))
-			ShowMessage ("Enemy Turn", 3f);
 	}
 }

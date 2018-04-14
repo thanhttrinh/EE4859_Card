@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 114509641821790762}
   - component: {fileID: 114543855567989124}
   - component: {fileID: 114329293440840418}
+  - component: {fileID: 114397964790140462}
   m_Layer: 11
   m_Name: SpellCard
   m_TagString: card
@@ -647,6 +648,17 @@ MonoBehaviour:
   CardBodyImage: {fileID: 114465255757889382}
   CardFaceFrameImage: {fileID: 114552540190384222}
   CardSpriteImage: {fileID: 0}
+--- !u!114 &114397964790140462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893051185341788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6809488cf539b48e9ae726ee5c3290fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114465255757889382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1219,7 +1231,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 2122143193
+  m_SortingLayerID: 1621855477
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &224000763508445548
@@ -1600,7 +1612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.5599997, y: -2.63}
+  m_AnchoredPosition: {x: -12.94, y: -2.63}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224766122540329142

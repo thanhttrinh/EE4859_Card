@@ -73,8 +73,8 @@ public class Player : MonoBehaviour, ICharacter {
 
 			PArea.ManaBar.AvailableCrystals = manaLeft;
 			new UpdateManaCommand(this, ManaThisTurn, manaLeft).AddToQueue();
-			if (TurnManager.Instance.whoseTurn == this)
-				HighlightPlayableCards();
+		//	if (TurnManager.Instance.whoseTurn == this)
+			//	HighlightPlayableCards();
 		}
 	}
 
@@ -88,8 +88,8 @@ public class Player : MonoBehaviour, ICharacter {
 				health = pAsset.MaxHealth;
 			else
 				health = value;
-			if (value <= 0)
-				Die(); 
+		//	if (value <= 0)
+				//Die(); 
 		}
 	}
 
@@ -108,8 +108,8 @@ public class Player : MonoBehaviour, ICharacter {
 		manaThisTurn++;
         this.PArea.ManaBar.AvailableCrystals = ManaThisTurn;
 		manaLeft = manaThisTurn;
-		foreach (SoldierLogic sl in grid.SoldiersOnGrid)
-			sl.OnTurnStart ();
+		//foreach (SoldierLogic sl in grid.SoldiersOnGrid)
+			//sl.OnTurnStart (); 
 	}
 
 	public void OnTurnEnd(){
@@ -137,9 +137,9 @@ public class Player : MonoBehaviour, ICharacter {
 	//draw a card
 	public void DrawACard(bool fast = false){
 		if (deck.cards.Count > 0) {
-            if(PlayerColor == "red")
+           // if(PlayerColor == "red")
 			   // Debug.Log ("Cards currently in red deck: " + (deck.cards.Count - 1).ToString());
-            if (PlayerColor == "blue")
+           // if (PlayerColor == "blue")
                 //Debug.Log("Cards currently in blue deck: " + (deck.cards.Count - 1).ToString());
 			if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
 				//Debug.Log ("adding card to hand");
@@ -150,6 +150,8 @@ public class Player : MonoBehaviour, ICharacter {
 				deck.cards.RemoveAt (0);
 				//create a command
 			   // new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
+			   PArea.PDeck.CardsInDeck--;
+			   PArea.handVisual.GivePlayerACard(newCard.ca, newCard.UniqueCardID, fast, true);
 				//Debug.Log ("DrawACard Success");
 			}
 		} else {
@@ -157,17 +159,7 @@ public class Player : MonoBehaviour, ICharacter {
 		}
 	}
 
-	public void GetACardNotFromDeck(CardAsset cardAsset){
-		if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
-			//add card to hand
-			CardLogic newCard = new CardLogic(cardAsset, this);
-			newCard.owner = this;
-			hand.CardsInHand.Insert (0, newCard);
-			//send message to the visual deck
-			new DrawACardCommand(hand.CardsInHand[0], this, fast: true, fromDeck: false).AddToQueue();
-		}
-	}
-
+/* 
 	public void PlayASpellFromHand(int SpellCardUniqueID, int TargetUniqueID){
 		if (TargetUniqueID < 0)
 			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], null);
@@ -226,7 +218,7 @@ public class Player : MonoBehaviour, ICharacter {
 		}
 			
 	}
-
+*/
 	//start game
 	public void LoadPlayerInfoFromAsset(){
 		Health = pAsset.MaxHealth;

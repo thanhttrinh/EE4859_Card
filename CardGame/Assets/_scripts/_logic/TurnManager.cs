@@ -21,9 +21,9 @@ public class TurnManager : MonoBehaviour {
 			GlobalSettings.Instance.EnableEndTurnButtonOnStart (_whoseTurn);
 			TurnMaker tm = whoseTurn.GetComponent<TurnMaker> ();
 			tm.OnTurnStart ();
-			if (tm is PlayerTurnMaker)
-				whoseTurn.HighlightPlayableCards ();
-			whoseTurn.HighlightPlayableCards (true);
+			//if (tm is PlayerTurnMaker)
+			//	whoseTurn.HighlightPlayableCards ();
+			//whoseTurn.HighlightPlayableCards (true);
 		}
 	}
 

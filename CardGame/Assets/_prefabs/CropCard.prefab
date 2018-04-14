@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 114851620071340990}
   - component: {fileID: 114450627372940376}
   - component: {fileID: 114137749914793550}
+  - component: {fileID: 114791367416535922}
   m_Layer: 11
   m_Name: CropCard
   m_TagString: card
@@ -1005,6 +1006,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 2
+--- !u!114 &114791367416535922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219495399739244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6809488cf539b48e9ae726ee5c3290fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114851620071340990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1328,7 +1340,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 2122143193
+  m_SortingLayerID: 1621855477
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &224019634151020698
@@ -1671,7 +1683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.7700005, y: -2.62}
+  m_AnchoredPosition: {x: -16.27, y: -2.62}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224793641607375688

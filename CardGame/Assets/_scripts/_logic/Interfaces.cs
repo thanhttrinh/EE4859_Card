@@ -5,7 +5,7 @@ using UnityEngine;
 public interface ICharacter: IIdentifiable {
 	//int health {get; set;}
 
-	void Die();
+	//void Die();
 }
 
 public interface IIdentifiable{

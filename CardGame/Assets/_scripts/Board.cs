@@ -23,11 +23,18 @@ public class Board : MonoBehaviour
 	private bool isCreated;
 	private bool baseBlueCreated;
 	private bool baseRedCreated;
+	public bool basesCreated;
 
 	private int baseBlueX;
 	private int baseBlueY;
 	private int baseRedX;
 	private int baseRedY;
+
+	public static Board Instance;
+
+	void Awake(){
+		Instance = this;
+	}
 	
 	// Update is called once per frame
 	void Update () 
@@ -42,10 +49,10 @@ public class Board : MonoBehaviour
         */
 		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
 			PlayerInput ();
-			Debug.Log ("player Blue");
+			//Debug.Log ("player Blue");
 		} 
 		if (playerRed != null && TurnManager.Instance.whoseTurn == playerRed) {
-			Debug.Log ("player Red");
+			//Debug.Log ("player Red");
 			PlayerInput ();
 		}
 
@@ -92,6 +99,8 @@ public class Board : MonoBehaviour
 		{
 			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
 		}
+		if(baseRedCreated && baseBlueCreated)
+			basesCreated = true;
 	}
 
     /*

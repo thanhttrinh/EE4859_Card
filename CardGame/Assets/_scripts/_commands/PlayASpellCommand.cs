@@ -15,6 +15,6 @@ public class PlayASpellCommand : Command{
 	public override void StartCommandExecution(){
 		Command.CommandExecutionComplete ();
 		//move this card to the spot
-		p.PArea.handVisual.PlayASpellFromHand(card.UniqueCardID);
+		//p.PArea.handVisual.PlayASpellFromHand(card.UniqueCardID);
 	}
 }

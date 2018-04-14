@@ -81,7 +81,7 @@ public class WhereIsTheCardOrSoldier: MonoBehaviour {
 	public void BringToFront()
 	{
 		canvas.sortingOrder = TopSortingOrder;
-		canvas.sortingLayerName = "AboveEverything";
+		canvas.sortingLayerName = "AboveAll";
 		//canvas.transform.localPosition = new Vector3(0f, 0f, -1f);
 	}
 
@@ -89,7 +89,7 @@ public class WhereIsTheCardOrSoldier: MonoBehaviour {
 	// we want to set an index first and set the sorting order only when the card arrives to hand. 
 	public void SetHandSortingOrder()
 	{
-		if (slot != -1)
+		//if (slot != -1)
 			canvas.sortingOrder = HandSortingOrder(slot);
 		canvas.sortingLayerName = "Cards";
 		//canvas.transform.localPosition = Vector3.zero;

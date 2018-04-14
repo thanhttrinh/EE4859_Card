@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: 
   Tags: 
   CardImage: {fileID: 0}
+  CardSprite: {fileID: 0}
   ManaCost: 3
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 1
-  MaxHealth: 0
+  MaxHealth: 1
   Attack: 0
   SoldierRange: 0
   Movement: 0
@@ -30,5 +31,6 @@ MonoBehaviour:
   CropSize: 3
   SpecialCropAmount: 0
   SpellRange: 0
+  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

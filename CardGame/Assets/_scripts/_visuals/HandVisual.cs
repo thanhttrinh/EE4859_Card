@@ -19,19 +19,22 @@ public class HandVisual : MonoBehaviour {
 		CardsInHand.Insert (0, card);
 		card.transform.SetParent (slots.transform);
 		PlaceCardsOnNewSlots ();
-		UpdatePlacementOfSlots ();
+	//	UpdatePlacementOfSlots ();
+		Debug.Log(CardsInHand[0].name.ToString());
 	}
 
 	public void RemoveCard(GameObject card){
 		CardsInHand.Remove (card);
 		PlaceCardsOnNewSlots ();
-		UpdatePlacementOfSlots ();
+	//	UpdatePlacementOfSlots ();
+		Debug.Log(card.name.ToString());
 	}
 
 	public void RemoveCardAtIndex(int index){
 		CardsInHand.RemoveAt (index);
 		PlaceCardsOnNewSlots ();
-		UpdatePlacementOfSlots ();
+		//UpdatePlacementOfSlots ();
+		Debug.Log(CardsInHand[index].name.ToString());
 	}
 
 	public GameObject GetCardAtIndex(int index){
@@ -39,20 +42,21 @@ public class HandVisual : MonoBehaviour {
 	}
 
 	void UpdatePlacementOfSlots(){
-		float xPos;
+		/*float xPos;
 		if (CardsInHand.Count > 0)
-			xPos = (slots.Children [0].transform.localPosition.x - slots.Children [CardsInHand.Count - 1].transform.localPosition.x) / 2f;
+			xPos = (slots.Children [0].transform.localPosition.x - slots.Children [CardsInHand.Count - 1].transform.localPosition.x) / 1f;
 		else
-			xPos = 0f;
+			xPos = 0f;*/
 		Debug.Log (slots.Children [0].transform.position.ToString ());
 		Debug.Log (slots.Children [CardsInHand.Count - 1].transform.position.ToString ());
-		slots.gameObject.transform.DOLocalMoveX (xPos, 0.3f);
+		//slots.gameObject.transform.DOLocalMoveX (xPos, 0.3f);
 	}
 
 	public void PlaceCardsOnNewSlots(){
 		foreach (GameObject g in CardsInHand) {
 			g.transform.DOLocalMoveX (slots.Children [CardsInHand.IndexOf (g)].transform.localPosition.x, 0.3f);
 			WhereIsTheCardOrSoldier w = g.GetComponent<WhereIsTheCardOrSoldier> ();
+			Debug.Log(g.GetComponent<OneCardManager>().cardAsset.ScriptName.ToString());
 			w.Slot = CardsInHand.IndexOf (g);
 			w.SetHandSortingOrder ();
 		}
@@ -61,6 +65,7 @@ public class HandVisual : MonoBehaviour {
 	GameObject CreateACardAtPosition(CardAsset c, Vector3 position, Vector3 eulerAngles)
 	{
 		GameObject card;
+
 		if (c.TypeOfCard == TypesOfCards.Soldier)
 		{
 			card = GameObject.Instantiate(GlobalSettings.Instance.SoldierCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
@@ -90,7 +95,7 @@ public class HandVisual : MonoBehaviour {
 	public void GivePlayerACard(CardAsset c, int UniqueID, bool fast = false, bool fromDeck = true){
 		GameObject card;
 		if (fromDeck)
-			card = CreateACardAtPosition(c, DeckTransform.position, new Vector3(0f, -179f, 0f));
+			card = CreateACardAtPosition(c, DeckTransform.position, new Vector3(5f, -179f, 0f));
 		else
 			card = CreateACardAtPosition(c, OtherCardDrawSourceTransform.position, new Vector3(0f, -179f, 0f));
 
@@ -150,7 +155,7 @@ public class HandVisual : MonoBehaviour {
 		// end command execution for DrawACArdCommand
 		Command.CommandExecutionComplete();
 	}
-
+/* 
 	public void PlayASpellFromHand(int CardID)
 	{
 		GameObject card = IDHolder.GetGameObjectWithID(CardID);
@@ -174,5 +179,5 @@ public class HandVisual : MonoBehaviour {
 				Command.CommandExecutionComplete();
 				Destroy(CardVisual);
 			});
-	}
+	}*/
 }

@@ -11,7 +11,6 @@ public class PlayerArea : MonoBehaviour {
 	public PlayerDeckVisual PDeck;
 	public ManaVisual ManaBar;
 	public HandVisual handVisual;
-	public GridVisual gridVisual;
 
 	public bool AllowedToControlThisPlayer {
 		get;

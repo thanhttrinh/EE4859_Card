@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, ICharacter {
 	//always have 2 
 	public static Player[] Players;
 
-	public Player Instance;
+	public static Player Instance;
 
 	private int bonusManaThisTurn = 0;
 

@@ -14,6 +14,7 @@ public class GameUnits : MonoBehaviour {
 		
 	}
 
+
     public bool ValidMove(GameUnits[,] board, int x1, int y1, int x2, int y2)
     {
         int deltaMoveX = Mathf.Abs(x1 - x2);

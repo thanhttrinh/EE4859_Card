@@ -84,14 +84,14 @@ public class Board : MonoBehaviour
 
 			if (TurnManager.Instance.whoseTurn == playerBlue) {
 				if(!baseBlueCreated)
-					GenerateBaseBlue (x, y);
-				SelectSoldier (x, y);
+					GenerateBaseBlue (x, y);				
 			}
 			if (TurnManager.Instance.whoseTurn == playerRed) {
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
-				SelectSoldier (x, y);
 			}
+			SelectSoldier (x, y);
+
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
 		}
@@ -239,7 +239,11 @@ public class Board : MonoBehaviour
         GameUnits s = cards[x,y];
 		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
 		{
-			selectedSoldierCard = s;
+			if(s.gameObject.GetComponent<OneSoldierManager>().isBlue == true && TurnManager.Instance.whoseTurn == playerBlue)
+				selectedSoldierCard = s;
+			if(s.gameObject.GetComponent<OneSoldierManager>().isRed == true && TurnManager.Instance.whoseTurn == playerRed)
+				selectedSoldierCard = s;
+			
 			startDrag = mouseOver;
 			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}

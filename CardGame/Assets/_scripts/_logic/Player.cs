@@ -126,14 +126,6 @@ public class Player : MonoBehaviour, ICharacter {
 		manaLeft += amount;
 	}
 
-	void Update(){
-		if (Input.GetKeyDown (KeyCode.Alpha3)) {
-			DrawACard ();
-			Debug.Log ("drawing a card with Num3");
-		}
-
-	}
-
 	//draw a card
 	public void DrawACard(bool fast = false){
 		if (deck.cards.Count > 0) {

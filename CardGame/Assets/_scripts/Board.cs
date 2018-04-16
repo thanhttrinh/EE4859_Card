@@ -23,7 +23,7 @@ public class Board : MonoBehaviour
 	private bool isCreated;
 	private bool baseBlueCreated;
 	private bool baseRedCreated;
-	//public bool basesCreated;
+	public bool basesCreated;
 	private GameObject cropCard;
 	private int cropsBlue = 0;
 	private int cropsRed = 0;
@@ -150,9 +150,9 @@ public class Board : MonoBehaviour
 		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
 				//GenerateCropBlue (collider, 1, 1);
 			if (TurnManager.Instance.whoseTurn == playerBlue)
-				cropsBlue = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.cardSize;
+				cropsBlue = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.CropSize;
 			if(TurnManager.Instance.whoseTurn == playerRed)
-				cropsRed = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.cardSize;
+				cropsRed = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.CropSize;
 			cropCard = collider.gameObject;
 		}
 		

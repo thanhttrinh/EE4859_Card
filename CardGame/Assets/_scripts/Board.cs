@@ -23,7 +23,9 @@ public class Board : MonoBehaviour
 	private bool isCreated;
 	private bool baseBlueCreated;
 	private bool baseRedCreated;
-	public bool basesCreated;
+	//public bool basesCreated;
+	private int cropsBlue = 0;
+	private int cropsRed = 0;
 
 	private int baseBlueX;
 	private int baseBlueY;
@@ -92,6 +94,12 @@ public class Board : MonoBehaviour
 			}
 			SelectSoldier (x, y);
 
+			if (cropsBlue != 0) {
+				GenerateCropBlue()
+			}
+			if (cropsRed != 0) {
+			}
+
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
 		}
@@ -133,7 +141,11 @@ public class Board : MonoBehaviour
 		}
 
 		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
-				GenerateCrop (collider, 1, 1);
+				//GenerateCropBlue (collider, 1, 1);
+			if (TurnManager.Instance.whoseTurn == playerBlue)
+				cropsBlue = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.cardSize;
+			if(TurnManager.Instance.whoseTurn == playerRed)
+				cropsRed = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.cardSize;
 		}
 		
 	}
@@ -213,9 +225,11 @@ public class Board : MonoBehaviour
 		//Debug.Log (soldiers[x,y].cardAsset.name);
 	}
 
-	private void GenerateCrop(Collider collider, int x, int y)
+	private void GenerateCropBlue(Collider collider, int x, int y)
 	{
 		if (!isCreated) {
+			if (x < 0 || x > 6 || y < 0 || y > 2)
+				return; 
 			GameObject newGO = Instantiate (Crop) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
@@ -228,6 +242,25 @@ public class Board : MonoBehaviour
 			isCreated = true;
             Destroy(collider.gameObject);
         }
+	}
+
+	private void GenerateCropRed(Collider collider, int x, int y)
+	{
+		if (!isCreated) {
+			if (x < 0 || x > 6 || y < 3 || y > 6)
+				return;
+			GameObject newGO = Instantiate (Crop) as GameObject;
+			newGO.transform.position = new Vector3 (x, y, 0);
+			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = collider.gameObject.GetComponent<CropPreview> ().PreviewUnit;
+			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = collider.gameObject.GetComponent<CropPreview> ().PreviewText;
+			//newGO.transform.SetParent (this.gameObject.transform, false);
+			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
+			GameUnits c = newGO.GetComponent<GameUnits>();
+			cards[x, y] = c;
+			isCreated = true;
+			Destroy(collider.gameObject);
+		}
 	}
 
 	private void SelectSoldier(int x, int y)
@@ -260,6 +293,7 @@ public class Board : MonoBehaviour
 
 		//MoveSoldier (selectedSoldier, x2, y2);
 
+		//if out of bounds
 		if (x2 < 0 || x2 >= cards.Length || y2 < 0 || y2 >= cards.Length) 
 		{
 			if (selectedSoldierCard != null) 

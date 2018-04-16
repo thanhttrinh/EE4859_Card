@@ -7,10 +7,16 @@ public class attack : MonoBehaviour
 	{
 		if(!board[atkx, atky].ValidMove(board, atkx, atky, vicx, vicy))
 		{
-			if (board[atkx, atky].GetComponent<OneCardManager>().AttackText.text != "0")
-			{
-				return true;
-			}
+            if (board[atkx, atky] != null && board[vicx, vicy] != null)
+            {
+                if (board[atkx, atky].GetComponent<OneCardManager>() != null)
+                {
+                    if (board[atkx, atky].GetComponent<OneCardManager>().AttackText.text != null)
+                    {
+                        return true;
+                    }
+                }
+            }
 		}
 		return false;
 	}
@@ -19,33 +25,43 @@ public class attack : MonoBehaviour
 	{
 		int atkDam = 0, vicDam = 0, atkHP = 0, vicHP = 0;
         bool isBase = false;
-		Int32.TryParse(board[atkx, atky].GetComponent<OneCardManager>().AttackText.text, out atkDam);
-        Int32.TryParse(board[atkx, atky].GetComponent<OneCardManager>().HealthText.text, out atkHP);
+        Debug.Log("AtkDamVar: " + atkDam + ", cardAsset.Attack: " + board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.Attack);
+        if (!ViableAttack(board, atkx, atky, vicx, vicy))
+        {
+            atkDam = board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.Attack;
+            Debug.Log("AtkDamVar: " + atkDam + ", cardAsset.Attack: " + board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.Attack);
+            atkHP = board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.MaxHealth;
 
-        if (board[vicx, vicy].GetComponent<OneCardManager>() != null)
-        {
-            Int32.TryParse(board[vicx, vicy].GetComponent<OneCardManager>().AttackText.text, out vicDam);
-            Int32.TryParse(board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text, out vicHP);
-        }
-        else
-        {
-            vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
-            isBase = true;
+            if (board[vicx, vicy] != null)
+            {
+                vicDam = board[vicx, vicy].GetComponent<OneSoldierManager>().cardAsset.Attack;
+                vicHP = board[vicx, vicy].GetComponent<OneSoldierManager>().cardAsset.MaxHealth;
+            }
+            else
+            {
+                vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
+                isBase = true;
+            }
         }
 
 		if (atkDam >= vicHP && !isBase)
 		{
+            Debug.Log("Vic " + vicHP + " Atk " + atkDam);
+            DestroyObject(board[vicx, vicy].gameObject);
 			board[vicx, vicy] = null;
 		}
 		else if (atkDam < vicHP && vicDam >= atkHP && !isBase)
 		{
-			board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = (vicHP - atkDam) + "";
+            Debug.Log("Vic " + vicHP + " Atk " + atkDam);
+            Debug.Log("Atk " + atkHP + " Vic " + vicDam);
+            board[vicx, vicy].GetComponent<OneSoldierManager>().cardAsset.MaxHealth = (vicHP - atkDam);
+            DestroyObject(board[atkx, atky].gameObject);
 			board[atkx, atky] = null;
 		}
 		else if (atkDam < vicHP && vicDam < atkHP && !isBase)
 		{
-			board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = "" + (vicHP - atkDam);
-			board[vicx, vicy].GetComponent<OneCardManager>().HealthText.text = "" + (atkHP - vicDam);
+			board[vicx, vicy].GetComponent<OneSoldierManager>().cardAsset.MaxHealth = (vicHP - atkDam);
+			board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.MaxHealth = (atkHP - vicDam);
 		}
         else if(atkDam < vicHP && isBase)
         {

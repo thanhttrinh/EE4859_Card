@@ -325,11 +325,23 @@ public class Board : MonoBehaviour
             }
 
             //check if valid move
-            if(selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2))
+            if (selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2))
             {
                 cards[x2, y2] = selectedSoldierCard;
                 cards[x1, y1] = null;
                 MoveSoldier(selectedSoldierCard, x2, y2);
+            }
+            else
+            {
+                selectedSoldierCard.gameObject.AddComponent<attack>();
+                if (selectedSoldierCard.GetComponent<OneSoldierManager>().isBlue)
+                {
+                    selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);
+                }
+                else
+                {
+                    selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
+                }
             }
         }
 

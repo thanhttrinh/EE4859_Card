@@ -15,7 +15,8 @@ MonoBehaviour:
   ScriptName: Kawaii Crop
   Description: 
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 49f7c6ea5f1354a27bffc6a36727e9d2, type: 3}
+  CardSprite: {fileID: 0}
   ManaCost: 3
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 1
@@ -30,5 +31,6 @@ MonoBehaviour:
   CropSize: 1
   SpecialCropAmount: 0
   SpellRange: 0
+  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

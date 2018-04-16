@@ -15,7 +15,7 @@ MonoBehaviour:
   ScriptName: Wizard
   Description: 
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 53cde7aa9b6ca411b8b9a3957432156d, type: 3}
   CardSprite: {fileID: 21300000, guid: b35775ab8cd2d40e783fce9f02ecdd5b, type: 3}
   ManaCost: 5
   OverrideLimitOfThisCardInDeck: -1

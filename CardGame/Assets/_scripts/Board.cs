@@ -83,30 +83,25 @@ public class Board : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log (x + ", " + y);
+			//Debug.Log (x + ", " + y);
 
 			if (TurnManager.Instance.whoseTurn == playerBlue) {
 				if(!baseBlueCreated)
 					GenerateBaseBlue (x, y);
-				
+				SelectSoldierBlue (x, y);
+
 			}
 			if (TurnManager.Instance.whoseTurn == playerRed) {
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
-				
-			}
-			SelectSoldier (x, y);
+				SelectSoldierRed (x, y);
 
-			if (cropsBlue != 0) 
-			{
-				GenerateCropBlue (cropCard, x, y);
-				cropsBlue--;
 			}
-			if (cropsRed != 0) 
-			{
-				GenerateCropRed (cropCard, x, y);
-				cropsRed--;
-			}
+			//SelectSoldier (x, y);
+
+			GenerateCropBlue (cropCard, x, y);
+			GenerateCropRed (cropCard, x, y);
+
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
 		}
@@ -154,6 +149,7 @@ public class Board : MonoBehaviour
 			if(TurnManager.Instance.whoseTurn == playerRed)
 				cropsRed = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.CropSize;
 			cropCard = collider.gameObject;
+			collider.gameObject.SetActive (false);
 		}
 		
 	}
@@ -235,26 +231,30 @@ public class Board : MonoBehaviour
 
 	private void GenerateCropBlue(GameObject go, int x, int y)
 	{
-		if (!isCreated) {
+		if (cropsBlue != 0) {
 			if (x < 0 || x > 6 || y < 0 || y > 2)
 				return; 
 			GameObject newGO = Instantiate (Crop) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			newGO.gameObject.GetComponent<OneCropManager> ().ReadCropFromAsset ();
+
             newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = go.gameObject.GetComponent<CropPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = go.gameObject.GetComponent<CropPreview> ().PreviewText;
             //newGO.transform.SetParent (this.gameObject.transform, false);
             //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
             GameUnits c = newGO.GetComponent<GameUnits>();
 			cards[x, y] = c;
-			isCreated = true;
-			Destroy(go.gameObject);
+			//isCreated = true;
+			//Destroy(go.gameObject);
+			cropsBlue--;
+			Debug.Log (cropsBlue);
         }
 	}
 
 	private void GenerateCropRed(GameObject go, int x, int y)
 	{
-		if (!isCreated) {
+		if (cropsRed != 0) {
 			if (x < 0 || x > 6 || y < 3 || y > 6)
 				return;
 			GameObject newGO = Instantiate (Crop) as GameObject;
@@ -266,31 +266,47 @@ public class Board : MonoBehaviour
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
 			GameUnits c = newGO.GetComponent<GameUnits>();
 			cards[x, y] = c;
-			isCreated = true;
-			Destroy(go.gameObject);
+			//isCreated = true;
+			//Destroy(go.gameObject);
+			cropsRed--;
+			Debug.Log (cropsRed);
 		}
 	}
 
-	private void SelectSoldier(int x, int y)
+	private void SelectSoldierBlue(int x, int y)
 	{
 		//out of bounds
 		if (x < 0 || x > 6 || y < 0 || y > 6)
 			return;
 
         GameUnits s = cards[x,y];
-		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isBlue == true && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
 		{
-			if(s.gameObject.GetComponent<OneSoldierManager>().isBlue == true && TurnManager.Instance.whoseTurn == playerBlue)
-				selectedSoldierCard = s;
-			if(s.gameObject.GetComponent<OneSoldierManager>().isRed == true && TurnManager.Instance.whoseTurn == playerRed)
-				selectedSoldierCard = s;
-			
+			selectedSoldierCard = s;
 			startDrag = mouseOver;
 			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
 		
+	}
+
+	private void SelectSoldierRed(int x, int y)
+	{
+		//out of bounds
+		if (x < 0 || x > 6 || y < 0 || y > 6)
+			return;
+
+		GameUnits s = cards[x,y];
+		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isRed == true && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+		{
+			selectedSoldierCard = s;
+			startDrag = mouseOver;
+			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+		}
+		else
+			Debug.Log("nothing there");
+
 	}
 
 	private void TryMove(int x1, int y1, int x2, int y2)

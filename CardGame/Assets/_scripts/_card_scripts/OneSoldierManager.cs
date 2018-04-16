@@ -22,6 +22,8 @@ public class OneSoldierManager : MonoBehaviour
 	public bool isRed;
 	public bool isBlue;
 
+	//public int moving;
+
     void Awake()
     {
         if (cardAsset != null)
@@ -68,5 +70,6 @@ public class OneSoldierManager : MonoBehaviour
             HealthText.text = hpAfter.ToString();
         }
     }
-		
+
+
 }

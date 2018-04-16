@@ -19,10 +19,10 @@ public class OneCropManager : MonoBehaviour
     void Awake()
     {
         if (cardAsset != null)
-            ReadCreatureFromAsset();
+            ReadCropFromAsset();
     }
 
-    public void ReadCreatureFromAsset()
+    public void ReadCropFromAsset()
     {
         // Change the card graphic sprite
         CropInPlayImage.sprite = cardAsset.CardSprite;

@@ -12,7 +12,7 @@ public class HandVisual : MonoBehaviour {
 	public Transform DrawPreviewSpot;
 	public Transform DeckTransform;
 	public Transform OtherCardDrawSourceTransform;
-	public Transform PlayPreviewSpot;
+	//public Transform PlayPreviewSpot;
 	private List<GameObject> CardsInHand = new List<GameObject>();
 
 	public void AddCard(GameObject card){
@@ -20,43 +20,43 @@ public class HandVisual : MonoBehaviour {
 		card.transform.SetParent (slots.transform);
 		PlaceCardsOnNewSlots ();
 	//	UpdatePlacementOfSlots ();
-		Debug.Log(CardsInHand[0].name.ToString());
+		//Debug.Log(CardsInHand[0].name.ToString());
 	}
 
 	public void RemoveCard(GameObject card){
 		CardsInHand.Remove (card);
 		PlaceCardsOnNewSlots ();
 	//	UpdatePlacementOfSlots ();
-		Debug.Log(card.name.ToString());
+		//Debug.Log(card.name.ToString());
 	}
 
 	public void RemoveCardAtIndex(int index){
 		CardsInHand.RemoveAt (index);
 		PlaceCardsOnNewSlots ();
 		//UpdatePlacementOfSlots ();
-		Debug.Log(CardsInHand[index].name.ToString());
+		//Debug.Log(CardsInHand[index].name.ToString());
 	}
 
 	public GameObject GetCardAtIndex(int index){
 		return CardsInHand [index];
 	}
-
+	/*
 	void UpdatePlacementOfSlots(){
-		/*float xPos;
+		float xPos;
 		if (CardsInHand.Count > 0)
 			xPos = (slots.Children [0].transform.localPosition.x - slots.Children [CardsInHand.Count - 1].transform.localPosition.x) / 1f;
 		else
-			xPos = 0f;*/
+			xPos = 0f;
 		Debug.Log (slots.Children [0].transform.position.ToString ());
 		Debug.Log (slots.Children [CardsInHand.Count - 1].transform.position.ToString ());
 		//slots.gameObject.transform.DOLocalMoveX (xPos, 0.3f);
-	}
+	}*/
 
 	public void PlaceCardsOnNewSlots(){
 		foreach (GameObject g in CardsInHand) {
 			g.transform.DOLocalMoveX (slots.Children [CardsInHand.IndexOf (g)].transform.localPosition.x, 0.3f);
 			WhereIsTheCardOrSoldier w = g.GetComponent<WhereIsTheCardOrSoldier> ();
-			Debug.Log(g.GetComponent<OneCardManager>().cardAsset.ScriptName.ToString());
+		//	Debug.Log(g.GetComponent<OneCardManager>().cardAsset.ScriptName.ToString());
 			w.Slot = CardsInHand.IndexOf (g);
 			w.SetHandSortingOrder ();
 		}
@@ -101,7 +101,8 @@ public class HandVisual : MonoBehaviour {
 
 		// Set a tag to reflect where this card is
 		foreach (Transform t in card.GetComponentsInChildren<Transform>())
-			t.tag = owner.ToString()+"Card";
+			t.tag = owner.ToString () + "Card";
+
 		// pass this card to HandVisual class
 		AddCard(card);
 

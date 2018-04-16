@@ -15,7 +15,7 @@ MonoBehaviour:
   ScriptName: Corn
   Description: 
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: c6fea1a365064401ca2d64214f0ce044, type: 3}
   CardSprite: {fileID: 21300000, guid: 2b64ce0d0be604611944702a45a73c09, type: 3}
   ManaCost: 3
   OverrideLimitOfThisCardInDeck: -1

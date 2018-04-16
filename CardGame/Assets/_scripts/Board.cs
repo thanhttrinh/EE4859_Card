@@ -24,6 +24,7 @@ public class Board : MonoBehaviour
 	private bool baseBlueCreated;
 	private bool baseRedCreated;
 	//public bool basesCreated;
+	private GameObject cropCard;
 	private int cropsBlue = 0;
 	private int cropsRed = 0;
 
@@ -86,20 +87,26 @@ public class Board : MonoBehaviour
 
 			if (TurnManager.Instance.whoseTurn == playerBlue) {
 				if(!baseBlueCreated)
-					GenerateBaseBlue (x, y);				
+					GenerateBaseBlue (x, y);
+				
 			}
 			if (TurnManager.Instance.whoseTurn == playerRed) {
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
+				
 			}
 			SelectSoldier (x, y);
 
-			if (cropsBlue != 0) {
-				GenerateCropBlue()
+			if (cropsBlue != 0) 
+			{
+				GenerateCropBlue (cropCard, x, y);
+				cropsBlue--;
 			}
-			if (cropsRed != 0) {
+			if (cropsRed != 0) 
+			{
+				GenerateCropRed (cropCard, x, y);
+				cropsRed--;
 			}
-
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
 		}
@@ -146,6 +153,7 @@ public class Board : MonoBehaviour
 				cropsBlue = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.cardSize;
 			if(TurnManager.Instance.whoseTurn == playerRed)
 				cropsRed = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.cardSize;
+			cropCard = collider.gameObject;
 		}
 		
 	}
@@ -225,41 +233,41 @@ public class Board : MonoBehaviour
 		//Debug.Log (soldiers[x,y].cardAsset.name);
 	}
 
-	private void GenerateCropBlue(Collider collider, int x, int y)
+	private void GenerateCropBlue(GameObject go, int x, int y)
 	{
 		if (!isCreated) {
 			if (x < 0 || x > 6 || y < 0 || y > 2)
 				return; 
 			GameObject newGO = Instantiate (Crop) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
-			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
-            newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = collider.gameObject.GetComponent<CropPreview> ().PreviewUnit;
-			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = collider.gameObject.GetComponent<CropPreview> ().PreviewText;
+			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
+            newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = go.gameObject.GetComponent<CropPreview> ().PreviewUnit;
+			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = go.gameObject.GetComponent<CropPreview> ().PreviewText;
             //newGO.transform.SetParent (this.gameObject.transform, false);
             //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
             GameUnits c = newGO.GetComponent<GameUnits>();
 			cards[x, y] = c;
 			isCreated = true;
-            Destroy(collider.gameObject);
+			Destroy(go.gameObject);
         }
 	}
 
-	private void GenerateCropRed(Collider collider, int x, int y)
+	private void GenerateCropRed(GameObject go, int x, int y)
 	{
 		if (!isCreated) {
 			if (x < 0 || x > 6 || y < 3 || y > 6)
 				return;
 			GameObject newGO = Instantiate (Crop) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
-			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
-			newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = collider.gameObject.GetComponent<CropPreview> ().PreviewUnit;
-			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = collider.gameObject.GetComponent<CropPreview> ().PreviewText;
+			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = go.gameObject.GetComponent<CropPreview> ().PreviewUnit;
+			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = go.gameObject.GetComponent<CropPreview> ().PreviewText;
 			//newGO.transform.SetParent (this.gameObject.transform, false);
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
 			GameUnits c = newGO.GetComponent<GameUnits>();
 			cards[x, y] = c;
 			isCreated = true;
-			Destroy(collider.gameObject);
+			Destroy(go.gameObject);
 		}
 	}
 

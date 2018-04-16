@@ -72,7 +72,7 @@ public class SoldierLogic : ICharacter
 	}
 
 	public void Die(){
-		owner.grid.SoldiersOnGrid.Remove (this);
+//		owner.grid.SoldiersOnGrid.Remove (this);
 		//new SoldierDieCommand (UniqueSoldierID, owner).AddToQueue ();
 	}
 

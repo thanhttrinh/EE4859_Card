@@ -65,11 +65,6 @@ public class TurnManager : MonoBehaviour {
 		new StartATurnCommand(whoGoesFirst).AddToQueue();
 	}
 
-	void Update(){
-		if (Input.GetKeyDown (KeyCode.Space))
-			EndTurn ();
-	}
-
 	public void EndTurn(){
 		Draggable[] AllDraggableObjects = GameObject.FindObjectsOfType<Draggable> ();
 		foreach (Draggable d in AllDraggableObjects)

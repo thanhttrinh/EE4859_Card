@@ -12,7 +12,7 @@ public class HandVisual : MonoBehaviour {
 	public Transform DrawPreviewSpot;
 	public Transform DeckTransform;
 	public Transform OtherCardDrawSourceTransform;
-	public Transform PlayPreviewSpot;
+	//public Transform PlayPreviewSpot;
 	private List<GameObject> CardsInHand = new List<GameObject>();
 
 	public void AddCard(GameObject card){
@@ -101,7 +101,8 @@ public class HandVisual : MonoBehaviour {
 
 		// Set a tag to reflect where this card is
 		foreach (Transform t in card.GetComponentsInChildren<Transform>())
-			t.tag = owner.ToString()+"Card";
+			t.tag = owner.ToString () + "Card";
+
 		// pass this card to HandVisual class
 		AddCard(card);
 

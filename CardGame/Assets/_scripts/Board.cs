@@ -83,7 +83,7 @@ public class Board : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log (x + ", " + y);
+			//Debug.Log (x + ", " + y);
 
 			if (TurnManager.Instance.whoseTurn == playerBlue) {
 				if(!baseBlueCreated)

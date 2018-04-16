@@ -16,6 +16,7 @@ MonoBehaviour:
   Description: 
   Tags: 
   CardImage: {fileID: 0}
+  CardSprite: {fileID: 21300000, guid: b35775ab8cd2d40e783fce9f02ecdd5b, type: 3}
   ManaCost: 5
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
@@ -30,5 +31,6 @@ MonoBehaviour:
   CropSize: 0
   SpecialCropAmount: 0
   SpellRange: 0
+  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

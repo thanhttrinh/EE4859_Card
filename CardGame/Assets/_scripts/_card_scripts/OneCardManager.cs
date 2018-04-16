@@ -96,6 +96,9 @@ public class OneCardManager : MonoBehaviour {
             // this is a crop
             HealthText.text = cardAsset.CropHealth.ToString();
             CropSize.text = cardAsset.CropSize.ToString();
+			if(SceneManager.GetActiveScene().name == "InGame")
+				CardSpriteImage.sprite = cardAsset.CardSprite;
+			
         }
 
         if (cardAsset.TypeOfCard == TypesOfCards.Spell)

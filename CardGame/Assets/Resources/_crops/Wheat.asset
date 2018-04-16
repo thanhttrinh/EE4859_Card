@@ -15,8 +15,8 @@ MonoBehaviour:
   ScriptName: Wheat
   Description: 
   Tags: 
-  CardImage: {fileID: 21300000, guid: e9ca9ed04c09a46768432b33db3f1705, type: 3}
-  CardSprite: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: e5d4fc65b76b64a139fdfad8eb63486a, type: 3}
+  CardSprite: {fileID: 21300000, guid: 4fe2bede2b8c2494fbb0e3abf916450b, type: 3}
   ManaCost: 2
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 1

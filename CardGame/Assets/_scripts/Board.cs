@@ -97,16 +97,17 @@ public class Board : MonoBehaviour
 			}
 			SelectSoldier (x, y);
 
-			if (cropsBlue != 0) 
-			{
+			//for (int i = 0; i <= cropsBlue; i++) 
+			//{
 				GenerateCropBlue (cropCard, x, y);
-				cropsBlue--;
-			}
-			if (cropsRed != 0) 
-			{
+			//}
+
+
+			//for (int i = 0; i <= cropsRed; i++) 
+			//{
 				GenerateCropRed (cropCard, x, y);
-				cropsRed--;
-			}
+			//}
+
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
 		}
@@ -154,6 +155,7 @@ public class Board : MonoBehaviour
 			if(TurnManager.Instance.whoseTurn == playerRed)
 				cropsRed = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.CropSize;
 			cropCard = collider.gameObject;
+			collider.gameObject.SetActive (false);
 		}
 		
 	}
@@ -235,26 +237,30 @@ public class Board : MonoBehaviour
 
 	private void GenerateCropBlue(GameObject go, int x, int y)
 	{
-		if (!isCreated) {
+		if (cropsBlue != 0) {
 			if (x < 0 || x > 6 || y < 0 || y > 2)
 				return; 
 			GameObject newGO = Instantiate (Crop) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			newGO.gameObject.GetComponent<OneCropManager> ().ReadCropFromAsset ();
+
             newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = go.gameObject.GetComponent<CropPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = go.gameObject.GetComponent<CropPreview> ().PreviewText;
             //newGO.transform.SetParent (this.gameObject.transform, false);
             //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
             GameUnits c = newGO.GetComponent<GameUnits>();
 			cards[x, y] = c;
-			isCreated = true;
-			Destroy(go.gameObject);
+			//isCreated = true;
+			//Destroy(go.gameObject);
+			cropsBlue--;
+			Debug.Log (cropsBlue);
         }
 	}
 
 	private void GenerateCropRed(GameObject go, int x, int y)
 	{
-		if (!isCreated) {
+		if (cropsRed != 0) {
 			if (x < 0 || x > 6 || y < 3 || y > 6)
 				return;
 			GameObject newGO = Instantiate (Crop) as GameObject;
@@ -266,8 +272,10 @@ public class Board : MonoBehaviour
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
 			GameUnits c = newGO.GetComponent<GameUnits>();
 			cards[x, y] = c;
-			isCreated = true;
-			Destroy(go.gameObject);
+			//isCreated = true;
+			//Destroy(go.gameObject);
+			cropsRed--;
+			Debug.Log (cropsRed);
 		}
 	}
 

@@ -40,7 +40,6 @@ public class TimerVisual : MonoBehaviour, IEventSystemHandler {
 			if(timeTillZero<=0)
 			{
 				counting = false;
-				//RopeGameObject.SetActive(false);
 				TimerExpired.Invoke();
 			}
 		}

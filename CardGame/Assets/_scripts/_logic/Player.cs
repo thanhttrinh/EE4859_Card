@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, ICharacter {
 	//references to logical properties belonging to this player
 	public Deck deck;
 	public Hand hand;
-	public GridBoard grid;
+	//public GridBoard grid;
 
 	//an array to store both players
 	//always have 2 

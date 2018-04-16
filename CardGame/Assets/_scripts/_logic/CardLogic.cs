@@ -36,9 +36,9 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 			if (ca.MaxHealth > 0)
 			{
 				Debug.Log("owner is null: " + (owner == null));
-				Debug.Log("owner.table is null" + (owner.grid == null));
-				Debug.Log("owner.table.CreaturesOnTable is null" + (owner.grid.SoldiersOnGrid == null));
-				fieldNotFull = (owner.grid.SoldiersOnGrid.Count < 7);
+				//Debug.Log("owner.table is null" + (owner.grid == null));
+				//Debug.Log("owner.table.CreaturesOnTable is null" + (owner.grid.SoldiersOnGrid == null));
+				//fieldNotFull = (owner.grid.SoldiersOnGrid.Count < 7);
 			}
 			//Debug.Log("Card: " + ca.name + " has params: ownersTurn=" + ownersTurn + "fieldNotFull=" + fieldNotFull + " hasMana=" + (CurrentManaCost <= owner.ManaLeft));
 			return ownersTurn && fieldNotFull && (CurrentManaCost <= owner.ManaLeft);

@@ -141,14 +141,14 @@ public class Board : MonoBehaviour
 	{
 		//Debug.Log ("collision detected");
 
-		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+		if ((collider.gameObject.tag == "blueCard" || collider.gameObject.tag == "redCard") && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
 			if(TurnManager.Instance.whoseTurn == playerBlue)
 				GenerateSoldierBlue (collider, baseBlueX, baseBlueY);
 			if(TurnManager.Instance.whoseTurn == playerRed)
 				GenerateSoldierRed (collider, baseRedX, baseRedY);
 		}
 
-		if (collider.gameObject.tag == "card" && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
+		if ((collider.gameObject.tag == "blueCard" || collider.gameObject.tag == "redCard") && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
 				//GenerateCropBlue (collider, 1, 1);
 			if (TurnManager.Instance.whoseTurn == playerBlue)
 				cropsBlue = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.CropSize;

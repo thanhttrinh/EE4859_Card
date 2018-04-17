@@ -54,11 +54,13 @@ public class HandVisual : MonoBehaviour {
 
 	public void PlaceCardsOnNewSlots(){
 		foreach (GameObject g in CardsInHand) {
-			g.transform.DOLocalMoveX (slots.Children [CardsInHand.IndexOf (g)].transform.localPosition.x, 0.3f);
-			WhereIsTheCardOrSoldier w = g.GetComponent<WhereIsTheCardOrSoldier> ();
-		//	Debug.Log(g.GetComponent<OneCardManager>().cardAsset.ScriptName.ToString());
-			w.Slot = CardsInHand.IndexOf (g);
-			w.SetHandSortingOrder ();
+			if (g != null) {
+				g.transform.DOLocalMoveX (slots.Children [CardsInHand.IndexOf (g)].transform.localPosition.x, 0.3f);
+				WhereIsTheCardOrSoldier w = g.GetComponent<WhereIsTheCardOrSoldier> ();
+				//	Debug.Log(g.GetComponent<OneCardManager>().cardAsset.ScriptName.ToString());
+				w.Slot = CardsInHand.IndexOf (g);
+				w.SetHandSortingOrder ();
+			}
 		}
 	}
 
@@ -94,10 +96,12 @@ public class HandVisual : MonoBehaviour {
 
 	public void GivePlayerACard(CardAsset c, int UniqueID, bool fast = false, bool fromDeck = true){
 		GameObject card;
-		if (fromDeck)
-			card = CreateACardAtPosition(c, DeckTransform.position, new Vector3(5f, -179f, 0f));
+		if (fromDeck) {
+			card = CreateACardAtPosition (c, DeckTransform.position, new Vector3 (5f, -179f, 0f));
+			card.GetComponent<BoxCollider> ().isTrigger = false;
+		}
 		else
-			card = CreateACardAtPosition(c, OtherCardDrawSourceTransform.position, new Vector3(0f, -179f, 0f));
+			card = CreateACardAtPosition (c, OtherCardDrawSourceTransform.position, new Vector3 (0f, -179f, 0f));
 
 		// Set a tag to reflect where this card is
 		foreach (Transform t in card.GetComponentsInChildren<Transform>())
@@ -145,7 +149,7 @@ public class HandVisual : MonoBehaviour {
 
 	void ChangeLastCardStatusToInHand(GameObject card, WhereIsTheCardOrSoldier w)
 	{
-		Debug.Log("Changing state to Hand for card: " + card.gameObject.name);
+//		Debug.Log("Changing state to Hand for card: " + card.gameObject.name);
 		if (owner == AreaPosition.blue)
 			w.VisualState = VisualStates.BlueHand;
 		else

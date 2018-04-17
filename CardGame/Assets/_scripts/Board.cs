@@ -280,7 +280,8 @@ public class Board : MonoBehaviour
 			return;
 
         GameUnits s = cards[x,y];
-		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isBlue == true && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isBlue == true 
+		&& s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
@@ -298,7 +299,8 @@ public class Board : MonoBehaviour
 			return;
 
 		GameUnits s = cards[x,y];
-		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isRed == true && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isRed == true 
+		&& s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;

@@ -22,7 +22,8 @@ public class SoldierPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
 		if(SceneManager.GetActiveScene().name == "InGame" && PreviewUnit != null)
         {
-            PreviewText.text = string.Format("Name = {0}\nMana = {1}\nAttack = {2}\nHealth = {3}\nRange = {4}\nMovement = {5}", NameText.text, ManaText.text, AttackText.text, HealthText.text, RangeText.text, MovementText.text);
+            PreviewText.text = string.Format("Name = {0}\nMana = {1}\nAttack = {2}\nHealth = {3}\nRange = {4}\nMovement = {5}", 
+			NameText.text, ManaText.text, AttackText.text, HealthText.text, RangeText.text, MovementText.text);
             PreviewUnit.SetActive(true);
         }
 	}
@@ -37,7 +38,8 @@ public class SoldierPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 	{
 		if (SceneManager.GetActiveScene().name == "InGame" && PreviewUnit != null)
         {
-            PreviewText.text = string.Format("Name = {0}\nMana = {1}\nAttack = {2}\nHealth = {3}\nRange = {4}\nMovement = {5}", NameText.text, ManaText.text, AttackText.text, HealthText.text, RangeText.text, MovementText.text);
+            PreviewText.text = string.Format("Name = {0}\nMana = {1}\nAttack = {2}\nHealth = {3}\nRange = {4}\nMovement = {5}", 
+			NameText.text, ManaText.text, AttackText.text, HealthText.text, RangeText.text, MovementText.text);
             PreviewUnit.SetActive(true);
         }
 	}

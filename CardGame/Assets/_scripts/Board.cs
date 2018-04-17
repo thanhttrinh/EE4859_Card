@@ -349,7 +349,8 @@ public class Board : MonoBehaviour
             }
             else
             {
-                selectedSoldierCard.gameObject.AddComponent<attack>();
+                if(selectedSoldierCard.GetComponent<attack>() == null)
+                    selectedSoldierCard.gameObject.AddComponent<attack>();
                 if (selectedSoldierCard.GetComponent<OneSoldierManager>().isBlue)
                 {
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);

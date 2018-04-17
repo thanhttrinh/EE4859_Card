@@ -88,25 +88,19 @@ public class Board : MonoBehaviour
 			if (TurnManager.Instance.whoseTurn == playerBlue) {
 				if(!baseBlueCreated)
 					GenerateBaseBlue (x, y);
-				
+				SelectSoldierBlue (x, y);
+
 			}
 			if (TurnManager.Instance.whoseTurn == playerRed) {
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
-				
+				SelectSoldierRed (x, y);
+
 			}
-			SelectSoldier (x, y);
+			//SelectSoldier (x, y);
 
-			//for (int i = 0; i <= cropsBlue; i++) 
-			//{
-				GenerateCropBlue (cropCard, x, y);
-			//}
-
-
-			//for (int i = 0; i <= cropsRed; i++) 
-			//{
-				GenerateCropRed (cropCard, x, y);
-			//}
+			GenerateCropBlue (cropCard, x, y);
+			GenerateCropRed (cropCard, x, y);
 
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 
@@ -279,26 +273,40 @@ public class Board : MonoBehaviour
 		}
 	}
 
-	private void SelectSoldier(int x, int y)
+	private void SelectSoldierBlue(int x, int y)
 	{
 		//out of bounds
 		if (x < 0 || x > 6 || y < 0 || y > 6)
 			return;
 
         GameUnits s = cards[x,y];
-		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isBlue == true && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
 		{
-			if(s.gameObject.GetComponent<OneSoldierManager>().isBlue == true && TurnManager.Instance.whoseTurn == playerBlue)
-				selectedSoldierCard = s;
-			if(s.gameObject.GetComponent<OneSoldierManager>().isRed == true && TurnManager.Instance.whoseTurn == playerRed)
-				selectedSoldierCard = s;
-			
+			selectedSoldierCard = s;
 			startDrag = mouseOver;
 			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
 		
+	}
+
+	private void SelectSoldierRed(int x, int y)
+	{
+		//out of bounds
+		if (x < 0 || x > 6 || y < 0 || y > 6)
+			return;
+
+		GameUnits s = cards[x,y];
+		if (s != null && s.gameObject.GetComponent<OneSoldierManager>().isRed == true && s.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
+		{
+			selectedSoldierCard = s;
+			startDrag = mouseOver;
+			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+		}
+		else
+			Debug.Log("nothing there");
+
 	}
 
 	private void TryMove(int x1, int y1, int x2, int y2)
@@ -333,11 +341,24 @@ public class Board : MonoBehaviour
             }
 
             //check if valid move
-            if(selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2))
+            if (selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2))
             {
                 cards[x2, y2] = selectedSoldierCard;
                 cards[x1, y1] = null;
                 MoveSoldier(selectedSoldierCard, x2, y2);
+            }
+            else
+            {
+                if(selectedSoldierCard.GetComponent<attack>() == null)
+                    selectedSoldierCard.gameObject.AddComponent<attack>();
+                if (selectedSoldierCard.GetComponent<OneSoldierManager>().isBlue)
+                {
+                    selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);
+                }
+                else
+                {
+                    selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
+                }
             }
         }
 

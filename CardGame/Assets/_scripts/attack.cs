@@ -3,23 +3,20 @@ using System;
 
 public class attack : MonoBehaviour
 {
-	public bool ViableAttack(GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
-	{
-		if(!board[atkx, atky].ValidMove(board, atkx, atky, vicx, vicy))
-		{
-            if (board[atkx, atky] != null && board[vicx, vicy] != null)
+    public bool ViableAttack(GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
+    {
+        if (board[atkx, atky] != null && board[vicx, vicy] != null)
+        {
+            if (board[atkx, atky].GetComponent<OneCardManager>() != null)
             {
-                if (board[atkx, atky].GetComponent<OneCardManager>() != null)
+                if (board[atkx, atky].GetComponent<OneCardManager>().AttackText.text != null)
                 {
-                    if (board[atkx, atky].GetComponent<OneCardManager>().AttackText.text != null)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
-		}
-		return false;
-	}
+        }
+        return false;
+    }
 	//Do ViableAttack and have it == true first
 	public void doAttack(Player player, GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
 	{
@@ -30,8 +27,18 @@ public class attack : MonoBehaviour
         {
             Int32.TryParse(board[atkx, atky].GetComponent<OneSoldierManager>().AttackText.text, out atkDam);
             Int32.TryParse(board[atkx, atky].GetComponent<OneSoldierManager>().HealthText.text, out atkHP);
-            Int32.TryParse(board[vicx, vicy].GetComponent<OneSoldierManager>().AttackText.text, out vicDam);
-            Int32.TryParse(board[atkx, atky].GetComponent<OneSoldierManager>().HealthText.text, out vicHP);
+            if (board[vicx, vicy].GetComponent<OneSoldierManager>() != null)
+            {
+                Int32.TryParse(board[vicx, vicy].GetComponent<OneSoldierManager>().AttackText.text, out vicDam);
+                Int32.TryParse(board[atkx, atky].GetComponent<OneSoldierManager>().HealthText.text, out vicHP);
+            }
+            else if(board[vicx, vicy].GetComponent<Base>() != null)
+            {
+                vicDam = 0;
+                vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
+                isBase = true;
+                Debug.Log(vicHP + ":HPBASE");
+            }
             if (atkDam == 0 && atkHP == 0 && vicDam == 0 && vicHP == 0)
             {
                 atkDam = board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.Attack;

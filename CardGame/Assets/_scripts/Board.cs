@@ -113,23 +113,6 @@ public class Board : MonoBehaviour
 			basesCreated = true;
 	}
 
-    /*
-    private void UpdateSoldierDrag(OneSoldierManager s)
-    {
-        if (!Camera.main)
-        {
-            Debug.Log("cannot find main camera");
-            return;
-        }
-
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-        {
-            s.transform.position = hit.point + Vector3.forward;
-        }
-    }
-    */
-
 
 	void OnTriggerEnter(Collider collider)
 	{

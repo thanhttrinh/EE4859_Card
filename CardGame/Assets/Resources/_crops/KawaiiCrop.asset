@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: 
   Tags: 
   CardImage: {fileID: 21300000, guid: 49f7c6ea5f1354a27bffc6a36727e9d2, type: 3}
-  CardSprite: {fileID: 0}
+  CardSprite: {fileID: 21300000, guid: b8e2e13c74a477c4e9dc61263e0a8547, type: 3}
   ManaCost: 3
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 1

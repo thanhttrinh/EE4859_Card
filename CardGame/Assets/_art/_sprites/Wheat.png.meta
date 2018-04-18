@@ -3,7 +3,8 @@ guid: 4fe2bede2b8c2494fbb0e3abf916450b
 timeCreated: 1523911545
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Wheat_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -78,7 +79,21 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Wheat_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 6
+        width: 883
+        height: 994
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

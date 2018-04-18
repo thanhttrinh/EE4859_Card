@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class GameUnits : MonoBehaviour {
 
-    public Player playerBlue;
-    public Player playerRed;
-    public int moving = 1;
+    public bool moving = true;
+	public static GameUnits Instance;
+
 
 	// Use this for initialization
 	void Start () {
 		
 	}
-	
+
+	void Awake() {
+		Instance = this;
+	}
+
 	// Update is called once per frame
 	void Update () {
-        /*
-        if (TurnManager.Instance.whoseTurn == playerBlue)
-            ResetMovingRed();
-        if (TurnManager.Instance.whoseTurn == playerRed)
-            ResetMovingBlue();
-		*/
+
 	}
 
 
@@ -34,7 +33,7 @@ public class GameUnits : MonoBehaviour {
         //if moving on top of another soldier/crop
         if (board[x2, y2] != null)
         {
-            Debug.Log("false");
+            Debug.Log("valid move = false, something there");
             return false;
         }
 
@@ -44,19 +43,13 @@ public class GameUnits : MonoBehaviour {
         if ((deltaMoveX == 0 && deltaMoveY <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement) || (deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement && deltaMoveY == 0))
         {
             Debug.Log("true & soldier has " + board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + "movement and deltaMoveX =" + deltaMoveX + "and deltaMoveY = " + deltaMoveY);
-            Debug.Log(moving);
+            Debug.Log("moving "+ moving);
             return true;
 
         }
 
-        Debug.Log("false");
+        Debug.Log("valid move = false");
         return false;
-    }
-
-    public void ResetMoving()
-    {
-        if (moving == 0 && TimerVisual.Instance.counting == true)
-            moving = 1;
     }
 
 }

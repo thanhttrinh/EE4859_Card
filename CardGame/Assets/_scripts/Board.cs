@@ -97,7 +97,6 @@ public class Board : MonoBehaviour
 				SelectSoldierRed (x, y);
                 
 			}
-			//SelectSoldier (x, y);
 
 			GenerateCropBlue (cropCard, x, y);
 			GenerateCropRed (cropCard, x, y);
@@ -107,8 +106,11 @@ public class Board : MonoBehaviour
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
-			TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
+			if(selectedSoldierCard != null)
+				TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
 		}
+
+
 		if(baseRedCreated && baseBlueCreated)
 			basesCreated = true;
 	}
@@ -322,22 +324,23 @@ public class Board : MonoBehaviour
                 selectedSoldierCard = null;
                 return;
             }
+				
 
             //check if valid move
-            if (selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2) && selectedSoldierCard.moving != 0)
-            {
-                cards[x2, y2] = selectedSoldierCard;
-                cards[x1, y1] = null;
-                MoveSoldier(selectedSoldierCard, x2, y2);
-                selectedSoldierCard.moving = 0;
-            }
-            else if (selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2) && selectedSoldierCard.moving == 0)
-            {
-                MoveSoldier(selectedSoldierCard, x1, y1);
-                startDrag = Vector2.zero;
-                selectedSoldierCard = null;
-                return;
-            }
+			if (selectedSoldierCard.ValidMove (cards, x1, y1, x2, y2) && selectedSoldierCard.moving == true) 
+			{
+				cards [x2, y2] = selectedSoldierCard;
+				cards [x1, y1] = null;
+				MoveSoldier (selectedSoldierCard, x2, y2);
+				selectedSoldierCard.moving = false;
+			} 
+			else if (selectedSoldierCard.ValidMove (cards, x1, y1, x2, y2) && selectedSoldierCard.moving == false) 
+			{
+				MoveSoldier(selectedSoldierCard, x1, y1);
+				startDrag = Vector2.zero;
+				selectedSoldierCard = null;
+				return;
+			}
             else
             {
                 if (selectedSoldierCard.GetComponent<attack>() == null)
@@ -351,9 +354,6 @@ public class Board : MonoBehaviour
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
                 }
             }
-
-            if(selectedSoldierCard.moving == 0 && TimerVisual.Instance.counting == false)
-                selectedSoldierCard.moving = 1;
         }
 	}
 
@@ -362,6 +362,5 @@ public class Board : MonoBehaviour
         if(soldierUnit.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
             soldierUnit.transform.position = (Vector2.right * x) + (Vector2.up * y);
 	}
-
-
+		
 }

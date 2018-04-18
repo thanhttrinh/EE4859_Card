@@ -108,6 +108,8 @@ public class Player : MonoBehaviour, ICharacter {
 		manaThisTurn++;
         this.PArea.ManaBar.AvailableCrystals = ManaThisTurn;
 		manaLeft = manaThisTurn;
+		GameUnits.Instance.moving = true;
+		
 		//foreach (SoldierLogic sl in grid.SoldiersOnGrid)
 			//sl.OnTurnStart (); 
 	}
@@ -118,6 +120,8 @@ public class Player : MonoBehaviour, ICharacter {
 		manaThisTurn -= bonusManaThisTurn;
 		bonusManaThisTurn = 0;
 		GetComponent<TurnMaker> ().StopAllCoroutines ();
+		if (GameUnits.Instance.moving == false)
+			GameUnits.Instance.moving = true;
 	}
 
 	public void GetBonusMana(int amount){

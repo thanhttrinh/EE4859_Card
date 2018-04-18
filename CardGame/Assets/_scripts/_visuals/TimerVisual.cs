@@ -11,11 +11,17 @@ public class TimerVisual : MonoBehaviour, IEventSystemHandler {
 	public Text TimerText;
 
 	private float timeTillZero;
-	private bool counting = false;
+	public bool counting = false;
 
 	[SerializeField]
 	public UnityEvent TimerExpired = new UnityEvent();
 
+    public static TimerVisual Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 	public void StartTimer()
 	{
 		timeTillZero = TimeForOneTurn;

@@ -95,7 +95,7 @@ public class Board : MonoBehaviour
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
 				SelectSoldierRed (x, y);
-
+                
 			}
 			//SelectSoldier (x, y);
 
@@ -351,9 +351,8 @@ public class Board : MonoBehaviour
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
                 }
             }
+
         }
-
-
 	}
 
 	private void MoveSoldier(GameUnits soldierUnit, int x, int y)
@@ -361,5 +360,6 @@ public class Board : MonoBehaviour
         if(soldierUnit.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
             soldierUnit.transform.position = (Vector2.right * x) + (Vector2.up * y);
 	}
+
 
 }

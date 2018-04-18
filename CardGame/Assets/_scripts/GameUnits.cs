@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameUnits : MonoBehaviour {
 
+    public Player playerBlue;
+    public Player playerRed;
     public int moving = 1;
 
 	// Use this for initialization
@@ -13,6 +15,11 @@ public class GameUnits : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (TurnManager.Instance.whoseTurn == playerBlue)
+            ResetMovingRed();
+        if (TurnManager.Instance.whoseTurn == playerRed)
+            ResetMovingBlue();
 		
 	}
 
@@ -46,4 +53,14 @@ public class GameUnits : MonoBehaviour {
         return false;
     }
 
+    public void ResetMovingBlue()
+    {
+        if (moving == 0 && this.gameObject.GetComponent<OneSoldierManager>().isBlue)
+            moving = 1;
+    }
+    public void ResetMovingRed()
+    {
+        if (moving == 0 && this.gameObject.GetComponent<OneSoldierManager>().isRed)
+            moving = 1;
+    }
 }

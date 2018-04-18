@@ -1736,6 +1736,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114737879733492066, guid: c46f85ea1d0d3ee46960e347a64e5d64,
+        type: 2}
+      propertyPath: playerBlue
+      value: 
+      objectReference: {fileID: 394531079}
+    - target: {fileID: 114737879733492066, guid: c46f85ea1d0d3ee46960e347a64e5d64,
+        type: 2}
+      propertyPath: playerRed
+      value: 
+      objectReference: {fileID: 572133991}
     - target: {fileID: 114329527336042880, guid: c46f85ea1d0d3ee46960e347a64e5d64,
         type: 2}
       propertyPath: PreviewUnit
@@ -1749,10 +1759,6 @@ Prefab:
     - target: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
       propertyPath: m_Name
       value: Soldier (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}

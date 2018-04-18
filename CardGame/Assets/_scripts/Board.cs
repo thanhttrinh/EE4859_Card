@@ -179,7 +179,6 @@ public class Board : MonoBehaviour
 
             newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
-            //newGO.transform.SetParent (this.gameObject.transform, false);
             //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
             GameUnits s = newGO.GetComponent<GameUnits>();
 			cards[x, y] = s;
@@ -201,7 +200,6 @@ public class Board : MonoBehaviour
 
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
-			//newGO.transform.SetParent (this.gameObject.transform, false);
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
 			GameUnits s = newGO.GetComponent<GameUnits>();
 			cards[x, y] = s;
@@ -326,15 +324,23 @@ public class Board : MonoBehaviour
             }
 
             //check if valid move
-            if (selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2))
+            if (selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2) && selectedSoldierCard.moving != 0)
             {
                 cards[x2, y2] = selectedSoldierCard;
                 cards[x1, y1] = null;
                 MoveSoldier(selectedSoldierCard, x2, y2);
+                selectedSoldierCard.moving = 0;
+            }
+            else if (selectedSoldierCard.ValidMove(cards, x1, y1, x2, y2) && selectedSoldierCard.moving == 0)
+            {
+                MoveSoldier(selectedSoldierCard, x1, y1);
+                startDrag = Vector2.zero;
+                selectedSoldierCard = null;
+                return;
             }
             else
             {
-                if(selectedSoldierCard.GetComponent<attack>() == null)
+                if (selectedSoldierCard.GetComponent<attack>() == null)
                     selectedSoldierCard.gameObject.AddComponent<attack>();
                 if (selectedSoldierCard.GetComponent<OneSoldierManager>().isBlue)
                 {

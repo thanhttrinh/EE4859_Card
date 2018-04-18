@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameUnits : MonoBehaviour {
 
+    public int moving = 1;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -31,35 +33,17 @@ public class GameUnits : MonoBehaviour {
 
         //if soldier moves over a crop
 
-
-        //sBoard[x1,y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier
-        //if (isAllySoldier)
-        //{
         //if deltaMoveX and deltaMoveY is less than or equal to the soldiers movement
-        //deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement
         if ((deltaMoveX == 0 && deltaMoveY <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement) || (deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement && deltaMoveY == 0))
         {
             Debug.Log("true & soldier has " + board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + "movement and deltaMoveX =" + deltaMoveX + "and deltaMoveY = " + deltaMoveY);
+            Debug.Log(moving);
             return true;
 
         }
-        //if player reaches to an enemy soldier at its max movement+1 and wanted to attack
-        /*
-        else if(deltaMoveX == sBoard[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + 1)
-        {
-            deltaMoveX = sBoard[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement;
-            Debug.Log("true in x movement");
-            return true;
-        }
-        else if (deltaMoveY == sBoard[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + 1)
-        {
-            deltaMoveY = sBoard[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement;
-            Debug.Log("true in y movement");
-            return true;
-        }
-        */
-        //}
+
         Debug.Log("false");
         return false;
     }
+
 }

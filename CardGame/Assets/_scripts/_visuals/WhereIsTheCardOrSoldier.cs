@@ -82,7 +82,7 @@ public class WhereIsTheCardOrSoldier: MonoBehaviour {
 	{
 		canvas.sortingOrder = TopSortingOrder;
 		canvas.sortingLayerName = "AboveAll";
-		//canvas.transform.localPosition = new Vector3(0f, 0f, -1f);
+		canvas.transform.localPosition = new Vector3(0f, 0f, -1f);
 	}
 
 	// not setting sorting order inside of VisualStaes property because when the card is drawn, 

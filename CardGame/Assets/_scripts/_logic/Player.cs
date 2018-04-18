@@ -151,67 +151,7 @@ public class Player : MonoBehaviour, ICharacter {
 			//TODO: what to do when run out of cards
 		}
 	}
-
-/* 
-	public void PlayASpellFromHand(int SpellCardUniqueID, int TargetUniqueID){
-		if (TargetUniqueID < 0)
-			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], null);
-		else if (TargetUniqueID == ID)
-			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], null);
-		else if (TargetUniqueID == otherPlayer.ID)
-			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], this.otherPlayer);
-		else
-			//target is a soldier
-			PlayASpellFromHand (CardLogic.CardsCreatedThisGame [SpellCardUniqueID], SoldierLogic.SoldiersCreatedThisGame[TargetUniqueID]);
-	}
-		
-	public void PlayASpellFromHand(CardLogic playedCard, ICharacter target){
-		ManaLeft -= playedCard.CurrentManaCost;
-		if(playedCard.effect != null)
-			playedCard.effect.ActivateEffect(playedCard.ca.SpecialSpellAmount, target);
-		else
-			Debug.Log("No effect found on card " + playedCard.ca.name);
-		new PlayASpellCommand (this, playedCard).AddToQueue ();
-		hand.CardsInHand.Remove (playedCard);
-	}
-
-	public void PlayASoldierFromHand(int UniqueID, int GridPos){
-		PlayASoldierFromHand (CardLogic.CardsCreatedThisGame [UniqueID], GridPos);
-	}
-
-	public void PlayASoldierFromHand(CardLogic playedCard, int GridPos){
-		manaLeft -= playedCard.CurrentManaCost;
-		SoldierLogic newSoldier = new SoldierLogic (this, playedCard.ca);
-		grid.SoldiersOnGrid.Insert (GridPos, newSoldier);
-
-		new PlayASoldierCommand (playedCard, this, GridPos, newSoldier.UniqueSoldierID).AddToQueue ();
-		hand.CardsInHand.Remove(playedCard);
-		HighlightPlayableCards ();
-	}
-
-	public void Die(){
-		//game over
-		PArea.ControlON = false;
-		otherPlayer.PArea.ControlON = false;
-		TurnManager.Instance.StopTheTimer ();
-		new GameOverCommand (this).AddToQueue ();
-	}
-
-	public void HighlightPlayableCards(bool removeAllHighlights = false){
-		foreach (CardLogic cl in hand.CardsInHand) {
-			GameObject go = IDHolder.GetGameObjectWithID (cl.UniqueCardID);
-			if (go != null)
-				go.GetComponent<OneCardManager> ().CanBePlayedNow = (cl.CurrentManaCost <= ManaLeft) && !removeAllHighlights;
-		}
-
-		foreach (SoldierLogic sl in grid.SoldiersOnGrid) {
-			GameObject go = IDHolder.GetGameObjectWithID (sl.UniqueSoldierID);
-			if (go != null)
-				go.GetComponent<OneSoldierManager> ().CanAttackNow = (sl.AttacksLeftThisTurn > 0) && !removeAllHighlights;
-		}
-			
-	}
-*/
+	
 	//start game
 	public void LoadPlayerInfoFromAsset(){
 		Health = pAsset.MaxHealth;

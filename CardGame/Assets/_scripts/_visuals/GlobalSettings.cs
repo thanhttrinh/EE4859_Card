@@ -14,10 +14,9 @@ public class GlobalSettings : MonoBehaviour {
 	public float CardPreviewTimeFast = 0.2f;
 	public float CardTransitionTimeFast = 0.5f;
 	[Header("Prefabs and Assets")]
-	public GameObject NoTargetSpellCardPrefab;
-	public GameObject TargetedSpellCardPrefab;
+	public GameObject SpellCardPrefab;
 	public GameObject SoldierCardPrefab;
-	public GameObject SoldierPrefab;
+	public GameObject CropCardPrefab;
 	//public GameObject DamageEffectPrefab;
 	[Header("Other")]
 	public Button EndTurnButton;

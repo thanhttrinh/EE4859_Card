@@ -71,26 +71,26 @@ public class HandVisual : MonoBehaviour {
 		if (c.TypeOfCard == TypesOfCards.Soldier)
 		{
 			card = GameObject.Instantiate(GlobalSettings.Instance.SoldierCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
+			//Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString());
 		}
-		else 
+		else if(c.TypeOfCard == TypesOfCards.Spell)
 		{
-			if (c.Targets == TargetingOptions.NoTarget)
-			{
-				card = GameObject.Instantiate(GlobalSettings.Instance.NoTargetSpellCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
-			}
-			else
-			{
-				card = GameObject.Instantiate(GlobalSettings.Instance.TargetedSpellCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
-				// pass targeting options to DraggingActions
-			//	DragSpellOnTarget dragSpell = card.GetComponentInChildren<DragSpellOnTarget>();
-			//	dragSpell.Targets = c.Targets;
-			}
+			card = GameObject.Instantiate(GlobalSettings.Instance.SpellCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
+			//Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString());
 		}
-
+		else if(c.TypeOfCard == TypesOfCards.Crop)
+		{
+			card = GameObject.Instantiate(GlobalSettings.Instance.CropCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
+			//Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString() + "; position = " + position.ToString() + "; GS = "+ GlobalSettings.Instance.SpellCardPrefab.name.ToString());
+		}
+		else {
+			card = null;
+		}
+		//Debug.Log("HV: card was instanitated");
 		OneCardManager manager = card.GetComponent<OneCardManager>();
 		manager.cardAsset = c;
 		manager.ReadCardFromAsset();
-
+		//Debug.Log("Access one card manager: success");
 		return card;
 	}
 
@@ -158,29 +158,4 @@ public class HandVisual : MonoBehaviour {
 		// end command execution for DrawACArdCommand
 		Command.CommandExecutionComplete();
 	}
-/* 
-	public void PlayASpellFromHand(int CardID)
-	{
-		GameObject card = IDHolder.GetGameObjectWithID(CardID);
-		PlayASpellFromHand(card);
-	}
-
-	public void PlayASpellFromHand(GameObject CardVisual)
-	{
-		Command.CommandExecutionComplete();
-		CardVisual.GetComponent<WhereIsTheCardOrSoldier>().VisualState = VisualStates.Transition;
-		RemoveCard(CardVisual);
-
-		CardVisual.transform.SetParent(null);
-
-		Sequence s = DOTween.Sequence();
-		s.Append(CardVisual.transform.DOMove(PlayPreviewSpot.position, 1f));
-		s.Insert(0f, CardVisual.transform.DORotate(Vector3.zero, 1f));
-		s.AppendInterval(2f);
-		s.OnComplete(()=>
-			{
-				Command.CommandExecutionComplete();
-				Destroy(CardVisual);
-			});
-	}*/
 }

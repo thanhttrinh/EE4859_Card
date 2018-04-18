@@ -15,7 +15,7 @@ MonoBehaviour:
   ScriptName: Squirel
   Description: Destroy a crop. Restore 3 Hp to your base.
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: a6328a851f80446ef8fe9bd8abd43444, type: 3}
   CardSprite: {fileID: 0}
   ManaCost: 1
   OverrideLimitOfThisCardInDeck: -1

@@ -144,6 +144,7 @@ public class Player : MonoBehaviour, ICharacter {
 			   // new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
 			   PArea.PDeck.CardsInDeck--;
 			   PArea.handVisual.GivePlayerACard(newCard.ca, newCard.UniqueCardID, fast, true);
+			   
 				//Debug.Log ("DrawACard Success");
 			}
 		} else {

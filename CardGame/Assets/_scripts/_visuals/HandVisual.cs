@@ -96,10 +96,8 @@ public class HandVisual : MonoBehaviour {
 
 	public void GivePlayerACard(CardAsset c, int UniqueID, bool fast = false, bool fromDeck = true){
 		GameObject card;
-		if (fromDeck) {
-			card = CreateACardAtPosition (c, DeckTransform.position, new Vector3 (5f, -179f, 0f));
-			card.GetComponent<BoxCollider> ().isTrigger = false;
-		}
+		if (fromDeck) 
+			card = CreateACardAtPosition (c, DeckTransform.position, new Vector3 (0f, -179f, 0f));
 		else
 			card = CreateACardAtPosition (c, OtherCardDrawSourceTransform.position, new Vector3 (0f, -179f, 0f));
 

@@ -15,12 +15,12 @@ public class GameUnits : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        /*
         if (TurnManager.Instance.whoseTurn == playerBlue)
             ResetMovingRed();
         if (TurnManager.Instance.whoseTurn == playerRed)
             ResetMovingBlue();
-		
+		*/
 	}
 
 
@@ -53,14 +53,10 @@ public class GameUnits : MonoBehaviour {
         return false;
     }
 
-    public void ResetMovingBlue()
+    public void ResetMoving()
     {
-        if (moving == 0 && this.gameObject.GetComponent<OneSoldierManager>().isBlue)
+        if (moving == 0 && TimerVisual.Instance.counting == true)
             moving = 1;
     }
-    public void ResetMovingRed()
-    {
-        if (moving == 0 && this.gameObject.GetComponent<OneSoldierManager>().isRed)
-            moving = 1;
-    }
+
 }

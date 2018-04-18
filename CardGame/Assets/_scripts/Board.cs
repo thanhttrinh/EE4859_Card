@@ -352,6 +352,8 @@ public class Board : MonoBehaviour
                 }
             }
 
+            if(selectedSoldierCard.moving == 0 && TimerVisual.Instance.counting == false)
+                selectedSoldierCard.moving = 1;
         }
 	}
 

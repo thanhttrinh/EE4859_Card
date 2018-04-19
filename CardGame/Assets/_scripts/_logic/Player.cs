@@ -120,8 +120,6 @@ public class Player : MonoBehaviour, ICharacter {
 		manaThisTurn -= bonusManaThisTurn;
 		bonusManaThisTurn = 0;
 		GetComponent<TurnMaker> ().StopAllCoroutines ();
-		if (GameUnits.Instance.moving == false)
-			GameUnits.Instance.moving = true;
 	}
 
 	public void GetBonusMana(int amount){

@@ -324,23 +324,23 @@ public class Board : MonoBehaviour
                 selectedSoldierCard = null;
                 return;
             }
-				
+            if (selectedSoldierCard.moving == false)
+            {
+                MoveSoldier(selectedSoldierCard, x1, y1);
+                startDrag = Vector2.zero;
+                selectedSoldierCard = null;
+                return;
+            }
+
 
             //check if valid move
-			if (selectedSoldierCard.ValidMove (cards, x1, y1, x2, y2) && selectedSoldierCard.moving == true) 
+            if (selectedSoldierCard.ValidMove (cards, x1, y1, x2, y2) && selectedSoldierCard.moving == true) 
 			{
 				cards [x2, y2] = selectedSoldierCard;
 				cards [x1, y1] = null;
 				MoveSoldier (selectedSoldierCard, x2, y2);
 				selectedSoldierCard.moving = false;
 			} 
-			else if (selectedSoldierCard.ValidMove (cards, x1, y1, x2, y2) && selectedSoldierCard.moving == false) 
-			{
-				MoveSoldier(selectedSoldierCard, x1, y1);
-				startDrag = Vector2.zero;
-				selectedSoldierCard = null;
-				return;
-			}
             else
             {
                 if (selectedSoldierCard.GetComponent<attack>() == null)

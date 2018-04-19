@@ -231,7 +231,7 @@ public class Board : MonoBehaviour
 			//isCreated = true;
 			//Destroy(go.gameObject);
 			cropsBlue--;
-			Debug.Log (cropsBlue);
+			//Debug.Log (cropsBlue);
         }
 	}
 
@@ -252,7 +252,7 @@ public class Board : MonoBehaviour
 			//isCreated = true;
 			//Destroy(go.gameObject);
 			cropsRed--;
-			Debug.Log (cropsRed);
+			//Debug.Log (cropsRed);
 		}
 	}
 
@@ -268,7 +268,7 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+			//Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
@@ -287,7 +287,7 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+			//Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");

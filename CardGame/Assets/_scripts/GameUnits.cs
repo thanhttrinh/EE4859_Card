@@ -28,7 +28,7 @@ public class GameUnits : MonoBehaviour {
         int deltaMoveX = Mathf.Abs(x1 - x2);
         int deltaMoveY = Mathf.Abs(y1 - y2);
 
-        Debug.Log("deltaMoveX = " + deltaMoveX + ", deltaMoveY = " + deltaMoveY);
+        //Debug.Log("deltaMoveX = " + deltaMoveX + ", deltaMoveY = " + deltaMoveY);
 
         //if moving on top of another soldier/crop
         if (board[x2, y2] != null)
@@ -42,10 +42,9 @@ public class GameUnits : MonoBehaviour {
         //if deltaMoveX and deltaMoveY is less than or equal to the soldiers movement
         if ((deltaMoveX == 0 && deltaMoveY <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement) || (deltaMoveX <= board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement && deltaMoveY == 0))
         {
-            Debug.Log("true & soldier has " + board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + "movement and deltaMoveX =" + deltaMoveX + "and deltaMoveY = " + deltaMoveY);
-            Debug.Log("moving "+ moving);
+            //Debug.Log("true & soldier has " + board[x1, y1].gameObject.GetComponent<OneSoldierManager>().cardAsset.Movement + "movement and deltaMoveX =" + deltaMoveX + "and deltaMoveY = " + deltaMoveY);
+            //Debug.Log("moving "+ moving);
             return true;
-
         }
 
         Debug.Log("valid move = false");

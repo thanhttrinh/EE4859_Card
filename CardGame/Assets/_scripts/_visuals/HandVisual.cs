@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class HandVisual : MonoBehaviour {
@@ -15,7 +16,11 @@ public class HandVisual : MonoBehaviour {
 	//public Transform PlayPreviewSpot;
 	private List<GameObject> CardsInHand = new List<GameObject>();
 
-	public void AddCard(GameObject card){
+    [Header("Preview Ref")]
+    public GameObject PreviewUnit;
+    public Text PreviewText;
+
+    public void AddCard(GameObject card){
 		CardsInHand.Insert (0, card);
 		card.transform.SetParent (slots.transform);
 		PlaceCardsOnNewSlots ();
@@ -71,18 +76,24 @@ public class HandVisual : MonoBehaviour {
 		if (c.TypeOfCard == TypesOfCards.Soldier)
 		{
 			card = GameObject.Instantiate(GlobalSettings.Instance.SoldierCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
-			//Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString());
-		}
+            card.gameObject.GetComponent<SoldierPreview>().PreviewUnit = PreviewUnit;
+            card.gameObject.GetComponent<SoldierPreview>().PreviewText = PreviewText;
+            //Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString());
+        }
 		else if(c.TypeOfCard == TypesOfCards.Spell)
 		{
 			card = GameObject.Instantiate(GlobalSettings.Instance.SpellCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
-			//Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString());
-		}
+            card.gameObject.GetComponent<SpellPreview>().PreviewUnit = PreviewUnit;
+            card.gameObject.GetComponent<SpellPreview>().PreviewText = PreviewText;
+            //Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString());
+        }
 		else if(c.TypeOfCard == TypesOfCards.Crop)
 		{
 			card = GameObject.Instantiate(GlobalSettings.Instance.CropCardPrefab, position, Quaternion.Euler(eulerAngles)) as GameObject;
-			//Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString() + "; position = " + position.ToString() + "; GS = "+ GlobalSettings.Instance.SpellCardPrefab.name.ToString());
-		}
+            card.gameObject.GetComponent<CropPreview>().PreviewUnit = PreviewUnit;
+            card.gameObject.GetComponent<CropPreview>().PreviewText = PreviewText;
+            //Debug.Log(card.GetComponent<OneCardManager>().cardAsset.name.ToString() + "; position = " + position.ToString() + "; GS = "+ GlobalSettings.Instance.SpellCardPrefab.name.ToString());
+        }
 		else {
 			card = null;
 		}

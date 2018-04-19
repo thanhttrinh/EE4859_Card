@@ -108,7 +108,8 @@ public class Player : MonoBehaviour, ICharacter {
 		manaThisTurn++;
         this.PArea.ManaBar.AvailableCrystals = ManaThisTurn;
 		manaLeft = manaThisTurn;
-		GameUnits.Instance.moving = true;
+        if(GameUnits.Instance != null)
+		    GameUnits.Instance.moving = true;
 		
 		//foreach (SoldierLogic sl in grid.SoldiersOnGrid)
 			//sl.OnTurnStart (); 

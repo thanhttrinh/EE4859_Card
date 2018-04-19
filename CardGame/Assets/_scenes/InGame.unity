@@ -233,6 +233,8 @@ MonoBehaviour:
   DrawPreviewSpot: {fileID: 936568376}
   DeckTransform: {fileID: 578922431}
   OtherCardDrawSourceTransform: {fileID: 748355307}
+  PreviewUnit: {fileID: 1998267457}
+  PreviewText: {fileID: 1327381359}
 --- !u!223 &25255358
 Canvas:
   m_ObjectHideFlags: 0
@@ -4114,6 +4116,8 @@ MonoBehaviour:
   DrawPreviewSpot: {fileID: 936568376}
   DeckTransform: {fileID: 84080106}
   OtherCardDrawSourceTransform: {fileID: 748355307}
+  PreviewUnit: {fileID: 1998267457}
+  PreviewText: {fileID: 1327381359}
 --- !u!223 &1062440887
 Canvas:
   m_ObjectHideFlags: 0

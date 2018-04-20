@@ -9,8 +9,10 @@ public class OppInfoManager : MonoBehaviour {
 	public Text redDeckAmount;
 	public Text redHandAmount;
 
+    public Text baseHP;
+
 	void Awake(){
-		redHP.text = "30";
+		redHP.text = baseHP.text;
 		redDeckAmount.text = "20";
 		redHandAmount.text = "4";
 	}

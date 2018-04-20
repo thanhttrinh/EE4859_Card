@@ -619,6 +619,54 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00021172, y: 0}
   m_SizeDelta: {x: 0.00056458, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &329697481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 329697482}
+  - component: {fileID: 329697483}
+  m_Layer: 5
+  m_Name: OppHPHeader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &329697482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329697481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1070242665}
+  m_Father: {fileID: 523709213}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &329697483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329697481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c8740db0918ce43ab3405d7d8c7fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressText: {fileID: 1070242666}
+  pAsset: {fileID: 11400000, guid: 4d654bf9a2582ed42ad2b15381f92e7f, type: 2}
 --- !u!1001 &329936568
 Prefab:
   m_ObjectHideFlags: 0
@@ -948,6 +996,12 @@ MonoBehaviour:
   PlayerColor: blue
   deck: {fileID: 885117900}
   hand: {fileID: 1702864637}
+--- !u!114 &397841994 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114291231427570416, guid: 61759aa0722691547a4476fda5867179,
+    type: 2}
+  m_PrefabInternal: {fileID: 2079667225}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &413249306
 Prefab:
   m_ObjectHideFlags: 0
@@ -1609,7 +1663,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 653611706}
-  - {fileID: 1070242665}
+  - {fileID: 329697482}
   - {fileID: 2116748592}
   - {fileID: 1914116383}
   m_Father: {fileID: 1615177085}
@@ -1667,6 +1721,7 @@ MonoBehaviour:
   redHP: {fileID: 1070242666}
   redDeckAmount: {fileID: 2116748593}
   redHandAmount: {fileID: 1914116384}
+  baseHP: {fileID: 397841994}
 --- !u!1 &541996085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,17 +3152,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1070242664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 523709213}
-  m_RootOrder: 1
+  m_Father: {fileID: 329697482}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.48918673, y: 0.70345306}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0.20775986}
-  m_SizeDelta: {x: 0, y: -0.78}
+  m_AnchoredPosition: {x: -48.29235, y: 0.045668602}
+  m_SizeDelta: {x: 92.49574, y: -0.011002779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070242666
 MonoBehaviour:
@@ -4636,11 +4691,6 @@ Prefab:
       propertyPath: PreviewText
       value: 
       objectReference: {fileID: 1327381359}
-    - target: {fileID: 65205829171206706, guid: d231b72678711b44c973906398f36275,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d231b72678711b44c973906398f36275, type: 2}
   m_IsPrefabParent: 0

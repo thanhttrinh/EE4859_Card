@@ -5,6 +5,7 @@ using UnityEngine;
 public class Board : MonoBehaviour 
 {
     public GameUnits[,] cards = new GameUnits[6, 6];
+    public List<GameUnits> soldierList = new List<GameUnits>();
 
 	private GameUnits selectedSoldierCard;
 
@@ -184,6 +185,7 @@ public class Board : MonoBehaviour
             //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
             GameUnits s = newGO.GetComponent<GameUnits>();
 			cards[x, y] = s;
+            soldierList.Add(s);
 			isCreated = true;
 			Destroy (collider.gameObject);
 		}
@@ -205,7 +207,8 @@ public class Board : MonoBehaviour
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
 			GameUnits s = newGO.GetComponent<GameUnits>();
 			cards[x, y] = s;
-			isCreated = true;
+            soldierList.Add(s);
+            isCreated = true;
 			Destroy (collider.gameObject);
 		}
 		//if(soldiers[x,y] != null)
@@ -340,7 +343,7 @@ public class Board : MonoBehaviour
 				cards [x1, y1] = null;
 				MoveSoldier (selectedSoldierCard, x2, y2);
 				selectedSoldierCard.moving = false;
-			} 
+			}/*
             else
             {
                 if (selectedSoldierCard.GetComponent<attack>() == null)
@@ -353,7 +356,7 @@ public class Board : MonoBehaviour
                 {
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
                 }
-            }
+            }*/
         }
 	}
 

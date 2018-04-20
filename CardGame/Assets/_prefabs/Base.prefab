@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e27c4214da88b448fa4845ac3378af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving: 1
 --- !u!114 &114703629996095412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,7 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27f93b3e7e7e404e86095b205a05dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pAssetBlue: {fileID: 11400000, guid: 0fbd2888bd78b564d8cca6b9d8f3d361, type: 2}
+  pAssetRed: {fileID: 11400000, guid: 4d654bf9a2582ed42ad2b15381f92e7f, type: 2}
   BaseHP: 0
+  isBaseBlue: 0
+  isBaseRed: 0
 --- !u!212 &212845412383295790
 SpriteRenderer:
   m_ObjectHideFlags: 1

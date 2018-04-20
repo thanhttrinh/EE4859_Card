@@ -21,7 +21,7 @@ public class Base : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Debug.Log(BaseHP);
+        //Debug.Log(BaseHP);
         if(isBaseBlue)
         {
             BaseHP = pAssetBlue.AvailableHealth;

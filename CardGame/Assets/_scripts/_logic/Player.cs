@@ -90,7 +90,6 @@ public class Player : MonoBehaviour, ICharacter {
 				health = value;
             //	if (value <= 0)
             //Die(); 
-            new UpdateBaseHPCommand(this, pAsset.MaxHealth, health).AddToQueue();
         }
 	}
 

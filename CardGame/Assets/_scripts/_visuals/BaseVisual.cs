@@ -46,8 +46,12 @@ public class BaseVisual : MonoBehaviour {
 
     private void Update()
     {
-        TotalHP = pAsset.MaxHealth;
-        AvailableHP = Base.Instance.BaseHP;
+        if(Base.Instance != null)
+        {
+            TotalHP = pAsset.MaxHealth;
+            AvailableHP = Base.Instance.BaseHP;
+        }
+        
     }
 
 }

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: BluePlayerHP
   m_EditorClassIdentifier: 
   MaxHealth: 30
+  AvailableHealth: 30

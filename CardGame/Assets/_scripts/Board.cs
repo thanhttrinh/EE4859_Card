@@ -51,8 +51,7 @@ public class Board : MonoBehaviour
 			//Debug.Log ("player Red");
 			PlayerInput ();
 		}
-
-	}
+    }
 
 
 
@@ -104,11 +103,6 @@ public class Board : MonoBehaviour
 
 		if(baseRedCreated && baseBlueCreated)
 			basesCreated = true;
-
-        if (Input.GetKeyDown("a"))
-        {
-            Debug.Log("a was pressed");
-        }
 	}
 
 

@@ -88,9 +88,10 @@ public class Player : MonoBehaviour, ICharacter {
 				health = pAsset.MaxHealth;
 			else
 				health = value;
-		//	if (value <= 0)
-				//Die(); 
-		}
+            //	if (value <= 0)
+            //Die(); 
+            new UpdateBaseHPCommand(this, pAsset.MaxHealth, health).AddToQueue();
+        }
 	}
 
 	//code for events to let soldiers know when to cause effects

@@ -45,5 +45,15 @@ public class Base : MonoBehaviour {
                 Debug.Log("BaseBlue HP: "+ BaseHP);
             }
         }
+
+        if (Input.GetKeyDown("q"))
+        {
+            if (isBaseRed)
+            {
+                BaseHP--;
+                //pAssetBlue.AvailableHealth--;
+                Debug.Log("BaseRed HP: " + BaseHP);
+            }
+        }
     }
 }

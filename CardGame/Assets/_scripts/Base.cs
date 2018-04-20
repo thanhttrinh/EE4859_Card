@@ -5,19 +5,33 @@ using UnityEngine.UI;
 
 public class Base : MonoBehaviour {
 
+    public static Base Instance;
+
     public PlayerAsset pAssetBlue;
     public PlayerAsset pAssetRed;
     public int BaseHP;
     public bool isBaseBlue;
     public bool isBaseRed;
 
-	// Use this for initialization
-	void Start ()
+    private void Awake()
     {
+        Instance = this;
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        Debug.Log(BaseHP);
         if(isBaseBlue)
+        {
             BaseHP = pAssetBlue.AvailableHealth;
+        }
+            
         if (isBaseRed)
+        {
             BaseHP = pAssetRed.AvailableHealth;
+        }
+            
 	}
 	
 	// Update is called once per frame
@@ -27,6 +41,7 @@ public class Base : MonoBehaviour {
             if (isBaseBlue)
             {
                 BaseHP--;
+                //pAssetBlue.AvailableHealth--;
                 Debug.Log("BaseBlue HP: "+ BaseHP);
             }
         }

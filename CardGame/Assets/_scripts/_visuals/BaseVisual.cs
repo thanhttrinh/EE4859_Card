@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class BaseVisual : MonoBehaviour {
 
     public Text ProgressText;
+    public PlayerAsset pAsset;
+    //public int availableHealth = Base.Instance.BaseHP;
 
     private int totalHP;
     public int TotalHP
@@ -40,6 +42,12 @@ public class BaseVisual : MonoBehaviour {
 
             ProgressText.text = string.Format("{0}/{1}", availableHP.ToString(), totalHP.ToString());
         }
+    }
+
+    private void Update()
+    {
+        TotalHP = pAsset.MaxHealth;
+        AvailableHP = Base.Instance.BaseHP;
     }
 
 }

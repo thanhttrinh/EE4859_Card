@@ -150,7 +150,8 @@ public class Board : MonoBehaviour
 		if (x < 0 || x > 6 || y < 0 || y > 2)
 			return; 
 		GameObject newGO = Instantiate(Base) as GameObject;
-		newGO.transform.position = new Vector3(x, y, 0);
+        newGO.gameObject.GetComponent<Base>().isBaseBlue = true;
+        newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
 		baseBlueX = x;
 		baseBlueY = y;
@@ -163,6 +164,7 @@ public class Board : MonoBehaviour
 		if (x < 0 || x > 6 || y < 3 || y > 6)
 			return; 
 		GameObject newGO = Instantiate(Base) as GameObject;
+        newGO.gameObject.GetComponent<Base>().isBaseRed = true;
 		newGO.transform.position = new Vector3(x, y, 0);
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
 		baseRedX = x;

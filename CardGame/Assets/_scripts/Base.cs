@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Base : MonoBehaviour {
 
     public int BaseHP;
+    public bool isBaseBlue;
+    public bool isBaseRed;
 
 	// Use this for initialization
 	void Start ()

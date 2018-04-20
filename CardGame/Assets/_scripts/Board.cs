@@ -43,14 +43,6 @@ public class Board : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//PlayerInput ();
-
-        /*
-        if(selectedSoldier != null)
-        {
-            UpdateSoldierDrag(selectedSoldier);
-        }
-        */
 		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
 			PlayerInput ();
 			//Debug.Log ("player Blue");
@@ -103,7 +95,6 @@ public class Board : MonoBehaviour
 			GenerateCropRed (cropCard, x, y);
 
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
-
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
@@ -111,9 +102,13 @@ public class Board : MonoBehaviour
 				TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
 		}
 
-
 		if(baseRedCreated && baseBlueCreated)
 			basesCreated = true;
+
+        if (Input.GetKeyDown("a"))
+        {
+            Debug.Log("a was pressed");
+        }
 	}
 
 

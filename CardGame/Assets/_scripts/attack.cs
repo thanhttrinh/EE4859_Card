@@ -118,37 +118,77 @@ public class attack : MonoBehaviour
                 atkHold = board[atkx, atky].GetComponent<HoldIndividualData>();
                 atkHold.makeData(atkHP, atkDam);
                 board[vicx, vicy].gameObject.AddComponent<HoldIndividualData>();
+                vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
                 vicHold.makeData(vicHP, vicDam, isBase);
             }
         }
-
-		if (atkDam >= vicHP && !isBase)
-		{
-            Debug.Log("Vic " + vicHP + " Atk " + atkDam);
-            DestroyObject(board[vicx, vicy].gameObject);
-			board[vicx, vicy] = null;
-		}
-		else if (atkDam < vicHP && vicDam >= atkHP && !isBase)
-		{
-            Debug.Log("Vic " + vicHP + " Atk " + atkDam);
-            Debug.Log("Atk " + atkHP + " Vic " + vicDam);
-            board[vicx, vicy].GetComponent<HoldIndividualData>().HP =  (vicHP - atkDam);
-            DestroyObject(board[atkx, atky].gameObject);
-			board[atkx, atky] = null;
-		}
-		else if (atkDam < vicHP && vicDam < atkHP && !isBase)
-		{
-			board[vicx, vicy].GetComponent<HoldIndividualData>().HP = (vicHP - atkDam);
-			board[atkx, atky].GetComponent<HoldIndividualData>().HP = (atkHP - vicDam);
-		}
-        else if(atkDam < vicHP && isBase)
+        if (true)
         {
-            board[vicx, vicy].GetComponent<HoldIndividualData>().HP = vicHP - atkDam;
+            Debug.Log("RED ENEMY");
+            if (atkDam >= vicHP && !isBase)
+            {
+                Debug.Log("atkDam >= vicHP && not a base");
+                DestroyObject(board[vicx, vicy].gameObject);
+                board[vicx, vicy] = null;
+            }
+            else if (atkDam < vicHP && vicDam >= atkHP && !isBase)
+            {
+                Debug.Log("atkDam < vicHP && not a base");
+                vicHold.HP = (vicHP - atkDam);
+                DestroyObject(board[atkx, atky].gameObject);
+                board[atkx, atky] = null;
+            }
+            else if (atkDam < vicHP && vicDam < atkHP && !isBase)
+            {
+                Debug.Log("atkDam < vicHP && vicDam < atkHP and not a base");
+                vicHold.HP = (vicHP - atkDam);
+                atkHold.HP = (atkHP - vicDam);
+            }
+            else if (atkDam < vicHP && isBase)
+            {
+                Debug.Log("atkDam < vicHP and is a base");
+                vicHold.HP = vicHP - atkDam;
+            }
+            else if (atkDam >= vicHP && isBase)
+            {
+                Debug.Log("atkDam >= vicHP and is a base");
+                vicHold.HP = 0;
+                GameOverCommand game = new GameOverCommand(player);
+            }
         }
-        else if(atkDam >= vicHP && isBase)
+        else
         {
-            board[vicx, vicy].GetComponent<HoldIndividualData>().HP = 0;
-            GameOverCommand game = new GameOverCommand(player);
+            Debug.Log("BLUE ENEMY");
+            if (atkDam >= vicHP && !isBase)
+            {
+                Debug.Log("atkDam >= vicHP && not a base");
+                DestroyObject(board[vicx, vicy].gameObject);
+                board[vicx, vicy] = null;
+            }
+            else if (atkDam < vicHP && vicDam >= atkHP && !isBase)
+            {
+                Debug.Log("atkDam < vicHP && not a base");
+                vicHold.HP = (vicHP - atkDam);
+                DestroyObject(board[atkx, atky].gameObject);
+                board[atkx, atky] = null;
+            }
+            else if (atkDam < vicHP && vicDam < atkHP && !isBase)
+            {
+                Debug.Log("atkDam < vicHP && vicDam < atkHP and not a base");
+                vicHold.HP = (vicHP - atkDam);
+                atkHold.HP = (atkHP - vicDam);
+            }
+            else if (atkDam < vicHP && isBase)
+            {
+                Debug.Log("atkDam < vicHP and is a base");
+                vicHold.HP = vicHP - atkDam;
+            }
+            else if (atkDam >= vicHP && isBase)
+            {
+                Debug.Log("atkDam >= vicHP and is a base");
+                vicHold.HP = 0;
+                GameOverCommand game = new GameOverCommand(player);
+            }
         }
 	}
 }

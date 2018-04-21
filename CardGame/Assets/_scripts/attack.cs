@@ -3,6 +3,27 @@ using System;
 
 public class attack : MonoBehaviour
 {
+    private class HoldIndividualData : MonoBehaviour
+    {
+        public int HP = 0;
+        public int Dam = 0;
+        public bool Base = false;
+
+        public void makeData(int health, int damage)
+        {
+            HP = health;
+            Dam = damage;
+            Base = false;
+        }
+
+        public void makeData(int health, int damage, bool bse)
+        {
+            HP = health;
+            Dam = damage;
+            Base = bse;
+        }
+    }
+
     public bool ViableAttack(GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
     {
         if (board[atkx, atky] != null && board[vicx, vicy] != null)
@@ -22,39 +43,82 @@ public class attack : MonoBehaviour
 	{
 		int atkDam = 0, vicDam = 0, atkHP = 0, vicHP = 0;
         bool isBase = false;
-        Debug.Log("AtkDamVar: " + atkDam + ", cardAsset.Attack: " + board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.Attack);
+        OneSoldierManager atkSoldier = board[atkx, atky].GetComponent<OneSoldierManager>(), vicSoldier = board[vicx, vicy].GetComponent<OneSoldierManager>();
+        HoldIndividualData atkHold = board[atkx, atky].GetComponent<HoldIndividualData>(), vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
         if (!ViableAttack(board, atkx, atky, vicx, vicy))
         {
-            Int32.TryParse(board[atkx, atky].GetComponent<OneSoldierManager>().AttackText.text, out atkDam);
-            Int32.TryParse(board[atkx, atky].GetComponent<OneSoldierManager>().HealthText.text, out atkHP);
-            if (board[vicx, vicy].GetComponent<OneSoldierManager>() != null)
+
+            if (atkHold == null)
             {
-                Int32.TryParse(board[vicx, vicy].GetComponent<OneSoldierManager>().AttackText.text, out vicDam);
-                Int32.TryParse(board[atkx, atky].GetComponent<OneSoldierManager>().HealthText.text, out vicHP);
+                Int32.TryParse(atkSoldier.AttackText.text, out atkDam);
+                Int32.TryParse(atkSoldier.HealthText.text, out atkHP);
+                if(atkHP != 0)
+                {
+                    board[atkx, atky].gameObject.AddComponent<HoldIndividualData>();
+                    atkHold = board[atkx, atky].GetComponent<HoldIndividualData>();
+                    atkHold.makeData(atkHP, atkDam);
+                }
             }
-            else if(board[vicx, vicy].GetComponent<Base>() != null)
+            else
             {
-                vicDam = 0;
-                vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
-                isBase = true;
-                Debug.Log(vicHP + ":HPBASE");
+                atkDam = atkHold.Dam;
+                atkHP = atkHold.HP;
+            }
+            if (vicHold == null)
+            {
+                if (vicSoldier != null)
+                {
+                    Int32.TryParse(vicSoldier.AttackText.text, out vicDam);
+                    Int32.TryParse(vicSoldier.HealthText.text, out vicHP);
+                    if (vicHP != 0)
+                    {
+                        board[vicx, vicy].gameObject.AddComponent<HoldIndividualData>();
+                        vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
+                        //if (vicDam == 0)
+                        //{
+                        //    vicHold.Dam = 0;
+                        //}
+                        vicHold.makeData(vicHP, vicDam);
+                    }
+                }
+                else if (board[vicx, vicy].GetComponent<Base>() != null)
+                {
+                    vicDam = 0;
+                    vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
+                    isBase = true;
+                    board[vicx, vicy].gameObject.AddComponent<HoldIndividualData>();
+                    vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
+                    vicHold.makeData(vicHP, vicDam, isBase);
+                }
+            }
+            else
+            {
+                vicDam = vicHold.Dam;
+                vicHP = vicHold.HP;
+                isBase = vicHold.Base;
             }
             if (atkDam == 0 && atkHP == 0 && vicDam == 0 && vicHP == 0)
             {
-                atkDam = board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.Attack;
-                Debug.Log("AtkDamVar: " + atkDam + ", cardAsset.Attack: " + board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.Attack);
-                atkHP = board[atkx, atky].GetComponent<OneSoldierManager>().cardAsset.MaxHealth;
+                atkDam = atkSoldier.cardAsset.Attack;
+                atkHP = atkSoldier.cardAsset.MaxHealth;
 
-                if (board[vicx, vicy] != null)
+                if (vicSoldier != null)
                 {
-                    vicDam = board[vicx, vicy].GetComponent<OneSoldierManager>().cardAsset.Attack;
-                    vicHP = board[vicx, vicy].GetComponent<OneSoldierManager>().cardAsset.MaxHealth;
+                    vicDam = vicSoldier.cardAsset.Attack;
+                    vicHP = vicSoldier.cardAsset.MaxHealth;
+                    isBase = false;
                 }
                 else
                 {
+                    vicDam = 0;
                     vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
                     isBase = true;
                 }
+                board[atkx, atky].gameObject.AddComponent<HoldIndividualData>();
+                atkHold = board[atkx, atky].GetComponent<HoldIndividualData>();
+                atkHold.makeData(atkHP, atkDam);
+                board[vicx, vicy].gameObject.AddComponent<HoldIndividualData>();
+                vicHold.makeData(vicHP, vicDam, isBase);
             }
         }
 
@@ -68,22 +132,22 @@ public class attack : MonoBehaviour
 		{
             Debug.Log("Vic " + vicHP + " Atk " + atkDam);
             Debug.Log("Atk " + atkHP + " Vic " + vicDam);
-            board[vicx, vicy].GetComponent<OneSoldierManager>().HealthText.text = "" + (vicHP - atkDam);
+            board[vicx, vicy].GetComponent<HoldIndividualData>().HP =  (vicHP - atkDam);
             DestroyObject(board[atkx, atky].gameObject);
 			board[atkx, atky] = null;
 		}
 		else if (atkDam < vicHP && vicDam < atkHP && !isBase)
 		{
-			board[vicx, vicy].GetComponent<OneSoldierManager>().HealthText.text = "" + (vicHP - atkDam);
-			board[atkx, atky].GetComponent<OneSoldierManager>().HealthText.text = "" + (atkHP - vicDam);
+			board[vicx, vicy].GetComponent<HoldIndividualData>().HP = (vicHP - atkDam);
+			board[atkx, atky].GetComponent<HoldIndividualData>().HP = (atkHP - vicDam);
 		}
         else if(atkDam < vicHP && isBase)
         {
-            board[vicx, vicy].GetComponent<Base>().BaseHP = vicHP - atkDam;
+            board[vicx, vicy].GetComponent<HoldIndividualData>().HP = vicHP - atkDam;
         }
         else if(atkDam >= vicHP && isBase)
         {
-            board[vicx, vicy].GetComponent<Base>().BaseHP = 0;
+            board[vicx, vicy].GetComponent<HoldIndividualData>().HP = 0;
             GameOverCommand game = new GameOverCommand(player);
         }
 	}

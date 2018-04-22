@@ -42,22 +42,18 @@ public class attack : MonoBehaviour
 	public void doAttack(Player player, GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
 	{
 		int atkDam = 0, vicDam = 0, atkHP = 0, vicHP = 0;
-        bool isBase = false;
         OneSoldierManager atkSoldier = board[atkx, atky].GetComponent<OneSoldierManager>(), vicSoldier = board[vicx, vicy].GetComponent<OneSoldierManager>();
         HoldIndividualData atkHold = board[atkx, atky].GetComponent<HoldIndividualData>(), vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
-        if (!ViableAttack(board, atkx, atky, vicx, vicy))
+        Base vicBase = board[vicx, vicy].GetComponent<Base>(); OneCropManager vicCrop = board[vicx, vicy].GetComponent<OneCropManager>();
+        if (vicSoldier != null)
         {
-
             if (atkHold == null)
             {
-                Int32.TryParse(atkSoldier.AttackText.text, out atkDam);
-                Int32.TryParse(atkSoldier.HealthText.text, out atkHP);
-                if(atkHP != 0)
-                {
-                    board[atkx, atky].gameObject.AddComponent<HoldIndividualData>();
-                    atkHold = board[atkx, atky].GetComponent<HoldIndividualData>();
-                    atkHold.makeData(atkHP, atkDam);
-                }
+                atkDam = atkSoldier.cardAsset.Attack;
+                atkHP = atkSoldier.cardAsset.MaxHealth;
+                atkSoldier.gameObject.AddComponent<HoldIndividualData>();
+                atkHold = atkSoldier.GetComponent<HoldIndividualData>();
+                atkHold.makeData(atkHP, atkDam);
             }
             else
             {
@@ -66,129 +62,127 @@ public class attack : MonoBehaviour
             }
             if (vicHold == null)
             {
-                if (vicSoldier != null)
-                {
-                    Int32.TryParse(vicSoldier.AttackText.text, out vicDam);
-                    Int32.TryParse(vicSoldier.HealthText.text, out vicHP);
-                    if (vicHP != 0)
-                    {
-                        board[vicx, vicy].gameObject.AddComponent<HoldIndividualData>();
-                        vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
-                        //if (vicDam == 0)
-                        //{
-                        //    vicHold.Dam = 0;
-                        //}
-                        vicHold.makeData(vicHP, vicDam);
-                    }
-                }
-                else if (board[vicx, vicy].GetComponent<Base>() != null)
-                {
-                    vicDam = 0;
-                    vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
-                    isBase = true;
-                    board[vicx, vicy].gameObject.AddComponent<HoldIndividualData>();
-                    vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
-                    vicHold.makeData(vicHP, vicDam, isBase);
-                }
+                vicDam = vicSoldier.cardAsset.Attack;
+                vicHP = vicSoldier.cardAsset.MaxHealth;
+                vicSoldier.gameObject.AddComponent<HoldIndividualData>();
+                vicHold = vicSoldier.GetComponent<HoldIndividualData>();
+                vicHold.makeData(vicHP, vicDam);
             }
             else
             {
                 vicDam = vicHold.Dam;
                 vicHP = vicHold.HP;
-                isBase = vicHold.Base;
             }
-            if (atkDam == 0 && atkHP == 0 && vicDam == 0 && vicHP == 0)
-            {
-                atkDam = atkSoldier.cardAsset.Attack;
-                atkHP = atkSoldier.cardAsset.MaxHealth;
 
-                if (vicSoldier != null)
+            if ((atkSoldier.isBlue && vicSoldier.isRed) || (atkSoldier.isRed && vicSoldier.isBlue))
+            {
+                Debug.Log("RED|BLUE ENEMY");
+                if (atkDam >= vicHP)
                 {
-                    vicDam = vicSoldier.cardAsset.Attack;
-                    vicHP = vicSoldier.cardAsset.MaxHealth;
-                    isBase = false;
+                    DestroyObject(vicSoldier.gameObject);
+                    board[vicx, vicy] = null;
+                }
+                else if (atkDam < vicHP && vicDam >= atkHP)
+                {
+                    vicHold.makeData(vicHP - atkDam, vicDam);
+                    DestroyObject(atkSoldier.gameObject);
+                    board[atkx, atky] = null;
+                }
+                else if (atkDam < vicHP && vicDam < atkHP)
+                {
+                    vicHold.makeData(vicHP - atkDam, vicDam);
+                    atkHold.makeData(atkHP - vicDam, atkDam);
+                }
+            }
+        }
+        else if (vicBase != null)
+        {
+            if ((vicBase.isBaseRed && vicSoldier.isRed) || (vicBase.isBaseBlue && vicSoldier.isBlue))
+            {
+
+            }
+            else
+            {
+                if (vicHold == null)
+                {
+                    vicHP = vicBase.BaseHP;
+                    vicDam = 0;
+                    vicBase.gameObject.AddComponent<HoldIndividualData>();
+                    vicHold = vicBase.GetComponent<HoldIndividualData>();
+                    vicHold.makeData(vicHP, vicDam);
                 }
                 else
                 {
+                    vicHP = vicHold.HP;
                     vicDam = 0;
-                    vicHP = board[vicx, vicy].GetComponent<Base>().BaseHP;
-                    isBase = true;
                 }
-                board[atkx, atky].gameObject.AddComponent<HoldIndividualData>();
-                atkHold = board[atkx, atky].GetComponent<HoldIndividualData>();
+                if (vicHold == null)
+                {
+                    atkDam = vicSoldier.cardAsset.Attack;
+                    atkHP = vicSoldier.cardAsset.MaxHealth;
+                    atkSoldier.gameObject.AddComponent<HoldIndividualData>();
+                    atkHold = atkSoldier.GetComponent<HoldIndividualData>();
+                    atkHold.makeData(atkHP, atkDam);
+                }
+                vicHP -= atkDam;
+                vicHold.makeData(vicHP, vicDam);
+                if (vicHP <= 0)
+                {
+                    GameOverCommand gameOver = new GameOverCommand(player.otherPlayer);
+                }
+            }
+        }
+        else if (vicCrop != null)
+        {
+            if (vicHold == null)
+            {
+                vicHP = vicCrop.cardAsset.CropHealth;
+                vicDam = vicCrop.cardAsset.Attack;
+                vicCrop.gameObject.AddComponent<HoldIndividualData>();
+                vicHold = vicCrop.GetComponent<HoldIndividualData>();
+                vicHold.makeData(vicHP, vicDam);
+            }
+            else
+            {
+                vicHP = vicHold.HP;
+                vicDam = vicHold.Dam;
+            }
+            if (atkHold != null)
+            {
+                atkDam = atkHold.Dam;
+            }
+            else
+            {
+                atkDam = atkSoldier.cardAsset.Attack;
+                atkHP = atkSoldier.cardAsset.MaxHealth;
+                atkSoldier.gameObject.AddComponent<HoldIndividualData>();
+                atkHold = atkSoldier.GetComponent<HoldIndividualData>();
                 atkHold.makeData(atkHP, atkDam);
-                board[vicx, vicy].gameObject.AddComponent<HoldIndividualData>();
-                vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
-                vicHold.makeData(vicHP, vicDam, isBase);
             }
-        }
-        if (true)
-        {
-            Debug.Log("RED ENEMY");
-            if (atkDam >= vicHP && !isBase)
+
+            vicHP -= atkDam;
+            atkHP -= vicDam;
+            if (vicHP <= 0)
             {
-                Debug.Log("atkDam >= vicHP && not a base");
-                DestroyObject(board[vicx, vicy].gameObject);
+                Destroy(board[vicx, vicy].gameObject);
                 board[vicx, vicy] = null;
             }
-            else if (atkDam < vicHP && vicDam >= atkHP && !isBase)
+            else
             {
-                Debug.Log("atkDam < vicHP && not a base");
-                vicHold.HP = (vicHP - atkDam);
-                DestroyObject(board[atkx, atky].gameObject);
+                vicHold.makeData(vicHP, vicDam);
+            }
+            if (atkHP <= 0)
+            {
+                Destroy(board[atkx, atky].gameObject);
                 board[atkx, atky] = null;
             }
-            else if (atkDam < vicHP && vicDam < atkHP && !isBase)
+            else
             {
-                Debug.Log("atkDam < vicHP && vicDam < atkHP and not a base");
-                vicHold.HP = (vicHP - atkDam);
-                atkHold.HP = (atkHP - vicDam);
-            }
-            else if (atkDam < vicHP && isBase)
-            {
-                Debug.Log("atkDam < vicHP and is a base");
-                vicHold.HP = vicHP - atkDam;
-            }
-            else if (atkDam >= vicHP && isBase)
-            {
-                Debug.Log("atkDam >= vicHP and is a base");
-                vicHold.HP = 0;
-                GameOverCommand game = new GameOverCommand(player);
+                atkHold.makeData(atkHP, atkDam);
             }
         }
-        else
-        {
-            Debug.Log("BLUE ENEMY");
-            if (atkDam >= vicHP && !isBase)
-            {
-                Debug.Log("atkDam >= vicHP && not a base");
-                DestroyObject(board[vicx, vicy].gameObject);
-                board[vicx, vicy] = null;
-            }
-            else if (atkDam < vicHP && vicDam >= atkHP && !isBase)
-            {
-                Debug.Log("atkDam < vicHP && not a base");
-                vicHold.HP = (vicHP - atkDam);
-                DestroyObject(board[atkx, atky].gameObject);
-                board[atkx, atky] = null;
-            }
-            else if (atkDam < vicHP && vicDam < atkHP && !isBase)
-            {
-                Debug.Log("atkDam < vicHP && vicDam < atkHP and not a base");
-                vicHold.HP = (vicHP - atkDam);
-                atkHold.HP = (atkHP - vicDam);
-            }
-            else if (atkDam < vicHP && isBase)
-            {
-                Debug.Log("atkDam < vicHP and is a base");
-                vicHold.HP = vicHP - atkDam;
-            }
-            else if (atkDam >= vicHP && isBase)
-            {
-                Debug.Log("atkDam >= vicHP and is a base");
-                vicHold.HP = 0;
-                GameOverCommand game = new GameOverCommand(player);
-            }
-        }
+        
+        
+
 	}
 }

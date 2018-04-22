@@ -113,6 +113,7 @@ public class Player : MonoBehaviour, ICharacter {
             foreach (GameUnits gu in Board.Instance.soldierList)
             {
                 gu.moving = true;
+                gu.attacking = true;
             }
         }
             

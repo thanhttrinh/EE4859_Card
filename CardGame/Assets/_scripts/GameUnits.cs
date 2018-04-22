@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameUnits : MonoBehaviour {
 
     public bool moving = true;
+    public bool attacking = true;
 	public static GameUnits Instance;
 
 

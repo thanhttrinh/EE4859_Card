@@ -334,20 +334,24 @@ public class Board : MonoBehaviour
 				cards [x1, y1] = null;
 				MoveSoldier (selectedSoldierCard, x2, y2);
 				selectedSoldierCard.moving = false;
-			}/*
-            else
+			}
+            else if(selectedSoldierCard.attacking == true)
             {
                 if (selectedSoldierCard.GetComponent<attack>() == null)
                     selectedSoldierCard.gameObject.AddComponent<attack>();
+                if (cards[x2, y2].GetComponent<attack>() == null)
+                    cards[x2, y2].gameObject.AddComponent<attack>();
                 if (selectedSoldierCard.GetComponent<OneSoldierManager>().isBlue)
                 {
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);
                 }
-                else
+                else if(selectedSoldierCard.GetComponent<OneSoldierManager>().isRed)
                 {
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
                 }
-            }*/
+                selectedSoldierCard.moving = false;
+                selectedSoldierCard.attacking = false;
+            }
         }
 	}
 

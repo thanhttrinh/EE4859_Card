@@ -51,6 +51,10 @@ public class Board : MonoBehaviour
 			//Debug.Log ("player Red");
 			PlayerInput ();
 		}
+
+		if(Input.GetKeyDown("escape")){
+			Application.Quit();
+		}
     }
 
 

@@ -15,7 +15,8 @@ MonoBehaviour:
   ScriptName: Frolicking Llama
   Description: 
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: f3bff72f487c331438a367704023fe00, type: 3}
+  CardSprite: {fileID: 0}
   ManaCost: 10
   OverrideLimitOfThisCardInDeck: -1
   TypeOfCard: 0
@@ -30,5 +31,6 @@ MonoBehaviour:
   CropSize: 0
   SpecialCropAmount: 0
   SpellRange: 0
+  SpellScriptName: 
   SpecialSpellAmount: 0
   Targets: 0

@@ -14,7 +14,7 @@ public class CardNameRibbon : MonoBehaviour {
 
 	public void ApplyAsset(CardAsset ca, int quantity){
 		Asset = ca;
-		NameText.text = ca.name;
+		NameText.text = ca.ScriptName;
 		ManaCost.text = ca.ManaCost.ToString();
 		SetQuantity (quantity);
 	}

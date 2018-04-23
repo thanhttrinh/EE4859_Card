@@ -1,5 +1,8 @@
 # EE4859_Card  
 
+Alpha Document Link:  
+https://docs.google.com/document/d/1mYPoLW5qBcNCJT4NjLORUlh_0NXDm8-axMAMqySuzzc/edit
+
 Pre-Production Links:  
 
 One Pager:  

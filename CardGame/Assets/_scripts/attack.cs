@@ -124,7 +124,7 @@ public class attack : MonoBehaviour
                     vicHP = vicHold.HP;
                     vicDam = 0;
                 }
-                if (vicHold == null)
+                if (atkHold == null)
                 {
                     atkDam = vicSoldier.cardAsset.Attack;
                     atkHP = vicSoldier.cardAsset.MaxHealth;
@@ -134,6 +134,7 @@ public class attack : MonoBehaviour
                 }
                 vicHP -= atkDam;
                 vicHold.makeData(vicHP, vicDam);
+                vicBase.BaseHP = vicHP;
                 if (vicHP <= 0)
                 {
                     GameOverCommand gameOver = new GameOverCommand(player.otherPlayer);

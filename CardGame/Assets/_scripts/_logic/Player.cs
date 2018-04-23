@@ -15,7 +15,8 @@ public class Player : MonoBehaviour, ICharacter {
 	//references to logical properties belonging to this player
 	public Deck deck;
 	public Hand hand;
-	//public GridBoard grid;
+    //public GridBoard grid;
+    public GameObject source;
 
 	//an array to store both players
 	//always have 2 
@@ -101,6 +102,7 @@ public class Player : MonoBehaviour, ICharacter {
 		Instance = this;
 		Players = GameObject.FindObjectsOfType<Player> ();
 		PlayerID = IDFactory.GetUniqueID ();
+        source = GameObject.Find("DrawSource");
 	}
 
 	public virtual void OnTurnStart(){
@@ -154,7 +156,7 @@ public class Player : MonoBehaviour, ICharacter {
 			   // new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
 			   PArea.PDeck.CardsInDeck--;
 			   PArea.handVisual.GivePlayerACard(newCard.ca, newCard.UniqueCardID, fast, true);
-			   
+                source.GetComponent<AudioSource>().Play();
 				//Debug.Log ("DrawACard Success");
 			}
 		} else {

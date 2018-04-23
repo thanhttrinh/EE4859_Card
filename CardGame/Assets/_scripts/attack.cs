@@ -3,6 +3,13 @@ using System;
 
 public class attack : MonoBehaviour
 {
+    public GameObject source;
+
+    private void Start()
+    {
+        source = GameObject.Find("SoundEffects");
+    }
+
     private class HoldIndividualData : MonoBehaviour
     {
         public int HP = 0;
@@ -76,6 +83,7 @@ public class attack : MonoBehaviour
 
             if ((atkSoldier.isBlue && vicSoldier.isRed) || (atkSoldier.isRed && vicSoldier.isBlue))
             {
+                source.GetComponent<AudioSource>().Play();
                 Debug.Log("RED|BLUE ENEMY");
                 if (atkDam >= vicHP)
                 {

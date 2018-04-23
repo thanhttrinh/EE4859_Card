@@ -438,7 +438,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953292129861770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.386608, y: 0.35165626, z: 0}
+  m_LocalPosition: {x: -9.972797, y: 2.4196625, z: 0}
   m_LocalScale: {x: 0.007, y: 0.007, z: 1}
   m_Children:
   - {fileID: 224202541668386904}
@@ -565,8 +565,7 @@ MonoBehaviour:
   CardGraphicImage: {fileID: 114573934690807158}
   CardBodyImage: {fileID: 114009759067700340}
   CardFaceFrameImage: {fileID: 114087751402442540}
-  CardFaceGlowImage: {fileID: 0}
-  CardBackGlowImage: {fileID: 0}
+  CardSpriteImage: {fileID: 0}
 --- !u!114 &114289946351724122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -639,7 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

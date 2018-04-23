@@ -10,11 +10,12 @@ public class OppInfoManager : MonoBehaviour {
 	public Text redHandAmount;
 
     public Text baseHP;
+	public Player redPlayer;
 
-	void Awake(){
+	void Update(){
 		redHP.text = baseHP.text;
-		redDeckAmount.text = "20";
-		redHandAmount.text = "4";
+		redDeckAmount.text = redPlayer.deck.cards.Count.ToString();
+		redHandAmount.text = redPlayer.hand.CardsInHand.Count.ToString();
 	}
 
 }

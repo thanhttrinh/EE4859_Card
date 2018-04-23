@@ -15,7 +15,7 @@ MonoBehaviour:
   ScriptName: Fireball
   Description: Deal 8 damage to target.
   Tags: 
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 70537a5b73a424c7cb765667676d731a, type: 3}
   CardSprite: {fileID: 0}
   ManaCost: 5
   OverrideLimitOfThisCardInDeck: -1

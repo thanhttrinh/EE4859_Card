@@ -15,7 +15,7 @@ MonoBehaviour:
   ScriptName: Lancer
   Description: 
   Tags: 
-  CardImage: {fileID: 21300000, guid: fea3ed376d8e01449b75e9d81bd8d5bc, type: 3}
+  CardImage: {fileID: 21300000, guid: 5aeb96efb89414e5ba55b42e29bfbc6f, type: 3}
   CardSprite: {fileID: 21300000, guid: 6def629b4bc8c4d298256a7d59d2ec97, type: 3}
   ManaCost: 4
   OverrideLimitOfThisCardInDeck: -1

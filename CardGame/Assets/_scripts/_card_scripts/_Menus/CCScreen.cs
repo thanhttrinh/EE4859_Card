@@ -29,7 +29,8 @@ public class CCScreen : MonoBehaviour {
 		cardsInDeckList.SetActive (false);
 		DeckSelectionScreen.Instance.screenContent.SetActive (false);
 		title.SetActive (false);
-		BuilderScript.InDeckBuildingMode = false;
+        HowToPlayScreen.Instance.screenContent.SetActive(false);
+        BuilderScript.InDeckBuildingMode = false;
 		//if there is already decks made, show them
 		ListOfReadyMadeDecksScript.UpdateList ();
 

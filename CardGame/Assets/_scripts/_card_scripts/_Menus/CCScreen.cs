@@ -44,8 +44,9 @@ public class CCScreen : MonoBehaviour {
 		readyDecksList.SetActive (false);
 		cardsInDeckList.SetActive (true);
 		title.SetActive (false);
+        HowToPlayScreen.Instance.screenContent.SetActive(false);
 
-		CollectionBrowserScript.AllCardsTabs.gameObject.SetActive (true);
+        CollectionBrowserScript.AllCardsTabs.gameObject.SetActive (true);
 		Canvas.ForceUpdateCanvases ();
 	}
 		

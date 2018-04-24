@@ -41,6 +41,7 @@ public class DeckSelectionScreen : MonoBehaviour {
 		screenContent.SetActive (true);
 		CCScreen.Instance.title.SetActive (false);
 		CCScreen.Instance.screenContent.SetActive (false);
+        HowToPlayScreen.Instance.screenContent.SetActive(false);
 		ShowDecks ();
 	}
 

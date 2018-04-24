@@ -28,4 +28,14 @@ public class HowToPlayScreen : MonoBehaviour {
         screenContent.SetActive(false);
         titleScreen.SetActive(true);
     }
+
+    public void ShowCCInstructions()
+    {
+
+    }
+
+    public void ShowGamePlayInstructions()
+    {
+
+    }
 }

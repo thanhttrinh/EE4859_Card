@@ -113,25 +113,37 @@ public class Board : MonoBehaviour
 	void OnTriggerEnter(Collider collider)
 	{
 		//Debug.Log ("collision detected");
-
+        
 		if ((collider.gameObject.tag == "blueCard" || collider.gameObject.tag == "redCard") && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
-			if(TurnManager.Instance.whoseTurn == playerBlue)
-				GenerateSoldierBlue (collider, baseBlueX, baseBlueY);
-			if(TurnManager.Instance.whoseTurn == playerRed)
-				GenerateSoldierRed (collider, baseRedX, baseRedY);
+            if (TurnManager.Instance.whoseTurn == playerBlue && playerBlue.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
+            {
+                GenerateSoldierBlue(collider, baseBlueX, baseBlueY);
+                playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
+            }
+            if (TurnManager.Instance.whoseTurn == playerRed && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
+            {
+                GenerateSoldierRed(collider, baseRedX, baseRedY);
+                playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
+            }
 		}
 
 		if ((collider.gameObject.tag == "blueCard" || collider.gameObject.tag == "redCard") && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
-				//GenerateCropBlue (collider, 1, 1);
-			if (TurnManager.Instance.whoseTurn == playerBlue)
-				cropsBlue = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.CropSize;
-			if(TurnManager.Instance.whoseTurn == playerRed)
-				cropsRed = collider.gameObject.GetComponent<OneCardManager> ().cardAsset.CropSize;
+            //GenerateCropBlue (collider, 1, 1);
+            if (TurnManager.Instance.whoseTurn == playerBlue && playerBlue.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
+            {
+                cropsBlue = collider.gameObject.GetComponent<OneCardManager>().cardAsset.CropSize;
+                playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
+            }
+            if (TurnManager.Instance.whoseTurn == playerRed && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
+            {
+                cropsRed = collider.gameObject.GetComponent<OneCardManager>().cardAsset.CropSize;
+                playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
+            }
 			cropCard = collider.gameObject;
 			collider.gameObject.SetActive (false);
 		}
-		
-	}
+        
+    }
 
 	void OnTriggerExit(Collider collider)
 	{
@@ -364,5 +376,4 @@ public class Board : MonoBehaviour
         if(soldierUnit.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
             soldierUnit.transform.position = (Vector2.right * x) + (Vector2.up * y);
 	}
-		
 }

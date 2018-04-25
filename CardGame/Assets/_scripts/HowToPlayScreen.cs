@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HowToPlayScreen : MonoBehaviour {
 
     public GameObject screenContent;
     public GameObject titleScreen;
+
+    public GameObject GetStartedText;
+    public GameObject CCText;
+    public GameObject DSText;
+    public GameObject GPText;
     
 
     public static HowToPlayScreen Instance;
@@ -31,11 +37,25 @@ public class HowToPlayScreen : MonoBehaviour {
 
     public void ShowCCInstructions()
     {
+        CCText.SetActive(true);
+        GetStartedText.SetActive(false);
+        DSText.SetActive(false);
+        GPText.SetActive(false);
+    }
 
+    public void ShowDSInstructions()
+    {
+        DSText.SetActive(true);
+        CCText.SetActive(false);
+        GetStartedText.SetActive(false);
+        GPText.SetActive(false);
     }
 
     public void ShowGamePlayInstructions()
     {
-
+        GPText.SetActive(true);
+        CCText.SetActive(false);
+        GetStartedText.SetActive(false);
+        DSText.SetActive(false);
     }
 }

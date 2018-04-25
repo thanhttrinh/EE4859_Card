@@ -33,9 +33,16 @@ else{
         $sqlSet = mysqli_query($con, $insert);
 
         //send a mail to the user to document their register information
-        $message = "Thank you for registering with us, ". $userName ."!
-                    \n Please keep your infomation safe.\n \n Username: ". $userName . "\n Password: ". $pwd ."\n";
-        mail($email, "Welcome to Tiny Civs", $message);
+        $subject = "Welcome to Tiny Civs";
+
+       /* $message = "Thank you for registering with us, ". $userName ."!
+                    \n Please keep your infomation safe.\n \n Username: ". $userName . "\n Password: ". $pwd ."\n";*/
+        $message = "Thank you for registering with us, ".$userName."!<br>";
+        $message = "Please keep your information safe.<br><br><br>";
+        $message = "Login Email: ".$email."<br>";
+        $message = "Username: ".$userName."<br>";
+        $message = "Password: ".$pwd."<br>";
+        mail($email, $subject, $message);
 
         //send message to c# that user successfully registered
         echo "success";

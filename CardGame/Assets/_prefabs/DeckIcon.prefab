@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224975469705687352}
   - component: {fileID: 212938826789784652}
+  - component: {fileID: 222950122181052174}
   m_Layer: 0
   m_Name: DeckNoCompleteObject
   m_TagString: Untagged
@@ -386,7 +387,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: 870dfe22a78307d47988ac5161f16634, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5052326a2c808954cb1f311b2eb7e366, type: 3}
   m_Color: {r: 1, g: 0.30147058, b: 0.30147058, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -420,6 +421,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549013405356914}
+--- !u!222 &222950122181052174
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099440595955218}
 --- !u!223 &223861584060568838
 Canvas:
   m_ObjectHideFlags: 1

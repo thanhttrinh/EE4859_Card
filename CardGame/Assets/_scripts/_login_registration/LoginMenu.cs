@@ -21,6 +21,8 @@ public class LoginMenu : MonoBehaviour {
 	[Header("Menu Contents")]
 	public GameObject LoginContent;
 	public GameObject RegisterContent;
+	public GameObject ErrorMsgLog;
+	public GameObject ErrorMsgReg;
 
 	private string registerURL = "http://tinycivs.000webhostapp.com/CreateAccountT.php";
 	private string loginURL = "http://tinycivs.000webhostapp.com/LoginAccountT.php";
@@ -31,6 +33,8 @@ public class LoginMenu : MonoBehaviour {
 
 	void Awake(){
 		Instance = this;
+		ErrorMsgLog.SetActive(false);
+		ErrorMsgReg.SetActive(false);
 		LoginGUI ();
 	}
 
@@ -38,6 +42,8 @@ public class LoginMenu : MonoBehaviour {
 	public void LoginGUI(){
 		RegisterContent.SetActive (false);
 		LoginContent.SetActive (true);
+		ErrorMsgLog.SetActive(false);
+		ErrorMsgReg.SetActive(false);
 
 		//clear register input fields
 		confirmPwd.text = "";
@@ -50,7 +56,8 @@ public class LoginMenu : MonoBehaviour {
 	public void RegGUI(){
 		LoginContent.SetActive (false);
 		RegisterContent.SetActive (true);
-
+		ErrorMsgLog.SetActive(false);
+		ErrorMsgReg.SetActive(false);
 		//clear login input fields
 		email.text = "";
 		pwd.text = "";
@@ -78,9 +85,11 @@ public class LoginMenu : MonoBehaviour {
 		//this is what sends info to the php script
 		WWWForm form = new WWWForm ();
 		//these are variables that are being sent
+
 		form.AddField ("email", createEmail.text);
 		form.AddField ("username", createUser.text);
 		form.AddField ("password", createPwd.text);
+		
 
 		WWW registerWWW = new WWW (registerURL, form);
 		//wait for the php script to send info back
@@ -105,7 +114,6 @@ public class LoginMenu : MonoBehaviour {
 				Debug.Log ("unsuccessful");
 			}
 		}
-
 	}
 
 	//actually logging in
@@ -136,11 +144,8 @@ public class LoginMenu : MonoBehaviour {
 				confirmLoginPwd = pwd.text;
 				SceneManager.LoadScene ("MenuScene");
 			}
-			if (logText == "noExistEmail") {
-				Debug.Log ("Email does not exist");
-			}
-			if (logText == "noMatchPassword") {
-				Debug.Log ("Password does not match");
+			if(logText != "success"){
+				ErrorMsgLog.SetActive(true);
 			}
 		}
 	}

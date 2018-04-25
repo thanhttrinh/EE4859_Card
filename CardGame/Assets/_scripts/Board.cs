@@ -139,8 +139,11 @@ public class Board : MonoBehaviour
                 cropsRed = collider.gameObject.GetComponent<OneCardManager>().cardAsset.CropSize;
                 playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
             }
-			cropCard = collider.gameObject;
-			collider.gameObject.SetActive (false);
+            if (playerBlue.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost || playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
+            {
+                cropCard = collider.gameObject;
+                collider.gameObject.SetActive(false);
+            }
 		}
         
     }

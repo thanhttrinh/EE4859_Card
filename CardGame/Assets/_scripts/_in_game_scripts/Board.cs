@@ -29,6 +29,8 @@ public class Board : MonoBehaviour
 	private int cropsBlue = 0;
 	private int cropsRed = 0;
 
+	private GameObject soldierCard;
+
 	private int baseBlueX;
 	private int baseBlueY;
 	private int baseRedX;
@@ -45,10 +47,8 @@ public class Board : MonoBehaviour
 	{
 		if (playerBlue != null && TurnManager.Instance.whoseTurn == playerBlue) {
 			PlayerInput ();
-			//Debug.Log ("player Blue");
 		} 
 		if (playerRed != null && TurnManager.Instance.whoseTurn == playerRed) {
-			//Debug.Log ("player Red");
 			PlayerInput ();
 		}
 
@@ -84,18 +84,27 @@ public class Board : MonoBehaviour
 			if (TurnManager.Instance.whoseTurn == playerBlue) {
 				if(!baseBlueCreated)
 					GenerateBaseBlue (x, y);
-				SelectSoldierBlue (x, y);
+				//if(selectedSoldierCard == null)
+					SelectSoldierBlue (x, y);
 
 			}
 			if (TurnManager.Instance.whoseTurn == playerRed) {
 				if(!baseRedCreated)
 					GenerateBaseRed (x, y);
-				SelectSoldierRed (x, y);
+				//if(selectedSoldierCard == null)
+					SelectSoldierRed (x, y);
                 
 			}
 
-			GenerateCropBlue (cropCard, x, y);
-			GenerateCropRed (cropCard, x, y);
+			if (soldierCard != null) {
+				GenerateSoldierBlue (soldierCard, x, y);
+				GenerateSoldierRed (soldierCard, x, y);
+			}
+
+			if (cropCard != null) {
+				GenerateCropBlue (cropCard, x, y);
+				GenerateCropRed (cropCard, x, y);
+			}
 
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 		}
@@ -117,14 +126,20 @@ public class Board : MonoBehaviour
 		if ((collider.gameObject.tag == "blueCard" || collider.gameObject.tag == "redCard") && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Soldier && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
             if (TurnManager.Instance.whoseTurn == playerBlue && collider.gameObject.tag == "blueCard" && playerBlue.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
             {
-                GenerateSoldierBlue(collider, baseBlueX, baseBlueY);
-                playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
+                //GenerateSoldierBlue(collider, baseBlueX, baseBlueY);
+				playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
+				soldierCard = collider.gameObject;
+				isCreated = false;
+				collider.gameObject.SetActive(false);
             }
             if (TurnManager.Instance.whoseTurn == playerRed && collider.gameObject.tag == "redCard" && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
             {
-                GenerateSoldierRed(collider, baseRedX, baseRedY);
-                playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
-            }
+                //GenerateSoldierRed(collider, baseRedX, baseRedY);
+				playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
+				soldierCard = collider.gameObject;
+				isCreated = false;
+				collider.gameObject.SetActive(false);
+			}
 		}
 
 		if ((collider.gameObject.tag == "blueCard" || collider.gameObject.tag == "redCard") && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
@@ -154,7 +169,6 @@ public class Board : MonoBehaviour
 
 	void OnTriggerExit(Collider collider)
 	{
-		isCreated = false;
 	}
 
 	private void GenerateBaseBlue(int x, int y)
@@ -185,45 +199,47 @@ public class Board : MonoBehaviour
 		baseRedCreated = true;
 	}
 
-	private void GenerateSoldierBlue(Collider collider, int x, int y)
+	private void GenerateSoldierBlue(GameObject go, int x, int y)
 	{
 		if (!isCreated) {
 			GameObject newGO = Instantiate (Soldier) as GameObject;
-			newGO.transform.position = new Vector3 (x, y, 0);
-			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			if (cards [x, y] == null && ((x == baseBlueX + 1 || x == baseBlueX - 1) && (y == baseBlueY)) || ((y == baseBlueY + 1 || y == baseBlueY - 1) && (x == baseBlueX)))
+				newGO.transform.position = new Vector3 (x, y, 0);
+			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isBlue = true;
 
-            newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
-			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
+			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
+			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = go.gameObject.GetComponent<SoldierPreview> ().PreviewText;
             //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
             GameUnits s = newGO.GetComponent<GameUnits>();
 			cards[x, y] = s;
             soldierList.Add(s);
 			isCreated = true;
-			Destroy (collider.gameObject);
+			//Destroy (collider.gameObject);
 		}
 		//if(soldiers[x,y] != null)
 			//Debug.Log (soldiers[x,y].cardAsset.name);
 	}
 
-	private void GenerateSoldierRed(Collider collider, int x, int y)
+	private void GenerateSoldierRed(GameObject go, int x, int y)
 	{
 		if (!isCreated) {
 			GameObject newGO = Instantiate (Soldier) as GameObject;
-			newGO.transform.position = new Vector3 (x, y, 0);
-			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = collider.gameObject.GetComponent<OneCardManager> ().cardAsset;
+			if (cards[x, y] == null && ((x == baseRedX + 1 || x == baseRedX - 1) && (y == baseRedY)) || ((y == baseRedY + 1 || y == baseRedY - 1) && (x == baseRedX)))
+				newGO.transform.position = new Vector3 (x, y, 0);
+			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isRed = true;
 
-			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = collider.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
-			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = collider.gameObject.GetComponent<SoldierPreview> ().PreviewText;
+			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
+			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = go.gameObject.GetComponent<SoldierPreview> ().PreviewText;
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
 			GameUnits s = newGO.GetComponent<GameUnits>();
 			cards[x, y] = s;
             soldierList.Add(s);
             isCreated = true;
-			Destroy (collider.gameObject);
+			//Destroy (collider.gameObject);
 		}
 		//if(soldiers[x,y] != null)
 		//Debug.Log (soldiers[x,y].cardAsset.name);
@@ -285,7 +301,7 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-			//Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
@@ -304,7 +320,7 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-			//Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");

@@ -50,8 +50,6 @@ public class Player : MonoBehaviour, ICharacter {
 		{
 			if (value < 0)
 				manaThisTurn = 0;
-		//	else if (value > PArea.ManaBar.Crystals.Length)
-			//	manaThisTurn = PArea.ManaBar.Crystals.Length;
 			else
 				manaThisTurn = value;
 			new UpdateManaCommand(this, manaThisTurn, manaLeft).AddToQueue();
@@ -67,15 +65,11 @@ public class Player : MonoBehaviour, ICharacter {
 		{
 			if (value < 0)
 				manaLeft = 0;
-			//else if (value > PArea.ManaBar.Crystals.Length)
-				//manaLeft = PArea.ManaBar.Crystals.Length;
 			else
 				manaLeft = value;
 
 			PArea.ManaBar.AvailableCrystals = manaLeft;
 			new UpdateManaCommand(this, ManaThisTurn, manaLeft).AddToQueue();
-		//	if (TurnManager.Instance.whoseTurn == this)
-			//	HighlightPlayableCards();
 		}
 	}
 
@@ -89,8 +83,6 @@ public class Player : MonoBehaviour, ICharacter {
 				health = pAsset.MaxHealth;
 			else
 				health = value;
-            //	if (value <= 0)
-            //Die(); 
         }
 	}
 
@@ -118,10 +110,6 @@ public class Player : MonoBehaviour, ICharacter {
                 gu.attacking = true;
             }
         }
-            
-		
-		//foreach (SoldierLogic sl in grid.SoldiersOnGrid)
-			//sl.OnTurnStart (); 
 	}
 
 	public void OnTurnEnd(){
@@ -141,23 +129,16 @@ public class Player : MonoBehaviour, ICharacter {
 	//draw a card
 	public void DrawACard(bool fast = false){
 		if (deck.cards.Count > 0) {
-           // if(PlayerColor == "red")
-			   // Debug.Log ("Cards currently in red deck: " + (deck.cards.Count - 1).ToString());
-           // if (PlayerColor == "blue")
-                //Debug.Log("Cards currently in blue deck: " + (deck.cards.Count - 1).ToString());
 			if (hand.CardsInHand.Count < PArea.handVisual.slots.Children.Length) {
-				//Debug.Log ("adding card to hand");
 				// add card to hand
 				CardLogic newCard = new CardLogic (deck.cards [0], this);
 				hand.CardsInHand.Insert (0, newCard);
 				//remove the card from the deck
 				deck.cards.RemoveAt (0);
 				//create a command
-			   // new DrawACardCommand (hand.CardsInHand [0], this, fast, fromDeck: true).AddToQueue ();
 			   PArea.PDeck.CardsInDeck--;
 			   PArea.handVisual.GivePlayerACard(newCard.ca, newCard.UniqueCardID, fast, true);
                 source.GetComponent<AudioSource>().Play();
-				//Debug.Log ("DrawACard Success");
 			}
 		} else {
 			//TODO: what to do when run out of cards

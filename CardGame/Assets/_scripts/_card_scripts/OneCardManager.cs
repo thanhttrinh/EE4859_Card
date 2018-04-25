@@ -98,7 +98,6 @@ public class OneCardManager : MonoBehaviour {
             CropSize.text = cardAsset.CropSize.ToString();
 			if(SceneManager.GetActiveScene().name == "InGame"){
 				//CardSpriteImage.sprite = cardAsset.CardSprite;
-                Debug.Log("crop sprite");
             }
 			
         }

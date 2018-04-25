@@ -22,6 +22,7 @@ public class DeckInScrollList : MonoBehaviour, IPointerEnterHandler, IPointerExi
 		//make sure it's the same deck
 		CCScreen.Instance.BuilderScript.BuildADeck();
 		CCScreen.Instance.BuilderScript.DeckName.text = SavedDeckInfo.DeckName;
+		CardCount.Instance.count = SavedDeckInfo.Cards.Count;
 		//populate it with the same cards taht were in this deck
 		foreach (CardAsset asset in SavedDeckInfo.Cards)
 			CCScreen.Instance.BuilderScript.AddCard (asset);
@@ -30,7 +31,7 @@ public class DeckInScrollList : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 		CCScreen.Instance.CollectionBrowserScript.ShowCollectionForDeckBuilding ();
 		CCScreen.Instance.ShowScreenForDeckBuilding ();
-
+	
 		CardCount.Instance.SetCountText ();
 	}
 

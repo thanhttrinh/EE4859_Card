@@ -38,6 +38,7 @@ public class TurnManager : MonoBehaviour {
 	}
 
 	public void OnGameStart(){
+		Deck.Instance.ShuffleDeck();
 		CardLogic.CardsCreatedThisGame.Clear ();
 		SoldierLogic.SoldiersCreatedThisGame.Clear ();
 		foreach (Player p in Players) {

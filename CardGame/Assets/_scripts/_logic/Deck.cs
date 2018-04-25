@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Deck : MonoBehaviour {
-
+	public static Deck Instance;
 	public List<CardAsset> cards = new List<CardAsset>();
 
-	void awake()
-	{
-		cards.Shuffle ();
+	void Awake(){
+		Instance = this;
 	}
-
-	void Start(){
+	public void ShuffleDeck()
+	{
 		cards.Shuffle ();
 	}
 }

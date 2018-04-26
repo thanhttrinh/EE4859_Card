@@ -49,7 +49,16 @@ public class attack : MonoBehaviour
 	public void doAttack(Player player, GameUnits[,] board, int atkx, int atky, int vicx, int vicy)
 	{
 		int atkDam = 0, vicDam = 0, atkHP = 0, vicHP = 0;
-        OneSoldierManager atkSoldier = board[atkx, atky].GetComponent<OneSoldierManager>(), vicSoldier = board[vicx, vicy].GetComponent<OneSoldierManager>();
+        OneSoldierManager atkSoldier = board[atkx, atky].GetComponent<OneSoldierManager>(), vicSoldier;
+        try
+        {
+            vicSoldier = board[vicx, vicy].GetComponent<OneSoldierManager>();
+        }
+        catch(NullReferenceException nl)
+        {
+            vicSoldier = null;
+            Debug.Log(nl.Message);
+        }
         HoldIndividualData atkHold = board[atkx, atky].GetComponent<HoldIndividualData>(), vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
         Base vicBase = board[vicx, vicy].GetComponent<Base>(); OneCropManager vicCrop = board[vicx, vicy].GetComponent<OneCropManager>();
         if (vicSoldier != null)
@@ -84,7 +93,6 @@ public class attack : MonoBehaviour
             if ((atkSoldier.isBlue && vicSoldier.isRed) || (atkSoldier.isRed && vicSoldier.isBlue))
             {
                 source.GetComponent<AudioSource>().Play();
-                Debug.Log("RED|BLUE ENEMY");
                 if (atkDam >= vicHP)
                 {
                     DestroyObject(vicSoldier.gameObject);
@@ -105,7 +113,7 @@ public class attack : MonoBehaviour
         }
         else if (vicBase != null)
         {
-            if ((vicBase.isBaseRed && vicSoldier.isRed) || (vicBase.isBaseBlue && vicSoldier.isBlue))
+            if ((vicBase.isBaseRed && atkSoldier.isRed) || (vicBase.isBaseBlue && atkSoldier.isBlue))
             {
 
             }
@@ -126,8 +134,8 @@ public class attack : MonoBehaviour
                 }
                 if (atkHold == null)
                 {
-                    atkDam = vicSoldier.cardAsset.Attack;
-                    atkHP = vicSoldier.cardAsset.MaxHealth;
+                    atkDam = atkSoldier.cardAsset.Attack;
+                    atkHP = atkSoldier.cardAsset.MaxHealth;
                     atkSoldier.gameObject.AddComponent<HoldIndividualData>();
                     atkHold = atkSoldier.GetComponent<HoldIndividualData>();
                     atkHold.makeData(atkHP, atkDam);

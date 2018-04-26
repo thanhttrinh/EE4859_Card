@@ -88,6 +88,8 @@ public class Board : MonoBehaviour
 					GenerateBaseBlue (x, y);
 				//if(selectedSoldierCard == null)
 					SelectSoldierBlue (x, y);
+				if(soldierCard != null)
+					GenerateSoldierBlue (soldierCard, cardPlayed, x, y);
 
 			}
 			if (TurnManager.Instance.whoseTurn == playerRed) {
@@ -95,19 +97,13 @@ public class Board : MonoBehaviour
 					GenerateBaseRed (x, y);
 				//if(selectedSoldierCard == null)
 					SelectSoldierRed (x, y);
-                
+				if (soldierCard != null) 
+					GenerateSoldierRed (soldierCard, cardPlayed, x, y);
 			}
-
-			if (soldierCard != null) {
-				GenerateSoldierBlue (soldierCard, cardPlayed, x, y);
-				GenerateSoldierRed (soldierCard, cardPlayed, x, y);
-			}
-
+				
 			GenerateCropBlue (cropCard, cardPlayed, x, y);
 			GenerateCropRed (cropCard, cardPlayed, x, y);
 
-
-			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
@@ -203,11 +199,11 @@ public class Board : MonoBehaviour
 	private void GenerateSoldierBlue(GameObject go, string cardName, int x, int y)
 	{
 		if (isCreated == false) {
-			GameObject newGO = Instantiate (Soldier) as GameObject;
-			if (cards [x, y] == null && ((x == baseBlueX + 1 || x == baseBlueX - 1) && (y == baseBlueY)) || ((y == baseBlueY + 1 || y == baseBlueY - 1) && (x == baseBlueX)))
-				newGO.transform.position = new Vector3 (x, y, 0);
-			else
+			if (cards[x,y] != null || ((x >= baseBlueX + 1 || x <= baseBlueX - 1) && (y != baseBlueY)) || ((y >= baseBlueY + 1 || y <= baseBlueY - 1) && (x != baseBlueX)))
 				return;
+			GameObject newGO = Instantiate (Soldier) as GameObject;
+			//if (cards [x, y] == null && ((x == baseBlueX + 1 || x == baseBlueX - 1) && (y == baseBlueY)) || ((y == baseBlueY + 1 || y == baseBlueY - 1) && (x == baseBlueX)))
+				newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isBlue = true;
@@ -233,10 +229,9 @@ public class Board : MonoBehaviour
 		if (isCreated == false) {
 			if (cards[x,y] != null || ((x >= baseRedX + 1 || x <= baseRedX - 1) && (y != baseRedY)) || ((y >= baseRedY + 1 || y <= baseRedY - 1) && (x != baseRedX)))
 				return;
-			isCreated = true;
 			GameObject newGO = Instantiate (Soldier) as GameObject;
 			//if (cards [x, y] == null && ((x == baseRedX + 1 || x == baseRedX - 1) && (y == baseRedY)) || ((y == baseRedY + 1 || y == baseRedY - 1) && (x == baseRedX)))
-				newGO.transform.position = new Vector3 (x, y, 0);
+			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isRed = true;

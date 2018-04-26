@@ -211,7 +211,7 @@ public class Board : MonoBehaviour
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isBlue = true;
 
-            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+            cardName = newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
 
             newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = go.gameObject.GetComponent<SoldierPreview> ().PreviewText;
@@ -236,7 +236,7 @@ public class Board : MonoBehaviour
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isRed = true;
 
-            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+            cardName = newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
 
             newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = go.gameObject.GetComponent<SoldierPreview> ().PreviewText;

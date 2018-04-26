@@ -231,7 +231,7 @@ public class Board : MonoBehaviour
 	private void GenerateSoldierRed(GameObject go, string cardName, int x, int y)
 	{
 		if (isCreated == false) {
-			if (((x >= baseRedX + 1 || x <= baseRedX - 1) && (y != baseRedY)) || ((y >= baseRedY + 1 || y <= baseRedY - 1) && (x != baseRedX)))
+			if (cards[x,y] != null || ((x >= baseRedX + 1 || x <= baseRedX - 1) && (y != baseRedY)) || ((y >= baseRedY + 1 || y <= baseRedY - 1) && (x != baseRedX)))
 				return;
 			isCreated = true;
 			GameObject newGO = Instantiate (Soldier) as GameObject;
@@ -249,6 +249,7 @@ public class Board : MonoBehaviour
 			GameUnits s = newGO.GetComponent<GameUnits>();
 			cards[x, y] = s;
             soldierList.Add(s);
+			isCreated = true;
 			soldierCard = null;
 			Destroy (go.gameObject);
 		}

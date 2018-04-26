@@ -36,6 +36,8 @@ public class Board : MonoBehaviour
 	private int baseRedX;
 	private int baseRedY;
 
+    public string cardPlayed;
+
 	public static Board Instance;
 
 	void Awake(){
@@ -97,13 +99,13 @@ public class Board : MonoBehaviour
 			}
 
 			if (soldierCard != null) {
-				GenerateSoldierBlue (soldierCard, x, y);
-				GenerateSoldierRed (soldierCard, x, y);
+				GenerateSoldierBlue (soldierCard, cardPlayed, x, y);
+				GenerateSoldierRed (soldierCard, cardPlayed, x, y);
 			}
 
 			if (cropCard != null) {
-				GenerateCropBlue (cropCard, x, y);
-				GenerateCropRed (cropCard, x, y);
+				GenerateCropBlue (cropCard, cardPlayed, x, y);
+				GenerateCropRed (cropCard, cardPlayed, x, y);
 			}
 
 			//Debug.Log ("base generated + num of base : " + NumOfBase.ToString());
@@ -199,7 +201,7 @@ public class Board : MonoBehaviour
 		baseRedCreated = true;
 	}
 
-	private void GenerateSoldierBlue(GameObject go, int x, int y)
+	private void GenerateSoldierBlue(GameObject go, string cardName, int x, int y)
 	{
 		if (!isCreated) {
 			GameObject newGO = Instantiate (Soldier) as GameObject;
@@ -209,7 +211,9 @@ public class Board : MonoBehaviour
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isBlue = true;
 
-			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
+            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = go.gameObject.GetComponent<SoldierPreview> ().PreviewText;
             //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
             GameUnits s = newGO.GetComponent<GameUnits>();
@@ -222,7 +226,7 @@ public class Board : MonoBehaviour
 			//Debug.Log (soldiers[x,y].cardAsset.name);
 	}
 
-	private void GenerateSoldierRed(GameObject go, int x, int y)
+	private void GenerateSoldierRed(GameObject go, string cardName, int x, int y)
 	{
 		if (!isCreated) {
 			GameObject newGO = Instantiate (Soldier) as GameObject;
@@ -232,7 +236,9 @@ public class Board : MonoBehaviour
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isRed = true;
 
-			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
+            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<SoldierPreview> ().PreviewText = go.gameObject.GetComponent<SoldierPreview> ().PreviewText;
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
 			GameUnits s = newGO.GetComponent<GameUnits>();
@@ -245,7 +251,7 @@ public class Board : MonoBehaviour
 		//Debug.Log (soldiers[x,y].cardAsset.name);
 	}
 
-	private void GenerateCropBlue(GameObject go, int x, int y)
+	private void GenerateCropBlue(GameObject go, string cardName, int x, int y)
 	{
 		if (cropsBlue != 0) {
 			if (x < 0 || x > 6 || y < 0 || y > 2)
@@ -254,6 +260,8 @@ public class Board : MonoBehaviour
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneCropManager> ().ReadCropFromAsset ();
+
+            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
 
             newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = go.gameObject.GetComponent<CropPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = go.gameObject.GetComponent<CropPreview> ().PreviewText;
@@ -268,7 +276,7 @@ public class Board : MonoBehaviour
         }
 	}
 
-	private void GenerateCropRed(GameObject go, int x, int y)
+	private void GenerateCropRed(GameObject go, string cardName, int x, int y)
 	{
 		if (cropsRed != 0) {
 			if (x < 0 || x > 6 || y < 3 || y > 6)
@@ -276,7 +284,11 @@ public class Board : MonoBehaviour
 			GameObject newGO = Instantiate (Crop) as GameObject;
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneCropManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
-			newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = go.gameObject.GetComponent<CropPreview> ().PreviewUnit;
+            newGO.gameObject.GetComponent<OneCropManager>().ReadCropFromAsset();
+
+            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<CropPreview> ().PreviewUnit = go.gameObject.GetComponent<CropPreview> ().PreviewUnit;
 			newGO.gameObject.GetComponent<CropPreview> ().PreviewText = go.gameObject.GetComponent<CropPreview> ().PreviewText;
 			//newGO.transform.SetParent (this.gameObject.transform, false);
 			//Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);

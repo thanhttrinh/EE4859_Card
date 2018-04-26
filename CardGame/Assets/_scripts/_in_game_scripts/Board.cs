@@ -207,6 +207,8 @@ public class Board : MonoBehaviour
 			GameObject newGO = Instantiate (Soldier) as GameObject;
 			if (cards [x, y] == null && ((x == baseBlueX + 1 || x == baseBlueX - 1) && (y == baseBlueY)) || ((y == baseBlueY + 1 || y == baseBlueY - 1) && (x == baseBlueX)))
 				newGO.transform.position = new Vector3 (x, y, 0);
+			else
+				return;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isBlue = true;
@@ -220,6 +222,7 @@ public class Board : MonoBehaviour
 			cards[x, y] = s;
             soldierList.Add(s);
 			isCreated = true;
+			soldierCard = null;
 			//Destroy (collider.gameObject);
 		}
 		//if(soldiers[x,y] != null)
@@ -230,8 +233,10 @@ public class Board : MonoBehaviour
 	{
 		if (!isCreated) {
 			GameObject newGO = Instantiate (Soldier) as GameObject;
-			if (cards[x, y] == null && ((x == baseRedX + 1 || x == baseRedX - 1) && (y == baseRedY)) || ((y == baseRedY + 1 || y == baseRedY - 1) && (x == baseRedX)))
+			if (cards [x, y] == null && ((x == baseRedX + 1 || x == baseRedX - 1) && (y == baseRedY)) || ((y == baseRedY + 1 || y == baseRedY - 1) && (x == baseRedX)))
 				newGO.transform.position = new Vector3 (x, y, 0);
+			else
+				return;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isRed = true;
@@ -245,6 +250,7 @@ public class Board : MonoBehaviour
 			cards[x, y] = s;
             soldierList.Add(s);
             isCreated = true;
+			soldierCard = null;
 			//Destroy (collider.gameObject);
 		}
 		//if(soldiers[x,y] != null)
@@ -272,6 +278,7 @@ public class Board : MonoBehaviour
 			//isCreated = true;
 			//Destroy(go.gameObject);
 			cropsBlue--;
+			cropCard = null;
 			//Debug.Log (cropsBlue);
         }
 	}
@@ -297,6 +304,7 @@ public class Board : MonoBehaviour
 			//isCreated = true;
 			//Destroy(go.gameObject);
 			cropsRed--;
+			cropCard = null;
 			//Debug.Log (cropsRed);
 		}
 	}

@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86791148ef0d3fe47acb50227d5f5b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeForOneTurn: 8
+  TimeForOneTurn: 15
   TimerText: {fileID: 218852566}
   counting: 0
   TimerExpired:
@@ -3358,6 +3358,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9fea2086f2b24afa8e83aa4ea66ed84, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &985292718
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1001508036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4734,6 +4776,7 @@ MonoBehaviour:
   Soldier: {fileID: 1848237352196946, guid: c46f85ea1d0d3ee46960e347a64e5d64, type: 2}
   Crop: {fileID: 1519026123925860, guid: 8a5390fc5df7a5b4f8b70819b09035d3, type: 2}
   basesCreated: 0
+  cardPlayed: 
 --- !u!54 &1429678300
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -59,8 +59,36 @@ public class attack : MonoBehaviour
             vicSoldier = null;
             Debug.Log(nl.Message);
         }
-        HoldIndividualData atkHold = board[atkx, atky].GetComponent<HoldIndividualData>(), vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
-        Base vicBase = board[vicx, vicy].GetComponent<Base>(); OneCropManager vicCrop = board[vicx, vicy].GetComponent<OneCropManager>();
+        HoldIndividualData atkHold = board[atkx, atky].GetComponent<HoldIndividualData>(), vicHold; Base vicBase; OneCropManager vicCrop;
+        try
+        {
+            vicHold = board[vicx, vicy].GetComponent<HoldIndividualData>();
+        }
+        catch(NullReferenceException nl)
+        {
+            vicHold = null;
+            Debug.Log(nl.Message);
+        }
+        try
+        {
+            vicBase = board[vicx, vicy].GetComponent<Base>(); 
+        }
+        catch(NullReferenceException nl)
+        {
+            vicBase = null;
+            Debug.Log(nl.Message);
+        }
+        try
+        {
+            vicCrop = board[vicx, vicy].GetComponent<OneCropManager>();
+        }
+        catch(NullReferenceException nl)
+        {
+            vicCrop = null;
+            Debug.Log(nl.Message);
+        }
+
+
         if (vicSoldier != null)
         {
             if (atkHold == null)
@@ -140,6 +168,11 @@ public class attack : MonoBehaviour
                     atkHold = atkSoldier.GetComponent<HoldIndividualData>();
                     atkHold.makeData(atkHP, atkDam);
                 }
+                else
+                {
+                    atkDam = atkHold.Dam;
+                }
+
                 vicHP -= atkDam;
                 vicHold.makeData(vicHP, vicDam);
                 vicBase.BaseHP = vicHP;

@@ -72,9 +72,9 @@ public class BaseVisual : MonoBehaviour {
         {
             TotalHP = pAsset.MaxHealth;
 			//if(Base.Instance.isBaseBlue)
-			Base.Instance.BaseBlueHP = AvailableBlueHP;
+            	AvailableBlueHP = Base.Instance.BaseBlueHP;
 			//if(Base.Instance.isBaseRed)
-			Base.Instance.BaseRedHP = AvailableRedHP;
+				AvailableRedHP = Base.Instance.BaseRedHP;
         }
         
     }

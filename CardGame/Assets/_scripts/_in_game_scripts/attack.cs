@@ -176,6 +176,7 @@ public class attack : MonoBehaviour
                 vicHP -= atkDam;
                 vicHold.makeData(vicHP, vicDam);
                 vicBase.BaseHP = vicHP;
+				Debug.Log ("BaseHP = " + vicBase.BaseHP);
                 if (vicHP <= 0)
                 {
                     GameOverCommand gameOver = new GameOverCommand(player.otherPlayer);

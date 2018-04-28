@@ -9,7 +9,8 @@ public class Base : MonoBehaviour {
 
     public PlayerAsset pAssetBlue;
     public PlayerAsset pAssetRed;
-    public int BaseHP;
+    public int BaseBlueHP;
+	public int BaseRedHP;
     public bool isBaseBlue;
     public bool isBaseRed;
 
@@ -24,25 +25,26 @@ public class Base : MonoBehaviour {
         //Debug.Log(BaseHP);
         if(isBaseBlue)
         {
-            BaseHP = pAssetBlue.AvailableHealth;
+            BaseBlueHP = pAssetBlue.AvailableHealth;
         }
             
         if (isBaseRed)
         {
-            BaseHP = pAssetRed.AvailableHealth;
+            BaseRedHP = pAssetRed.AvailableHealth;
         }
             
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
         if (Input.GetKeyDown("a"))
         {
             if (isBaseBlue)
             {
-                BaseHP--;
+                BaseBlueHP--;
                 //pAssetBlue.AvailableHealth--;
-                Debug.Log("BaseBlue HP: "+ BaseHP);
+                Debug.Log("BaseBlue HP: "+ BaseBlueHP);
             }
         }
 
@@ -50,9 +52,9 @@ public class Base : MonoBehaviour {
         {
             if (isBaseRed)
             {
-                BaseHP--;
+                BaseRedHP--;
                 //pAssetBlue.AvailableHealth--;
-                Debug.Log("BaseRed HP: " + BaseHP);
+                Debug.Log("BaseRed HP: " + BaseRedHP);
             }
         }
     }

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class BaseVisual : MonoBehaviour {
 
-    public Text ProgressText;
+    public Text ProgressBlueText;
+	public Text ProgressRedText;
     public PlayerAsset pAsset;
     //public int availableHealth = Base.Instance.BaseHP;
 
@@ -23,36 +24,57 @@ public class BaseVisual : MonoBehaviour {
                 totalHP = 30;
 
             //update the text
-            ProgressText.text = string.Format("{0}/{1}", availableHP.ToString(), totalHP.ToString());
+			//if(Base.Instance.isBaseBlue)
+            	ProgressBlueText.text = string.Format("{0}/{1}", availableBlueHP.ToString(), totalHP.ToString());
+			//if(Base.Instance.isBaseRed)
+				ProgressRedText.text = string.Format("{0}/{1}", availableRedHP.ToString(), totalHP.ToString());
+			
         }
     }
 
-    private int availableHP;
-    public int AvailableHP
+    private int availableBlueHP;
+    public int AvailableBlueHP
     {
-        get { return availableHP; }
+        get { return availableBlueHP; }
         set
         {
             if (value > totalHP)
-                availableHP = totalHP;
+				availableBlueHP = totalHP;
             else if (value < 0)
-                availableHP = 0;
+				availableBlueHP = 0;
             else
-                availableHP = value;
+				availableBlueHP = value;
 
-            ProgressText.text = string.Format("{0}/{1}", availableHP.ToString(), totalHP.ToString());
+            ProgressBlueText.text = string.Format("{0}/{1}", availableBlueHP.ToString(), totalHP.ToString());
         }
     }
+
+	private int availableRedHP;
+	public int AvailableRedHP
+	{
+		get { return availableRedHP; }
+		set
+		{
+			if (value > totalHP)
+				availableRedHP = totalHP;
+			else if (value < 0)
+				availableRedHP = 0;
+			else
+				availableRedHP = value;
+
+			ProgressRedText.text = string.Format("{0}/{1}", availableRedHP.ToString(), totalHP.ToString());
+		}
+	}
 
     private void Update()
     {
         if(Base.Instance != null)
         {
             TotalHP = pAsset.MaxHealth;
-			if(Base.Instance.isBaseBlue)
-            	AvailableHP = Base.Instance.BaseBlueHP;
-			if (Base.Instance.isBaseRed)
-				AvailableHP = Base.Instance.BaseRedHP;
+			//if(Base.Instance.isBaseBlue)
+			Base.Instance.BaseBlueHP = AvailableBlueHP;
+			//if(Base.Instance.isBaseRed)
+			Base.Instance.BaseRedHP = AvailableRedHP;
         }
         
     }

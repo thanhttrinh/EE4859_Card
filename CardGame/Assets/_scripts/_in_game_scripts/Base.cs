@@ -23,15 +23,15 @@ public class Base : MonoBehaviour {
     void Start ()
     {
         //Debug.Log(BaseHP);
-        if(isBaseBlue)
-        {
+        //if(isBaseBlue)
+        //{
             BaseBlueHP = pAssetBlue.AvailableHealth;
-        }
+        //}
             
-        if (isBaseRed)
-        {
+        //if (isBaseRed)
+        //{
             BaseRedHP = pAssetRed.AvailableHealth;
-        }
+        //}
             
 	}
 	
@@ -40,22 +40,30 @@ public class Base : MonoBehaviour {
 		
         if (Input.GetKeyDown("a"))
         {
-            if (isBaseBlue)
-            {
+
                 BaseBlueHP--;
                 //pAssetBlue.AvailableHealth--;
                 Debug.Log("BaseBlue HP: "+ BaseBlueHP);
-            }
+            
         }
 
         if (Input.GetKeyDown("q"))
         {
-            if (isBaseRed)
-            {
                 BaseRedHP--;
                 //pAssetBlue.AvailableHealth--;
                 Debug.Log("BaseRed HP: " + BaseRedHP);
-            }
+            
         }
+
+		foreach (Base b in Board.Instance.baseList) {
+			if (GameUnits.Instance.attacking == false && isBaseBlue) {
+				b.BaseBlueHP = BaseBlueHP;
+			}
+			if (GameUnits.Instance.attacking == false && isBaseRed) {
+				
+				b.BaseRedHP = BaseRedHP;
+			}
+		}
+	
     }
 }

@@ -9,11 +9,12 @@ public class OppInfoManager : MonoBehaviour {
 	public Text redDeckAmount;
 	public Text redHandAmount;
 
-    public Text baseHP;
+	public Text BaseHP;
 	public Player redPlayer;
 
 	void Update(){
-		redHP.text = baseHP.text;
+		if(Base.Instance != null)
+			redHP.text = BaseHP.text;
 		redDeckAmount.text = redPlayer.deck.cards.Count.ToString();
 		redHandAmount.text = redPlayer.hand.CardsInHand.Count.ToString();
 	}

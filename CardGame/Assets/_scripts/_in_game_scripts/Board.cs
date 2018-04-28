@@ -6,6 +6,7 @@ public class Board : MonoBehaviour
 {
     public GameUnits[,] cards = new GameUnits[6, 6];
     public List<GameUnits> soldierList = new List<GameUnits>();
+	public List<Base> baseList = new List<Base> ();
 
 	private GameUnits selectedSoldierCard;
 
@@ -178,6 +179,7 @@ public class Board : MonoBehaviour
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
 		baseBlueX = x;
 		baseBlueY = y;
+		baseList.Add (newGO.gameObject.GetComponent<Base> ());
 		cards [x, y] = b;
 		baseBlueCreated = true;
 	}
@@ -192,6 +194,7 @@ public class Board : MonoBehaviour
 		GameUnits b = newGO.gameObject.GetComponent<GameUnits> ();
 		baseRedX = x;
 		baseRedY = y;
+		baseList.Add (newGO.gameObject.GetComponent<Base> ());
 		cards [x, y] = b;
 		baseRedCreated = true;
 	}

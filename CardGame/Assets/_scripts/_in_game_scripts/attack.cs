@@ -182,14 +182,14 @@ public class attack : MonoBehaviour
 
                 vicHP -= atkDam;
                 vicHold.makeData(vicHP, vicDam);
-                if(vicBase.isBaseBlue)
-                {
+                //if(vicBase.isBaseBlue)
+                //{
                     vicBase.BaseBlueHP = vicHP;
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     vicBase.BaseRedHP = vicHP;
-                }
+                //}
                 if (vicHP <= 0)
                 {
                     GameOverCommand gameOver = new GameOverCommand(player.otherPlayer);

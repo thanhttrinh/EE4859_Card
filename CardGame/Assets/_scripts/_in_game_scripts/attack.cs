@@ -149,7 +149,14 @@ public class attack : MonoBehaviour
             {
                 if (vicHold == null)
                 {
-                    vicHP = vicBase.BaseHP;
+                    if(vicBase.isBaseBlue)
+                    {
+                        vicHP = vicBase.BaseBlueHP;
+                    }
+                    else
+                    {
+                        vicHP = vicBase.BaseRedHP;
+                    }
                     vicDam = 0;
                     vicBase.gameObject.AddComponent<HoldIndividualData>();
                     vicHold = vicBase.GetComponent<HoldIndividualData>();
@@ -175,8 +182,14 @@ public class attack : MonoBehaviour
 
                 vicHP -= atkDam;
                 vicHold.makeData(vicHP, vicDam);
-                vicBase.BaseHP = vicHP;
-				Debug.Log ("BaseHP = " + vicBase.BaseHP);
+                if(vicBase.isBaseBlue)
+                {
+                    vicBase.BaseBlueHP = vicHP;
+                }
+                else
+                {
+                    vicBase.BaseRedHP = vicHP;
+                }
                 if (vicHP <= 0)
                 {
                     GameOverCommand gameOver = new GameOverCommand(player.otherPlayer);

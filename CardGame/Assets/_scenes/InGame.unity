@@ -3355,48 +3355,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9fea2086f2b24afa8e83aa4ea66ed84, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &985292718
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4090237994255740, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 999531e15cc3e41e483b25274fb80a5c, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1001508036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4802,6 +4760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierList: []
+  baseList: []
   BoardOffset: {x: 0.5, y: 0.5}
   playerBlue: {fileID: 394531079}
   playerRed: {fileID: 572133991}
@@ -6345,7 +6304,12 @@ Prefab:
         type: 2}
       propertyPath: baseHPVisualRed
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1314488681}
+    - target: {fileID: 114269978999971504, guid: 61759aa0722691547a4476fda5867179,
+        type: 2}
+      propertyPath: baseHPVisualBlue
+      value: 
+      objectReference: {fileID: 1307433853}
     m_RemovedComponents:
     - {fileID: 114427397648252822, guid: 61759aa0722691547a4476fda5867179, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 61759aa0722691547a4476fda5867179, type: 2}

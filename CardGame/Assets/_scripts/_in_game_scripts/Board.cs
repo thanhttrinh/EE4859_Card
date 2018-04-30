@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class Board : MonoBehaviour 
 {
+    public static Board Instance { set; get; }
     public GameUnits[,] cards = new GameUnits[6, 6];
     public List<GameUnits> soldierList = new List<GameUnits>();
 	public List<Base> baseList = new List<Base> ();
@@ -39,11 +43,14 @@ public class Board : MonoBehaviour
 
     public string cardPlayed;
 
-	public static Board Instance;
 
-	void Awake(){
-		Instance = this;
-	}
+    public Client client;
+    public string msg;
+
+    void Awake(){
+        client = FindObjectOfType<Client>();
+        Instance = this;
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -62,7 +69,7 @@ public class Board : MonoBehaviour
 
 
 
-	private void PlayerInput()
+	public void PlayerInput()
 	{
 		if (!Camera.main)
 		{
@@ -82,25 +89,74 @@ public class Board : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			//Debug.Log (x + ", " + y);
+            //Debug.Log (x + ", " + y);
 
-			if (TurnManager.Instance.whoseTurn == playerBlue) {
-				if(!baseBlueCreated)
-					GenerateBaseBlue (x, y);
-				//if(selectedSoldierCard == null)
-					SelectSoldierBlue (x, y);
-				if(soldierCard != null)
-					GenerateSoldierBlue (soldierCard, cardPlayed, x, y);
+            if (TurnManager.Instance.whoseTurn == playerBlue)
+            {
+                if (!baseBlueCreated) { 
+                GenerateBaseBlue(x, y);
+                //Networking action
+                msg = "CGBB|";
+                msg += x.ToString() + "|";
+                msg += y.ToString();
+
+                client.Send(msg);
+                    
+                                     }
+                //End networking action
+
+                //if(selectedSoldierCard == null)
+
+                SelectSoldierBlue(x, y);
+                if (soldierCard != null)
+                {
+                    //Networking action
+                    msg = "CGSR|";
+                    msg += cardPlayed.ToString() + "|";
+                    msg += x.ToString() + "|";
+                    msg += y.ToString();
+                    Debug.Log(msg);
+                    client.Send(msg);
+                    //End networking action
+                    GenerateSoldierBlue(soldierCard, cardPlayed, x, y);
+
+                    //End networking action
+                    //GenerateClientSoldierBlue(cardPlayed, baseBlueX, baseBlueY);
+                    
+
+                }
 
 			}
 			if (TurnManager.Instance.whoseTurn == playerRed) {
-				if(!baseRedCreated)
-					GenerateBaseRed (x, y);
-				//if(selectedSoldierCard == null)
-					SelectSoldierRed (x, y);
-				if (soldierCard != null) 
-					GenerateSoldierRed (soldierCard, cardPlayed, x, y);
-			}
+                if (!baseRedCreated)
+                {
+                    GenerateBaseRed(x, y);
+                    //Networking action
+                
+                    msg = "CGBR|";
+                    msg += x.ToString() + "|";
+                    msg += y.ToString();
+                    client.Send(msg);
+                    //End networking action
+                }
+                //if(selectedSoldierCard == null)
+
+                SelectSoldierRed(x, y);
+                if (soldierCard != null)
+                {
+
+                    //GenerateClientSoldierRed(cardPlayed, baseBlueX, baseBlueY);
+                    GenerateSoldierRed(soldierCard, cardPlayed, x, y);
+                    //Networking action
+                    msg = "CGSR|";
+                    msg += cardPlayed.ToString() + "|";
+                    msg += x.ToString() + "|";
+                    msg += y.ToString();
+                    Debug.Log(msg);
+                    client.Send(msg);
+                    //End networking action
+                }
+            }
 				
 			GenerateCropBlue (cropCard, cardPlayed, x, y);
 			GenerateCropRed (cropCard, cardPlayed, x, y);
@@ -108,9 +164,19 @@ public class Board : MonoBehaviour
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
-			if(selectedSoldierCard != null)
-				TryMove ((int)startDrag.x, (int)startDrag.y, x, y);
-		}
+            if (selectedSoldierCard != null)
+            {
+                TryMove((int)startDrag.x, (int)startDrag.y, x, y);
+                //Networking action
+                msg = "CMOV|";
+                msg += startDrag.x.ToString() + "|";
+                msg += startDrag.y.ToString() + "|";
+                msg += x.ToString() + "|";
+                msg += y.ToString();
+                client.Send(msg);
+                //End networking action
+            }
+        }
 
 		if(baseRedCreated && baseBlueCreated)
 			basesCreated = true;
@@ -129,6 +195,10 @@ public class Board : MonoBehaviour
 				playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
+                //Networking action
+                msg = "CTEC|";
+                client.Send(msg);
+                //End networking action
             }
             if (TurnManager.Instance.whoseTurn == playerRed && collider.gameObject.tag == "redCard" && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
             {
@@ -137,8 +207,12 @@ public class Board : MonoBehaviour
 				playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
-			}
-		}
+                //Networking action
+                msg = "CTEC|";
+                client.Send(msg);
+                //End networking action
+            }
+        }
 
 		if ((collider.gameObject.tag == "blueCard" || collider.gameObject.tag == "redCard") && collider.gameObject.GetComponent<OneCardManager> ().cardAsset.TypeOfCard == TypesOfCards.Crop && collider.gameObject.GetComponent<DraggingActionsReturn> ().dragging == false) {
             //GenerateCropBlue (collider, 1, 1);
@@ -165,11 +239,20 @@ public class Board : MonoBehaviour
         
     }
 
-	void OnTriggerExit(Collider collider)
+   public void OnTriggerEnterClient()
+    {
+        //test function
+            isCreated = false;
+            soldierCard = Soldier;
+
+    }
+
+
+    void OnTriggerExit(Collider collider)
 	{
 	}
 
-	private void GenerateBaseBlue(int x, int y)
+	public void GenerateBaseBlue(int x, int y)
 	{
 		if (x < 0 || x > 6 || y < 0 || y > 2)
 			return; 
@@ -184,7 +267,7 @@ public class Board : MonoBehaviour
 		baseBlueCreated = true;
 	}
 
-	private void GenerateBaseRed(int x, int y)
+	public void GenerateBaseRed(int x, int y)
 	{
 		if (x < 0 || x > 6 || y < 3 || y > 6)
 			return; 
@@ -199,14 +282,15 @@ public class Board : MonoBehaviour
 		baseRedCreated = true;
 	}
 
-	private void GenerateSoldierBlue(GameObject go, string cardName, int x, int y)
+	public void GenerateSoldierBlue(GameObject go, string cardName, int x, int y)
 	{
 		if (isCreated == false) {
 			if (cards[x,y] != null || ((x >= baseBlueX + 1 || x <= baseBlueX - 1) && (y != baseBlueY)) || ((y >= baseBlueY + 1 || y <= baseBlueY - 1) && (x != baseBlueX)))
 				return;
-			GameObject newGO = Instantiate (Soldier) as GameObject;
+
+            GameObject newGO = Instantiate (Soldier) as GameObject;
 			//if (cards [x, y] == null && ((x == baseBlueX + 1 || x == baseBlueX - 1) && (y == baseBlueY)) || ((y == baseBlueY + 1 || y == baseBlueY - 1) && (x == baseBlueX)))
-				newGO.transform.position = new Vector3 (x, y, 0);
+		    newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
 			newGO.gameObject.GetComponent<OneSoldierManager> ().isBlue = true;
@@ -222,16 +306,26 @@ public class Board : MonoBehaviour
 			isCreated = true;
 			soldierCard = null;
 			Destroy (go.gameObject);
-		}
+
+        }
 		//if(soldiers[x,y] != null)
 			//Debug.Log (soldiers[x,y].cardAsset.name);
 	}
 
-	private void GenerateSoldierRed(GameObject go, string cardName, int x, int y)
+
+    public void GenerateClientSoldierBlue(string cardName, int x, int y)
+    {
+        GenerateSoldierBlue(soldierCard, cardName, x, y);     
+
+    }
+
+    public void GenerateSoldierRed(GameObject go, string cardName, int x, int y)
 	{
 		if (isCreated == false) {
-			if (cards[x,y] != null || ((x >= baseRedX + 1 || x <= baseRedX - 1) && (y != baseRedY)) || ((y >= baseRedY + 1 || y <= baseRedY - 1) && (x != baseRedX)))
+
+            if (cards[x,y] != null || ((x >= baseRedX + 1 || x <= baseRedX - 1) && (y != baseRedY)) || ((y >= baseRedY + 1 || y <= baseRedY - 1) && (x != baseRedX)))
 				return;
+
 			GameObject newGO = Instantiate (Soldier) as GameObject;
 			//if (cards [x, y] == null && ((x == baseRedX + 1 || x == baseRedX - 1) && (y == baseRedY)) || ((y == baseRedY + 1 || y == baseRedY - 1) && (x == baseRedX)))
 			newGO.transform.position = new Vector3 (x, y, 0);
@@ -250,12 +344,18 @@ public class Board : MonoBehaviour
 			isCreated = true;
 			soldierCard = null;
 			Destroy (go.gameObject);
-		}
-		//if(soldiers[x,y] != null)
-		//Debug.Log (soldiers[x,y].cardAsset.name);
-	}
 
-	private void GenerateCropBlue(GameObject go, string cardName, int x, int y)
+        }
+        //if(soldiers[x,y] != null)
+        //Debug.Log (soldiers[x,y].cardAsset.name);
+    }
+
+    public void GenerateClientSoldierRed(string cardName, int x, int y)
+    {
+        GenerateSoldierRed(soldierCard, cardName, x, y);
+    }
+
+    public void GenerateCropBlue(GameObject go, string cardName, int x, int y)
 	{
 		if (cropsBlue != 0) {
 			if (x < 0 || x > 6 || y < 0 || y > 2)
@@ -280,7 +380,7 @@ public class Board : MonoBehaviour
         }
 	}
 
-	private void GenerateCropRed(GameObject go, string cardName, int x, int y)
+	public void GenerateCropRed(GameObject go, string cardName, int x, int y)
 	{
 		if (cropsRed != 0) {
 			if (x < 0 || x > 6 || y < 3 || y > 6)
@@ -305,7 +405,7 @@ public class Board : MonoBehaviour
 		}
 	}
 
-	private void SelectSoldierBlue(int x, int y)
+	public void SelectSoldierBlue(int x, int y)
 	{
 		//out of bounds
 		if (x < 0 || x > 6 || y < 0 || y > 6)
@@ -317,14 +417,21 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+            //Networking action
+            msg = "CSSB|";
+            msg += x.ToString() + "|";
+            msg += y.ToString();
+
+            client.Send(msg);
+            //End networking action
+            Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
 		
 	}
 
-	private void SelectSoldierRed(int x, int y)
+	public void SelectSoldierRed(int x, int y)
 	{
 		//out of bounds
 		if (x < 0 || x > 6 || y < 0 || y > 6)
@@ -336,14 +443,21 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-			Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
+            //Networking action
+            msg = "CSSR|";
+            msg += x.ToString() + "|";
+            msg += y.ToString();
+
+            client.Send(msg);
+            //End networking action
+            Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
 
 	}
 
-	private void TryMove(int x1, int y1, int x2, int y2)
+	public void TryMove(int x1, int y1, int x2, int y2)
 	{
 		startDrag = new Vector2 (x1, y1);
 		endDrag = new Vector2 (x2, y2);
@@ -410,7 +524,7 @@ public class Board : MonoBehaviour
         }
 	}
 
-	private void MoveSoldier(GameUnits soldierUnit, int x, int y)
+	public void MoveSoldier(GameUnits soldierUnit, int x, int y)
 	{
         if(soldierUnit.gameObject.GetComponent<OneSoldierManager>().cardAsset.TypeOfCard == TypesOfCards.Soldier)
             soldierUnit.transform.position = (Vector2.right * x) + (Vector2.up * y);

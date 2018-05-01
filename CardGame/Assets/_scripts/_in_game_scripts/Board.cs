@@ -44,6 +44,8 @@ public class Board : MonoBehaviour
 
     public string cardPlayed;
 
+     public GameObject deathMark;
+
 
     public Client client;
     public string msg;
@@ -52,6 +54,7 @@ public class Board : MonoBehaviour
         client = FindObjectOfType<Client>();
         isBlueplayer=client.isHost;
         Instance = this;
+        deathMark.SetActive(false);
     }
 	
 	// Update is called once per frame

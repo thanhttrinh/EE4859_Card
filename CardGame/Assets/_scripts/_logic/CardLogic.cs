@@ -25,26 +25,6 @@ public class CardLogic: IIdentifiable, IComparable<CardLogic>
 
 	public int CurrentManaCost{ get; set; }
 
-	public bool CanBePlayed
-	{
-		get
-		{
-			bool ownersTurn = (TurnManager.Instance.whoseTurn == owner);
-			// for spells the amount of characters on the field does not matter
-			bool fieldNotFull = true;
-			// but if this is a soldier, we have to check if there is room on board (table)
-			if (ca.MaxHealth > 0)
-			{
-				Debug.Log("owner is null: " + (owner == null));
-				//Debug.Log("owner.table is null" + (owner.grid == null));
-				//Debug.Log("owner.table.CreaturesOnTable is null" + (owner.grid.SoldiersOnGrid == null));
-				//fieldNotFull = (owner.grid.SoldiersOnGrid.Count < 7);
-			}
-			//Debug.Log("Card: " + ca.name + " has params: ownersTurn=" + ownersTurn + "fieldNotFull=" + fieldNotFull + " hasMana=" + (CurrentManaCost <= owner.ManaLeft));
-			return ownersTurn && fieldNotFull && (CurrentManaCost <= owner.ManaLeft);
-		}
-	}
-
 	// CONSTRUCTOR
 	public CardLogic(CardAsset ca, Player owner)
 	{

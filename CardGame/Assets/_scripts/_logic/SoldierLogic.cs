@@ -27,8 +27,6 @@ public class SoldierLogic : ICharacter
 		set{
 			if (value > MaxHealth)
 				health = MaxHealth;
-			else if (value <= 0)
-				Die ();
 			else
 				health = value;
 		}
@@ -71,15 +69,9 @@ public class SoldierLogic : ICharacter
 		AttacksLeftThisTurn = attacksForOneTurn;
 	}
 
-	public void Die(){
-//		owner.grid.SoldiersOnGrid.Remove (this);
-		//new SoldierDieCommand (UniqueSoldierID, owner).AddToQueue ();
-	}
-
 	public void GoFace(){
 		AttacksLeftThisTurn--;
 		int targetHealthAfter = owner.otherPlayer.Health - Attack;
-		//new SoldierAttackCommand (owner.otherPlayer.PlayerID, UniqueSoldierID, 0, Attack, Health, targetHealthAfter).AddToQueue ();
 		owner.otherPlayer.Health -= Attack;
 	}
 
@@ -87,7 +79,6 @@ public class SoldierLogic : ICharacter
 		AttacksLeftThisTurn--;
 		int targetHealthAfter = target.Health - Attack;
 		int attackerHealthAfter = Health - target.Attack;
-		//new SoldierAttackCommand(target.UniqueSoldierID, UniqueSoldierID, target.Attack, Attack, targetHealthAfter, targetHealthAfter).AddToQueue ();
 
 		target.Health -= Attack;
 		Health -= target.Attack;

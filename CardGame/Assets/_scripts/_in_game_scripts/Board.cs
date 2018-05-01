@@ -110,14 +110,7 @@ public class Board : MonoBehaviour
                 SelectSoldierBlue(x, y);
                 if (soldierCard != null)
                 {
-                    //Networking action
-                    msg = "CGSR|";
-                    msg += cardPlayed.ToString() + "|";
-                    msg += x.ToString() + "|";
-                    msg += y.ToString();
-                    Debug.Log(msg);
-                    client.Send(msg);
-                    //End networking action
+ 
                     GenerateSoldierBlue(soldierCard, cardPlayed, x, y);
 
                     //End networking action
@@ -147,14 +140,7 @@ public class Board : MonoBehaviour
 
                     //GenerateClientSoldierRed(cardPlayed, baseBlueX, baseBlueY);
                     GenerateSoldierRed(soldierCard, cardPlayed, x, y);
-                    //Networking action
-                    msg = "CGSR|";
-                    msg += cardPlayed.ToString() + "|";
-                    msg += x.ToString() + "|";
-                    msg += y.ToString();
-                    Debug.Log(msg);
-                    client.Send(msg);
-                    //End networking action
+
                 }
             }
 				
@@ -195,10 +181,7 @@ public class Board : MonoBehaviour
 				playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
-                //Networking action
-                msg = "CTEC|";
-                client.Send(msg);
-                //End networking action
+
             }
             if (TurnManager.Instance.whoseTurn == playerRed && collider.gameObject.tag == "redCard" && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
             {
@@ -207,10 +190,7 @@ public class Board : MonoBehaviour
 				playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
-                //Networking action
-                msg = "CTEC|";
-                client.Send(msg);
-                //End networking action
+
             }
         }
 

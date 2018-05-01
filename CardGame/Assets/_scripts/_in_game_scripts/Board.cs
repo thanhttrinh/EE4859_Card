@@ -194,6 +194,9 @@ public class Board : MonoBehaviour
                 client.Send(msg);
                 //End networking action*/
             }
+            if(TurnManager.Instance.whoseTurn == playerBlue && collider.gameObject.tag == "redCard"){
+                return;
+            }
             if (TurnManager.Instance.whoseTurn == playerRed && collider.gameObject.tag == "redCard" && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
             {
                 //GenerateSoldierRed(collider, baseRedX, baseRedY);

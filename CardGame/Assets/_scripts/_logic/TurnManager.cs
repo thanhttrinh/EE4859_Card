@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour {
-
+	public Text ColorText;
 	public static TurnManager Instance;
 
 	public static Player[] Players;
@@ -47,9 +48,17 @@ public class TurnManager : MonoBehaviour {
 			p.LoadPlayerInfoFromAsset ();
 			p.TransmitInfoAboutPlayer ();
 			p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
+			if(p.PlayerColor == "red"){
+				ColorText.text = string.Format("PLAYER RED");
+				ColorText.color = new Color(255.0f, 62.0f, 62.0f, 255.0f);
+			}
+			else if(p.PlayerColor == "blue"){
+				ColorText.text = string.Format("PLAYER BLUE");
+				ColorText.color = new Color(62.0f, 151.0f, 255.0f, 255.0f);
+			}
 		}
 			
-		int rng = Random.Range(0, 2);
+		int rng = Random.Range(0, 1);
 		Player whoGoesFirst = Players[rng];
 		Player whoGoesSecond = whoGoesFirst.otherPlayer;
 
@@ -57,9 +66,9 @@ public class TurnManager : MonoBehaviour {
 		int initDraw = 3;
 		for(int i = 0; i < initDraw; i++){
 			whoGoesSecond.DrawACard(true);
-			Debug.Log (whoGoesSecond.name.ToString () + " drew a card");
+		//	Debug.Log (whoGoesSecond.name.ToString () + " drew a card");
 			whoGoesFirst.DrawACard(true);
-			Debug.Log (whoGoesFirst.name.ToString () + " drew a card");
+//			Debug.Log (whoGoesFirst.name.ToString () + " drew a card");
 		}
 
 		whoGoesSecond.DrawACard(true);

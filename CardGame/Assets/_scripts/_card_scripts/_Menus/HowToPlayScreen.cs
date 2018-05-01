@@ -12,6 +12,7 @@ public class HowToPlayScreen : MonoBehaviour {
     public GameObject CCText;
     public GameObject DSText;
     public GameObject GPText;
+    public GameObject MultiplayerText;
     
 
     public static HowToPlayScreen Instance;
@@ -41,6 +42,7 @@ public class HowToPlayScreen : MonoBehaviour {
         GetStartedText.SetActive(false);
         DSText.SetActive(false);
         GPText.SetActive(false);
+        MultiplayerText.SetActive(false);
     }
 
     public void ShowDSInstructions()
@@ -49,11 +51,24 @@ public class HowToPlayScreen : MonoBehaviour {
         CCText.SetActive(false);
         GetStartedText.SetActive(false);
         GPText.SetActive(false);
+        MultiplayerText.SetActive(false);
+
     }
 
     public void ShowGamePlayInstructions()
     {
         GPText.SetActive(true);
+        CCText.SetActive(false);
+        GetStartedText.SetActive(false);
+        DSText.SetActive(false);
+        MultiplayerText.SetActive(false);
+
+    }
+
+    public void ShowMultiplayerInstructions()
+    {
+        MultiplayerText.SetActive(true);
+        GPText.SetActive(false);
         CCText.SetActive(false);
         GetStartedText.SetActive(false);
         DSText.SetActive(false);

@@ -34,7 +34,7 @@ public class Board : MonoBehaviour
 	private int cropsBlue = 0;
 	private int cropsRed = 0;
 
-	private GameObject soldierCard;
+	public GameObject soldierCard;
 
 	private int baseBlueX;
 	private int baseBlueY;
@@ -110,9 +110,17 @@ public class Board : MonoBehaviour
                 SelectSoldierBlue(x, y);
                 if (soldierCard != null)
                 {
- 
-                    GenerateSoldierBlue(soldierCard, cardPlayed, x, y);
+                    cardPlayed = soldierCard.gameObject.GetComponent<OneCardManager>().cardAsset.name.ToString();
+                    Debug.Log(cardPlayed);
 
+                    GenerateSoldierBlue(soldierCard, cardPlayed, x, y);
+                    //Networking action
+                    msg = "CGSR|";
+                    msg += cardPlayed + "|";
+                    msg += x.ToString() + "|";
+                    msg += y.ToString();
+                    Debug.Log(msg);
+                    client.Send(msg);
                     //End networking action
                     //GenerateClientSoldierBlue(cardPlayed, baseBlueX, baseBlueY);
                     
@@ -137,10 +145,18 @@ public class Board : MonoBehaviour
                 SelectSoldierRed(x, y);
                 if (soldierCard != null)
                 {
-
+                    cardPlayed = soldierCard.gameObject.GetComponent<OneCardManager>().cardAsset.name.ToString();
                     //GenerateClientSoldierRed(cardPlayed, baseBlueX, baseBlueY);
+                    Debug.Log(cardPlayed);
                     GenerateSoldierRed(soldierCard, cardPlayed, x, y);
-
+                    //Networking action
+                    msg = "CGSR|";
+                    msg += cardPlayed + "|";
+                    msg += x.ToString() + "|";
+                    msg += y.ToString();
+                    Debug.Log(msg);
+                    client.Send(msg);
+                    //End networking action
                 }
             }
 				
@@ -181,7 +197,10 @@ public class Board : MonoBehaviour
 				playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
-
+                /*/Networking action
+                msg = "CTEC|";
+                client.Send(msg);
+                //End networking action*/
             }
             if (TurnManager.Instance.whoseTurn == playerRed && collider.gameObject.tag == "redCard" && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
             {
@@ -190,7 +209,10 @@ public class Board : MonoBehaviour
 				playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
-
+                /*/Networking action
+                msg = "CTEC|";
+                client.Send(msg);
+                //End networking action*/
             }
         }
 
@@ -224,6 +246,13 @@ public class Board : MonoBehaviour
         //test function
             isCreated = false;
             soldierCard = Soldier;
+        CardAsset asset;
+        asset=Resources.Load("Ninja") as CardAsset;
+        soldierCard.GetComponent<OneSoldierManager>().cardAsset = asset;
+        Debug.Log("Part 2");
+        string ca = asset.name.ToString();
+        Debug.Log(ca);
+
 
     }
 
@@ -295,6 +324,12 @@ public class Board : MonoBehaviour
 
     public void GenerateClientSoldierBlue(string cardName, int x, int y)
     {
+        isCreated = false;
+        CardAsset ca = Resources.Load(cardName) as CardAsset;
+        soldierCard.GetComponent<OneCardManager>().cardAsset = ca;
+        soldierCard.gameObject.GetComponent<OneCardManager>().ReadCardFromAsset();
+        soldierCard.gameObject.GetComponent<OneSoldierManager>().ReadSoldierFromAsset();
+        Debug.Log("First is" + soldierCard.GetComponent<OneCardManager>().cardAsset.ManaCost);
         GenerateSoldierBlue(soldierCard, cardName, x, y);     
 
     }
@@ -332,6 +367,12 @@ public class Board : MonoBehaviour
 
     public void GenerateClientSoldierRed(string cardName, int x, int y)
     {
+        isCreated = false;
+        CardAsset ca = Resources.Load(cardName) as CardAsset;
+        soldierCard.GetComponent<OneCardManager>().cardAsset = ca;
+        soldierCard.gameObject.GetComponent<OneCardManager>().ReadCardFromAsset();
+        soldierCard.gameObject.GetComponent<OneSoldierManager>().ReadSoldierFromAsset();
+        Debug.Log("First is" + soldierCard.GetComponent<OneCardManager>().cardAsset.ManaCost);
         GenerateSoldierRed(soldierCard, cardName, x, y);
     }
 

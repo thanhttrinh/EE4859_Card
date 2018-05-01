@@ -12,7 +12,12 @@ public class TurnManager : MonoBehaviour {
 
 	private TimerVisual timer;
 
-	private Player _whoseTurn;
+    public Client client;
+
+    public string msg;
+    private bool isBlueplayer;
+
+    private Player _whoseTurn;
 	public Player whoseTurn{
 		get{ return _whoseTurn; }
 		set{
@@ -32,7 +37,9 @@ public class TurnManager : MonoBehaviour {
 		Players = GameObject.FindObjectsOfType<Player>();
 		Instance = this;
 		timer = GetComponent<TimerVisual>();
-	}
+        client = FindObjectOfType<Client>();
+        isBlueplayer = client.isHost;
+    }
 
 	void Start(){
 		OnGameStart ();
@@ -48,7 +55,10 @@ public class TurnManager : MonoBehaviour {
 			p.LoadPlayerInfoFromAsset ();
 			p.TransmitInfoAboutPlayer ();
 			p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
-			if(p.PlayerColor == "red"){
+            if (isBlueplayer == true)
+
+
+            if (p.PlayerColor == "red"){
 				ColorText.text = string.Format("PLAYER RED");
 				ColorText.color = new Color(255.0f, 62.0f, 62.0f, 255.0f);
 			}
@@ -57,10 +67,28 @@ public class TurnManager : MonoBehaviour {
 				ColorText.color = new Color(62.0f, 151.0f, 255.0f, 255.0f);
 			}
 		}
-			
-		int rng = Random.Range(0, 1);
-		Player whoGoesFirst = Players[rng];
-		Player whoGoesSecond = whoGoesFirst.otherPlayer;
+
+        int rng = Random.Range(0, 1);
+        if (isBlueplayer == true)
+        {
+            rng=0;
+            Players[0].PlayerColor = "blue";
+            Players[1].PlayerColor = "red";
+
+        }
+        if (isBlueplayer == false)
+        {
+            rng=1;
+            Players[0].PlayerColor = "blue";
+            Players[1].PlayerColor = "red";
+
+        }
+        Player whoGoesFirst = Players[rng];
+        //Player whoGoesFirst = Players[0];
+        Players[0].PlayerColor = "blue";
+        Players[1].PlayerColor = "red";
+
+        Player whoGoesSecond = whoGoesFirst.otherPlayer;
 
 		Debug.Log ("first is " + whoGoesFirst.name.ToString ());
 		int initDraw = 3;
@@ -75,7 +103,15 @@ public class TurnManager : MonoBehaviour {
 		new StartATurnCommand(whoGoesFirst).AddToQueue();
 	}
 
-	public void EndTurn(){
+    public void MultiplayerEndTurn()
+    {
+        msg = "CETN|";
+        client.Send(msg);
+        EndTurn();
+    }
+
+
+    public void EndTurn(){
 		Draggable[] AllDraggableObjects = GameObject.FindObjectsOfType<Draggable> ();
 		foreach (Draggable d in AllDraggableObjects)
 			d.CancelDrag ();

@@ -54,7 +54,7 @@ public class Board : MonoBehaviour
         client = FindObjectOfType<Client>();
         isBlueplayer=client.isHost;
         Instance = this;
-        deathMark.SetActive(false);
+       //deathMark.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -130,8 +130,10 @@ public class Board : MonoBehaviour
                     
 
                 }
-                    
-                
+
+                GenerateCrop(cropCard, cardPlayed, x, y);
+
+
             }
             if (TurnManager.Instance.whoseTurn == playerBlue && isBlueplayer == false)
             {
@@ -167,11 +169,13 @@ public class Board : MonoBehaviour
 
                 }
 
-                    
-                
+                GenerateCrop(cropCard, cardPlayed, x, y);
+
+
+
             }
 				
-			GenerateCrop (cropCard, cardPlayed, x, y);
+			
 
 		}
 		if (Input.GetMouseButtonUp (0)) 
@@ -586,7 +590,6 @@ public class Board : MonoBehaviour
             //End networking action
             
         }
-        Destroy(go.gameObject);
 
     }
 

@@ -17,6 +17,8 @@ public class TurnManager : MonoBehaviour {
     public string msg;
     private bool isBlueplayer;
 
+    public bool sender = false;
+
     private Player _whoseTurn;
 	public Player whoseTurn{
 		get{ return _whoseTurn; }
@@ -105,9 +107,11 @@ public class TurnManager : MonoBehaviour {
 
     public void MultiplayerEndTurn()
     {
-        msg = "CETN|";
-        client.Send(msg);
-        EndTurn();
+        if (sender == false)
+        {
+            msg = "CETN|";
+            client.Send(msg);
+        }
     }
 
 
@@ -117,8 +121,7 @@ public class TurnManager : MonoBehaviour {
 			d.CancelDrag ();
 		timer.StopTimer ();
 		whoseTurn.OnTurnEnd ();
-
-		new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
+        new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
 	}
 			
 	public void StopTheTimer(){

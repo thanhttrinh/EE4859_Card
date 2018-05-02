@@ -89,6 +89,9 @@ public class Client : MonoBehaviour {
             case "SMOV":
                 Board.Instance.TryMove(int.Parse(aData[1]), int.Parse(aData[2]), int.Parse(aData[3]), int.Parse(aData[4]));
                 break;
+            case "SATK":
+                Board.Instance.TryAttack(int.Parse(aData[1]), int.Parse(aData[2]), int.Parse(aData[3]), int.Parse(aData[4]));
+                break;
             case "SGBB":
                 Board.Instance.GenerateBaseBlue(int.Parse(aData[1]), int.Parse(aData[2]));
                 break;
@@ -101,9 +104,13 @@ public class Client : MonoBehaviour {
             case "SGSR":
                 Board.Instance.GenerateClientSoldierRed((aData[1].ToString()), int.Parse(aData[2]), int.Parse(aData[3]));
                 break;
+            case "SGGC":
+                Board.Instance.GenerateCropClient((aData[1].ToString()), int.Parse(aData[2]), int.Parse(aData[3]));
+                break;
             case "SSSB":
                 Board.Instance.SelectSoldierBlue(int.Parse(aData[1]), int.Parse(aData[2]));
                 break;
+
             case "SSSR":
                 Board.Instance.SelectSoldierRed(int.Parse(aData[1]), int.Parse(aData[2]));
                 break;

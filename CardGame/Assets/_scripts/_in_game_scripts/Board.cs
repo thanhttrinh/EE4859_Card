@@ -103,9 +103,9 @@ public class Board : MonoBehaviour
                 msg += y.ToString();
 
                 client.Send(msg);
-                    
-                                     }
                 //End networking action
+                                     }
+
 
                 //if(selectedSoldierCard == null)
                 SelectSoldierBlue(x, y);
@@ -127,8 +127,9 @@ public class Board : MonoBehaviour
                     
 
                 }
-
-			}
+                    
+                
+            }
             if (TurnManager.Instance.whoseTurn == playerBlue && isBlueplayer == false)
             {
                 if (!baseRedCreated)
@@ -150,6 +151,7 @@ public class Board : MonoBehaviour
                     cardPlayed = soldierCard.gameObject.GetComponent<OneCardManager>().cardAsset.name.ToString();
                     //GenerateClientSoldierRed(cardPlayed, baseBlueX, baseBlueY);
                     Debug.Log(cardPlayed);
+                    GenerateSoldier(soldierCard, cardPlayed, x, y);
                     //Networking action
                     msg = "CGSR|";
                     msg += cardPlayed + "|";
@@ -158,20 +160,21 @@ public class Board : MonoBehaviour
                     Debug.Log(msg);
                     client.Send(msg);
                     //End networking action
-                    GenerateSoldier(soldierCard, cardPlayed, x, y);
+                   
 
                 }
+
+                    
+                
             }
 				
-			GenerateCropBlue (cropCard, cardPlayed, x, y);
-			GenerateCropRed (cropCard, cardPlayed, x, y);
+			GenerateCrop (cropCard, cardPlayed, x, y);
 
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
             if (selectedSoldierCard != null)
             {
-                TryMove((int)startDrag.x, (int)startDrag.y, x, y);
                 //Networking action
                 msg = "CMOV|";
                 msg += startDrag.x.ToString() + "|";
@@ -180,6 +183,8 @@ public class Board : MonoBehaviour
                 msg += y.ToString();
                 client.Send(msg);
                 //End networking action
+                TryMove((int)startDrag.x, (int)startDrag.y, x, y);
+
             }
         }
 
@@ -535,7 +540,87 @@ public class Board : MonoBehaviour
         }
 	}
 
-	public void GenerateCropRed(GameObject go, string cardName, int x, int y)
+    public void GenerateCrop(GameObject go, string cardName, int x, int y)
+    {
+        if (cropsBlue != 0)
+        {
+            if (isBlueplayer == true)
+            {
+                if (x < 0 || x > 6 || y < 0 || y > 2)
+                    return;
+            }
+            if (isBlueplayer == false)
+            {
+                if (x < 0 || x > 6 || y < 3 || y > 6)
+                    return;
+            }
+            GameObject newGO = Instantiate(Crop) as GameObject;
+            newGO.transform.position = new Vector3(x, y, 0);
+            newGO.gameObject.GetComponent<OneCropManager>().cardAsset = go.gameObject.GetComponent<OneCardManager>().cardAsset;
+            newGO.gameObject.GetComponent<OneCropManager>().ReadCropFromAsset();
+
+            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<CropPreview>().PreviewUnit = go.gameObject.GetComponent<CropPreview>().PreviewUnit;
+            newGO.gameObject.GetComponent<CropPreview>().PreviewText = go.gameObject.GetComponent<CropPreview>().PreviewText;
+            //newGO.transform.SetParent (this.gameObject.transform, false);
+            //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
+            GameUnits c = newGO.GetComponent<GameUnits>();
+            cards[x, y] = c;
+            
+            //isCreated = true;
+
+            cropsBlue--;
+            //Debug.Log (cropsBlue);
+
+            //Networking action
+            msg = "CGGC|";
+            msg += cardName + "|";
+            msg += x.ToString() + "|";
+            msg += y.ToString();
+            Debug.Log(msg);
+            client.Send(msg);
+            //End networking action
+            
+        }
+        Destroy(go.gameObject);
+
+    }
+
+    public void GenerateCropClient(string cardName, int x, int y)
+    {
+        CardAsset ca = Resources.Load("_crops/" + cardName) as CardAsset;
+        if (ca != null)
+        {
+            Debug.Log("Asset Present");
+        }
+        else
+        {
+            Debug.Log("No Asset");
+        }
+        GameObject goTest = Instantiate(Crop) as GameObject;
+        goTest.AddComponent<OneCropManager>();
+        goTest.AddComponent<CropPreview>();
+        goTest.GetComponent<OneCropManager>().cardAsset = ca;
+
+        if (goTest.GetComponent<OneCropManager>().cardAsset != null)
+        {
+            goTest.GetComponent<OneCropManager>().ReadCropFromAsset();
+        }
+        if (cards[x, y] != null)
+            return;
+        GameObject newGO = Instantiate(Crop) as GameObject;
+        newGO.transform.position = new Vector3(x, y, 0);
+        newGO.gameObject.GetComponent<OneCropManager>().cardAsset = goTest.gameObject.GetComponent<OneCropManager>().cardAsset;
+        newGO.gameObject.GetComponent<OneCropManager>().ReadCropFromAsset();
+        cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+        newGO.gameObject.GetComponent<CropPreview>().PreviewUnit = goTest.gameObject.GetComponent<CropPreview>().PreviewUnit;
+        newGO.gameObject.GetComponent<CropPreview>().PreviewText = goTest.gameObject.GetComponent<CropPreview>().PreviewText;
+        GameUnits c = newGO.GetComponent<GameUnits>();
+        cards[x, y] = c;
+    }
+
+    public void GenerateCropRed(GameObject go, string cardName, int x, int y)
 	{
 		if (cropsRed != 0) {
 			if (x < 0 || x > 6 || y < 3 || y > 6)
@@ -599,6 +684,13 @@ public class Board : MonoBehaviour
 
 	}
 
+    public void TryAttack(int x1, int y1, int x2, int y2)
+    {
+        selectedSoldierCard = cards[x1, y1];
+        selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
+        selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);
+    }
+
 	public void TryMove(int x1, int y1, int x2, int y2)
 	{
 		startDrag = new Vector2 (x1, y1);
@@ -655,6 +747,14 @@ public class Board : MonoBehaviour
 
                 if (selectedSoldierCard.GetComponent<OneSoldierManager>().isBlue)
                 {
+                    //Networking action
+                    msg = "CATK|";
+                    msg += x1 + "|";
+                    msg += y1.ToString() + "|";
+                    msg += x2.ToString() + "|";
+                    msg += y2.ToString();
+                    client.Send(msg);
+                    //End networking action
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);
                 } else if(selectedSoldierCard.GetComponent<OneSoldierManager>().isRed)
                 {

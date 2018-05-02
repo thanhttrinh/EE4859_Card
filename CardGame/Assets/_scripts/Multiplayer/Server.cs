@@ -154,6 +154,10 @@ public class Server : MonoBehaviour {
                 Broadcast("SMOV|" + aData[1] + "|" + aData[2] + "|" + aData[3] + "|" + aData[4], clients);
                 break;
 
+            case "CATK":
+                Broadcast("SATK|" + aData[1] + "|" + aData[2] + "|" + aData[3] + "|" + aData[4], clients);
+                break;
+
             case "CMSG":
                 Broadcast("SMSG|" + c.clientName + " : " + aData[1], clients);
                 break;
@@ -174,6 +178,9 @@ public class Server : MonoBehaviour {
                 break;
             case "CSSB":
                 Broadcast("SSSB|" + aData[1] + "|" + aData[2], clients);
+                break;
+            case "CGGC":
+                Broadcast("SGGC|" + aData[1] + "|" + aData[2] + "|" + aData[3], clients);
                 break;
             case "CSSR":
                 Broadcast("SSSR|" + aData[1] + "|" + aData[2], clients);

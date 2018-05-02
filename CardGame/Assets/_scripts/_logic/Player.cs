@@ -120,12 +120,6 @@ public class Player : MonoBehaviour, ICharacter {
 		GetComponent<TurnMaker> ().StopAllCoroutines ();
 	}
 
-	public void GetBonusMana(int amount){
-		bonusManaThisTurn += amount;
-		manaThisTurn += amount;
-		manaLeft += amount;
-	}
-
 	//draw a card
 	public void DrawACard(bool fast = false){
 		if (deck.cards.Count > 0) {

@@ -11,8 +11,8 @@ public class PlayerTurnMaker : TurnMaker {
 			MessageManager.Instance.ShowMessage ("Your Turn", 2.0f);
 		}
 		else if (player.PlayerColor == "red") {
-			new ShowMessageCommand ("Enemy Turn", 2.0f).AddToQueue ();
-			MessageManager.Instance.ShowMessage ("Enemy Turn", 2.0f);
+			new ShowMessageCommand ("Enemy's Turn", 2.0f).AddToQueue ();
+			MessageManager.Instance.ShowMessage ("Enemy's Turn", 2.0f);
 		}
 		player.DrawACard();
 	}

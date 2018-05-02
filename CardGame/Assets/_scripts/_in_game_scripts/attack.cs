@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections;
 
 public class attack : MonoBehaviour
 {
     public GameObject source;
+   
 
     private void Start()
     {
@@ -237,6 +239,8 @@ public class attack : MonoBehaviour
             }
             if (atkHP <= 0)
             {
+                //put death code here
+                StartCoroutine(Death());
                 Destroy(board[atkx, atky].gameObject);
                 board[atkx, atky] = null;
             }
@@ -249,4 +253,9 @@ public class attack : MonoBehaviour
         
 
 	}
+
+    public IEnumerator Death(){
+        Board.Instance.deathMark.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+    }
 }

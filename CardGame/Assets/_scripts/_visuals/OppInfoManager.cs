@@ -14,7 +14,7 @@ public class OppInfoManager : MonoBehaviour {
 
 	void Update(){
 		if(Base.Instance != null)
-			redHP.text = BaseHP.text;
+			redHP.text = Base.Instance.BaseRedHP.ToString();
 		redDeckAmount.text = redPlayer.deck.cards.Count.ToString();
 		redHandAmount.text = redPlayer.hand.CardsInHand.Count.ToString();
 	}

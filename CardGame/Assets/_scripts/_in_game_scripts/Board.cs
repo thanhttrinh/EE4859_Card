@@ -34,14 +34,17 @@ public class Board : MonoBehaviour
 	private int cropsBlue = 0;
 	private int cropsRed = 0;
 
-	private GameObject soldierCard;
+	public GameObject soldierCard;
 
 	private int baseBlueX;
 	private int baseBlueY;
 	private int baseRedX;
 	private int baseRedY;
+    private bool isBlueplayer;
 
     public string cardPlayed;
+
+     public GameObject deathMark;
 
 
     public Client client;
@@ -49,7 +52,9 @@ public class Board : MonoBehaviour
 
     void Awake(){
         client = FindObjectOfType<Client>();
+        isBlueplayer=client.isHost;
         Instance = this;
+        deathMark.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -91,7 +96,7 @@ public class Board : MonoBehaviour
 		{
             //Debug.Log (x + ", " + y);
 
-            if (TurnManager.Instance.whoseTurn == playerBlue)
+            if (TurnManager.Instance.whoseTurn == playerBlue && isBlueplayer == true)
             {
                 if (!baseBlueCreated) { 
                 GenerateBaseBlue(x, y);
@@ -101,33 +106,35 @@ public class Board : MonoBehaviour
                 msg += y.ToString();
 
                 client.Send(msg);
-                    
-                                     }
                 //End networking action
+                                     }
+
 
                 //if(selectedSoldierCard == null)
-
                 SelectSoldierBlue(x, y);
                 if (soldierCard != null)
                 {
+                    cardPlayed = soldierCard.gameObject.GetComponent<OneCardManager>().cardAsset.name.ToString();
+                    Debug.Log(cardPlayed);
+
+                    GenerateSoldier(soldierCard, cardPlayed, x, y);
                     //Networking action
-                    msg = "CGSR|";
-                    msg += cardPlayed.ToString() + "|";
+                    msg = "CGSB|";
+                    msg += cardPlayed + "|";
                     msg += x.ToString() + "|";
                     msg += y.ToString();
                     Debug.Log(msg);
                     client.Send(msg);
                     //End networking action
-                    GenerateSoldierBlue(soldierCard, cardPlayed, x, y);
-
-                    //End networking action
                     //GenerateClientSoldierBlue(cardPlayed, baseBlueX, baseBlueY);
                     
 
                 }
-
-			}
-			if (TurnManager.Instance.whoseTurn == playerRed) {
+                    
+                
+            }
+            if (TurnManager.Instance.whoseTurn == playerBlue && isBlueplayer == false)
+            {
                 if (!baseRedCreated)
                 {
                     GenerateBaseRed(x, y);
@@ -141,32 +148,36 @@ public class Board : MonoBehaviour
                 }
                 //if(selectedSoldierCard == null)
 
-                SelectSoldierRed(x, y);
+                SelectSoldierBlue(x, y);
                 if (soldierCard != null)
                 {
-
+                    cardPlayed = soldierCard.gameObject.GetComponent<OneCardManager>().cardAsset.name.ToString();
                     //GenerateClientSoldierRed(cardPlayed, baseBlueX, baseBlueY);
-                    GenerateSoldierRed(soldierCard, cardPlayed, x, y);
+                    Debug.Log(cardPlayed);
+                    GenerateSoldier(soldierCard, cardPlayed, x, y);
                     //Networking action
                     msg = "CGSR|";
-                    msg += cardPlayed.ToString() + "|";
+                    msg += cardPlayed + "|";
                     msg += x.ToString() + "|";
                     msg += y.ToString();
                     Debug.Log(msg);
                     client.Send(msg);
                     //End networking action
+                   
+
                 }
+
+                    
+                
             }
 				
-			GenerateCropBlue (cropCard, cardPlayed, x, y);
-			GenerateCropRed (cropCard, cardPlayed, x, y);
+			GenerateCrop (cropCard, cardPlayed, x, y);
 
 		}
 		if (Input.GetMouseButtonUp (0)) 
 		{
             if (selectedSoldierCard != null)
             {
-                TryMove((int)startDrag.x, (int)startDrag.y, x, y);
                 //Networking action
                 msg = "CMOV|";
                 msg += startDrag.x.ToString() + "|";
@@ -175,6 +186,8 @@ public class Board : MonoBehaviour
                 msg += y.ToString();
                 client.Send(msg);
                 //End networking action
+                TryMove((int)startDrag.x, (int)startDrag.y, x, y);
+
             }
         }
 
@@ -195,10 +208,13 @@ public class Board : MonoBehaviour
 				playerBlue.ManaLeft = playerBlue.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
-                //Networking action
+                /*/Networking action
                 msg = "CTEC|";
                 client.Send(msg);
-                //End networking action
+                //End networking action*/
+            }
+            if(TurnManager.Instance.whoseTurn == playerBlue && collider.gameObject.tag == "redCard"){
+                return;
             }
             if (TurnManager.Instance.whoseTurn == playerRed && collider.gameObject.tag == "redCard" && playerRed.ManaLeft >= collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost)
             {
@@ -207,10 +223,10 @@ public class Board : MonoBehaviour
 				playerRed.ManaLeft = playerRed.ManaLeft - collider.gameObject.GetComponent<OneCardManager>().cardAsset.ManaCost;
 				soldierCard = collider.gameObject;
 				collider.gameObject.SetActive(false);
-                //Networking action
+                /*/Networking action
                 msg = "CTEC|";
                 client.Send(msg);
-                //End networking action
+                //End networking action*/
             }
         }
 
@@ -244,6 +260,13 @@ public class Board : MonoBehaviour
         //test function
             isCreated = false;
             soldierCard = Soldier;
+        CardAsset asset;
+        asset=Resources.Load("Ninja") as CardAsset;
+        soldierCard.GetComponent<OneSoldierManager>().cardAsset = asset;
+        Debug.Log("Part 2");
+        string ca = asset.name.ToString();
+        Debug.Log(ca);
+
 
     }
 
@@ -282,7 +305,45 @@ public class Board : MonoBehaviour
 		baseRedCreated = true;
 	}
 
-	public void GenerateSoldierBlue(GameObject go, string cardName, int x, int y)
+    public void GenerateSoldier(GameObject go, string cardName, int x, int y)
+    {
+        if (isCreated == false)
+        {
+            if (isBlueplayer == true)
+            {
+                if (cards[x, y] != null || ((x >= baseBlueX + 1 || x <= baseBlueX - 1) && (y != baseBlueY)) || ((y >= baseBlueY + 1 || y <= baseBlueY - 1) && (x != baseBlueX)))
+                    return;
+            }
+            if (isBlueplayer == false)
+            {
+                if (cards[x, y] != null || ((x >= baseRedX + 1 || x <= baseRedX - 1) && (y != baseRedY)) || ((y >= baseRedY + 1 || y <= baseRedY - 1) && (x != baseRedX)))
+                    return;
+            }
+
+                GameObject newGO = Instantiate(Soldier) as GameObject;
+            //if (cards [x, y] == null && ((x == baseBlueX + 1 || x == baseBlueX - 1) && (y == baseBlueY)) || ((y == baseBlueY + 1 || y == baseBlueY - 1) && (x == baseBlueX)))
+            newGO.transform.position = new Vector3(x, y, 0);
+            newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset = go.gameObject.GetComponent<OneCardManager>().cardAsset;
+            newGO.gameObject.GetComponent<OneSoldierManager>().ReadSoldierFromAsset();
+                newGO.gameObject.GetComponent<OneSoldierManager>().isBlue = true;
+            cardName = newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<SoldierPreview>().PreviewUnit = go.gameObject.GetComponent<SoldierPreview>().PreviewUnit;
+            newGO.gameObject.GetComponent<SoldierPreview>().PreviewText = go.gameObject.GetComponent<SoldierPreview>().PreviewText;
+            //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
+            GameUnits s = newGO.GetComponent<GameUnits>();
+            cards[x, y] = s;
+            soldierList.Add(s);
+            isCreated = true;
+            soldierCard = null;
+            Destroy(go.gameObject);
+
+        }
+        //if(soldiers[x,y] != null)
+        //Debug.Log (soldiers[x,y].cardAsset.name);
+    }
+
+    public void GenerateSoldierBlue(GameObject go, string cardName, int x, int y)
 	{
 		if (isCreated == false) {
 			if (cards[x,y] != null || ((x >= baseBlueX + 1 || x <= baseBlueX - 1) && (y != baseBlueY)) || ((y >= baseBlueY + 1 || y <= baseBlueY - 1) && (x != baseBlueX)))
@@ -315,8 +376,60 @@ public class Board : MonoBehaviour
 
     public void GenerateClientSoldierBlue(string cardName, int x, int y)
     {
-        GenerateSoldierBlue(soldierCard, cardName, x, y);     
+        isCreated = false;
+        CardAsset ca = Resources.Load("_soldiers/" + cardName) as CardAsset;
+        if (ca != null)
+        {
+            Debug.Log("Asset Present");
+        }
+        else
+        {
+            Debug.Log("No Asset");
+        }
+        GameObject goTest = Instantiate(Soldier) as GameObject;
+        goTest.AddComponent<OneSoldierManager>();
+        goTest.AddComponent<SoldierPreview>();
+        goTest.AddComponent<OneCardManager>();
+        goTest.GetComponent<OneSoldierManager>().cardAsset = ca;
 
+        if (goTest.GetComponent<OneSoldierManager>().cardAsset != null)
+        {
+            goTest.GetComponent<OneSoldierManager>().ReadSoldierFromAsset();
+            goTest.GetComponent<SoldierPreview>().NameText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
+            goTest.GetComponent<SoldierPreview>().ManaText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.ManaCost.ToString();
+            goTest.GetComponent<SoldierPreview>().AttackText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.Attack.ToString();
+            goTest.GetComponent<SoldierPreview>().HealthText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.MaxHealth.ToString();
+            goTest.GetComponent<SoldierPreview>().RangeText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.SoldierRange.ToString();
+            goTest.GetComponent<SoldierPreview>().MovementText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.Movement.ToString();
+        }
+        else Debug.Log("No Asset");
+        if (isCreated == false)
+        {
+            if (cards[x, y] != null)
+                return;
+
+            GameObject newGO = Instantiate(Soldier) as GameObject;
+            //if (cards [x, y] == null && ((x == baseRedX + 1 || x == baseRedX - 1) && (y == baseRedY)) || ((y == baseRedY + 1 || y == baseRedY - 1) && (x == baseRedX)))
+            newGO.transform.position = new Vector3(x, y, 0);
+            newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset = goTest.gameObject.GetComponent<OneSoldierManager>().cardAsset;
+            newGO.gameObject.GetComponent<OneSoldierManager>().ReadSoldierFromAsset();
+        
+                newGO.gameObject.GetComponent<OneSoldierManager>().isRed = true;
+
+            cardName = newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<SoldierPreview>().PreviewUnit = goTest.gameObject.GetComponent<SoldierPreview>().PreviewUnit;
+            newGO.gameObject.GetComponent<SoldierPreview>().PreviewText = goTest.gameObject.GetComponent<SoldierPreview>().PreviewText;
+            //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
+            GameUnits s = newGO.GetComponent<GameUnits>();
+            cards[x, y] = s;
+            soldierList.Add(s);
+            isCreated = true;
+            soldierCard = null;
+            Destroy(goTest.gameObject);
+
+        }
+        //GenerateSoldierBlue(goTest, cardName, x, y);
     }
 
     public void GenerateSoldierRed(GameObject go, string cardName, int x, int y)
@@ -331,8 +444,7 @@ public class Board : MonoBehaviour
 			newGO.transform.position = new Vector3 (x, y, 0);
 			newGO.gameObject.GetComponent<OneSoldierManager> ().cardAsset = go.gameObject.GetComponent<OneCardManager> ().cardAsset;
 			newGO.gameObject.GetComponent<OneSoldierManager> ().ReadSoldierFromAsset ();
-			newGO.gameObject.GetComponent<OneSoldierManager> ().isRed = true;
-
+            newGO.gameObject.GetComponent<OneSoldierManager>().isRed = true;
             cardName = newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
 
             newGO.gameObject.GetComponent<SoldierPreview> ().PreviewUnit = go.gameObject.GetComponent<SoldierPreview> ().PreviewUnit;
@@ -352,7 +464,58 @@ public class Board : MonoBehaviour
 
     public void GenerateClientSoldierRed(string cardName, int x, int y)
     {
-        GenerateSoldierRed(soldierCard, cardName, x, y);
+        isCreated = false;
+        CardAsset ca = Resources.Load("_soldiers/" + cardName) as CardAsset;
+        if (ca != null)
+        {
+            Debug.Log("Asset Present");
+        }
+        else
+        {
+            Debug.Log("No Asset");
+        }
+        GameObject goTest = Instantiate(Soldier) as GameObject;
+        goTest.AddComponent<OneSoldierManager>();
+        goTest.AddComponent<SoldierPreview>();
+        goTest.GetComponent<OneSoldierManager>().cardAsset = ca;
+
+        if (goTest.GetComponent<OneSoldierManager>().cardAsset != null)
+        {
+            goTest.GetComponent<OneSoldierManager>().ReadSoldierFromAsset();
+            goTest.GetComponent<SoldierPreview>().NameText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
+            goTest.GetComponent<SoldierPreview>().ManaText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.ManaCost.ToString();
+            goTest.GetComponent<SoldierPreview>().AttackText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.Attack.ToString();
+            goTest.GetComponent<SoldierPreview>().HealthText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.MaxHealth.ToString();
+            goTest.GetComponent<SoldierPreview>().RangeText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.SoldierRange.ToString();
+            goTest.GetComponent<SoldierPreview>().MovementText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.Movement.ToString();
+        }
+        else Debug.Log("No Asset");
+        if (isCreated == false)
+        {
+            if (cards[x, y] != null)
+                return;
+
+            GameObject newGO = Instantiate(Soldier) as GameObject;
+            //if (cards [x, y] == null && ((x == baseRedX + 1 || x == baseRedX - 1) && (y == baseRedY)) || ((y == baseRedY + 1 || y == baseRedY - 1) && (x == baseRedX)))
+            newGO.transform.position = new Vector3(x, y, 0);
+            newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset = goTest.gameObject.GetComponent<OneSoldierManager>().cardAsset;
+            newGO.gameObject.GetComponent<OneSoldierManager>().ReadSoldierFromAsset();
+            newGO.gameObject.GetComponent<OneSoldierManager>().isRed = true;
+
+            cardName = newGO.gameObject.GetComponent<OneSoldierManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<SoldierPreview>().PreviewUnit = goTest.gameObject.GetComponent<SoldierPreview>().PreviewUnit;
+            newGO.gameObject.GetComponent<SoldierPreview>().PreviewText = goTest.gameObject.GetComponent<SoldierPreview>().PreviewText;
+            //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
+            GameUnits s = newGO.GetComponent<GameUnits>();
+            cards[x, y] = s;
+            soldierList.Add(s);
+            isCreated = true;
+            soldierCard = null;
+            Destroy(goTest.gameObject);
+
+        }
+        //GenerateSoldierRed(goTest, cardName, x, y);
     }
 
     public void GenerateCropBlue(GameObject go, string cardName, int x, int y)
@@ -380,7 +543,87 @@ public class Board : MonoBehaviour
         }
 	}
 
-	public void GenerateCropRed(GameObject go, string cardName, int x, int y)
+    public void GenerateCrop(GameObject go, string cardName, int x, int y)
+    {
+        if (cropsBlue != 0)
+        {
+            if (isBlueplayer == true)
+            {
+                if (x < 0 || x > 6 || y < 0 || y > 2)
+                    return;
+            }
+            if (isBlueplayer == false)
+            {
+                if (x < 0 || x > 6 || y < 3 || y > 6)
+                    return;
+            }
+            GameObject newGO = Instantiate(Crop) as GameObject;
+            newGO.transform.position = new Vector3(x, y, 0);
+            newGO.gameObject.GetComponent<OneCropManager>().cardAsset = go.gameObject.GetComponent<OneCardManager>().cardAsset;
+            newGO.gameObject.GetComponent<OneCropManager>().ReadCropFromAsset();
+
+            cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+
+            newGO.gameObject.GetComponent<CropPreview>().PreviewUnit = go.gameObject.GetComponent<CropPreview>().PreviewUnit;
+            newGO.gameObject.GetComponent<CropPreview>().PreviewText = go.gameObject.GetComponent<CropPreview>().PreviewText;
+            //newGO.transform.SetParent (this.gameObject.transform, false);
+            //Debug.Log (collider.gameObject.GetComponent<OneCardManager> ().cardAsset.name);
+            GameUnits c = newGO.GetComponent<GameUnits>();
+            cards[x, y] = c;
+            
+            //isCreated = true;
+
+            cropsBlue--;
+            //Debug.Log (cropsBlue);
+
+            //Networking action
+            msg = "CGGC|";
+            msg += cardName + "|";
+            msg += x.ToString() + "|";
+            msg += y.ToString();
+            Debug.Log(msg);
+            client.Send(msg);
+            //End networking action
+            
+        }
+        Destroy(go.gameObject);
+
+    }
+
+    public void GenerateCropClient(string cardName, int x, int y)
+    {
+        CardAsset ca = Resources.Load("_crops/" + cardName) as CardAsset;
+        if (ca != null)
+        {
+            Debug.Log("Asset Present");
+        }
+        else
+        {
+            Debug.Log("No Asset");
+        }
+        GameObject goTest = Instantiate(Crop) as GameObject;
+        goTest.AddComponent<OneCropManager>();
+        goTest.AddComponent<CropPreview>();
+        goTest.GetComponent<OneCropManager>().cardAsset = ca;
+
+        if (goTest.GetComponent<OneCropManager>().cardAsset != null)
+        {
+            goTest.GetComponent<OneCropManager>().ReadCropFromAsset();
+        }
+        if (cards[x, y] != null)
+            return;
+        GameObject newGO = Instantiate(Crop) as GameObject;
+        newGO.transform.position = new Vector3(x, y, 0);
+        newGO.gameObject.GetComponent<OneCropManager>().cardAsset = goTest.gameObject.GetComponent<OneCropManager>().cardAsset;
+        newGO.gameObject.GetComponent<OneCropManager>().ReadCropFromAsset();
+        cardName = newGO.gameObject.GetComponent<OneCropManager>().cardAsset.name.ToString();
+        newGO.gameObject.GetComponent<CropPreview>().PreviewUnit = goTest.gameObject.GetComponent<CropPreview>().PreviewUnit;
+        newGO.gameObject.GetComponent<CropPreview>().PreviewText = goTest.gameObject.GetComponent<CropPreview>().PreviewText;
+        GameUnits c = newGO.GetComponent<GameUnits>();
+        cards[x, y] = c;
+    }
+
+    public void GenerateCropRed(GameObject go, string cardName, int x, int y)
 	{
 		if (cropsRed != 0) {
 			if (x < 0 || x > 6 || y < 3 || y > 6)
@@ -417,13 +660,6 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-            //Networking action
-            msg = "CSSB|";
-            msg += x.ToString() + "|";
-            msg += y.ToString();
-
-            client.Send(msg);
-            //End networking action
             Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
@@ -443,19 +679,20 @@ public class Board : MonoBehaviour
 		{
 			selectedSoldierCard = s;
 			startDrag = mouseOver;
-            //Networking action
-            msg = "CSSR|";
-            msg += x.ToString() + "|";
-            msg += y.ToString();
 
-            client.Send(msg);
-            //End networking action
             Debug.Log(selectedSoldierCard.gameObject.GetComponent<OneSoldierManager>().cardAsset.name);
 		}
 		else
 			Debug.Log("nothing there");
 
 	}
+
+    public void TryAttack(int x1, int y1, int x2, int y2)
+    {
+        selectedSoldierCard = cards[x1, y1];
+        selectedSoldierCard.GetComponent<attack>().doAttack(playerRed, cards, x1, y1, x2, y2);
+        selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);
+    }
 
 	public void TryMove(int x1, int y1, int x2, int y2)
 	{
@@ -513,6 +750,14 @@ public class Board : MonoBehaviour
 
                 if (selectedSoldierCard.GetComponent<OneSoldierManager>().isBlue)
                 {
+                    //Networking action
+                    msg = "CATK|";
+                    msg += x1 + "|";
+                    msg += y1.ToString() + "|";
+                    msg += x2.ToString() + "|";
+                    msg += y2.ToString();
+                    client.Send(msg);
+                    //End networking action
                     selectedSoldierCard.GetComponent<attack>().doAttack(playerBlue, cards, x1, y1, x2, y2);
                 } else if(selectedSoldierCard.GetComponent<OneSoldierManager>().isRed)
                 {

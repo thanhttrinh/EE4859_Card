@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour {
-
+	public Text ColorText;
 	public static TurnManager Instance;
 
 	public static Player[] Players;
 
 	private TimerVisual timer;
 
-	private Player _whoseTurn;
+    public Client client;
+
+    public string msg;
+    private bool isBlueplayer;
+
+    public bool sender = false;
+
+    private Player _whoseTurn;
 	public Player whoseTurn{
 		get{ return _whoseTurn; }
 		set{
@@ -31,7 +39,9 @@ public class TurnManager : MonoBehaviour {
 		Players = GameObject.FindObjectsOfType<Player>();
 		Instance = this;
 		timer = GetComponent<TimerVisual>();
-	}
+        client = FindObjectOfType<Client>();
+        isBlueplayer = client.isHost;
+    }
 
 	void Start(){
 		OnGameStart ();
@@ -47,33 +57,71 @@ public class TurnManager : MonoBehaviour {
 			p.LoadPlayerInfoFromAsset ();
 			p.TransmitInfoAboutPlayer ();
 			p.PArea.PDeck.CardsInDeck = p.deck.cards.Count;
+            if (isBlueplayer == true)
+
+
+            if (p.PlayerColor == "red"){
+				ColorText.text = string.Format("PLAYER RED");
+				ColorText.color = new Color(255.0f, 62.0f, 62.0f, 255.0f);
+			}
+			else if(p.PlayerColor == "blue"){
+				ColorText.text = string.Format("PLAYER BLUE");
+				ColorText.color = new Color(62.0f, 151.0f, 255.0f, 255.0f);
+			}
 		}
-			
-		int rng = Random.Range(0, 2);
-		Player whoGoesFirst = Players[rng];
-		Player whoGoesSecond = whoGoesFirst.otherPlayer;
+
+        int rng = Random.Range(0, 1);
+        if (isBlueplayer == true)
+        {
+            rng=0;
+            Players[0].PlayerColor = "blue";
+            Players[1].PlayerColor = "red";
+
+        }
+        if (isBlueplayer == false)
+        {
+            rng=1;
+            Players[0].PlayerColor = "blue";
+            Players[1].PlayerColor = "red";
+
+        }
+        Player whoGoesFirst = Players[rng];
+        //Player whoGoesFirst = Players[0];
+        Players[0].PlayerColor = "blue";
+        Players[1].PlayerColor = "red";
+
+        Player whoGoesSecond = whoGoesFirst.otherPlayer;
 
 		Debug.Log ("first is " + whoGoesFirst.name.ToString ());
 		int initDraw = 3;
 		for(int i = 0; i < initDraw; i++){
 			whoGoesSecond.DrawACard(true);
-			Debug.Log (whoGoesSecond.name.ToString () + " drew a card");
+		//	Debug.Log (whoGoesSecond.name.ToString () + " drew a card");
 			whoGoesFirst.DrawACard(true);
-			Debug.Log (whoGoesFirst.name.ToString () + " drew a card");
+//			Debug.Log (whoGoesFirst.name.ToString () + " drew a card");
 		}
 
 		whoGoesSecond.DrawACard(true);
 		new StartATurnCommand(whoGoesFirst).AddToQueue();
 	}
 
-	public void EndTurn(){
+    public void MultiplayerEndTurn()
+    {
+        if (sender == false)
+        {
+            msg = "CETN|";
+            client.Send(msg);
+        }
+    }
+
+
+    public void EndTurn(){
 		Draggable[] AllDraggableObjects = GameObject.FindObjectsOfType<Draggable> ();
 		foreach (Draggable d in AllDraggableObjects)
 			d.CancelDrag ();
 		timer.StopTimer ();
 		whoseTurn.OnTurnEnd ();
-
-		new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
+        new StartATurnCommand(whoseTurn.otherPlayer).AddToQueue();
 	}
 			
 	public void StopTheTimer(){

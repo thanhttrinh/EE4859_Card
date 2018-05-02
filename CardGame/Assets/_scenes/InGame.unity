@@ -1759,6 +1759,7 @@ MonoBehaviour:
   ColorText: {fileID: 1226894663}
   client: {fileID: 0}
   msg: 
+  sender: 0
 --- !u!114 &476589533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4934,7 +4935,7 @@ MonoBehaviour:
   basesCreated: 0
   soldierCard: {fileID: 0}
   cardPlayed: 
-  deathMark: {fileID: 1955312053}
+  deathMark: {fileID: 0}
   client: {fileID: 0}
   msg: 
 --- !u!54 &1429678300
@@ -6011,7 +6012,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 476589532}
-        m_MethodName: EndTurn
+        m_MethodName: MultiplayerEndTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6512,11 +6513,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36146d257a91b4062b7a3bfc282179b4, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1955312053 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1107590479418700, guid: c46f85ea1d0d3ee46960e347a64e5d64,
-    type: 2}
-  m_PrefabInternal: {fileID: 1520569253}
 --- !u!1001 &1992880590
 Prefab:
   m_ObjectHideFlags: 0

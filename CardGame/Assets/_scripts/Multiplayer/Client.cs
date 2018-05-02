@@ -98,6 +98,9 @@ public class Client : MonoBehaviour {
             case "SGBR":
                 Board.Instance.GenerateBaseRed(int.Parse(aData[1]), int.Parse(aData[2]));
                 break;
+            case "SGBC":
+                Board.Instance.GenerateBaseClient(int.Parse(aData[1]), int.Parse(aData[2]));
+                break;
             case "SGSB":
                Board.Instance.GenerateClientSoldierBlue((aData[1].ToString()), int.Parse(aData[2]), int.Parse(aData[3]));
                 break;
@@ -107,6 +110,7 @@ public class Client : MonoBehaviour {
             case "SGGC":
                 Board.Instance.GenerateCropClient((aData[1].ToString()), int.Parse(aData[2]), int.Parse(aData[3]));
                 break;
+
             case "SSSB":
                 Board.Instance.SelectSoldierBlue(int.Parse(aData[1]), int.Parse(aData[2]));
                 break;
@@ -119,6 +123,9 @@ public class Client : MonoBehaviour {
                 break;
             case "SETN":
                 TurnManager.Instance.EndTurn();
+                break;
+            case "SABH":
+                BaseVisual.Instance.AvailableBaseHp(int.Parse(aData[1]), int.Parse(aData[2]));
                 break;
 
         }

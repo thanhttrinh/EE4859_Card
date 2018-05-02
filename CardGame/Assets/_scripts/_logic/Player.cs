@@ -86,6 +86,8 @@ public class Player : MonoBehaviour, ICharacter {
         }
 	}
 
+
+
 	//code for events to let soldiers know when to cause effects
 	public delegate void VoidWithNoArguments();
 	public event VoidWithNoArguments EndTurnEvent;

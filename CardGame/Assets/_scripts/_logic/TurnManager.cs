@@ -90,6 +90,8 @@ public class TurnManager : MonoBehaviour {
         Players[0].PlayerColor = "blue";
         Players[1].PlayerColor = "red";
 
+        
+
         Player whoGoesSecond = whoGoesFirst.otherPlayer;
 
 		Debug.Log ("first is " + whoGoesFirst.name.ToString ());

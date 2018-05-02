@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BaseVisual : MonoBehaviour {
-
+    public static BaseVisual Instance { set; get; }
     public Text ProgressBlueText;
 	public Text ProgressRedText;
     public PlayerAsset pAsset;
+    public Client client;
+    public string msg;
+    bool isBlueplayer;
     //public int availableHealth = Base.Instance.BaseHP;
 
     private int totalHP;
@@ -66,17 +69,39 @@ public class BaseVisual : MonoBehaviour {
 		}
 	}
 
+    void Awake()
+    {
+        client = FindObjectOfType<Client>();
+        isBlueplayer = client.isHost;
+        Instance = this;
+    }
+
     private void Update()
     {
         if(Base.Instance != null)
         {
-            TotalHP = pAsset.MaxHealth;
-			//if(Base.Instance.isBaseBlue)
-            	AvailableBlueHP = Base.Instance.BaseBlueHP;
-			//if(Base.Instance.isBaseRed)
-				AvailableRedHP = Base.Instance.BaseRedHP;
+            if (isBlueplayer == true)
+            {
+                AvailableBlueHP = Base.Instance.BaseBlueHP;
+                //if(Base.Instance.isBaseRed)
+                AvailableRedHP = Base.Instance.BaseRedHP;
+            }
+            //Networking action
+            msg = "CABH|";
+            msg += AvailableBlueHP.ToString() + "|";
+            msg += AvailableRedHP.ToString();
+            Debug.Log(msg);
+            client.Send(msg);
+            //End networking action
         }
+
+    }
+    public void AvailableBaseHp(int bluehp, int redhp)
+    {
+        AvailableBlueHP = bluehp;
+        //if(Base.Instance.isBaseRed)
+        AvailableRedHP = redhp;
         
     }
-
 }
+

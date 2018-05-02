@@ -99,15 +99,14 @@ public class Board : MonoBehaviour
             if (TurnManager.Instance.whoseTurn == playerBlue && isBlueplayer == true)
             {
                 if (!baseBlueCreated) { 
-                GenerateBaseBlue(x, y);
-                //Networking action
-                msg = "CGBB|";
-                msg += x.ToString() + "|";
-                msg += y.ToString();
-
-                client.Send(msg);
-                //End networking action
-                                     }
+                GenerateBasePlayer(x, y);
+                    //Networking action
+                    msg = "CGBC|";
+                    msg += x.ToString() + "|";
+                    msg += y.ToString();
+                    client.Send(msg);
+                    //End networking action
+                }
 
 
                 //if(selectedSoldierCard == null)
@@ -118,14 +117,23 @@ public class Board : MonoBehaviour
                     Debug.Log(cardPlayed);
 
                     GenerateSoldier(soldierCard, cardPlayed, x, y);
-                    //Networking action
-                    msg = "CGSB|";
-                    msg += cardPlayed + "|";
-                    msg += x.ToString() + "|";
-                    msg += y.ToString();
-                    Debug.Log(msg);
-                    client.Send(msg);
-                    //End networking action
+                    if (isBlueplayer == true)
+                    {
+                        if (((x >= baseBlueX + 1 || x <= baseBlueX - 1) && (y != baseBlueY)) || ((y >= baseBlueY + 1 || y <= baseBlueY - 1) && (x != baseBlueX)))
+                            Debug.Log("Invalid Move");
+                        else
+                        {
+                            //Networking action
+                            msg = "CGSB|";
+                            msg += cardPlayed + "|";
+                            msg += x.ToString() + "|";
+                            msg += y.ToString();
+                            Debug.Log(msg);
+                            client.Send(msg);
+                            //End networking action
+                        }
+                    }
+
                     //GenerateClientSoldierBlue(cardPlayed, baseBlueX, baseBlueY);
                     
 
@@ -137,12 +145,11 @@ public class Board : MonoBehaviour
             }
             if (TurnManager.Instance.whoseTurn == playerBlue && isBlueplayer == false)
             {
-                if (!baseRedCreated)
+                if (!baseBlueCreated)
                 {
-                    GenerateBaseRed(x, y);
+                    GenerateBasePlayer(x, y);
                     //Networking action
-                
-                    msg = "CGBR|";
+                    msg = "CGBC|";
                     msg += x.ToString() + "|";
                     msg += y.ToString();
                     client.Send(msg);
@@ -157,14 +164,24 @@ public class Board : MonoBehaviour
                     //GenerateClientSoldierRed(cardPlayed, baseBlueX, baseBlueY);
                     Debug.Log(cardPlayed);
                     GenerateSoldier(soldierCard, cardPlayed, x, y);
+                    if (isBlueplayer == false)
+                    {
+                        if (((x >= baseBlueX + 1 || x <= baseBlueX - 1) && (y != baseBlueY)) || ((y >= baseBlueY + 1 || y <= baseBlueY - 1) && (x != baseBlueX)))
+
+                            Debug.Log("Invalid Move");
+                        else
+                        {
+                            msg = "CGSR|";
+                            msg += cardPlayed + "|";
+                            msg += x.ToString() + "|";
+                            msg += y.ToString();
+                            Debug.Log(msg);
+                            client.Send(msg);
+                            //End networking action
+                        }
+                    }
                     //Networking action
-                    msg = "CGSR|";
-                    msg += cardPlayed + "|";
-                    msg += x.ToString() + "|";
-                    msg += y.ToString();
-                    Debug.Log(msg);
-                    client.Send(msg);
-                    //End networking action
+
                    
 
                 }
@@ -279,7 +296,44 @@ public class Board : MonoBehaviour
 	{
 	}
 
-	public void GenerateBaseBlue(int x, int y)
+    public void GenerateBasePlayer(int x, int y)
+    {
+        if (isBlueplayer == true)
+        {
+            if (x < 0 || x > 6 || y < 0 || y > 2)
+                return;
+        }
+        if (isBlueplayer == false)
+        {
+            if (x < 0 || x > 6 || y < 3 || y > 6)
+                return;
+        }
+        GameObject newGO = Instantiate(Base) as GameObject;
+        newGO.gameObject.GetComponent<Base>().isBaseBlue = true;
+        newGO.transform.position = new Vector3(x, y, 0);
+        GameUnits b = newGO.gameObject.GetComponent<GameUnits>();
+        baseBlueX = x;
+        baseBlueY = y;
+        baseList.Add(newGO.gameObject.GetComponent<Base>());
+        cards[x, y] = b;
+        baseBlueCreated = true;
+
+    }
+
+    public void GenerateBaseClient(int x, int y)
+    {
+        GameObject newGO = Instantiate(Base) as GameObject;
+        newGO.gameObject.GetComponent<Base>().isBaseRed = true;
+        newGO.transform.position = new Vector3(x, y, 0);
+        GameUnits b = newGO.gameObject.GetComponent<GameUnits>();
+        baseRedX = x;
+        baseRedY = y;
+        baseList.Add(newGO.gameObject.GetComponent<Base>());
+        cards[x, y] = b;
+        baseRedCreated = true;
+    }
+
+    public void GenerateBaseBlue(int x, int y)
 	{
 		if (x < 0 || x > 6 || y < 0 || y > 2)
 			return; 
@@ -313,16 +367,10 @@ public class Board : MonoBehaviour
     {
         if (isCreated == false)
         {
-            if (isBlueplayer == true)
-            {
+
                 if (cards[x, y] != null || ((x >= baseBlueX + 1 || x <= baseBlueX - 1) && (y != baseBlueY)) || ((y >= baseBlueY + 1 || y <= baseBlueY - 1) && (x != baseBlueX)))
                     return;
-            }
-            if (isBlueplayer == false)
-            {
-                if (cards[x, y] != null || ((x >= baseRedX + 1 || x <= baseRedX - 1) && (y != baseRedY)) || ((y >= baseRedY + 1 || y <= baseRedY - 1) && (x != baseRedX)))
-                    return;
-            }
+            
 
                 GameObject newGO = Instantiate(Soldier) as GameObject;
             //if (cards [x, y] == null && ((x == baseBlueX + 1 || x == baseBlueX - 1) && (y == baseBlueY)) || ((y == baseBlueY + 1 || y == baseBlueY - 1) && (x == baseBlueX)))
@@ -405,6 +453,7 @@ public class Board : MonoBehaviour
             goTest.GetComponent<SoldierPreview>().HealthText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.MaxHealth.ToString();
             goTest.GetComponent<SoldierPreview>().RangeText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.SoldierRange.ToString();
             goTest.GetComponent<SoldierPreview>().MovementText.text = goTest.GetComponent<OneSoldierManager>().cardAsset.Movement.ToString();
+
         }
         else Debug.Log("No Asset");
         if (isCreated == false)

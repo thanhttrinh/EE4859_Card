@@ -165,6 +165,9 @@ public class Server : MonoBehaviour {
             case "CGBB":
                 Broadcast("SGBB|" + aData[1] + "|" + aData[2], clients);
                 break;
+            case "CGBC":
+                Broadcast("SGBC|" + aData[1] + "|" + aData[2], clients);
+                break;
 
             case "CGBR":
                 Broadcast("SGBR|" + aData[1] + "|" + aData[2], clients);
@@ -190,6 +193,9 @@ public class Server : MonoBehaviour {
                 break;
             case "CETN":
                 Broadcast("SETN|" , clients);
+                break;
+            case "CABH":
+                Broadcast("SABH|" + aData[1] + "|" + aData[2], clients);
                 break;
         }
     }
